@@ -16,7 +16,7 @@ namespace RacunarskiCentar
         public override GUIObject Copy()
         {
             Termin t = new Termin(pocetakTermina, duzinaTermina);
-            throw new System.NotImplementedException();
+            return t;
         }
 
         internal override void restoreFromCopy(GUIObject guiObject)
