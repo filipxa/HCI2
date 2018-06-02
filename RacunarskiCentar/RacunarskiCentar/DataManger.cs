@@ -9,6 +9,7 @@ namespace RacunarskiCentar
     class DataManger
     {
         List<Ucionica> ucionice;
+
         public void addObject(GUIObject guiObject)
         {
             if (guiObject is Ucionica)
@@ -21,7 +22,9 @@ namespace RacunarskiCentar
         private void addUcionica(Ucionica ucionica)
         {
             ucionice.Add(ucionica);
-           // ucionica
+          
         }
     }
+
+    
 }

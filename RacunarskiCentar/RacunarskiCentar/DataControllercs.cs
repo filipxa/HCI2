@@ -14,15 +14,20 @@ namespace RacunarskiCentar
             action.excuteAction();
             actionsHistory.Push(action);
         }
-        static public  void undoAction()
+        static public  Action undoAction()
         {
+            Action rets=null;
             if (actionsHistory.Count > 0)
             {
-                actionsHistory.Pop().GetReverseAction().excuteAction();
+                rets = actionsHistory.Pop().GetReverseAction();
+                rets.excuteAction();
             }
+            return rets;
              
         }
     }
+
+
 
     public abstract class Action 
     {

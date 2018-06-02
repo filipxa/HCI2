@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RacunarskiCentar
 {
-   public  class Ucionica  : GUIObject
+    public class Ucionica : GUIObject
     {
-        
+
         string id;
         string opis;
         int brMesta;
@@ -38,14 +38,14 @@ namespace RacunarskiCentar
 
             }
         }
-       
+
         public int BrRadnihMesta
         {
             get => brMesta;
             set
             {
                 brMesta = value;
-                OnValueChanged(new EventArgs()); 
+                OnValueChanged(new EventArgs());
             }
         }
 
@@ -64,6 +64,14 @@ namespace RacunarskiCentar
             {
                 opis = value;
                 OnValueChanged(new EventArgs());
+            }
+        }
+        public Raspored Raspored
+        {
+            get => raspored;
+                set
+            {
+                raspored = value;
             }
         }
 

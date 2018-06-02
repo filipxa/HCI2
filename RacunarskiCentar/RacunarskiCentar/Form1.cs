@@ -20,13 +20,22 @@ namespace RacunarskiCentar
             Action action = new CreateAction(new Ucionica("Djoka", "Opis", 20));
                 DataControllercs.addAction(action);
                 uc =  (Ucionica)action.getGUIObject();
-            
+         
                 controla = new UcionicaControl(uc, panel1);
                 controla.Width = 300;
                 controla.Height = 300;
                 controla.Location = new Point(30, 30);
                 controla.Invalidate();
-           
+            controla.Click += Controla_Click;
+
+        }
+
+        private void Controla_Click(object sender, EventArgs e)
+        {
+            UcionicaControl uc = (UcionicaControl)sender;
+            Action action = new DeleteAction(uc.GuiObject);
+            DataControllercs.addAction(action);
+            
         }
 
         private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
@@ -36,8 +45,7 @@ namespace RacunarskiCentar
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Action action = new DeleteAction(uc);
-            DataControllercs.addAction(action);
+          
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -47,7 +55,17 @@ namespace RacunarskiCentar
 
         private void button3_Click(object sender, EventArgs e)
         {
-            DataControllercs.undoAction();
+            Action action = DataControllercs.undoAction();
+            if(action is CreateAction)
+            {
+                UcionicaControl controla;
+                uc = (Ucionica)action.getGUIObject();
+               controla = new UcionicaControl(uc, panel1);
+                controla.Width = 300;
+                controla.Height = 300;
+                controla.Location = new Point(30, 30);
+                controla.Invalidate();
+            }
         }
     }
 }
