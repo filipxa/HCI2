@@ -28,6 +28,8 @@ namespace RacunarskiCentar
             rc.Height = 200;
             Font f = new Font("Verdana", (float)rc.Height * 0.2f, FontStyle.Bold, GraphicsUnit.Pixel);
             g.FillRectangle(new SolidBrush(Color.Aqua), rc);
+
+
             g.DrawString(GuiObject.ID, f, new SolidBrush(Color.Black), new RectangleF(rc.Location, rc.Size)); 
             
             

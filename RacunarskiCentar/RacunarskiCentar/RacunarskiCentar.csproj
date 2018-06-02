@@ -48,6 +48,7 @@
     <Compile Include="ControlBase.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DataControllercs.cs" />
     <Compile Include="GuiObject.cs" />
     <Compile Include="Predmet.cs" />
     <Compile Include="Ucionica.cs" />

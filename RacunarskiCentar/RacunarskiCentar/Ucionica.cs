@@ -14,14 +14,15 @@ namespace RacunarskiCentar
         int brMesta;
         HashSet<UcionicaAssets> assets;
         HashSet<String> installedSoftware;
+        Raspored raspored;
 
         public Ucionica(String id, string opis, int brMesta)
         {
             BrRadnihMesta = brMesta;
             ID = id;
             Opis = opis;
-            this.assets = new HashSet<UcionicaAssets>();
-            this.installedSoftware = new HashSet<String>();
+            this.Assets = new HashSet<UcionicaAssets>();
+            this.InstalledSoftware = new HashSet<String>();
 
         }
         public Ucionica(String id, string opis, int brMesta, HashSet<UcionicaAssets> assets, HashSet<String> installedSoftware) : this(id, opis, brMesta)
@@ -29,11 +30,11 @@ namespace RacunarskiCentar
 
             if (assets != null)
             {
-                this.assets = new HashSet<UcionicaAssets>(assets);
+                this.Assets = new HashSet<UcionicaAssets>(assets);
             }
             if (installedSoftware != null)
             {
-                this.installedSoftware = new HashSet<String>(installedSoftware);
+                this.InstalledSoftware = new HashSet<String>(installedSoftware);
 
             }
         }
@@ -66,9 +67,30 @@ namespace RacunarskiCentar
             }
         }
 
+        public HashSet<UcionicaAssets> Assets { get => assets; set => assets = new HashSet<UcionicaAssets>(value); }
+        public HashSet<string> InstalledSoftware { get => installedSoftware; set => installedSoftware = new HashSet<String>(value); }
+
         public override GUIObject Copy()
         {
-            return new Ucionica(id, opis, brMesta, assets, installedSoftware);
+            Ucionica c = new Ucionica(id, opis, brMesta, Assets, InstalledSoftware);
+            c.raspored = (Raspored)raspored.Copy();
+            return c;
+        }
+
+        protected override void OnDelete(EventArgs e)
+        {
+            base.OnDelete(e);
+            raspored.Delete();
+        }
+
+        internal override void restoreFromCopy(GUIObject guiObject)
+        {
+            Ucionica ucionica = guiObject as Ucionica;
+            BrRadnihMesta = ucionica.brMesta;
+            Assets = ucionica.assets;
+            
+            ID = ucionica.id;
+            
         }
     }
 

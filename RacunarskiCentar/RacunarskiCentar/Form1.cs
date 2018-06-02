@@ -23,7 +23,6 @@ namespace RacunarskiCentar
                 controla.Height = 300;
                 controla.Location = new Point(30, 30);
                 controla.Invalidate();
-
             }
             
             Controls.Add(controla);
