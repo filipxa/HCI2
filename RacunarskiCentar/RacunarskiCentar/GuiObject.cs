@@ -46,12 +46,14 @@ namespace RacunarskiCentar
             {
                 onDelete(this, e);
             }
+            DataManger.removeObject(this);
         }
 
         public void Delete()
         {
             //throw new NotImplementedException();
             OnDelete(new EventArgs());
+            DataManger.removeObject(this);
         }
 
         public abstract GUIObject Copy();

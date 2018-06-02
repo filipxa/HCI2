@@ -28,7 +28,6 @@ namespace RacunarskiCentar
     }
 
 
-
     public abstract class Action 
     {
         protected GUIObject o;
@@ -51,7 +50,7 @@ namespace RacunarskiCentar
         internal override void excuteAction()
         {
             o.Delete();
-           // throw new NotImplementedException();
+           
         }
 
         public override Action GetReverseAction()

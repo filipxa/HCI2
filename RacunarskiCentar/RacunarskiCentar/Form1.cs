@@ -45,7 +45,19 @@ namespace RacunarskiCentar
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+            Ucionica uc = new Ucionica("DJOKA", "Stojko", 2);
+            Action action = new CreateAction(uc);
+            DataControllercs.addAction(action);
+            Raspored r = new Raspored(uc);
+            action = new CreateAction(r);
+            DataControllercs.addAction(action);
+            Nedelja ned = new Nedelja(r);
+            action = new CreateAction(ned);
+            DataControllercs.addAction(action);
           
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)

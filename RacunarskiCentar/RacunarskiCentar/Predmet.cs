@@ -108,6 +108,15 @@ namespace RacunarskiCentar
                 OnValueChanged(new EventArgs());
             }
         }
+        protected override void OnDelete(EventArgs e)
+        {
+            base.OnDelete(e);
+            List<Termin> termini = new List<Termin>(Termini);
+            foreach (Termin termin in termini)
+            {
+                termin.Delete();
+            }
+        }
         public HashSet<UcionicaAssets> Assets { get => assets; set => assets = new HashSet<UcionicaAssets>(value); }
         public HashSet<Software> InstalledSoftware { get => installedSoftware; set => installedSoftware = new HashSet<Software>(value); }
 

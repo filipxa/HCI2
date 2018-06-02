@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace RacunarskiCentar
 {
@@ -39,6 +40,16 @@ namespace RacunarskiCentar
         internal override void restoreFromCopy(GUIObject guiObject)
         {
             throw new System.NotImplementedException();
+        }
+        protected override void OnDelete(EventArgs e)
+        {
+            base.OnDelete(e);
+            List<Nedelja> nedelje = new List<Nedelja>(RadneNedelje);
+            foreach (Nedelja nedelja in nedelje)
+            {
+                nedelja.Delete();
+            }
+
         }
     }
 }

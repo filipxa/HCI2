@@ -7,7 +7,7 @@ namespace RacunarskiCentar
     {
         List<Termin> termini;
         Raspored raspored;
-        Raspored Raspored
+       public Raspored Raspored
         {
             get => raspored;
             set => raspored = value;
@@ -16,6 +16,7 @@ namespace RacunarskiCentar
         public Nedelja(Raspored raspored)
         {
             Termini = new List<Termin>();
+            Raspored = raspored;
             
         }
         public Nedelja(Raspored raspoerd, List<Termin> termini) : this(raspoerd)
@@ -36,6 +37,12 @@ namespace RacunarskiCentar
         protected override void OnDelete(EventArgs e)
         {
             base.OnDelete(e);
+            List<Termin> termini = new List<Termin>(Termini);
+            foreach (Termin termin in termini)
+            {
+                termin.Delete();
+            }
+
         }
         public override GUIObject Copy()
         {

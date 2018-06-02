@@ -83,7 +83,13 @@ namespace RacunarskiCentar
                 OnValueChanged(new EventArgs());
             }
         }
-
+        protected override void OnDelete(EventArgs e)
+        {
+            base.OnDelete(e);
+            List<Predmet> predmeti = new List<Predmet>(Predmeti);
+            foreach (Predmet pred in predmeti)
+                pred.Delete();
+        }
         public override GUIObject Copy()
         {   
             
