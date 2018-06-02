@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace RacunarskiCentar
 {
@@ -38,7 +39,13 @@ namespace RacunarskiCentar
 
         internal override void restoreFromCopy(GUIObject guiObject)
         {
-            throw new System.NotImplementedException();
+            Raspored r = guiObject as Raspored;
+            if(r == null)
+            {
+                throw new Exception("Raspored null");
+            }
+            RadneNedelje = r.radneNedelje;
+            Ucionica = r.ucionica;
         }
     }
 }

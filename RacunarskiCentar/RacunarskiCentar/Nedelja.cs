@@ -7,6 +7,7 @@ namespace RacunarskiCentar
     {
         List<Termin> termini;
         Raspored raspored;
+
         Raspored Raspored
         {
             get => raspored;
@@ -16,7 +17,7 @@ namespace RacunarskiCentar
         public Nedelja(Raspored raspored)
         {
             Termini = new List<Termin>();
-            
+            this.raspored = raspored;
         }
         public Nedelja(Raspored raspoerd, List<Termin> termini) : this(raspoerd)
         {
