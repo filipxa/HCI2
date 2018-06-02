@@ -13,7 +13,7 @@ namespace RacunarskiCentar
         string opis;
         int brMesta;
         HashSet<UcionicaAssets> assets;
-        HashSet<String> installedSoftware;
+        HashSet<Software> installedSoftware;
         Raspored raspored;
 
         public Ucionica(String id, string opis, int brMesta)
