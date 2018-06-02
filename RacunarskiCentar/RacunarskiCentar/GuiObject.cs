@@ -50,11 +50,11 @@ namespace RacunarskiCentar
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
             OnDelete(new EventArgs());
         }
 
         public abstract GUIObject Copy();
-
+        internal abstract void restoreFromCopy(GUIObject guiObject);
     }
 }

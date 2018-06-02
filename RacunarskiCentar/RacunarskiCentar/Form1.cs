@@ -6,7 +6,6 @@ namespace RacunarskiCentar
 {
     public partial class Form1 : Form
     {
-        UcionicaControl controla;
         Ucionica uc;
         public Form1()
         {
@@ -15,17 +14,19 @@ namespace RacunarskiCentar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (controla == null)
-            {
-                uc = new Ucionica("Djoka", "Opis", 20);
-                controla = new UcionicaControl(uc);
+            UcionicaControl controla;
+          
+
+            Action action = new CreateAction(new Ucionica("Djoka", "Opis", 20));
+                DataControllercs.addAction(action);
+                uc =  (Ucionica)action.getGUIObject();
+            
+                controla = new UcionicaControl(uc, panel1);
                 controla.Width = 300;
                 controla.Height = 300;
                 controla.Location = new Point(30, 30);
                 controla.Invalidate();
-            }
-            
-            Controls.Add(controla);
+           
         }
 
         private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
@@ -35,7 +36,18 @@ namespace RacunarskiCentar
 
         private void button2_Click(object sender, EventArgs e)
         {
-            uc.ID = DateTime.Now.ToLongTimeString();
+            Action action = new DeleteAction(uc);
+            DataControllercs.addAction(action);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DataControllercs.undoAction();
         }
     }
 }

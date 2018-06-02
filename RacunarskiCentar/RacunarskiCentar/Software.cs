@@ -79,5 +79,14 @@ namespace RacunarskiCentar
             }
         }
 
+        public override GUIObject Copy()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal override void restoreFromCopy(GUIObject guiObject)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

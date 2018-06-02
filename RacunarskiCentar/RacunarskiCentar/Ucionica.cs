@@ -80,7 +80,8 @@ namespace RacunarskiCentar
         protected override void OnDelete(EventArgs e)
         {
             base.OnDelete(e);
-            raspored.Delete();
+            if(raspored!=null)
+                raspored.Delete();
         }
 
         internal override void restoreFromCopy(GUIObject guiObject)

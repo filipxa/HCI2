@@ -6,12 +6,25 @@ using System.Threading.Tasks;
 
 namespace RacunarskiCentar
 {
-    class DataControllercs
+    static class DataControllercs
     {
-
+        static Stack<Action> actionsHistory = new Stack<Action>();
+        static public void addAction(Action action)
+        {
+            action.excuteAction();
+            actionsHistory.Push(action);
+        }
+        static public  void undoAction()
+        {
+            if (actionsHistory.Count > 0)
+            {
+                actionsHistory.Pop().GetReverseAction().excuteAction();
+            }
+             
+        }
     }
 
-    public abstract class Action
+    public abstract class Action 
     {
         protected GUIObject o;
         public Action(GUIObject guiObject)
@@ -19,7 +32,7 @@ namespace RacunarskiCentar
             o = guiObject;
         }
         public abstract Action GetReverseAction();
-        public abstract void excuteAction();
+        internal abstract void excuteAction();
         public GUIObject getGUIObject()
         {
             return o;
@@ -28,12 +41,12 @@ namespace RacunarskiCentar
     public class DeleteAction : Action
     {
         public DeleteAction(GUIObject guiObject) : base(guiObject) { }
- 
 
-        public override void excuteAction()
+
+        internal override void excuteAction()
         {
             o.Delete();
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
 
         public override Action GetReverseAction()
@@ -45,10 +58,8 @@ namespace RacunarskiCentar
     public class CreateAction : Action
     {
         public CreateAction(GUIObject guiObject) : base(guiObject) { }
-        public override void excuteAction()
-        {
-
-            throw new NotImplementedException();
+        internal override void excuteAction()
+        { 
         }
 
         public override Action GetReverseAction()
@@ -61,12 +72,32 @@ namespace RacunarskiCentar
     {
         GUIObject copyObject;
         public EditAction(GUIObject guiObject) : base(guiObject)
-        {
-            guiObject.restoreFromCopy(guiObject);
+        { 
+            o = guiObject;
+            copyObject = o.Copy();
         }
-        public override void excuteAction()
+        internal override void excuteAction()
         {
-            throw new NotImplementedException();
+            
+        }
+
+        public override Action GetReverseAction()
+        {
+            return new RestoreAction(o, copyObject);
+        }
+    }
+
+    public class RestoreAction : Action
+    {
+        GUIObject memo;
+        public RestoreAction(GUIObject guiObject,  GUIObject memo) : base(guiObject)
+        {
+            o = guiObject;
+            this.memo = memo;
+        }
+        internal override void excuteAction()
+        {
+            o.restoreFromCopy(memo);
         }
 
         public override Action GetReverseAction()

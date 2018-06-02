@@ -12,11 +12,11 @@ namespace RacunarskiCentar
 {
     public partial class UcionicaControl : CustomControlBase<Ucionica>
     {
-        public UcionicaControl(Ucionica ucionica) : base(ucionica)
+       
+        public UcionicaControl(Ucionica ucionica, Panel panel) : base(ucionica, panel)
         {
             InitializeComponent();
         }
-
 
 
         protected override void OnPaint(PaintEventArgs pe)
