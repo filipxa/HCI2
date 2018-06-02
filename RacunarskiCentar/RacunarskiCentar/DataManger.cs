@@ -26,6 +26,10 @@ namespace RacunarskiCentar
             {
                 addSmer(guiObject as Smer);
             }
+            if( guiObject is Raspored)
+            {
+                addRaspored(guiObject as Raspored);
+            }
         }
 
         private static void addSmer(Smer smer)
@@ -37,6 +41,12 @@ namespace RacunarskiCentar
         {
             ucionice.Add(ucionica);
 
+        }
+
+        public static void addTermin(Termin termin)
+        {
+            termin.Nedelja.Termini.Add(termin);
+            termin.Predmet.Termini.Add(termin);
         }
 
         public List<Raspored> getRasporedi()
@@ -69,11 +79,7 @@ namespace RacunarskiCentar
             }
             return rets;
         }
-        public static void addTermin(Termin termin)
-        {
-            termin.Nedelja.Termini.Add(termin);
-            termin.Predmet.Termini.Add(termin);
-        }
+        
         public void removeTermin(Termin termin)
         {
             termin.Nedelja.Termini.Remove(termin);
