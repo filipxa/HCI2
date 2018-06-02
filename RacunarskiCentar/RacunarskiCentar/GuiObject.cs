@@ -8,8 +8,8 @@ namespace RacunarskiCentar
 {
    public abstract class GUIObject
     {
-        private EventHandler onValueChanged;
-        private EventHandler onDelete;
+        protected EventHandler onValueChanged;
+        protected EventHandler onDelete;
         public event EventHandler ValueChanged
         {
             add
