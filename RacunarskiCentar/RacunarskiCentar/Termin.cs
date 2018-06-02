@@ -17,5 +17,10 @@ namespace RacunarskiCentar
         {
             throw new System.NotImplementedException();
         }
+
+        internal override void restoreFromCopy(GUIObject guiObject)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

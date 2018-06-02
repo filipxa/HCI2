@@ -49,9 +49,14 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataControllercs.cs" />
+    <Compile Include="DataManger.cs" />
     <Compile Include="GuiObject.cs" />
+    <Compile Include="Nedelja.cs" />
     <Compile Include="Predmet.cs" />
+    <Compile Include="Raspored.cs" />
+    <Compile Include="Termin.cs" />
     <Compile Include="Ucionica.cs" />
+	 <Compile Include="Software.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -80,17 +80,23 @@ namespace RacunarskiCentar
         protected override void OnDelete(EventArgs e)
         {
             base.OnDelete(e);
-            raspored.Delete();
+            if(raspored!=null)
+                raspored.Delete();
         }
 
         internal override void restoreFromCopy(GUIObject guiObject)
         {
             Ucionica ucionica = guiObject as Ucionica;
+            if (ucionica == null)
+            {
+                return;
+            }
             BrRadnihMesta = ucionica.brMesta;
             Assets = ucionica.assets;
-            
+            installedSoftware = ucionica.installedSoftware;
             ID = ucionica.id;
-            
+            raspored.restoreFromCopy(ucionica.raspored);
+
         }
     }
 

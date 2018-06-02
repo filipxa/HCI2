@@ -10,14 +10,15 @@ namespace RacunarskiCentar
    public  abstract class CustomControlBase<T> : Control where T : GUIObject
     {
         T guiObject;
-        public CustomControlBase(T guiObject)
+        Panel parentPanel;
+        public CustomControlBase(T guiObject, Panel panel)
         {
             this.GuiObject = guiObject;
             guiObject.ValueChanged += onValueChaged;
             guiObject.Deleted += onDelete;
+            parentPanel = panel;
+            panel.Controls.Add(this);
         }
-
-        
 
         public T GuiObject
         {
@@ -41,14 +42,15 @@ namespace RacunarskiCentar
             }
         }
 
-        private void onValueChaged(object sender, EventArgs e)
+        protected void onValueChaged(object sender, EventArgs e)
         {
             this.Invalidate();
         }
 
-        private void onDelete(object sender, EventArgs e)
+        protected virtual void onDelete(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Dispose(true);
+            parentPanel.Controls.Remove(this);
         }
     }
 
