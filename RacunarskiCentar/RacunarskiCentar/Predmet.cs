@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace RacunarskiCentar
 {
     class Predmet : GUIObject
-    {   Sof
+    {   
         string id;
         string ime;
         string smerPredmeta;
@@ -28,11 +28,12 @@ namespace RacunarskiCentar
             BrCasova = brCasova;
             BrTermina = brTermina;
             this.Assets = new HashSet<UcionicaAssets>();
-            this.InstalledSoftware = new HashSet<String>();
+            this.InstalledSoftware = new HashSet<Software>();
 
         }
 
-        public Predemet(string id, string ime, string smerPredmeta, string opis,int brLjudi, int brCasova, int brTermina, HashSet<UcionicaAssets> assets, HashSet<String> installedSoftware) : this(id, ime, smerPredmeta, opis,brLjudi, brCasova,brTermina)
+        public Predmet(string id, string ime, string smerPredmeta, string opis,int brLjudi, int brCasova, int brTermina, 
+            HashSet<UcionicaAssets> assets, HashSet<Software> installedSoftware) : this(id, ime, smerPredmeta, opis,brLjudi, brCasova,brTermina)
         {
 
             if (assets != null)
@@ -41,7 +42,7 @@ namespace RacunarskiCentar
             }
             if (installedSoftware != null)
             {
-                this.InstalledSoftware = new HashSet<String>(installedSoftware);
+                this.InstalledSoftware = new HashSet<Software>(installedSoftware);
 
             }
         }
@@ -100,12 +101,18 @@ namespace RacunarskiCentar
                 OnValueChanged(new EventArgs());
             }
         }
+        public HashSet<UcionicaAssets> Assets { get => assets; set => assets = new HashSet<UcionicaAssets>(value); }
+        public HashSet<Software> InstalledSoftware { get => installedSoftware; set => installedSoftware = new HashSet<Software>(value); }
 
         public override GUIObject Copy()
         {
-            Predmet p = new Ucionica(id, ime, smerPredmeta, opis,brLjudi, brCasova,brTermina, Assets, InstalledSoftware);
-            return p;
+           // Predmet p = new Ucionica(id, ime, smerPredmeta, opis,brLjudi, brCasova,brTermina, Assets, InstalledSoftware);
+            return null;
         }
 
+        internal override void restoreFromCopy(GUIObject guiObject)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

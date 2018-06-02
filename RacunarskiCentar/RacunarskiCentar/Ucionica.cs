@@ -22,10 +22,10 @@ namespace RacunarskiCentar
             ID = id;
             Opis = opis;
             this.Assets = new HashSet<UcionicaAssets>();
-            this.InstalledSoftware = new HashSet<String>();
+            this.InstalledSoftware = new HashSet<Software>();
 
         }
-        public Ucionica(String id, string opis, int brMesta, HashSet<UcionicaAssets> assets, HashSet<String> installedSoftware) : this(id, opis, brMesta)
+        public Ucionica(String id, string opis, int brMesta, HashSet<UcionicaAssets> assets, HashSet<Software> installedSoftware) : this(id, opis, brMesta)
         {
 
             if (assets != null)
@@ -34,7 +34,7 @@ namespace RacunarskiCentar
             }
             if (installedSoftware != null)
             {
-                this.InstalledSoftware = new HashSet<String>(installedSoftware);
+                this.InstalledSoftware = new HashSet<Software>(installedSoftware);
 
             }
         }
@@ -68,7 +68,7 @@ namespace RacunarskiCentar
         }
 
         public HashSet<UcionicaAssets> Assets { get => assets; set => assets = new HashSet<UcionicaAssets>(value); }
-        public HashSet<string> InstalledSoftware { get => installedSoftware; set => installedSoftware = new HashSet<String>(value); }
+        public HashSet<Software> InstalledSoftware { get => installedSoftware; set => installedSoftware = new HashSet<Software>(value); }
 
         public override GUIObject Copy()
         {
