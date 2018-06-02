@@ -33,8 +33,8 @@ namespace RacunarskiCentar
         public override GUIObject Copy()
         {
             Nedelja t = new Nedelja(termini);
+            return t;
 
-            throw new System.NotImplementedException();
         }
 
         internal override void restoreFromCopy(GUIObject guiObject)

@@ -6,6 +6,11 @@ namespace RacunarskiCentar
     {
         List<Nedelja> radneNedelje;
 
+        public Raspored(List<Nedelja> radneNedelje)
+        {
+            RadneNedelje = radneNedelje;
+        }
+
         public List<Nedelja> RadneNedelje
         {
             get => radneNedelje;
@@ -14,8 +19,10 @@ namespace RacunarskiCentar
         
 
         public override GUIObject Copy()
-        { 
-            throw new System.NotImplementedException();
+        {
+            Raspored r = new Raspored(radneNedelje);
+            //(Nedelja)radneNedelje.Copy();
+            return r;
         }
 
         internal override void restoreFromCopy(GUIObject guiObject)

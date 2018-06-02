@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RacunarskiCentar
 {
-    class Predmet : GUIObject
+    public class Predmet : GUIObject
     {   
         string id;
         string ime;
@@ -113,8 +113,8 @@ namespace RacunarskiCentar
 
         public override GUIObject Copy()
         {
-           // Predmet p = new Ucionica(id, ime, smerPredmeta, opis,brLjudi, brCasova,brTermina, Assets, InstalledSoftware);
-            return null;
+            Predmet p = new Predmet(id, ime, smerPredmeta, opis,brLjudi, brCasova,brTermina, Assets, InstalledSoftware);
+            return p;
         }
 
         internal override void restoreFromCopy(GUIObject guiObject)
