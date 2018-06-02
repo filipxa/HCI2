@@ -16,6 +16,8 @@ namespace RacunarskiCentar
         int brCasova;
         int brTermina;
         HashSet<UcionicaAssets> assets;
+        List<Termin> termini;
+
         HashSet<Software> installedSoftware;
 
         public Predmet(string id, string ime, string smerPredmeta, string opis,int brLjudi, int brCasova, int brTermina)
@@ -47,6 +49,11 @@ namespace RacunarskiCentar
             }
         }
 
+        public List<Termin> Termini
+        {
+            get => termini;
+            set => termini = new List<Termin>(value);
+        }
         public string ID {
             get => id;
             set {

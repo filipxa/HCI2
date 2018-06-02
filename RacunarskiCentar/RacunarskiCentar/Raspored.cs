@@ -5,6 +5,12 @@ namespace RacunarskiCentar
     public class Raspored : GUIObject
     {
         List<Nedelja> radneNedelje;
+
+        public List<Nedelja> RadneNedelje
+        {
+            get => radneNedelje;
+            set => radneNedelje = new List<Nedelja>(value);
+        }
         
 
         public override GUIObject Copy()

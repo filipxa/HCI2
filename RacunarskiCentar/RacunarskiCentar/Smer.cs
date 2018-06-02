@@ -12,6 +12,21 @@ namespace RacunarskiCentar
         string ime;
         DateTime datumUvodjenja;
         string opis;
+        List<Predmet> predmeti;
+
+
+        public List<Predmet> Predmeti
+        {
+            get => predmeti;
+            set
+            {
+                predmeti = new List<Predmet>(value);
+                OnValueChanged(new EventArgs());
+            }
+        }
+
+
+
 
 
         public string ID
