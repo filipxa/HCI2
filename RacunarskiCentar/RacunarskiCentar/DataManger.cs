@@ -8,10 +8,10 @@ namespace RacunarskiCentar
 {
     class DataManger
     {
-        List<Ucionica> ucionice;
-        List<Smer> smerovi;
+        static List<Ucionica> ucionice;
+        static List<Smer> smerovi;
 
-        public void addObject(GUIObject guiObject)
+        public static void addObject(GUIObject guiObject)
         {
             if (guiObject is Ucionica)
             {
@@ -22,11 +22,21 @@ namespace RacunarskiCentar
             {
                 addTermin(guiObject as Termin);
             }
+            if (guiObject is Smer)
+            {
+                addSmer(guiObject as Smer);
+            }
         }
 
-        private void addUcionica(Ucionica ucionica)
+        private static void addSmer(Smer smer)
+        {
+            smerovi.Add(smer);
+        }
+
+        private static void addUcionica(Ucionica ucionica)
         {
             ucionice.Add(ucionica);
+
         }
 
         public List<Raspored> getRasporedi()
@@ -49,6 +59,7 @@ namespace RacunarskiCentar
             }
             return rets;
         }
+
         public List<Predmet> getPredmeti()
         {
             List<Predmet> rets = new List<Predmet>();
@@ -58,17 +69,17 @@ namespace RacunarskiCentar
             }
             return rets;
         }
-        public void addTermin(Termin termin, Nedelja nedelja)
+        public static void addTermin(Termin termin)
         {
-            nedelja.Termini.Add(termin);
-            foreach(Predmet predmet in getPredmeti())
-            {
-                if(termin.Predmet == predmet)
-                {
-                    predmet.Termini.Add(termin);
-                }
-            }
+            termin.Nedelja.Termini.Add(termin);
+            termin.Predmet.Termini.Add(termin);
         }
+        public void removeTermin(Termin termin)
+        {
+            termin.Nedelja.Termini.Remove(termin);
+            termin.Predmet.Termini.Remove(termin);
+        }
+
     }
 
     

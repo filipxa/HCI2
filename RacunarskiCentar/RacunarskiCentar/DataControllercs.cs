@@ -64,7 +64,8 @@ namespace RacunarskiCentar
     {
         public CreateAction(GUIObject guiObject) : base(guiObject) { }
         internal override void excuteAction()
-        { 
+        {
+            DataManger.addObject(o);
         }
 
         public override Action GetReverseAction()
