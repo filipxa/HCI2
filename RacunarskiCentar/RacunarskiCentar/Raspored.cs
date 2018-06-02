@@ -5,10 +5,23 @@ namespace RacunarskiCentar
     public class Raspored : GUIObject
     {
         List<Nedelja> radneNedelje;
+        Ucionica ucionica;
 
-        public Raspored(List<Nedelja> radneNedelje)
+        public Ucionica Ucionica
         {
-            RadneNedelje = radneNedelje;
+            get => ucionica;
+            set => ucionica = value;
+        }
+
+        public Raspored(Ucionica ucionica)
+        {
+            radneNedelje = new List<Nedelja>();
+            Ucionica = ucionica;
+        }
+        public Raspored(Ucionica ucionica, List<Nedelja> radneNedelje) : this(ucionica)
+        {
+            if (radneNedelje != null)
+                 RadneNedelje = radneNedelje;
         }
 
         public List<Nedelja> RadneNedelje
@@ -20,9 +33,7 @@ namespace RacunarskiCentar
 
         public override GUIObject Copy()
         {
-            Raspored r = new Raspored(radneNedelje);
-            //(Nedelja)radneNedelje.Copy();
-            return r;
+            return new Raspored(ucionica,radneNedelje);
         }
 
         internal override void restoreFromCopy(GUIObject guiObject)

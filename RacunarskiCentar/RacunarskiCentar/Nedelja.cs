@@ -6,12 +6,19 @@ namespace RacunarskiCentar
     public class Nedelja : GUIObject
     {
         List<Termin> termini;
-        public Nedelja()
+        Raspored raspored;
+        Raspored Raspored
         {
-            termini = new List<Termin>();
-            Termini = termini;
+            get => raspored;
+            set => raspored = value;
         }
-        public Nedelja(List<Termin> termini)
+
+        public Nedelja(Raspored raspored)
+        {
+            Termini = new List<Termin>();
+            
+        }
+        public Nedelja(Raspored raspoerd, List<Termin> termini) : this(raspoerd)
         {
             if (termini != null)
             {
@@ -32,8 +39,7 @@ namespace RacunarskiCentar
         }
         public override GUIObject Copy()
         {
-            Nedelja t = new Nedelja(termini);
-            return t;
+            return new Nedelja(raspored, termini);
 
         }
 

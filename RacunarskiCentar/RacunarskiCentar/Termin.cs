@@ -7,8 +7,15 @@ namespace RacunarskiCentar
         DateTime pocetakTermina;
         DateTime krajTermina;
         Predmet predmet;
+        Nedelja nedelja;
         int duzinaTermina; // Broj casova termina
+        
+        public Nedelja Nedelja
+        {
+            get => nedelja;
+            set => nedelja = value;
 
+        }
 
         public Termin(DateTime pocetakTermina, int duzinaTermina,Predmet predmet)
         {
