@@ -15,6 +15,19 @@ namespace RacunarskiCentar
         List<Predmet> predmeti;
 
 
+        public Smer(string id, string ime, DateTime datumUvodjenja, string opis)
+        {
+            ID = id;
+            Ime = ime;
+            DatumUvodjenja = datumUvodjenja;
+            Opis = opis;
+        }
+
+        public Smer(string id, string ime, DateTime datumUvodjenja, string opis,List<Predmet> predmeti): this(id, ime, datumUvodjenja, opis)
+        {
+            //doraditi
+        }
+
         public List<Predmet> Predmeti
         {
             get => predmeti;
@@ -68,7 +81,8 @@ namespace RacunarskiCentar
         }
 
         public override GUIObject Copy()
-        {
+        {   
+            
             throw new NotImplementedException();
         }
 
