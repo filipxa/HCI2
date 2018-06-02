@@ -21,11 +21,15 @@ namespace RacunarskiCentar
             Ime = ime;
             DatumUvodjenja = datumUvodjenja;
             Opis = opis;
+            this.predmeti = new List<Predmet>();
         }
 
         public Smer(string id, string ime, DateTime datumUvodjenja, string opis,List<Predmet> predmeti): this(id, ime, datumUvodjenja, opis)
         {
-            //doraditi
+            if(predmeti != null)
+            {
+                this.predmeti = new List<Predmet>(predmeti);
+            }
         }
 
         public List<Predmet> Predmeti
