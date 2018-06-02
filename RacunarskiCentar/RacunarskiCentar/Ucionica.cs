@@ -86,11 +86,16 @@ namespace RacunarskiCentar
         internal override void restoreFromCopy(GUIObject guiObject)
         {
             Ucionica ucionica = guiObject as Ucionica;
+            if (ucionica == null)
+            {
+                return;
+            }
             BrRadnihMesta = ucionica.brMesta;
             Assets = ucionica.assets;
-            
+            installedSoftware = ucionica.installedSoftware;
             ID = ucionica.id;
-            
+            raspored.restoreFromCopy(ucionica.raspored);
+
         }
     }
 
