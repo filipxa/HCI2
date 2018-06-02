@@ -10,19 +10,20 @@ namespace RacunarskiCentar
         Nedelja nedelja;
         int duzinaTermina; // Broj casova termina
         
+        
+
+        public Termin(DateTime pocetakTermina, int duzinaTermina,Predmet predmet, Nedelja nedelja)
+        {
+            this.pocetakTermina = pocetakTermina;
+            this.duzinaTermina = duzinaTermina;
+            Predmet = predmet;
+            Nedelja = nedelja;
+            krajTermina = pocetakTermina.AddMinutes(45 * duzinaTermina);
+        }
         public Nedelja Nedelja
         {
             get => nedelja;
             set => nedelja = value;
-
-        }
-
-        public Termin(DateTime pocetakTermina, int duzinaTermina,Predmet predmet)
-        {
-            this.pocetakTermina = pocetakTermina;
-            this.duzinaTermina = duzinaTermina;
-            this.predmet = predmet;
-            krajTermina = pocetakTermina.AddMinutes(45 * duzinaTermina);
         }
         public Predmet Predmet
         {
@@ -31,12 +32,21 @@ namespace RacunarskiCentar
         }
         public override GUIObject Copy()
         {
-            return new Termin(pocetakTermina, duzinaTermina, predmet);
+            return new Termin(pocetakTermina, duzinaTermina, predmet, nedelja);
         }
 
         internal override void restoreFromCopy(GUIObject guiObject)
         {
-            throw new NotImplementedException();
+            Termin t = guiObject as Termin;
+            if(t == null)
+            {
+                throw new Exception("Termin null");
+            }
+            this.pocetakTermina = pocetakTermina;
+            this.duzinaTermina = duzinaTermina;
+            Predmet = predmet;
+            Nedelja = nedelja;
+            krajTermina = pocetakTermina.AddMinutes(45 * duzinaTermina)
         }
     }
 }
