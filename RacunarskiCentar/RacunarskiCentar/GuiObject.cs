@@ -54,6 +54,6 @@ namespace RacunarskiCentar
             OnDelete(new EventArgs());
         }
 
-       \
-    }
+       
+  }
 }

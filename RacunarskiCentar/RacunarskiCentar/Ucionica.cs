@@ -66,10 +66,6 @@ namespace RacunarskiCentar
             }
         }
 
-        public override GUIObject Copy()
-        {
-            return new Ucionica(id, opis, brMesta, assets, installedSoftware);
-        }
     }
 
    public enum UcionicaAssets {Tabla,  Pametna_tabla, Winows, Linux};
