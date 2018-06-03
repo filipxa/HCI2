@@ -39,5 +39,28 @@ namespace RacunarskiCentar
             return action;
             
         }
+
+        private class ComboValue
+        {
+            UcionicaAssets value;
+            public override string ToString()
+            {
+                return value.getDisplayName();
+            }
+            public ComboValue(UcionicaAssets a)
+            {
+                this.value = a;
+            }
+        }   
+
+        private void UcionicaForm_Load(object sender, EventArgs e)
+        {
+
+           foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
+            {
+                checkedListBox1.Items.Add(new ComboValue(aset), false);
+                    
+            }
+        }
     }
 }

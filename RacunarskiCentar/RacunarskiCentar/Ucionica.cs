@@ -104,21 +104,21 @@ namespace RacunarskiCentar
             installedSoftware = ucionica.installedSoftware;
             ID = ucionica.id;
             raspored.restoreFromCopy(ucionica.raspored);
-
         }
     }
 
-   public enum UcionicaAssets {Tabla,  Pametna_tabla, Winows, Linux};
+    public enum UcionicaAssets {Tabla,  Pametna_tabla, Projektor, Winows, Linux};
+
     static class UcionicaAssetsMethods
     {
        
         public static String getDisplayName(this UcionicaAssets asset)
         {
             string rets = Enum.GetName(typeof(UcionicaAssets), asset);
-            rets.Replace("_", " ");
+            rets = rets.Replace("_", " ");
             return rets;
-
         }
+        
     }
 
 }

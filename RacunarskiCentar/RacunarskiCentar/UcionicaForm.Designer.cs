@@ -142,6 +142,7 @@
             this.Controls.Add(this.textBoxID);
             this.Name = "UcionicaForm";
             this.Text = "UcionicaForm";
+            this.Load += new System.EventHandler(this.UcionicaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
