@@ -46,28 +46,6 @@ namespace RacunarskiCentar
         public bool isSlobodan(DateTime vremePocetka, int brCasova)
         {
             DateTime vremeKraja= vremePocetka.AddMinutes(45 * brCasova);
-            //provera da li je u toku rada RC-centra
-            DateTime otvaraDatum;
-            DateTime zatvaraDatum;
-            otvaraDatum = Ponedeljak;
-            zatvaraDatum = Ponedeljak;
-            TimeSpan otvaranje = new TimeSpan( 7, 0, 0 );
-            TimeSpan zatvaranje = new TimeSpan(22, 0, 0);
-            otvaraDatum = otvaraDatum.Date + otvaranje;
-            zatvaraDatum = zatvaraDatum.Date + otvaranje;
-
-            int pocetakPOtvaraD = DateTime.Compare(vremePocetka, otvaraDatum);//provera , dan
-            int pocetakPZatvaraD = DateTime.Compare(vremePocetka, zatvaraDatum);
-
-            int krajPOtvaraD = DateTime.Compare(vremeKraja, otvaraDatum);//provera , dan
-            int krajPZatvaraD = DateTime.Compare(vremeKraja, zatvaraDatum);
-
-
-            for (int i = 0; i < 6; i++)
-            {
-
-                otvaraDatum.AddDays(1);
-            }
 
             foreach (Termin t in termini)
             {   //prvo je pocetak/kraj vremena koje je uneseno drugo je p/k vreman termina

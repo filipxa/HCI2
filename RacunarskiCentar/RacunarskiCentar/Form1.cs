@@ -122,7 +122,7 @@ namespace RacunarskiCentar
         private void test_Click(object sender, EventArgs e)
         {
             TerminForm f = new TerminForm(null);
-
+        }
         private void populatePredmets()
         {
             predmetiTree = new TreeView();
@@ -147,7 +147,5 @@ namespace RacunarskiCentar
 
         }
 
-            DialogResult result = f.ShowDialog();
-        }
     }
 }

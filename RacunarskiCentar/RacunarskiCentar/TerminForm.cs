@@ -26,7 +26,7 @@ namespace RacunarskiCentar
             dateTimePicker1.MaxDate = new DateTime(dan.Year, dan.Month, dan.Day, 22, 0, 0);
 
         }
-        public TerminForm(Termin termin) : this(null, null,new  DateTime(2018,10,10))//termin.Nedelja, termin.Predmet)
+        public TerminForm(Termin termin) : this(null, null,new  DateTime(2018,10,10))//termin.Nedelja, termin.Predmet,termin.PocetakTermina)
         {
             this.termin = termin;
         }

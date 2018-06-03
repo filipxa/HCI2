@@ -35,7 +35,6 @@
             // toolboxPanel
             // 
             this.toolboxPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.toolboxPanel.Controls.Add(this.test);
             this.toolboxPanel.Location = new System.Drawing.Point(-3, -1);
             this.toolboxPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.toolboxPanel.Name = "toolboxPanel";
