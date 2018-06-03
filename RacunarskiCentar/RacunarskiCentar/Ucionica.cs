@@ -97,7 +97,7 @@ namespace RacunarskiCentar
             Ucionica ucionica = guiObject as Ucionica;
             if (ucionica == null)
             {
-                return;
+                throw new Exception("Ucionica null");
             }
             BrRadnihMesta = ucionica.brMesta;
             Assets = ucionica.assets;
