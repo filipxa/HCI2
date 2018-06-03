@@ -88,9 +88,6 @@ namespace RacunarskiCentar
                     g.DrawImage(bmp, rc);
             }
 
-           
-              
-
 
         }
 

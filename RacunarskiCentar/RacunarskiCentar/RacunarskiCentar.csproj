@@ -60,6 +60,12 @@
     <Compile Include="Predmet.cs" />
     <Compile Include="Raspored.cs" />
     <Compile Include="Smer.cs" />
+    <Compile Include="SmerControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SmerControl.Designer.cs">
+      <DependentUpon>SmerControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="SmerForm.cs">
       <SubType>Form</SubType>
     </Compile>
