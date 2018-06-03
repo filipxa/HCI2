@@ -58,6 +58,18 @@
     <Compile Include="Predmet.cs" />
     <Compile Include="Raspored.cs" />
     <Compile Include="Smer.cs" />
+    <Compile Include="SmerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SmerForm.Designer.cs">
+      <DependentUpon>SmerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SoftwareForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SoftwareForm.Designer.cs">
+      <DependentUpon>SoftwareForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Termin.cs" />
     <Compile Include="Ucionica.cs" />
     <Compile Include="Software.cs" />
@@ -93,6 +105,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SmerForm.resx">
+      <DependentUpon>SmerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SoftwareForm.resx">
+      <DependentUpon>SoftwareForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UcionicaForm.resx">
       <DependentUpon>UcionicaForm.cs</DependentUpon>
     </EmbeddedResource>
