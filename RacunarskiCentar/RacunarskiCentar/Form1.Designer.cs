@@ -38,7 +38,7 @@
             this.toolboxPanel.Location = new System.Drawing.Point(-3, -1);
             this.toolboxPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.toolboxPanel.Name = "toolboxPanel";
-            this.toolboxPanel.Size = new System.Drawing.Size(268, 791);
+            this.toolboxPanel.Size = new System.Drawing.Size(201, 643);
             this.toolboxPanel.TabIndex = 5;
             // 
             // mainPanel
