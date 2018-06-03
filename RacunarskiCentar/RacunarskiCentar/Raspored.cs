@@ -47,15 +47,7 @@ namespace RacunarskiCentar
             RadneNedelje = r.radneNedelje;
             Ucionica = r.ucionica;
         }
-        protected override void OnDelete(EventArgs e)
-        {
-            base.OnDelete(e);
-            List<Nedelja> nedelje = new List<Nedelja>(RadneNedelje);
-            foreach (Nedelja nedelja in nedelje)
-            {
-                nedelja.Delete();
-            }
 
-        }
+
     }
 }

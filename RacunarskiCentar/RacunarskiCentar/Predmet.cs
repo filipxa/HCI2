@@ -16,7 +16,6 @@ namespace RacunarskiCentar
         int brCasova;
         int brTermina;
         HashSet<UcionicaAssets> assets;
-        List<Termin> termini;
 
         HashSet<Software> installedSoftware;
 
@@ -49,11 +48,7 @@ namespace RacunarskiCentar
             }
         }
 
-        public List<Termin> Termini
-        {
-            get => termini;
-            set => termini = new List<Termin>(value);
-        }
+
         public string ID {
             get => id;
             set {
@@ -108,15 +103,7 @@ namespace RacunarskiCentar
                 OnValueChanged(new EventArgs());
             }
         }
-        protected override void OnDelete(EventArgs e)
-        {
-            base.OnDelete(e);
-            List<Termin> termini = new List<Termin>(Termini);
-            foreach (Termin termin in termini)
-            {
-                termin.Delete();
-            }
-        }
+
         public HashSet<UcionicaAssets> Assets { get => assets; set => assets = new HashSet<UcionicaAssets>(value); }
         public HashSet<Software> InstalledSoftware { get => installedSoftware; set => installedSoftware = new HashSet<Software>(value); }
 
@@ -128,7 +115,21 @@ namespace RacunarskiCentar
 
         internal override void restoreFromCopy(GUIObject guiObject)
         {
-            throw new NotImplementedException();
+            Predmet pred = guiObject as Predmet;
+            if (pred == null)
+            {
+                throw new Exception("Predmet null");
+            }
+            ID = pred.ID;
+            Ime = pred.Ime;
+            SmerPredmeta = pred.SmerPredmeta;
+            Opis = pred.Opis;
+            BrLjudi = pred.BrLjudi;
+            BrCasova = pred.BrCasova;
+            BrTermina = pred.brTermina;
+            Assets = pred.Assets;
+            InstalledSoftware = pred.InstalledSoftware;
+            
         }
     }
 }

@@ -10,74 +10,53 @@ namespace RacunarskiCentar
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            UcionicaControl controla;
-          
-
-            Action action = new CreateAction(new Ucionica("Djoka", "Opis", 20));
-                DataControllercs.addAction(action);
-                uc =  (Ucionica)action.getGUIObject();
-         
-                controla = new UcionicaControl(uc, panel1);
-                controla.Width = 300;
-                controla.Height = 300;
-                controla.Location = new Point(30, 30);
-                controla.Invalidate();
-            controla.Click += Controla_Click;
+            initUcionicaView();
+            toolboxPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom;
+            MainPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom | AnchorStyles.Left;
 
         }
 
-        private void Controla_Click(object sender, EventArgs e)
+        private void initUcionicaView()
         {
-            UcionicaControl uc = (UcionicaControl)sender;
-            Action action = new DeleteAction(uc.GuiObject);
-            DataControllercs.addAction(action);
+
+
+            Button button = new Button();
+            button.Text = "Dodaj ucionicu";
+            button.Click += addUcionica;
+            button.Size = new Size(toolboxPanel.Width, 30);
+            button.Dock = DockStyle.Top;
+
+            toolboxPanel.Controls.Add(button);
+
+        }
+
+        private void addUcionica(object sender, EventArgs e)
+        {
             
-        }
-
-        private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-            Ucionica uc = new Ucionica("DJOKA", "Stojko", 2);
-            Action action = new CreateAction(uc);
-            DataControllercs.addAction(action);
-            Raspored r = new Raspored(uc);
-            action = new CreateAction(r);
-            DataControllercs.addAction(action);
-            Nedelja ned = new Nedelja(r);
-            action = new CreateAction(ned);
-            DataControllercs.addAction(action);
+            UcionicaForm f = new UcionicaForm(null);
           
-
+            DialogResult result = f.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                UcionicaControl c = new UcionicaControl((Ucionica)f.GetAction().getGUIObject(), MainPanel);
+                c.Width = 200;
+                c.Height = 100;
+                c.Location = new Point(30, 30);
+                MainPanel.Controls.Add(c);
+                c.Invalidate();
+            }
 
         }
+
+
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Action action = DataControllercs.undoAction();
-            if(action is CreateAction)
-            {
-                UcionicaControl controla;
-                uc = (Ucionica)action.getGUIObject();
-               controla = new UcionicaControl(uc, panel1);
-                controla.Width = 300;
-                controla.Height = 300;
-                controla.Location = new Point(30, 30);
-                controla.Invalidate();
-            }
-        }
+
     }
 }

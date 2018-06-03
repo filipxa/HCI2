@@ -9,7 +9,7 @@ namespace RacunarskiCentar
    public abstract class GUIObject
     {
         protected EventHandler onValueChanged;
-        protected EventHandler onDelete;
+        protected EventHandler onDeleteEvent;
         public event EventHandler ValueChanged
         {
             add
@@ -33,30 +33,31 @@ namespace RacunarskiCentar
         {
             add
             {
-                onDelete += value;
+                onDeleteEvent += value;
             }
             remove
             {
-                onDelete -= value;
+                onDeleteEvent -= value;
             }
         }
         protected virtual void OnDelete(EventArgs e)
         {
-            if (onDelete != null)
+            if (onDeleteEvent != null)
             {
-                onDelete(this, e);
+                onDeleteEvent(this, e); 
             }
-            DataManger.removeObject(this);
         }
 
-        public void Delete()
+        
+
+        public virtual void Delete()
         {
-            //throw new NotImplementedException();
-            OnDelete(new EventArgs());
             DataManger.removeObject(this);
+            OnDelete(new EventArgs());
         }
 
         public abstract GUIObject Copy();
         internal abstract void restoreFromCopy(GUIObject guiObject);
     }
+
 }

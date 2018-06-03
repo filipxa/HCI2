@@ -79,22 +79,24 @@ namespace RacunarskiCentar
                 OnValueChanged(new EventArgs());
             }
         }
-        protected override void OnDelete(EventArgs e)
-        {
-            base.OnDelete(e);
-            List<Predmet> predmeti = new List<Predmet>(Predmeti);
-            foreach (Predmet pred in predmeti)
-                pred.Delete();
-        }
+
         public override GUIObject Copy()
         {
             return new Smer(id, ime, datumUvodjenja, opis);
         }
 
+
         internal override void restoreFromCopy(GUIObject guiObject)
-        {
-           
-            throw new NotImplementedException();
+        { 
+            Smer s = guiObject as Smer;
+            if (s == null)
+                throw new Exception("Smer null?");
+            ID = s.id;
+            DatumUvodjenja = s.DatumUvodjenja;
+            Ime = s.Ime;
+            Opis = s.Opis;
+            Predmeti = s.Predmeti;
+            
         }
     }
 }

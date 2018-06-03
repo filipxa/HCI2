@@ -81,6 +81,7 @@ namespace RacunarskiCentar
         public override GUIObject Copy()
         {
             Ucionica c = new Ucionica(id, opis, brMesta, Assets, InstalledSoftware);
+            if (raspored != null)
             c.raspored = (Raspored)raspored.Copy();
             return c;
         }
@@ -88,9 +89,8 @@ namespace RacunarskiCentar
         protected override void OnDelete(EventArgs e)
         {
             base.OnDelete(e);
-            if(raspored!=null)
-                raspored.Delete();
         }
+
 
         internal override void restoreFromCopy(GUIObject guiObject)
         {

@@ -98,11 +98,9 @@ namespace RacunarskiCentar
         {
             if(!termin.Nedelja.Termini.Contains(termin))
                 termin.Nedelja.Termini.Add(termin);
-            if (!termin.Predmet.Termini.Contains(termin))
-                termin.Predmet.Termini.Add(termin);
         }
 
-        public List<Raspored> getRasporedi()
+       static public List<Raspored> getRasporedi()
         {
             List<Raspored> rets = new List<Raspored>();
             foreach (Ucionica ucionica in ucionice)
@@ -113,7 +111,7 @@ namespace RacunarskiCentar
             return rets;
                
         }
-        public List<Nedelja> getNedelje()
+        static public List<Nedelja> getNedelje()
         {
             List<Nedelja> rets = new List<Nedelja>();
             foreach(Raspored ras in getRasporedi())
@@ -132,11 +130,36 @@ namespace RacunarskiCentar
             }
             return rets;
         }
-        
+
+        static public List<Termin> getTerminsBySmer(Smer s)
+        {
+            List<Termin> rets = new List<Termin>();
+            foreach (Predmet pred in s.Predmeti)
+            {
+                rets.AddRange(getTerminsByPredmet(pred));
+            }
+            return rets;
+        }
+
+        static public List<Termin> getTerminsByPredmet(Predmet p)
+        {
+            List<Termin> rets = new List<Termin>();
+            foreach(Nedelja ned in getNedelje())
+            {
+                 foreach (Termin ter in ned.Termini)
+                {
+                    if(ter.Predmet == p)
+                    {
+                        rets.Add(ter);
+                    }
+                }
+            }
+            return rets;
+        }
+
         static public void removeTermin(Termin termin)
         {
             termin.Nedelja.Termini.Remove(termin);
-            termin.Predmet.Termini.Remove(termin);
         }
         private static void removeRaspored(Raspored raspored)
         {

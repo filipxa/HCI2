@@ -34,16 +34,6 @@ namespace RacunarskiCentar
                 termini = new List<Termin>(value);
             }
         }
-        protected override void OnDelete(EventArgs e)
-        {
-            base.OnDelete(e);
-            List<Termin> termini = new List<Termin>(Termini);
-            foreach (Termin termin in termini)
-            {
-                termin.Delete();
-            }
-
-        }
         public override GUIObject Copy()
         {
             return new Nedelja(raspored, termini);
@@ -52,7 +42,13 @@ namespace RacunarskiCentar
 
         internal override void restoreFromCopy(GUIObject guiObject)
         {
-            throw new NotImplementedException();
+            Nedelja ned = guiObject as Nedelja;
+            if (ned == null)
+            {
+                throw new Exception("Nedelja null");
+            }
+            Raspored = ned.Raspored;
+            Termini = ned.Termini;
         }
     }
 }

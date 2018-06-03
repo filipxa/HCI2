@@ -31,6 +31,7 @@ namespace RacunarskiCentar
     public abstract class Action 
     {
         protected GUIObject o;
+        protected List<Termin> termini = new List<Termin>();
         public Action(GUIObject guiObject)
         {
             o = guiObject;
@@ -48,9 +49,22 @@ namespace RacunarskiCentar
 
 
         internal override void excuteAction()
-        {
+        { 
             o.Delete();
-           
+            if (o is Smer)
+            {
+                Smer s = o as Smer;
+                termini = DataManger.getTerminsBySmer(s);
+            }
+            else if(o is Predmet)
+            {
+                Predmet p = o as Predmet;
+                termini = DataManger.getTerminsByPredmet(p);
+            }
+            foreach(Termin t in termini)
+            {
+                t.Delete();
+            }
         }
 
         public override Action GetReverseAction()
@@ -65,6 +79,11 @@ namespace RacunarskiCentar
         internal override void excuteAction()
         {
             DataManger.addObject(o);
+
+            foreach(Termin t in termini)
+            {
+                DataManger.addObject(t);
+            }
         }
 
         public override Action GetReverseAction()

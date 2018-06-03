@@ -10,14 +10,12 @@ namespace RacunarskiCentar
    public  abstract class CustomControlBase<T> : Control where T : GUIObject
     {
         T guiObject;
-        Panel parentPanel;
+        protected Panel parentPanel;
         public CustomControlBase(T guiObject, Panel panel)
         {
-            this.GuiObject = guiObject;
-            guiObject.ValueChanged += onValueChaged;
-            guiObject.Deleted += onDelete;
+            GuiObject = guiObject;
             parentPanel = panel;
-            panel.Controls.Add(this);
+           
         }
 
         public T GuiObject
@@ -35,8 +33,12 @@ namespace RacunarskiCentar
                 }
                    
                 guiObject = value;
-                guiObject.ValueChanged += onValueChaged;
-                guiObject.Deleted += onDelete;
+                if (guiObject != null)
+                {
+                    guiObject.ValueChanged += onValueChaged;
+                    guiObject.Deleted += onDelete;
+                }
+                   
                 Invalidate();
                 
             }
