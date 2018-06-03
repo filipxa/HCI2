@@ -14,11 +14,11 @@ namespace RacunarskiCentar
 
         public Termin(DateTime pocetakTermina, int duzinaTermina,Predmet predmet, Nedelja nedelja)
         {
-            this.pocetakTermina = pocetakTermina;
+            PocetakTermina = pocetakTermina;
             this.duzinaTermina = duzinaTermina;
             Predmet = predmet;
             Nedelja = nedelja;
-            krajTermina = pocetakTermina.AddMinutes(45 * duzinaTermina);
+            KrajTermina = pocetakTermina.AddMinutes(45 * duzinaTermina);
         }
         public Nedelja Nedelja
         {
@@ -29,6 +29,16 @@ namespace RacunarskiCentar
         {
             get => predmet;
             set => predmet = value;
+        }
+        public DateTime PocetakTermina
+        {
+            get => pocetakTermina;
+            set => pocetakTermina = value;
+        }
+        public DateTime KrajTermina
+        {
+            get => krajTermina;
+            set => krajTermina = value;
         }
         public override GUIObject Copy()
         {

@@ -59,6 +59,12 @@
     <Compile Include="Raspored.cs" />
     <Compile Include="Smer.cs" />
     <Compile Include="Termin.cs" />
+    <Compile Include="TerminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TerminForm.Designer.cs">
+      <DependentUpon>TerminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ucionica.cs" />
     <Compile Include="Software.cs" />
     <Compile Include="Form1.cs">
@@ -93,6 +99,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TerminForm.resx">
+      <DependentUpon>TerminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UcionicaForm.resx">
       <DependentUpon>UcionicaForm.cs</DependentUpon>
     </EmbeddedResource>

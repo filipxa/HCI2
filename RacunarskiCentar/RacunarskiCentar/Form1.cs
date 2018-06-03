@@ -57,6 +57,11 @@ namespace RacunarskiCentar
 
         }
 
+        private void test_Click(object sender, EventArgs e)
+        {
+            TerminForm f = new TerminForm(null);
 
+            DialogResult result = f.ShowDialog();
+        }
     }
 }

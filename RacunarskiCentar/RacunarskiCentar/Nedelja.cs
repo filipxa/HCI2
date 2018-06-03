@@ -7,19 +7,20 @@ namespace RacunarskiCentar
     {
         List<Termin> termini;
         Raspored raspored;
+        DateTime ponedeljak;
        public Raspored Raspored
         {
             get => raspored;
             set => raspored = value;
         }
 
-        public Nedelja(Raspored raspored)
+        public Nedelja(Raspored raspored, DateTime ponedeljak)
         {
             Termini = new List<Termin>();
             Raspored = raspored;
             
         }
-        public Nedelja(Raspored raspoerd, List<Termin> termini) : this(raspoerd)
+        public Nedelja(Raspored raspoerd, List<Termin> termini,DateTime ponedeljak) : this(raspoerd,ponedeljak)
         {
             if (termini != null)
             {
@@ -34,9 +35,70 @@ namespace RacunarskiCentar
                 termini = new List<Termin>(value);
             }
         }
+        public DateTime Ponedeljak
+        {
+            get => ponedeljak;
+            set
+            {
+                ponedeljak = value;
+            }
+        }
+        public bool isSlobodan(DateTime vremePocetka, int brCasova)
+        {
+            DateTime vremeKraja= vremePocetka.AddMinutes(45 * brCasova);
+            //provera da li je u toku rada RC-centra
+            DateTime otvaraDatum;
+            DateTime zatvaraDatum;
+            otvaraDatum = Ponedeljak;
+            zatvaraDatum = Ponedeljak;
+            TimeSpan otvaranje = new TimeSpan( 7, 0, 0 );
+            TimeSpan zatvaranje = new TimeSpan(22, 0, 0);
+            otvaraDatum = otvaraDatum.Date + otvaranje;
+            zatvaraDatum = zatvaraDatum.Date + otvaranje;
+
+            int pocetakPOtvaraD = DateTime.Compare(vremePocetka, otvaraDatum);//provera , dan
+            int pocetakPZatvaraD = DateTime.Compare(vremePocetka, zatvaraDatum);
+
+            int krajPOtvaraD = DateTime.Compare(vremeKraja, otvaraDatum);//provera , dan
+            int krajPZatvaraD = DateTime.Compare(vremeKraja, zatvaraDatum);
+
+
+            for (int i = 0; i < 6; i++)
+            {
+
+                otvaraDatum.AddDays(1);
+            }
+
+            foreach (Termin t in termini)
+            {   //prvo je pocetak/kraj vremena koje je uneseno drugo je p/k vreman termina
+                int pocetakPPocetakT = DateTime.Compare(vremePocetka, t.PocetakTermina);//v,p if(v<0) v pre t,provera, termin
+                int pocetakPKrajT = DateTime.Compare(vremePocetka, t.KrajTermina);//
+
+                int krajPPocetakT = DateTime.Compare(vremeKraja, t.PocetakTermina);//
+                int krajPKrajT = DateTime.Compare(vremeKraja, t.PocetakTermina);//
+
+                //provera da li se pocetak ili kraj nalazi u toku termina
+                if (pocetakPPocetakT >= 0 && pocetakPKrajT<=0)
+                {
+                    return false;
+                }
+                if (krajPPocetakT >= 0 && krajPKrajT <= 0)
+                {
+                    return false;
+                }
+                //proverava da li neki od termina se nalazi unutar zadatog vremena
+                if (pocetakPPocetakT <= 0 && krajPKrajT >= 0)
+                {
+                    return false;
+                }
+                
+    
+            }
+            return true;
+        }
         public override GUIObject Copy()
         {
-            return new Nedelja(raspored, termini);
+            return new Nedelja(raspored, termini,ponedeljak);
 
         }
 
@@ -49,6 +111,7 @@ namespace RacunarskiCentar
             }
             Raspored = ned.Raspored;
             Termini = ned.Termini;
+            Ponedeljak = ned.Ponedeljak;
         }
     }
 }
