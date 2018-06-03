@@ -36,10 +36,7 @@ namespace RacunarskiCentar
             {
                 EditData();
             }
-            if (e.Button == MouseButtons.Left && e.Clicks == 2)
-            {
-                EditData();
-            }
+            
 
         }
 
@@ -56,6 +53,7 @@ namespace RacunarskiCentar
             base.OnPaint(pe);
             Graphics g = pe.Graphics;
             Rectangle rc = ClientRectangle;
+            
             rc.Width = Width;
             rc.Height = Height;
             Font f = new Font("Verdana", (float)rc.Height * 0.2f, FontStyle.Bold, GraphicsUnit.Pixel);
@@ -68,14 +66,11 @@ namespace RacunarskiCentar
 
             string[] fileEntries = Directory.GetFiles(p);
             string assetsPath = Path.Combine(path, "Panel" , "assets");
+            
 
             foreach (string fileName in fileEntries)
             {
                 Bitmap bmp = new Bitmap(fileName);
-
-
-
-
                 g.DrawImage(bmp, rc);
             }
             foreach (string fileName in Directory.GetFiles(assetsPath))
@@ -86,9 +81,22 @@ namespace RacunarskiCentar
                 UcionicaAssets test =(UcionicaAssets)Convert.ToInt32(number);
                 if (GuiObject.Assets.Contains(test))
                     g.DrawImage(bmp, rc);
+               
             }
+            Font font = new Font("Arial", 20,FontStyle.Bold, GraphicsUnit.Pixel);
+           
+            PointF point = new PointF(rc.Width / 75f, rc.Height / 7f);
+            SizeF size = new SizeF(rc.Width / 1.8f, rc.Height / 2F);
+            StringFormat format = new StringFormat();
+            format.LineAlignment = StringAlignment.Center;
+            format.Alignment = StringAlignment.Center;
+            g.DrawString(GuiObject.ID, font, new SolidBrush(Color.Black), new RectangleF(point, size), format);
 
-
+            format.LineAlignment = StringAlignment.Near;
+            format.Alignment = StringAlignment.Near;
+            point = new PointF(rc.Width / 9f, rc.Height / 10f * 6.7f );
+            size = new SizeF(rc.Width / 2f, 22);
+            g.DrawString(String.Format("{0:D2}",GuiObject.BrRadnihMesta), font, new SolidBrush(Color.Black), new RectangleF(point, size), format);
         }
 
 
