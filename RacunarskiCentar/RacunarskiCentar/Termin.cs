@@ -42,10 +42,11 @@ namespace RacunarskiCentar
             {
                 throw new Exception("Termin null");
             }
-            pocetakTermina = t.pocetakTermina;
-            Predmet = t.predmet;
-            Nedelja = t.nedelja;
-            krajTermina = t.krajTermina;
+            this.pocetakTermina = pocetakTermina;
+            this.duzinaTermina = duzinaTermina;
+            Predmet = predmet;
+            Nedelja = nedelja;
+            krajTermina = pocetakTermina.AddMinutes(45 * duzinaTermina);
         }
     }
 }
