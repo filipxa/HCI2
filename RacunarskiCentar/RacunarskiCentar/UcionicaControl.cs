@@ -58,9 +58,8 @@ namespace RacunarskiCentar
             rc.Height = Height;
             Font f = new Font("Verdana", (float)rc.Height * 0.2f, FontStyle.Bold, GraphicsUnit.Pixel);
 
-  
 
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string path = @"..\..\Graphics";
             string p = Path.Combine(path, "Panel");
           
 
