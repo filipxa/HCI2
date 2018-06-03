@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace RacunarskiCentar
@@ -14,10 +15,10 @@ namespace RacunarskiCentar
     {
         public UcionicaControl(Ucionica ucionica, Panel panel) : base(ucionica, panel)
         {
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             InitializeComponent();
-            MouseDoubleClick += DoubleClick;
+            MouseClick += EditClick;
             MouseDown += UcionicaControl_MouseDown;
-
         }
 
         private void UcionicaControl_MouseDown(object sender, MouseEventArgs e)
@@ -29,9 +30,17 @@ namespace RacunarskiCentar
 
         }
 
-        public new void DoubleClick(object sender, EventArgs e)
+        public void EditClick(object sender, MouseEventArgs e)
         {
-            EditData();
+            if (e.Button == MouseButtons.Right && e.Clicks == 1)
+            {
+                EditData();
+            }
+            if (e.Button == MouseButtons.Left && e.Clicks == 2)
+            {
+                EditData();
+            }
+
         }
 
         public void EditData()
@@ -39,7 +48,6 @@ namespace RacunarskiCentar
             UcionicaForm f = new UcionicaForm(GuiObject);
             f.ShowDialog();
             f.GetAction();
-
         }
 
 
@@ -51,12 +59,38 @@ namespace RacunarskiCentar
             rc.Width = Width;
             rc.Height = Height;
             Font f = new Font("Verdana", (float)rc.Height * 0.2f, FontStyle.Bold, GraphicsUnit.Pixel);
-            g.FillRectangle(new SolidBrush(Color.Aqua), rc);
-            g.DrawString(GuiObject.ID, f, new SolidBrush(Color.Black), new RectangleF(rc.Location, rc.Size));
-            g.DrawLine(new Pen(new SolidBrush(Color.Red)), new Point(15, 15), new Point(75, 75));
-            
+
+  
+
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string p = Path.Combine(path, "Panel");
+          
+
+            string[] fileEntries = Directory.GetFiles(p);
+            string assetsPath = Path.Combine(path, "Panel" , "assets");
+
+            foreach (string fileName in fileEntries)
+            {
+                Bitmap bmp = new Bitmap(fileName);
+
+
+
+
+                g.DrawImage(bmp, rc);
+            }
+            foreach (string fileName in Directory.GetFiles(assetsPath))
+            {
+                Bitmap bmp = new Bitmap(fileName);
+                string number = Path.GetFileName(fileName);
+                number = number.Substring(0, number.IndexOf("."));
+                UcionicaAssets test =(UcionicaAssets)Convert.ToInt32(number);
+                if (GuiObject.Assets.Contains(test))
+                    g.DrawImage(bmp, rc);
+            }
+
+
         }
-        
-        
+
+
     }
 }

@@ -130,6 +130,7 @@ namespace RacunarskiCentar
             Assets = pred.Assets;
             InstalledSoftware = pred.InstalledSoftware;
             
+            
         }
     }
 }

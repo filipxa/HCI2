@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RacunarskiCentar
 {
-    class Smer : GUIObject
+   public class Smer : GUIObject
     {
         string id;
         string ime;

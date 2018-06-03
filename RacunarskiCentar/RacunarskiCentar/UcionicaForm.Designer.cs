@@ -47,6 +47,7 @@
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(120, 20);
             this.textBoxID.TabIndex = 0;
+            this.textBoxID.Validated += new System.EventHandler(this.textBoxID_Validated);
             // 
             // numericUpDown1
             // 
@@ -54,6 +55,7 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown1.TabIndex = 1;
+            this.numericUpDown1.Validated += new System.EventHandler(this.numericUpDown1_Validated);
             // 
             // checkedListBox1
             // 
@@ -115,6 +117,7 @@
             this.buttonSacuvaj.TabIndex = 5;
             this.buttonSacuvaj.Text = "Sacuvaj";
             this.buttonSacuvaj.UseVisualStyleBackColor = true;
+            this.buttonSacuvaj.Click += new System.EventHandler(this.buttonSacuvaj_Click);
             // 
             // button1
             // 
@@ -129,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(273, 395);
+            this.ClientSize = new System.Drawing.Size(273, 403);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonSacuvaj);
             this.Controls.Add(this.labelBrMesta);

@@ -9,9 +9,6 @@ namespace RacunarskiCentar
         Predmet predmet;
         Nedelja nedelja;
         int duzinaTermina; // Broj casova termina
-        
-        
-
         public Termin(DateTime pocetakTermina, int duzinaTermina,Predmet predmet, Nedelja nedelja)
         {
             PocetakTermina = pocetakTermina;
@@ -52,11 +49,11 @@ namespace RacunarskiCentar
             {
                 throw new Exception("Termin null");
             }
-            this.pocetakTermina = pocetakTermina;
-            this.duzinaTermina = duzinaTermina;
+            pocetakTermina = t.pocetakTermina;
+            duzinaTermina = t.duzinaTermina;
             Predmet = predmet;
             Nedelja = nedelja;
-            krajTermina = pocetakTermina.AddMinutes(45 * duzinaTermina);
+            krajTermina = t.krajTermina;
         }
     }
 }
