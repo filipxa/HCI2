@@ -12,12 +12,15 @@ namespace RacunarskiCentar
         static List<Smer> smerovi = new List<Smer>();
         static List<Software> softveri = new List<Software>();
 
+        internal static List<Smer> getSmers()
+        {
+            return smerovi;
+        }
         public static void addObject(GUIObject guiObject)
         {
             if (guiObject is Ucionica)
             {
                 addUcionica(guiObject as Ucionica);
-                
             }
             if(guiObject is Termin)
             {
@@ -54,7 +57,6 @@ namespace RacunarskiCentar
             {
                 addTermin(ter);
             }
-
         }
 
         internal static void removeObject(GUIObject guiObject)
@@ -91,7 +93,6 @@ namespace RacunarskiCentar
         private static void addUcionica(Ucionica ucionica)
         {
             ucionice.Add(ucionica);
-
         }
 
         public static void addTermin(Termin termin)
@@ -111,6 +112,9 @@ namespace RacunarskiCentar
             return rets;
                
         }
+
+      
+
         static public List<Nedelja> getNedelje()
         {
             List<Nedelja> rets = new List<Nedelja>();
@@ -121,7 +125,7 @@ namespace RacunarskiCentar
             return rets;
         }
 
-        public List<Predmet> getPredmeti()
+        static public List<Predmet> getPredmeti()
         {
             List<Predmet> rets = new List<Predmet>();
             foreach (Smer smer in smerovi)

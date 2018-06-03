@@ -28,18 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.MainPanel = new System.Windows.Forms.Panel();
             this.toolboxPanel = new System.Windows.Forms.Panel();
+            this.mainPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
-            // 
-            // MainPanel
-            // 
-            this.MainPanel.AllowDrop = true;
-            this.MainPanel.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.MainPanel.Location = new System.Drawing.Point(205, -1);
-            this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(748, 643);
-            this.MainPanel.TabIndex = 4;
             // 
             // toolboxPanel
             // 
@@ -49,14 +40,22 @@
             this.toolboxPanel.Size = new System.Drawing.Size(201, 643);
             this.toolboxPanel.TabIndex = 5;
             // 
+            // mainPanel
+            // 
+            this.mainPanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.mainPanel.Location = new System.Drawing.Point(205, -1);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(748, 643);
+            this.mainPanel.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(953, 642);
+            this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.toolboxPanel);
-            this.Controls.Add(this.MainPanel);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -65,9 +64,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Panel toolboxPanel;
-
+        private System.Windows.Forms.FlowLayoutPanel mainPanel;
     }
 }
 

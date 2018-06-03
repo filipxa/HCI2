@@ -21,20 +21,21 @@ namespace RacunarskiCentar
             BrRadnihMesta = brMesta;
             ID = id;
             Opis = opis;
-            this.Assets = new HashSet<UcionicaAssets>();
-            this.InstalledSoftware = new HashSet<Software>();
+            Assets = new HashSet<UcionicaAssets>();
+            InstalledSoftware = new HashSet<Software>();
 
         }
+
         public Ucionica(String id, string opis, int brMesta, HashSet<UcionicaAssets> assets, HashSet<Software> installedSoftware) : this(id, opis, brMesta)
         {
 
             if (assets != null)
             {
-                this.Assets = new HashSet<UcionicaAssets>(assets);
+                Assets = new HashSet<UcionicaAssets>(assets);
             }
             if (installedSoftware != null)
             {
-                this.InstalledSoftware = new HashSet<Software>(installedSoftware);
+                InstalledSoftware = new HashSet<Software>(installedSoftware);
 
             }
         }
@@ -107,11 +108,10 @@ namespace RacunarskiCentar
         }
     }
 
-    public enum UcionicaAssets {Tabla,  Pametna_tabla, Projektor, Winows, Linux};
+    public enum UcionicaAssets {tabla = 1,  pametna_tabla, projektor, windows, linux};
 
     static class UcionicaAssetsMethods
-    {
-       
+    { 
         public static String getDisplayName(this UcionicaAssets asset)
         {
             string rets = Enum.GetName(typeof(UcionicaAssets), asset);

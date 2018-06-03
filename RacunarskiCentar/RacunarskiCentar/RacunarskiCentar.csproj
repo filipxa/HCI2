@@ -35,7 +35,9 @@
     <Reference Include="Control.Draggable, Version=1.0.5049.269, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Control.Draggable.1.0.5049.269\lib\net35-Client\Control.Draggable.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -58,6 +60,12 @@
     <Compile Include="Predmet.cs" />
     <Compile Include="Raspored.cs" />
     <Compile Include="Smer.cs" />
+    <Compile Include="SmerControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SmerControl.Designer.cs">
+      <DependentUpon>SmerControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Termin.cs" />
     <Compile Include="Ucionica.cs" />
     <Compile Include="Software.cs" />
