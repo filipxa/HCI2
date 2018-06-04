@@ -43,9 +43,15 @@ namespace RacunarskiCentar
             nedeljaPanel.Anchor = AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             nedeljaPanel.Size = new Size((int)(Width - sirinaDatePikera),Height);
             //nedeljaPanel.MinimumSize = new Size(200, 200);
-
+            nedeljaPanel.BackColor = Color.Blue;
             Controls.Add(nedeljaPanel);
+            
             nedeljaControl = new NedeljaControl(nedelja, nedeljaPanel, pen,visinaPodeoka,debljinaLinije, visinaDatePikera);
+            nedeljaControl.BackColor = Color.Red;
+            nedeljaControl.Size = new Size(300, 300);
+            nedeljaControl.Location = new Point(30, 30);
+            nedeljaControl.Dock = DockStyle.Fill;
+            nedeljaPanel.Controls.Add(nedeljaControl);
             //ovaj panel poslati za nedelju
             //nedeljaControl = new NedeljaControl(nedelja,p);
         }
