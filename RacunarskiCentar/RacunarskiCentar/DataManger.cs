@@ -59,6 +59,11 @@ namespace RacunarskiCentar
             }
         }
 
+        internal static List<Ucionica> getUcionice()
+        {
+            return ucionice;
+        }
+
         internal static void removeObject(GUIObject guiObject)
         {
             if (guiObject is Ucionica)
