@@ -48,7 +48,7 @@ namespace RacunarskiCentar
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
-            visinaPodeoka = (parentPanel.Height - visinaDatePikera) / 15;
+             
             Font font = new Font("Arial",(float)(visinaPodeoka * 0.8) , FontStyle.Bold, GraphicsUnit.Pixel);
             string sat = "";
             string minute = ":00";
@@ -68,6 +68,7 @@ namespace RacunarskiCentar
                 point = new PointF(0, (visinaPodeoka * i) + visinaDatePikera);
                 g.DrawString(fulTime, font, new SolidBrush(Color.Black), new RectangleF(point, size), format);
             }
+
             
         }
     }
