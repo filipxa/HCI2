@@ -97,7 +97,6 @@ namespace RacunarskiCentar
     public partial class Form1
     {
         List<Smer> smerovi = new List<Smer>();
-        TreeView predmetiTree;
         private void initUcionicaView(Ucionica ucionica)
         {
             Smer s = new Smer("SW", "SOft kobas", DateTime.Now, "");
@@ -109,41 +108,27 @@ namespace RacunarskiCentar
             smerovi.Add(s);
             resetPanels();
             populatePredmets();
-            predmetiTree.Dock = DockStyle.Top;
-            toolboxPanel.Controls.Add(predmetiTree);
-            predmetiTree.ItemDrag += PredmetiTree_ItemDrag;
 
 
         }
 
-        private void PredmetiTree_ItemDrag(object sender, ItemDragEventArgs e)
-        {
-            System.Diagnostics.Debug.Write("VUCEM");
-        }
+
         private void test_Click(object sender, EventArgs e)
         {
             TerminForm f = new TerminForm(null);
         }
         private void populatePredmets()
         {
-            predmetiTree = new TreeView();
+
 
             foreach (Smer smer in smerovi)
             {
                 
-                SmerControl sc = new SmerControl(smer, mainPanel);
-                sc.Width = 180;
-                sc.Height = 35;
+                SmerControl sc = new SmerControl(smer, toolboxPanel);
                 sc.Dock = DockStyle.Top;
                 toolboxPanel.Controls.Add(sc);
-                TreeNodeObject smerNode = new TreeNodeObject(smer.ID, smer);
 
-                foreach (Predmet pred in smer.Predmeti)
-                {
-                    TreeNodeObject t = new TreeNodeObject(pred.ID, pred);
-                    smerNode.Nodes.Add(t);
-                }
-                predmetiTree.Nodes.Add(smerNode);
+
             }
 
         }

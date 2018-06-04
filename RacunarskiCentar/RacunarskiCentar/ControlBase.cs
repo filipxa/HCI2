@@ -44,7 +44,7 @@ namespace RacunarskiCentar
             }
         }
 
-        protected void onValueChaged(object sender, EventArgs e)
+        protected virtual void onValueChaged(object sender, EventArgs e)
         {
             this.Invalidate();
         }

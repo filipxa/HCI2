@@ -58,6 +58,12 @@
     <Compile Include="GuiObject.cs" />
     <Compile Include="Nedelja.cs" />
     <Compile Include="Predmet.cs" />
+    <Compile Include="PredmetControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PredmetControl.Designer.cs">
+      <DependentUpon>PredmetControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Raspored.cs" />
     <Compile Include="Smer.cs" />
     <Compile Include="SmerControl.cs">
