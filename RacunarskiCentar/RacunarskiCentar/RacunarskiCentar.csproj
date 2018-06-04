@@ -58,6 +58,12 @@
     <Compile Include="GraphicLoader.cs" />
     <Compile Include="GuiObject.cs" />
     <Compile Include="Nedelja.cs" />
+    <Compile Include="NedeljaControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NedeljaControl.Designer.cs">
+      <DependentUpon>NedeljaControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Predmet.cs" />
     <Compile Include="PredmetControl.cs">
       <SubType>Component</SubType>

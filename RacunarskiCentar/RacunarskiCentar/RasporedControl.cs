@@ -12,42 +12,49 @@ namespace RacunarskiCentar
 {
     public partial class RasporedControl : CustomControlBase<Raspored>
     {
-        Panel vremenaPanel;
+        Panel satnicaPanel;
         Panel daniPanel;
         
-        Pen pen = new Pen(Color.Yellow, 5);
         DateTimePicker dateTimePicker;
         const int  visinaDatePikera = 30;
+        const int sirinaDatePikera = 100;
+
+        const int debljinaLinije = 3;
+        Pen pen = new Pen(Color.Yellow, debljinaLinije);
         float visinaPodeoka;
+        
         public RasporedControl(Raspored raspored, Panel panel): base(raspored, panel)
         {
 
             InitializeComponent();
-            visinaPodeoka = (parentPanel.Height - visinaDatePikera) / 15;
             InitVremenaPanel();
             Resize += RasporedControl_Resize;
         }
 
         private void RasporedControl_Resize(object sender, EventArgs e)
         {
-            visinaPodeoka = (parentPanel.Height - visinaDatePikera) / 15;
+           // visinaPodeoka = (float)(Height - visinaDatePikera) / 16f;
             Refresh();
         }
 
         private void InitVremenaPanel()
         {
-            vremenaPanel = new Panel();
-            vremenaPanel.Width = parentPanel.Width/8;
-            vremenaPanel.Height = visinaDatePikera;
-            vremenaPanel.Location = new Point(0, 0);
+            //parentPanel.BackColor = Color.Red;
+            satnicaPanel = new Panel();
+            satnicaPanel.Width = sirinaDatePikera;
+            
+            satnicaPanel.Height = visinaDatePikera;
+            satnicaPanel.Location = new Point(0, 0);
             dateTimePicker = new DateTimePicker();
-            vremenaPanel.Controls.Add(dateTimePicker);
+            satnicaPanel.Anchor = AnchorStyles.Left | AnchorStyles.Top ;
+            satnicaPanel.Controls.Add(dateTimePicker);
             dateTimePicker.Location = new Point(3, 3);
+            //satnicaPanel.BackColor = Color.Chocolate;
+            dateTimePicker.Size = new Size((int)(satnicaPanel.Width), (int)(satnicaPanel.Height));
             dateTimePicker.Format = DateTimePickerFormat.Custom;
-            dateTimePicker.CustomFormat = "HH:mm";
-            dateTimePicker.ShowUpDown = true;
+            //dateTimePicker.ShowUpDown = true;
 
-            Controls.Add(vremenaPanel);
+            Controls.Add(satnicaPanel);
             //vremenaPanel.Paint
            // vremenaPanel.Paint += new PaintEventHandler(vremenaPanel_Paint);
         }
@@ -57,12 +64,19 @@ namespace RacunarskiCentar
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
-             
-            Font font = new Font("Arial",(float)(visinaPodeoka * 0.8) , FontStyle.Bold, GraphicsUnit.Pixel);
+            PointF pointL;
+            PointF pointR;
+            visinaPodeoka = (float)(Height) / 17f-debljinaLinije;
+            // visinaPodeoka = (parentPanel.Height - visinaDatePikera) / 15;
+            if (satnicaPanel.Width == 0)
+            {
+                return;
+            }
+            Font font = new Font("Arial",(float)(satnicaPanel.Width * 0.2) , FontStyle.Bold, GraphicsUnit.Pixel);
             string sat = "";
             string minute = ":00";
             string fulTime = "";
-            SizeF size = new SizeF(vremenaPanel.Width, visinaPodeoka);
+            SizeF size = new SizeF(satnicaPanel.Width, visinaPodeoka);
             PointF point = new PointF();
             StringFormat format = new StringFormat();
             format.LineAlignment = StringAlignment.Center;
@@ -70,12 +84,22 @@ namespace RacunarskiCentar
             Graphics g = pe.Graphics;
             for (int i = 0; i < 16; i++)
             {
-                g.DrawLine(pen, 0, (visinaPodeoka * i) + visinaDatePikera, vremenaPanel.Width, (visinaPodeoka * i) + visinaDatePikera);
-                sat = i.ToString();
-                sat = String.Format("{0:D2}", sat);
+                //g.DrawLine(pen, 0, (visinaPodeoka * i) + visinaDatePikera - (i) , satnicaPanel.Width, (visinaPodeoka * i) + visinaDatePikera - i);
+                pointL = new PointF(0, (visinaPodeoka * i) + visinaDatePikera - debljinaLinije);
+                pointR = new PointF(satnicaPanel.Width, (visinaPodeoka * i) + visinaDatePikera - debljinaLinije);
+
+
+                g.DrawLine(pen, pointL, pointR);
+                sat = (i+7).ToString();
+
+                if (sat.Length==1)
+                {
+                    sat = "0" + sat;
+                }
+                sat = String.Format("{00:D2}", sat);
                 fulTime = sat + minute;
-                point = new PointF(0, (visinaPodeoka * i) + visinaDatePikera);
-                g.DrawString(fulTime, font, new SolidBrush(Color.Black), new RectangleF(point, size), format);
+                point = new PointF(0, (visinaPodeoka * i) + visinaDatePikera - debljinaLinije);
+                g.DrawString(fulTime, font, new SolidBrush(Color.Black), new RectangleF(pointL, size), format);
             }
 
             
