@@ -21,12 +21,13 @@ namespace RacunarskiCentar
         Panel dan;
         public NedeljaControl(Nedelja nedelja, Panel panel,Pen pen, float visinaPodeoka, int debljinaLinije,float visinaNazivaDana)
         {
-            InitDani();
+            
             InitializeComponent();
             this.pen = pen;
             this.visinaPodeoka = visinaPodeoka;
             this.debljinaLinije = debljinaLinije;
             this.visinaNazivaDana = visinaNazivaDana;
+            InitDani();
         }
 
         private void InitDani()
