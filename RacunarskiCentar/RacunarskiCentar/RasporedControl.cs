@@ -19,6 +19,7 @@ namespace RacunarskiCentar
         DateTimePicker dateTimePicker;
         const int  visinaDatePikera = 30;
         float visinaPodeoka;
+        
         public RasporedControl(Raspored raspored, Panel panel): base(raspored, panel)
         {
 

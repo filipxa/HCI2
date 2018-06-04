@@ -28,7 +28,8 @@ namespace RacunarskiCentar
             {
                 p = new Panel();
                 p.Location = new Point(0,0);
-            
+                p.Width = Width / 6;
+                p.BackColor = Color.Chocolate;
                 dani.Add(p);
             }
 
