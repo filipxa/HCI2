@@ -11,13 +11,18 @@ namespace RacunarskiCentar
         private const int toolWidth = 250;
         Panel mainPanel;
         Panel toolboxPanel;
+        ToolStrip tb = new ToolStrip();
        
         public Form1()
         {
+           
+           
             InitializeComponent();
 
+            tb.BackColor = Color.DarkGray;
+            Controls.Add(tb);
             initRCView();
-
+            
             Height = 800;
             Width = 1000;
             MinimumSize = Size;
@@ -42,11 +47,12 @@ namespace RacunarskiCentar
 
         private void initMainPanel(Panel p)
         {
-            p.Anchor = AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            p.Anchor = AnchorStyles.Right |AnchorStyles.Top  | AnchorStyles.Bottom | AnchorStyles.Left;
             p.MinimumSize = new Size(Width- toolWidth, 800);
-            p.Location = new Point(toolWidth, 0);
-            p.BackColor = Color.Green;
-          
+            p.Location = new Point(toolWidth, tb.Height);
+            p.BackColor = Color.FromArgb(176, 176, 183);
+
+
             Controls.Add(p);
 
             if (mainPanel != null)
@@ -64,11 +70,12 @@ namespace RacunarskiCentar
                 toolboxPanel.Dispose();
             p.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom ;
             p.MinimumSize = new Size(toolWidth, Height);
-            p.Location = new Point(0, 0);
-            p.BackColor = Color.Red;
+            p.Location = new Point(0, tb.Height);
+         
+            p.BackColor = Color.FromArgb(73, 73, 73);
             Controls.Add(p);
             toolboxPanel = p;
-
+            
 
 
         }
@@ -100,6 +107,8 @@ namespace RacunarskiCentar
     /// </summary>
     public partial class Form1
     {
+
+        
         private void initRCView()
         {
             initMainPanelFlow();
@@ -107,6 +116,7 @@ namespace RacunarskiCentar
             Button button = new Button();
             button.Text = "Dodaj učionicu";
             button.Click += btDodajKlik;
+            button.BackColor = Color.LightGray;
             button.Size = new Size(toolboxPanel.Width, 30);
 
             button.Dock = DockStyle.Top;
@@ -176,6 +186,8 @@ namespace RacunarskiCentar
 
     public partial class Form1
     {
+
+       
         List<Smer> smerovi = new List<Smer>();
 
         private void initUcionicaView(Ucionica ucionica)
@@ -207,7 +219,7 @@ namespace RacunarskiCentar
         }
 
 
-
+        SmerControl selectedSmerControl = null;
         private void populatePredmets()
         {
             TableLayoutPanel t = (TableLayoutPanel)toolboxPanel;
@@ -218,8 +230,9 @@ namespace RacunarskiCentar
                 {
                     
                     SmerControl sc = new SmerControl(smer, toolboxPanel);
+                    sc.ColapseedChanged += Sc_ValueChanged;
 
-
+                    
                     t.Controls.Add(sc);
 
                 }
@@ -229,5 +242,14 @@ namespace RacunarskiCentar
 
         }
 
+        private void Sc_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectedSmerControl != null && selectedSmerControl.IsColapsed == false)
+            {
+                selectedSmerControl.IsColapsed = true;
+            }
+            selectedSmerControl = (SmerControl)sender;
+
+        }
     }
 }

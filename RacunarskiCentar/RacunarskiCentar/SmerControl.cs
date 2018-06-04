@@ -19,7 +19,39 @@ namespace RacunarskiCentar
         private const int predmetHeight = 20;
         private const int smerHeight = 30;
         bool isColapsed = true;
-        
+        EventHandler colapseedChanged;
+        public event EventHandler ColapseedChanged
+        {
+            add
+            {
+                colapseedChanged += value;
+            }
+            remove
+            {
+                colapseedChanged -= value;
+            }
+        }
+        public void OnColapseedChanged(EventArgs e)
+        {
+            if (colapseedChanged != null)
+            {
+                colapseedChanged(this, e);
+            }
+        }
+
+        public bool IsColapsed
+        {
+            get => isColapsed;
+            set
+            {
+                if (value == isColapsed)
+                    return;
+                isColapsed = value;
+                OnColapseedChanged(new EventArgs ());
+                refreshPanels();
+                Invalidate(); 
+            }
+        }
         public SmerControl(Smer smer, Panel panel): base(smer, panel)
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
@@ -54,8 +86,8 @@ namespace RacunarskiCentar
         {
            if(smerRec.Contains(new Point(e.Location.X, e.Location.Y)))
             {
-                isColapsed = !isColapsed;
-                onValueChaged(this, e);
+                IsColapsed = !isColapsed;
+               
             }
         }
 

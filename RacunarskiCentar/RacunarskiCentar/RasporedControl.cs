@@ -75,6 +75,7 @@ namespace RacunarskiCentar
                 point = new PointF(0, (visinaPodeoka * i) + visinaDatePikera);
                 g.DrawString(fulTime, font, new SolidBrush(Color.Black), new RectangleF(point, size), format);
             }
+
             
         }
     }
