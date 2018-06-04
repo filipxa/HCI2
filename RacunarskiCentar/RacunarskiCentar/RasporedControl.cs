@@ -15,7 +15,7 @@ namespace RacunarskiCentar
         Panel vremenaPanel;
         Panel daniPanel;
         
-        Pen pen = new Pen(Color.Yellow, 1);
+        Pen pen = new Pen(Color.Yellow, 5);
         DateTimePicker dateTimePicker;
         const int  visinaDatePikera = 30;
         float visinaPodeoka;
@@ -41,6 +41,8 @@ namespace RacunarskiCentar
             dateTimePicker.ShowUpDown = true;
 
             Controls.Add(vremenaPanel);
+            //vremenaPanel.Paint
+           // vremenaPanel.Paint += new PaintEventHandler(vremenaPanel_Paint);
         }
 
 
