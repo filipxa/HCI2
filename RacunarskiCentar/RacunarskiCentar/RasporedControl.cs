@@ -51,7 +51,7 @@ namespace RacunarskiCentar
         {
             base.OnPaint(pe);
             visinaPodeoka = (parentPanel.Height - visinaDatePikera) / 15;
-            Font font = new Font("Arial",(float)(visinaPodeoka * 0.8) , FontStyle.Bold, GraphicsUnit.Pixel);
+            Font font = new Font("Arial",(float)(visinaPodeoka * 0.5) , FontStyle.Bold, GraphicsUnit.Pixel);
             string sat = "";
             string minute = ":00";
             string fulTime = "";
@@ -64,8 +64,13 @@ namespace RacunarskiCentar
             for (int i = 0; i < 16; i++)
             {
                 g.DrawLine(pen, 0, (visinaPodeoka * i) + visinaDatePikera, vremenaPanel.Width, (visinaPodeoka * i) + visinaDatePikera);
-                sat = i.ToString();
-                sat = String.Format("{0:D2}", sat);
+                sat = (i+7).ToString();
+
+                if (sat.Length==1)
+                {
+                    sat = "0" + sat;
+                }
+                sat = String.Format("{000:D2}", sat);
                 fulTime = sat + minute;
                 point = new PointF(0, (visinaPodeoka * i) + visinaDatePikera);
                 g.DrawString(fulTime, font, new SolidBrush(Color.Black), new RectangleF(point, size), format);
