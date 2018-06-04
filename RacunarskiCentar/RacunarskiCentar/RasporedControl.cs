@@ -16,6 +16,7 @@ namespace RacunarskiCentar
         Panel daniPanel;
         
         Pen pen = new Pen(Color.Yellow, 1);
+        DateTimePicker dateTimePicker;
         float visinaDatePikera = 20;
         public RasporedControl(Raspored raspored, Panel panel): base(raspored, panel)
         {
@@ -27,19 +28,16 @@ namespace RacunarskiCentar
         private void InitVremenaPanel()
         {
             vremenaPanel = new Panel();
-            vremenaPanel.Width = parentPanel.Width;
-            vremenaPanel.Height = parentPanel.Height / 10;
+            vremenaPanel.Width = parentPanel.Width/10;
+            vremenaPanel.Height = parentPanel.Height;
             vremenaPanel.Location = new Point(0, 0);
-
-            DateTimePicker picker = new DateTimePicker();
-            vremenaPanel.Controls.Add(picker);
-            picker.Location = new Point(3, 3);
-            picker.Format = DateTimePickerFormat.Custom;
-            picker.CustomFormat = "HH:mm";
-            picker.ShowUpDown = true;
-
-
-
+            vremenaPanel.BackColor = Color.Black;
+            dateTimePicker = new DateTimePicker();
+            vremenaPanel.Controls.Add(dateTimePicker);
+            dateTimePicker.Location = new Point(3, 3);
+            dateTimePicker.Format = DateTimePickerFormat.Custom;
+            dateTimePicker.CustomFormat = "HH:mm";
+            dateTimePicker.ShowUpDown = true;
 
             Controls.Add(vremenaPanel);
         }
@@ -53,22 +51,23 @@ namespace RacunarskiCentar
             string sat = "";
             string minute = ":00";
             string fulTime = "";
-            SizeF size = new SizeF(vremenaPanel.Width-((int)visinaPodeoka / 10), vremenaPanel.Height);
-            Point point = new Point();
+            SizeF size = new SizeF(vremenaPanel.Width, visinaPodeoka);
+            PointF point = new PointF();
             StringFormat format = new StringFormat();
             format.LineAlignment = StringAlignment.Center;
             format.Alignment = StringAlignment.Center;
             Graphics g = pe.Graphics;
-            for (int i = 1; i < 16; i++)
+            for (int i = 0; i < 16; i++)
             {
                
                 g.DrawLine(pen, 0, (visinaPodeoka * i) + visinaDatePikera, vremenaPanel.Width, (visinaPodeoka * i) + visinaDatePikera);
                 sat = i.ToString();
                 sat = String.Format("{0:D2}", sat);
                 fulTime = sat + minute;
-                point = new Point(((i - 1) * (int)visinaPodeoka)-(int)visinaPodeoka/10,(int)(vremenaPanel.Width/10));
+                point = new PointF(0, (visinaPodeoka * i) + visinaDatePikera);
+                g.DrawString(fulTime, font, new SolidBrush(Color.Black), new RectangleF(point, size), format);
             }
-            g.DrawString(fulTime, font, new SolidBrush(Color.Black), new RectangleF(point, size), format);
+            
 
 
 

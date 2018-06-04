@@ -31,7 +31,7 @@ namespace RacunarskiCentar
             mainPanel.Controls.Clear(); // DISPOSE IF TIME
             toolboxPanel.Controls.Clear();
             toolboxPanel.VerticalScroll.Maximum = 0;
-            
+            mainPanel.Padding = new Padding(0);
         }
 
     }
