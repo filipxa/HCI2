@@ -17,21 +17,22 @@ namespace RacunarskiCentar
         
         Pen pen = new Pen(Color.Yellow, 1);
         DateTimePicker dateTimePicker;
-        float visinaDatePikera = 20;
+        const int  visinaDatePikera = 30;
+        float visinaPodeoka;
         public RasporedControl(Raspored raspored, Panel panel): base(raspored, panel)
         {
 
             InitializeComponent();
+            visinaPodeoka = (parentPanel.Height - visinaDatePikera) / 15;
             InitVremenaPanel();
         }
 
         private void InitVremenaPanel()
         {
             vremenaPanel = new Panel();
-            vremenaPanel.Width = parentPanel.Width/10;
-            vremenaPanel.Height = parentPanel.Height;
+            vremenaPanel.Width = parentPanel.Width/8;
+            vremenaPanel.Height = visinaDatePikera;
             vremenaPanel.Location = new Point(0, 0);
-            vremenaPanel.BackColor = Color.Black;
             dateTimePicker = new DateTimePicker();
             vremenaPanel.Controls.Add(dateTimePicker);
             dateTimePicker.Location = new Point(3, 3);
@@ -42,11 +43,12 @@ namespace RacunarskiCentar
             Controls.Add(vremenaPanel);
         }
 
+
+
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
-             
-            float visinaPodeoka = (vremenaPanel.Height - visinaDatePikera) / 15;
+            visinaPodeoka = (parentPanel.Height - visinaDatePikera) / 15;
             Font font = new Font("Arial",(float)(visinaPodeoka * 0.8) , FontStyle.Bold, GraphicsUnit.Pixel);
             string sat = "";
             string minute = ":00";
@@ -59,7 +61,6 @@ namespace RacunarskiCentar
             Graphics g = pe.Graphics;
             for (int i = 0; i < 16; i++)
             {
-               
                 g.DrawLine(pen, 0, (visinaPodeoka * i) + visinaDatePikera, vremenaPanel.Width, (visinaPodeoka * i) + visinaDatePikera);
                 sat = i.ToString();
                 sat = String.Format("{0:D2}", sat);
@@ -68,9 +69,6 @@ namespace RacunarskiCentar
                 g.DrawString(fulTime, font, new SolidBrush(Color.Black), new RectangleF(point, size), format);
             }
             
-
-
-
         }
     }
 }

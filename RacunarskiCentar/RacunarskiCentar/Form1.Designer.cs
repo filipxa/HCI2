@@ -28,46 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.toolboxPanel = new System.Windows.Forms.Panel();
-            this.mainPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.SuspendLayout();
-            // 
-            // toolboxPanel
-            // 
-            this.toolboxPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.toolboxPanel.Location = new System.Drawing.Point(-3, -1);
-            this.toolboxPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.toolboxPanel.Name = "toolboxPanel";
-            this.toolboxPanel.Size = new System.Drawing.Size(201, 643);
-            this.toolboxPanel.TabIndex = 5;
-            // 
-            // mainPanel
-            // 
-            this.mainPanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.mainPanel.Location = new System.Drawing.Point(205, -1);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(748, 643);
-            this.mainPanel.TabIndex = 6;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(953, 642);
-            this.Controls.Add(this.mainPanel);
-            this.Controls.Add(this.toolboxPanel);
+            this.ClientSize = new System.Drawing.Size(715, 522);
+
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.toolboxPanel.ResumeLayout(false);
+
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel toolboxPanel;
-        private System.Windows.Forms.FlowLayoutPanel mainPanel;
+
+
     }
 }
 

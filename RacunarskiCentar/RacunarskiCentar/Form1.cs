@@ -8,31 +8,90 @@ namespace RacunarskiCentar
     public partial class Form1 : Form
     {
 
+        private const int toolWidth = 250;
+        Panel mainPanel;
+        Panel toolboxPanel;
+       
         public Form1()
         {
             InitializeComponent();
-            initRCView();
-            toolboxPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom;
-            mainPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom | AnchorStyles.Left;
-            toolboxPanel.VerticalScroll.Minimum =0;
 
+            initRCView();
+
+            Height = 800;
+            Width = 1000;
+            MinimumSize = Size;
+        }
+
+
+        private void initMainPanelFlow()
+        {
+            FlowLayoutPanel p = new FlowLayoutPanel();
+            p = new FlowLayoutPanel();
+            p.Padding = new Padding(15);
+            p.FlowDirection = FlowDirection.LeftToRight;
+            initMainPanel(p);
+        }
+
+        private void initMainPanel()
+        {
+            initMainPanel(new Panel());
 
         }
 
-      
+
+        private void initMainPanel(Panel p)
+        {
+            p.Anchor = AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            p.MinimumSize = new Size(Width- toolWidth, 800);
+            p.Location = new Point(toolWidth, 0);
+            p.BackColor = Color.Green;
+          
+            Controls.Add(p);
+
+            if (mainPanel != null)
+            {
+                mainPanel.Dispose();
+                Controls.Remove(mainPanel);
+            }
+            mainPanel = p;
+
+        }
+
+        private void initToolPanel(Panel p)
+        {
+            if (toolboxPanel != null)
+                toolboxPanel.Dispose();
+            p.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom ;
+            p.MinimumSize = new Size(toolWidth, Height);
+            p.Location = new Point(0, 0);
+            p.BackColor = Color.Red;
+            Controls.Add(p);
+            toolboxPanel = p;
+
+
+
+        }
+        private void initToolPanel()
+        { 
+            initToolPanel(new Panel());
+        }
+
+        private void initToolPanelTable()
+        {
+            Panel p = new TableLayoutPanel();
+           
+            initToolPanel(p);
+
+
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             
         }
 
-        private void resetPanels()
-        {
-            mainPanel.Controls.Clear(); // DISPOSE IF TIME
-            toolboxPanel.Controls.Clear();
-            toolboxPanel.VerticalScroll.Maximum = 0;
-            mainPanel.Padding = new Padding(0);
-        }
+
 
     }
 
@@ -43,18 +102,18 @@ namespace RacunarskiCentar
     {
         private void initRCView()
         {
-            toolboxPanel.Controls.Clear();
-            mainPanel.Controls.Clear();
+            initMainPanelFlow();
+            initToolPanel();
             Button button = new Button();
             button.Text = "Dodaj učionicu";
             button.Click += btDodajKlik;
             button.Size = new Size(toolboxPanel.Width, 30);
+
             button.Dock = DockStyle.Top;
-            mainPanel.FlowDirection = FlowDirection.LeftToRight;
-            mainPanel.Padding = new Padding(15);
+          
             toolboxPanel.Controls.Add(button);
 
-            
+
             ucitajUcionice();
         }
 
@@ -94,9 +153,6 @@ namespace RacunarskiCentar
             initUcionicaView(uc.GuiObject);
         }
 
-
-
-
     }
 
     class TreeNodeObject : TreeNode
@@ -121,9 +177,11 @@ namespace RacunarskiCentar
     public partial class Form1
     {
         List<Smer> smerovi = new List<Smer>();
-        
+
         private void initUcionicaView(Ucionica ucionica)
         {
+            initMainPanel();
+            initToolPanelTable();
             Smer s = new Smer("SW", "SOft kobas", DateTime.Now, "");
             for (int i = 0; i < 10; i++)
             {
@@ -131,14 +189,19 @@ namespace RacunarskiCentar
                 s.Predmeti.Add(p);
             }
             smerovi.Add(s);
-            resetPanels();
-            
+
             populatePredmets();
+
+
             Raspored r = new Raspored(ucionica);
             RasporedControl rc = new RasporedControl(r, mainPanel);
             rc.Height = mainPanel.Height;
             rc.Width = mainPanel.Width;
+            rc.Dock = DockStyle.Fill;
+            
+
             mainPanel.Controls.Add(rc);
+
             toolboxPanel.AutoScroll = true;
 
         }
@@ -147,23 +210,22 @@ namespace RacunarskiCentar
 
         private void populatePredmets()
         {
-
+            TableLayoutPanel t = (TableLayoutPanel)toolboxPanel;
+            toolboxPanel.Padding = new Padding(15,0,0,0) ;
             for (int i = 0; i < 15; i++)
             {
                 foreach (Smer smer in smerovi)
                 {
-
-                     SmerControl sc = new SmerControl(smer, toolboxPanel);
-
-                    sc.Dock = DockStyle.Top;
                     
-                    toolboxPanel.Controls.Add(sc);
+                    SmerControl sc = new SmerControl(smer, toolboxPanel);
 
+
+                    t.Controls.Add(sc);
 
                 }
             }
-            
-            
+
+
 
         }
 

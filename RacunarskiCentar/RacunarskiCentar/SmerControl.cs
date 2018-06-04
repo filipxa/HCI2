@@ -18,7 +18,7 @@ namespace RacunarskiCentar
         Panel predmetPanel;
         private const int predmetHeight = 20;
         private const int smerHeight = 30;
-        bool isColapsed = false;
+        bool isColapsed = true;
         
         public SmerControl(Smer smer, Panel panel): base(smer, panel)
         {
@@ -38,7 +38,7 @@ namespace RacunarskiCentar
             refreshPanels();
 
 
-            MouseClick += SmerControl_Click;
+            MouseDown += SmerControl_Click;
             
         }
 
