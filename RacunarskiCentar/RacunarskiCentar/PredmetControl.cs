@@ -20,6 +20,7 @@ namespace RacunarskiCentar
 
         protected override void OnPaint(PaintEventArgs pe)
         {
+
             base.OnPaint(pe);
             Graphics g = pe.Graphics;
             g.DrawRectangle(new Pen(new SolidBrush(Color.Red), 1), ClientRectangle);
