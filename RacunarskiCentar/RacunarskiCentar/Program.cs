@@ -29,6 +29,12 @@ namespace RacunarskiCentar
             action = new CreateAction(ucionica);
             DataControllercs.addAction(action);
 
+            action = new CreateAction(ucionica);
+            DataControllercs.addAction(action);
+
+            action = new CreateAction(ucionica);
+            DataControllercs.addAction(action);
+
 
             Application.Run(new Form1());
         }
