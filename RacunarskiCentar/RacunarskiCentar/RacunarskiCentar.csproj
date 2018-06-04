@@ -65,6 +65,12 @@
       <DependentUpon>PredmetControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Raspored.cs" />
+    <Compile Include="RasporedControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RasporedControl.Designer.cs">
+      <DependentUpon>RasporedControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Smer.cs" />
     <Compile Include="SmerControl.cs">
       <SubType>Component</SubType>
