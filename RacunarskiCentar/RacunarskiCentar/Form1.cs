@@ -134,6 +134,11 @@ namespace RacunarskiCentar
             resetPanels();
             
             populatePredmets();
+            Raspored r = new Raspored(ucionica);
+            RasporedControl rc = new RasporedControl(r, mainPanel);
+            rc.Height = mainPanel.Height;
+            rc.Width = mainPanel.Width;
+            mainPanel.Controls.Add(rc);
             toolboxPanel.AutoScroll = true;
 
         }

@@ -14,7 +14,7 @@ namespace RacunarskiCentar
     {
         Panel vremenaPanel;
         Panel daniPanel;
-        Graphics g;
+        
         Pen pen = new Pen(Color.Yellow, 1);
         float visinaDatePikera = 20;
         public RasporedControl(Raspored raspored, Panel panel): base(raspored, panel)
@@ -58,9 +58,10 @@ namespace RacunarskiCentar
             StringFormat format = new StringFormat();
             format.LineAlignment = StringAlignment.Center;
             format.Alignment = StringAlignment.Center;
-
+            Graphics g = pe.Graphics;
             for (int i = 1; i < 16; i++)
             {
+               
                 g.DrawLine(pen, 0, (visinaPodeoka * i) + visinaDatePikera, vremenaPanel.Width, (visinaPodeoka * i) + visinaDatePikera);
                 sat = i.ToString();
                 sat = String.Format("{0:D2}", sat);
