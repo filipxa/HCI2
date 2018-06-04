@@ -14,9 +14,29 @@ namespace RacunarskiCentar
             initRCView();
             toolboxPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom;
             mainPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom | AnchorStyles.Left;
+          // toolboxPanel.MouseWheel += ToolboxPanel_MouseWheel;
+            toolboxPanel.VerticalScroll.Minimum =0;
+
 
         }
 
+        private void ToolboxPanel_MouseWheel(object sender, MouseEventArgs e)
+        {
+            int scrolV = toolboxPanel.VerticalScroll.Value + (e.Delta/50);
+            if(scrolV > toolboxPanel.VerticalScroll.Maximum)
+            {
+                scrolV = toolboxPanel.VerticalScroll.Maximum;
+            }
+            if (scrolV < toolboxPanel.VerticalScroll.Minimum)
+            {
+                scrolV = toolboxPanel.VerticalScroll.Minimum;
+            }
+            System.Diagnostics.Debug.WriteLine(toolboxPanel.VerticalScroll.Value);
+            toolboxPanel.VerticalScroll.Value = scrolV;
+
+            
+
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -27,6 +47,8 @@ namespace RacunarskiCentar
         {
             mainPanel.Controls.Clear(); // DISPOSE IF TIME
             toolboxPanel.Controls.Clear();
+            toolboxPanel.VerticalScroll.Maximum = 0;
+            
         }
 
     }
@@ -48,6 +70,8 @@ namespace RacunarskiCentar
             mainPanel.FlowDirection = FlowDirection.LeftToRight;
             mainPanel.Padding = new Padding(15);
             toolboxPanel.Controls.Add(button);
+
+            
             ucitajUcionice();
         }
 
@@ -107,11 +131,14 @@ namespace RacunarskiCentar
     }
 
 
-
+    /// <summary>
+    /// Ucionica    Ucionica    Ucionica    Ucionica    Ucionica    Ucionica    Ucionica    Ucionica    Ucionica    Ucionica    Ucionica    Ucionica    Ucionica
+    /// </summary>
 
     public partial class Form1
     {
         List<Smer> smerovi = new List<Smer>();
+        
         private void initUcionicaView(Ucionica ucionica)
         {
             Smer s = new Smer("SW", "SOft kobas", DateTime.Now, "");
@@ -122,29 +149,34 @@ namespace RacunarskiCentar
             }
             smerovi.Add(s);
             resetPanels();
+            
             populatePredmets();
 
-
         }
 
 
-        private void test_Click(object sender, EventArgs e)
-        {
-            TerminForm f = new TerminForm(null);
-        }
+
         private void populatePredmets()
         {
 
-
-            foreach (Smer smer in smerovi)
+            for (int i = 0; i < 50; i++)
             {
-                
-                SmerControl sc = new SmerControl(smer, toolboxPanel);
-                sc.Dock = DockStyle.Top;
-                toolboxPanel.Controls.Add(sc);
+                foreach (Smer smer in smerovi)
+                {
+
+                    //  SmerControl sc = new SmerControl(smer, toolboxPanel);
+                    Button sc = new Button();
+                    sc.Text=""+i;
+                    sc.Height = 20;
+                    sc.Dock = DockStyle.Top;
+                    
+                    toolboxPanel.Controls.Add(sc);
 
 
+                }
             }
+            
+            
 
         }
 

@@ -15,32 +15,107 @@ namespace RacunarskiCentar
     public partial class SmerControl : CustomControlBase<Smer>
     {
         Rectangle smerRec;
-        Rectangle predmetRec;
         Panel predmetPanel;
         private const int predmetHeight = 20;
         private const int smerHeight = 30;
+        bool isColapsed = false;
         
         public SmerControl(Smer smer, Panel panel): base(smer, panel)
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+
             InitializeComponent();
             Width = 200;
             Height = smerHeight;
             smerRec = new Rectangle(ClientRectangle.Location, ClientRectangle.Size);
+
             predmetPanel = new Panel();
             predmetPanel.Width = Width;
-            predmetPanel.Height = GuiObject.Predmeti.Count() * predmetHeight;
             predmetPanel.Location = new Point(0, smerHeight);
-            predmetPanel.BackColor = parentPanel.BackColor;
-            Height = smerHeight + GuiObject.Predmeti.Count() * predmetHeight;
-            Controls.Add(predmetPanel);
+            predmetPanel.BackColor = Color.Black; // parentPanel.BackColor;
+           
+
+            refreshPanels();
+
+
+            MouseClick += SmerControl_Click;
+            
+        }
+
+        private void refreshPanels()
+        {
+            predmetPanel.Width = Width;
+            smerRec.Width = Width;
+            updatePredmetPanelSize();
+            updatePredmetPanelElements();
+        }
+
+        private void SmerControl_Click(object sender, MouseEventArgs e)
+        {
+           if(smerRec.Contains(new Point(e.Location.X, e.Location.Y)))
+            {
+                isColapsed = !isColapsed;
+                onValueChaged(this, e);
+            }
+        }
+
+        private void updatePredmetPanelSize()
+        {
+            predmetPanel.Height = GuiObject.Predmeti.Count * predmetHeight;
+          
+            if (isColapsed)
+            {
+                if (Controls.Contains(predmetPanel))
+                {
+                    Controls.Remove(predmetPanel);
+                }
+                Height = smerHeight;
+            } else
+            {
+                Height = smerHeight + GuiObject.Predmeti.Count() * predmetHeight;
+                if (!Controls.Contains(predmetPanel))
+                {
+                    Controls.Add(predmetPanel);
+                }
+            }
+        }
+
+        private void updatePredmetPanelElements()
+        {
+            List<Predmet> predmetiToAdd = new List<Predmet>();
+            foreach (Predmet predmet in GuiObject.Predmeti)
+            {
+                bool found = false;
+                foreach (var predmetCon in predmetPanel.Controls)
+                {
+                    PredmetControl pc = (PredmetControl)predmetCon;
+                    if (pc.GuiObject.Equals(predmet))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    predmetiToAdd.Add(predmet);
+                }
+
+            }
+            foreach (Predmet predmet in predmetiToAdd)
+            {
+                PredmetControl pc = new PredmetControl(predmet, predmetPanel);
+                pc.Width = predmetPanel.Width;
+                pc.Height = predmetHeight;
+                pc.Dock = DockStyle.Top;
+                predmetPanel.Controls.Add(pc);
+            }
+
         }
 
         protected override void onValueChaged(object sender, EventArgs e)
         {
-            predmetPanel.Height = GuiObject.Predmeti.Count * predmetHeight;
-            Height = smerHeight + GuiObject.Predmeti.Count() * predmetHeight;
-            
+
+            refreshPanels();
             base.onValueChaged(sender, e);
         }
 
@@ -51,18 +126,10 @@ namespace RacunarskiCentar
             Graphics g = pe.Graphics;
 
             Pen pen = new Pen(new SolidBrush(Color.Black), 1);
-
-            g.FillRectangle(new SolidBrush(Color.Pink), ClientRectangle);
             g.FillRectangle(new SolidBrush(Color.LightGray), smerRec);
             g.DrawRectangle(pen, smerRec);
-            int inc = 1;
-            foreach (Predmet pred in GuiObject.Predmeti)
-            {
 
-                g.DrawLine(pen, new Point(0, smerHeight + predmetHeight * inc), new Point(Width, smerHeight + predmetHeight * inc));
-                inc++;
-            }
-
+            
             base.OnPaint(pe);
 
         }
