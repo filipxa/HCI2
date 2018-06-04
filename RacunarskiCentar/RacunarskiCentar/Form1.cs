@@ -14,29 +14,12 @@ namespace RacunarskiCentar
             initRCView();
             toolboxPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom;
             mainPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom | AnchorStyles.Left;
-          // toolboxPanel.MouseWheel += ToolboxPanel_MouseWheel;
             toolboxPanel.VerticalScroll.Minimum =0;
 
 
         }
 
-        private void ToolboxPanel_MouseWheel(object sender, MouseEventArgs e)
-        {
-            int scrolV = toolboxPanel.VerticalScroll.Value + (e.Delta/50);
-            if(scrolV > toolboxPanel.VerticalScroll.Maximum)
-            {
-                scrolV = toolboxPanel.VerticalScroll.Maximum;
-            }
-            if (scrolV < toolboxPanel.VerticalScroll.Minimum)
-            {
-                scrolV = toolboxPanel.VerticalScroll.Minimum;
-            }
-            System.Diagnostics.Debug.WriteLine(toolboxPanel.VerticalScroll.Value);
-            toolboxPanel.VerticalScroll.Value = scrolV;
-
-            
-
-        }
+      
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -151,6 +134,7 @@ namespace RacunarskiCentar
             resetPanels();
             
             populatePredmets();
+            toolboxPanel.AutoScroll = true;
 
         }
 
@@ -159,15 +143,13 @@ namespace RacunarskiCentar
         private void populatePredmets()
         {
 
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 15; i++)
             {
                 foreach (Smer smer in smerovi)
                 {
 
-                    //  SmerControl sc = new SmerControl(smer, toolboxPanel);
-                    Button sc = new Button();
-                    sc.Text=""+i;
-                    sc.Height = 20;
+                     SmerControl sc = new SmerControl(smer, toolboxPanel);
+
                     sc.Dock = DockStyle.Top;
                     
                     toolboxPanel.Controls.Add(sc);
