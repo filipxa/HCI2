@@ -67,12 +67,11 @@ namespace RacunarskiCentar
             dateTimePicker = new DateTimePicker();
             satnicaPanel.Anchor = AnchorStyles.Left | AnchorStyles.Top ;
             satnicaPanel.Controls.Add(dateTimePicker);
-            dateTimePicker.Location = new Point(3, 3);
-            //satnicaPanel.BackColor = Color.Chocolate;
+            dateTimePicker.Location = new Point(0, 0);
             dateTimePicker.Size = new Size((int)(satnicaPanel.Width), (int)(satnicaPanel.Height));
             dateTimePicker.Format = DateTimePickerFormat.Custom;
-            //dateTimePicker.ShowUpDown = true;
-
+            dateTimePicker.CustomFormat = "d,ddd,M,yy";
+            dateTimePicker.Height = visinaDatePikera;
             Controls.Add(satnicaPanel);
             //vremenaPanel.Paint
            // vremenaPanel.Paint += new PaintEventHandler(vremenaPanel_Paint);
@@ -85,43 +84,44 @@ namespace RacunarskiCentar
             base.OnPaint(pe);
             PointF pointL;
             PointF pointR;
-            visinaPodeoka = (float)(Height) / 17f-debljinaLinije;
-            // visinaPodeoka = (parentPanel.Height - visinaDatePikera) / 15;
+            visinaPodeoka = Height / 17f-debljinaLinije;
             if (satnicaPanel.Width == 0)
             {
                 return;
             }
-            Font font = new Font("Arial",(float)(satnicaPanel.Width * 0.2) , FontStyle.Bold, GraphicsUnit.Pixel);
+
             string sat = "";
             string minute = ":00";
             string fulTime = "";
             SizeF size = new SizeF(satnicaPanel.Width, visinaPodeoka);
             PointF point = new PointF();
-            StringFormat format = new StringFormat();
-            format.LineAlignment = StringAlignment.Center;
-            format.Alignment = StringAlignment.Center;
+           
             Graphics g = pe.Graphics;
             for (int i = 0; i < 16; i++)
             {
-                //g.DrawLine(pen, 0, (visinaPodeoka * i) + visinaDatePikera - (i) , satnicaPanel.Width, (visinaPodeoka * i) + visinaDatePikera - i);
                 pointL = new PointF(0, (visinaPodeoka * i) + visinaDatePikera - debljinaLinije);
                 pointR = new PointF(Width, (visinaPodeoka * i) + visinaDatePikera - debljinaLinije);
 
 
                 g.DrawLine(pen, pointL, pointR);
-                sat = (i+7).ToString();
 
-                if (sat.Length==1)
-                {
-                    sat = "0" + sat;
-                }
-                sat = String.Format("{00:D2}", sat);
+                sat = String.Format("{00:D2}", i + 7);
                 fulTime = sat + minute;
-                point = new PointF(0, (visinaPodeoka * i) + visinaDatePikera - debljinaLinije);
-                g.DrawString(fulTime, font, new SolidBrush(Color.Black), new RectangleF(pointL, size), format);
-            }
 
-            
+                StringFormat format = new StringFormat();
+                format.LineAlignment = StringAlignment.Center;
+                format.Alignment = StringAlignment.Center;
+
+                point = new PointF(0, (visinaPodeoka * i) + visinaDatePikera - debljinaLinije);
+                g.DrawString(fulTime, GraphicLoader.getFontBold((float)(satnicaPanel.Width * 0.2)), new SolidBrush(Color.Black), new RectangleF(pointL, size), format);
+            }
+            pointL = new PointF(0, (visinaPodeoka * 16) + visinaDatePikera - debljinaLinije);
+            pointR = new PointF(Width, (visinaPodeoka * 16) + visinaDatePikera - debljinaLinije);
+
+
+            g.DrawLine(pen, pointL, pointR);
+
+
         }
     }
 }
