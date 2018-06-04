@@ -35,6 +35,8 @@ namespace RacunarskiCentar
             p = new FlowLayoutPanel();
             p.Padding = new Padding(15);
             p.FlowDirection = FlowDirection.LeftToRight;
+            p.AutoScroll = true;
+            p.VerticalScroll.Visible = true;
             initMainPanel(p);
         }
 
@@ -48,7 +50,7 @@ namespace RacunarskiCentar
         private void initMainPanel(Panel p)
         {
             p.Anchor = AnchorStyles.Right |AnchorStyles.Top  | AnchorStyles.Bottom | AnchorStyles.Left;
-            p.MinimumSize = new Size(Width- toolWidth, 800);
+            p.MinimumSize = new Size(Width- toolWidth, Height - tb.Height);
             p.Location = new Point(toolWidth, tb.Height);
             p.BackColor = Color.FromArgb(176, 176, 183);
 
@@ -69,7 +71,7 @@ namespace RacunarskiCentar
             if (toolboxPanel != null)
                 toolboxPanel.Dispose();
             p.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom ;
-            p.MinimumSize = new Size(toolWidth, Height);
+            p.MinimumSize = new Size(toolWidth, Height - tb.Height);
             p.Location = new Point(0, tb.Height);
          
             p.BackColor = Color.FromArgb(73, 73, 73);
@@ -139,8 +141,8 @@ namespace RacunarskiCentar
         private void dodajUcionicu(UcionicaControl c)
         {
             c.Width = 200;
-            c.Height = 100;
-            c.Margin = new Padding(30);
+            c.Height = 150;
+            c.Margin = new Padding(15);
             mainPanel.Controls.Add(c);
             c.DoubleClick += Ucionica_DoubleClick;
         }
@@ -244,6 +246,10 @@ namespace RacunarskiCentar
 
         private void Sc_ValueChanged(object sender, EventArgs e)
         {
+            if((SmerControl)sender == selectedSmerControl)
+            {
+                return;
+            }
             if (selectedSmerControl != null && selectedSmerControl.IsColapsed == false)
             {
                 selectedSmerControl.IsColapsed = true;

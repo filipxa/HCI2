@@ -17,23 +17,26 @@ namespace RacunarskiCentar
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            HashSet<UcionicaAssets> rets = new HashSet<UcionicaAssets>();
-            for (int i = 0; i < 5; i++)
-            {
-                rets.Add((UcionicaAssets)i);
-            }
 
             Ucionica ucionica;
-            ucionica = new Ucionica("cao", "32", 32, rets,new HashSet<Software>());
+
             Action action;
-            action = new CreateAction(ucionica);
-            DataControllercs.addAction(action);
-
-            action = new CreateAction(ucionica);
-            DataControllercs.addAction(action);
-
-            action = new CreateAction(ucionica);
-            DataControllercs.addAction(action);
+            Random r = new Random();
+            for (int i = 1; i < 20; i++)
+            {
+                ucionica = new Ucionica("MI-A2-2", "32", i*4, null, new HashSet<Software>());
+                for (int j = 1; j < 6; j++)
+                {
+                    if (r.Next(100)>30)
+                    {
+                        ucionica.Assets.Add((UcionicaAssets)j);
+                    }
+                    
+                }
+                action = new CreateAction(ucionica);
+                DataControllercs.addAction(action);
+            }
+                
 
 
             Application.Run(new Form1());

@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="DataControllercs.cs" />
     <Compile Include="DataManger.cs" />
+    <Compile Include="GraphicLoader.cs" />
     <Compile Include="GuiObject.cs" />
     <Compile Include="Nedelja.cs" />
     <Compile Include="NedeljaControl.cs">

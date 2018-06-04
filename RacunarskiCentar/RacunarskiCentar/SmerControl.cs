@@ -16,8 +16,8 @@ namespace RacunarskiCentar
     {
         Rectangle smerRec;
         Panel predmetPanel;
-        private const int predmetHeight = 20;
-        private const int smerHeight = 30;
+        private const int predmetHeight = 30;
+        private const int smerHeight = 45;
         bool isColapsed = true;
         EventHandler colapseedChanged;
         public event EventHandler ColapseedChanged
@@ -64,7 +64,7 @@ namespace RacunarskiCentar
             predmetPanel = new Panel();
             predmetPanel.Width = Width;
             predmetPanel.Location = new Point(0, smerHeight);
-            predmetPanel.BackColor = Color.Black; // parentPanel.BackColor;
+            predmetPanel.BackColor = Color.Transparent; // parentPanel.BackColor;
            
 
             refreshPanels();
@@ -140,6 +140,7 @@ namespace RacunarskiCentar
                 pc.Height = predmetHeight;
                 pc.Dock = DockStyle.Top;
                 predmetPanel.Controls.Add(pc);
+               
             }
 
         }
@@ -157,11 +158,19 @@ namespace RacunarskiCentar
 
             Graphics g = pe.Graphics;
 
-            Pen pen = new Pen(new SolidBrush(Color.Black), 1);
-            g.FillRectangle(new SolidBrush(Color.LightGray), smerRec);
-            g.DrawRectangle(pen, smerRec);
-
-            
+           
+            if (IsColapsed)
+            {
+                GraphicLoader.drawImages(g, smerRec, "Smer", "2");
+            }
+            else
+            {
+                GraphicLoader.drawImages(g, smerRec, "Smer", "0");
+            }
+            StringFormat sf = new StringFormat();
+            sf.LineAlignment = StringAlignment.Center;
+            sf.Alignment = StringAlignment.Center;
+            g.DrawString(GuiObject.ID, GraphicLoader.getFontBold(20), new SolidBrush(Color.Black), smerRec, sf);
             base.OnPaint(pe);
 
         }
