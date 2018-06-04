@@ -45,7 +45,7 @@ namespace RacunarskiCentar
         }
         public bool isSlobodan(DateTime vremePocetka, int brCasova)
         {
-            DateTime vremeKraja= vremePocetka.AddMinutes(45 * brCasova);
+            DateTime vremeKraja = vremePocetka.AddMinutes(45 * brCasova);
 
             foreach (Termin t in termini)
             {   //prvo je pocetak/kraj vremena koje je uneseno drugo je p/k vreman termina

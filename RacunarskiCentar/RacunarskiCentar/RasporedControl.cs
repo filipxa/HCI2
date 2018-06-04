@@ -14,9 +14,13 @@ namespace RacunarskiCentar
     {
         Panel satnicaPanel;
         Panel daniPanel;
+
+        Nedelja nedelja;
+        NedeljaControl nedeljaControl;
         
         DateTimePicker dateTimePicker;
-        const int  visinaDatePikera = 30;
+        Panel nedeljaPanel;
+        const int  visinaDatePikera = 40;
         const int sirinaDatePikera = 100;
 
         const int debljinaLinije = 3;
@@ -28,7 +32,22 @@ namespace RacunarskiCentar
 
             InitializeComponent();
             InitVremenaPanel();
+            InitNedelja();
             Resize += RasporedControl_Resize;
+        }
+
+        private void InitNedelja()
+        {
+            nedeljaPanel = new Panel();
+            nedeljaPanel.Location = new Point(sirinaDatePikera, 0);
+            nedeljaPanel.Anchor = AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            nedeljaPanel.Size = new Size((int)(Width - sirinaDatePikera),Height);
+            //nedeljaPanel.MinimumSize = new Size(200, 200);
+
+            Controls.Add(nedeljaPanel);
+            nedeljaControl = new NedeljaControl(nedelja, nedeljaPanel, pen,visinaPodeoka,debljinaLinije, visinaDatePikera);
+            //ovaj panel poslati za nedelju
+            //nedeljaControl = new NedeljaControl(nedelja,p);
         }
 
         private void RasporedControl_Resize(object sender, EventArgs e)
@@ -43,7 +62,7 @@ namespace RacunarskiCentar
             satnicaPanel = new Panel();
             satnicaPanel.Width = sirinaDatePikera;
             
-            satnicaPanel.Height = visinaDatePikera;
+            satnicaPanel.Height = visinaDatePikera-debljinaLinije-1;
             satnicaPanel.Location = new Point(0, 0);
             dateTimePicker = new DateTimePicker();
             satnicaPanel.Anchor = AnchorStyles.Left | AnchorStyles.Top ;
@@ -86,7 +105,7 @@ namespace RacunarskiCentar
             {
                 //g.DrawLine(pen, 0, (visinaPodeoka * i) + visinaDatePikera - (i) , satnicaPanel.Width, (visinaPodeoka * i) + visinaDatePikera - i);
                 pointL = new PointF(0, (visinaPodeoka * i) + visinaDatePikera - debljinaLinije);
-                pointR = new PointF(satnicaPanel.Width, (visinaPodeoka * i) + visinaDatePikera - debljinaLinije);
+                pointR = new PointF(Width, (visinaPodeoka * i) + visinaDatePikera - debljinaLinije);
 
 
                 g.DrawLine(pen, pointL, pointR);
