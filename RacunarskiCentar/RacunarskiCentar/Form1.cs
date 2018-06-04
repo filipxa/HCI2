@@ -42,26 +42,41 @@ namespace RacunarskiCentar
             mainPanel.Controls.Clear();
             Button button = new Button();
             button.Text = "Dodaj učionicu";
-            button.Click += addUcionica;
+            button.Click += btDodajKlik;
             button.Size = new Size(toolboxPanel.Width, 30);
             button.Dock = DockStyle.Top;
             mainPanel.FlowDirection = FlowDirection.LeftToRight;
             mainPanel.Padding = new Padding(15);
             toolboxPanel.Controls.Add(button);
+            ucitajUcionice();
         }
 
-        private void addUcionica(object sender, EventArgs e)
+        private void ucitajUcionice()
+        {
+            foreach (Ucionica u in DataManger.getUcionice())
+            {
+                UcionicaControl c = new UcionicaControl(u, mainPanel);
+                dodajUcionicu(c);
+            }
+        }
+
+        private void dodajUcionicu(UcionicaControl c)
+        {
+            c.Width = 200;
+            c.Height = 100;
+            c.Margin = new Padding(30);
+            mainPanel.Controls.Add(c);
+            c.DoubleClick += Ucionica_DoubleClick;
+        }
+
+        private void btDodajKlik(object sender, EventArgs e)
         {
             UcionicaForm f = new UcionicaForm(null);
             DialogResult result = f.ShowDialog();
             if (result == DialogResult.OK)
             {
                 UcionicaControl c = new UcionicaControl((Ucionica)f.GetAction().getGUIObject(), mainPanel);
-                c.Width = 200;
-                c.Height = 100;
-                c.Margin = new Padding(30);
-                mainPanel.Controls.Add(c);
-                c.DoubleClick += Ucionica_DoubleClick;
+                dodajUcionicu(c);
             }
 
         }
