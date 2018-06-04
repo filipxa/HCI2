@@ -84,7 +84,7 @@ namespace RacunarskiCentar
 
         private void UcionicaForm_Load(object sender, EventArgs e)
         {
-
+            DialogResult = DialogResult.None;
             foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
             {
                 checkedListBox1.Items.Add(new ComboValue(aset), false);

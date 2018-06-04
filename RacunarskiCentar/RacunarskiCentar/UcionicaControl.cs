@@ -44,7 +44,8 @@ namespace RacunarskiCentar
         {
             UcionicaForm f = new UcionicaForm(GuiObject);
             f.ShowDialog();
-            f.GetAction();
+            if(f.DialogResult==DialogResult.OK)
+                 f.GetAction();
         }
 
 
@@ -54,47 +55,29 @@ namespace RacunarskiCentar
             Graphics g = pe.Graphics;
             Rectangle rc = ClientRectangle;
             
-            rc.Width = Width;
-            rc.Height = Height;
-            Font f = new Font("Verdana", (float)rc.Height * 0.2f, FontStyle.Bold, GraphicsUnit.Pixel);
 
+            GraphicLoader.drawImages(g, rc, "Ucionica");
 
-            string path = @"..\..\Graphics";
-            string p = Path.Combine(path, "Panel");
-          
-
-            string[] fileEntries = Directory.GetFiles(p);
-            string assetsPath = Path.Combine(path, "Panel" , "assets");
-            
-
-            foreach (string fileName in fileEntries)
+            foreach(UcionicaAssets aset in GuiObject.Assets)
             {
-                Bitmap bmp = new Bitmap(fileName);
-                g.DrawImage(bmp, rc);
+                GraphicLoader.drawImages(g, rc, "Ucionica", "assets", ((int)aset).ToString());
             }
-            foreach (string fileName in Directory.GetFiles(assetsPath))
-            {
-                Bitmap bmp = new Bitmap(fileName);
-                string number = Path.GetFileName(fileName);
-                number = number.Substring(0, number.IndexOf("."));
-                UcionicaAssets test =(UcionicaAssets)Convert.ToInt32(number);
-                if (GuiObject.Assets.Contains(test))
-                    g.DrawImage(bmp, rc);
-               
-            }
-            Font font = new Font("Arial", 20,FontStyle.Bold, GraphicsUnit.Pixel);
+
+            Font font = GraphicLoader.getFontBold(20);
            
-            PointF point = new PointF(rc.Width / 75f, rc.Height / 7f);
-            SizeF size = new SizeF(rc.Width / 1.8f, rc.Height / 2F);
+            PointF point = new PointF(rc.Width / 60f, rc.Height / 12f);
+            SizeF size = new SizeF(rc.Width / 1.1f, rc.Height / 1.7F);
             StringFormat format = new StringFormat();
             format.LineAlignment = StringAlignment.Center;
             format.Alignment = StringAlignment.Center;
+
             g.DrawString(GuiObject.ID, font, new SolidBrush(Color.Black), new RectangleF(point, size), format);
 
-            format.LineAlignment = StringAlignment.Near;
-            format.Alignment = StringAlignment.Near;
-            point = new PointF(rc.Width / 9f, rc.Height / 10f * 6.7f );
-            size = new SizeF(rc.Width / 2f, 22);
+            font = GraphicLoader.getFontBold(20);
+            format.LineAlignment = StringAlignment.Center;
+            format.Alignment = StringAlignment.Center;
+            point = new PointF(rc.Width / 100f, rc.Height / 10f * 7.15f );
+            size = new SizeF(rc.Width / 4f, 26);
             g.DrawString(String.Format("{0:D2}",GuiObject.BrRadnihMesta), font, new SolidBrush(Color.Black), new RectangleF(point, size), format);
         }
 
