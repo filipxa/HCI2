@@ -25,6 +25,13 @@ namespace RacunarskiCentar
             InitializeComponent();
             visinaPodeoka = (parentPanel.Height - visinaDatePikera) / 15;
             InitVremenaPanel();
+            Resize += RasporedControl_Resize;
+        }
+
+        private void RasporedControl_Resize(object sender, EventArgs e)
+        {
+            visinaPodeoka = (parentPanel.Height - visinaDatePikera) / 15;
+            Refresh();
         }
 
         private void InitVremenaPanel()
