@@ -25,6 +25,16 @@ namespace RacunarskiCentar
             }
             return new Font((FontFamily)fontCollection.Families[0], size);
         }
+        static public Color getColorLightGray()
+        {
+            return Color.FromArgb(176, 176, 183);
+        }
+        static public Color getColorDarkGray()
+        {
+            return Color.FromArgb(73, 73, 73);
+        }
+
+      
 
         static public Font getFontBold(float size)
         {

@@ -25,6 +25,11 @@ namespace RacunarskiCentar
             return rets;
              
         }
+
+        internal static bool undoAvailable()
+        {
+            return actionsHistory.Count > 0;
+        }
     }
 
 

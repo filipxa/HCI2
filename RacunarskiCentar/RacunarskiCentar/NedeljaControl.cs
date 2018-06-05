@@ -10,75 +10,115 @@ using System.Windows.Forms;
 
 namespace RacunarskiCentar
 {
-    public partial class NedeljaControl : Control
+    public partial class NedeljaControl : CustomControlBase<Nedelja>
     {
-        List<Panel> dani = new List<Panel>();
-        private Nedelja nedelja;
+        Dictionary<Panel, int> dani = new Dictionary<Panel, int>();
         Pen pen;
-        float visinaPodeoka;
-        int debljinaLinije;
         float visinaNazivaDana;
+        RasporedControl parentRaspored;
         Panel dan;
-        public NedeljaControl(Nedelja nedelja, Panel panel,Pen pen, float visinaPodeoka, int debljinaLinije,float visinaNazivaDana)
+        Panel daniPanel;
+        public NedeljaControl(Nedelja nedelja, Panel panel,Pen pen,float visinaNazivaDana, RasporedControl rasporedControl) : base(nedelja,panel)
         {
             
             InitializeComponent();
+            parentRaspored = rasporedControl;
             this.pen = pen;
-            this.visinaPodeoka = visinaPodeoka;
-            this.debljinaLinije = debljinaLinije;
             this.visinaNazivaDana = visinaNazivaDana;
-            InitDani();
+            daniPanel = new Panel();
+            
+           
+            daniPanel.Dock = DockStyle.Fill;
+            daniPanel.BackColor = Color.Green;
+            daniPanel.Padding = new Padding(0);
+            daniPanel.Margin = new Padding(0);
+            Controls.Add(daniPanel);
+            InitDani(nedelja);
+            Layout += NedeljaControl_Layout;
         }
 
-        private void InitDani()
+        private void NedeljaControl_Layout(object sender, LayoutEventArgs e)
         {
-            dan = new Panel();
+            resizeAllDani();
+        }
 
-            dan.Width = Width / 6;
-            dan.Height = Height;
-            dan.BackColor = Color.Red;
-            dan.Location = new Point(0, 0);
-            dan.MinimumSize = new Size(200, 200);
-            dan.Anchor = AnchorStyles.Right | AnchorStyles.Top;
-            Controls.Add(dan);
-            dani.Add(dan);
 
-            /*for (int i = 0; i < 1; i++)
+        private void resizeAllDani()
+        {
+            foreach (KeyValuePair<Panel, int> pair in dani)
             {
-                dan = new Panel();
-
-                dan.Width = Width/6;
+                dan = pair.Key;
+                float rbr = pair.Value;
+                dan.Width =  Convert.ToInt32( Math.Round((float)Width /  6));
+                dan.Location = new Point(Convert.ToInt32(Math.Round(Width * rbr / 6)), 0);
                 dan.Height = Height;
-                dan.BackColor = Color.Red;
-                dan.Location = new Point(dan.Width*i, 0);
-                dan.MinimumSize = new Size(200, 200);
-                dan.Anchor = AnchorStyles.Right | AnchorStyles.Top;
-                Controls.Add(dan);
-                dani.Add(dan);
-            }*/
+                dan.Paint += Dan_Paint;
+            }
 
-            //throw new NotImplementedException();
+        }
+        enum Dani
+        {
+            PON, UTO, SRED, ČET, PET, SUB
+        }
+        private void Dan_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            dan = (Panel)sender;
+            PointF pointL;
+            PointF pointR;
+            float visinaPodeoka = parentRaspored.visinaPodeoka;
+            Rectangle rec = new Rectangle(0, 0, dan.Width, (int)visinaNazivaDana);
+            StringFormat sf = new StringFormat ();
+           
+            sf.Alignment = StringAlignment.Center;
+            sf.LineAlignment = StringAlignment.Center;
+
+            g.DrawString(((Dani)dani[dan]).ToString(), GraphicLoader.getFontBold(15), new SolidBrush(Color.Black), rec, sf);
+
+
+
+            for (int i = 0; i < 16; i++)
+            {
+                pointL = new PointF(0, (visinaPodeoka * i) + visinaNazivaDana);
+                pointR = new PointF(dan.Width, (visinaPodeoka * i) + visinaNazivaDana);
+                g.DrawLine(pen, pointL, pointR);
+              
+
+            }
+            pointL = new PointF(0, (visinaPodeoka * 16) - 2 + visinaNazivaDana);
+            pointR = new PointF(Width, (visinaPodeoka * 16) - 2 + visinaNazivaDana);
+            g.DrawLine(pen, pointL, pointR);
+            g.DrawLine(pen,1, 1, 1, Height-1);
+            sf.Dispose();
+        }
+
+        private void InitDani(Nedelja nedelja)
+        {
+            daniPanel.Controls.Clear();
+            foreach (KeyValuePair<int, List<Termin>> pair in nedelja.getDanTermine())
+            {
+                int rbr = pair.Key;
+                dan = new Panel();
+                dan.BackColor = GraphicLoader.getColorLightGray();
+                dan.Location = new Point(0, 0);
+                daniPanel.Controls.Add(dan);
+                dani.Add(dan, rbr);
+                List<Termin> termini = pair.Value;
+                foreach(Termin termin in termini)
+                {
+                    //NAPRAVI TERMINE
+                }
+
+            }
+          
+
         }
 
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
-            PointF pointL;
-            PointF pointR;
-            Graphics g = pe.Graphics;
-            for (int i = 0; i < 16; i++)
-            {
-                pointL = new PointF(0, (visinaPodeoka * i) + visinaNazivaDana - debljinaLinije);
-                pointR = new PointF(Width, (visinaPodeoka * i) + visinaNazivaDana - debljinaLinije);
-                g.DrawLine(pen, pointL, pointR);
-
-            }
         }
 
-        private void RasporedControl_Resize(object sender, EventArgs e)
-        {
-            // visinaPodeoka = (float)(Height - visinaDatePikera) / 16f;
-            Refresh();
-        }
+
     }
 }

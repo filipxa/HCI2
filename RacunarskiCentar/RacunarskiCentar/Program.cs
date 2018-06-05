@@ -22,7 +22,7 @@ namespace RacunarskiCentar
 
             Action action;
             Random r = new Random();
-            for (int i = 1; i < 20; i++)
+            for (int i = 1; i < 25; i++)
             {
                 ucionica = new Ucionica("MI-A2-2", "32", i*4, null, new HashSet<Software>());
                 for (int j = 1; j < 6; j++)

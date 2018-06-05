@@ -74,6 +74,18 @@ namespace RacunarskiCentar
             }
             return true;
         }
+
+        internal List<KeyValuePair<int, List<Termin>>> getDanTermine()
+        {
+            List<KeyValuePair<int, List<Termin>>> rets = new List<KeyValuePair<int, List<Termin>>>();
+            for(int i=0;i<6; i++) 
+            {
+                rets.Add(new KeyValuePair<int, List<Termin>>(i, new List<Termin>()));
+
+            }
+            return rets;
+        }
+
         public override GUIObject Copy()
         {
             return new Nedelja(raspored, termini,ponedeljak);

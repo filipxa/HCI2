@@ -7,7 +7,7 @@ namespace RacunarskiCentar
 {
     public partial class Form1 : Form
     {
-
+        GUIObject activeObject = null;
         private const int toolWidth = 250;
         Panel mainPanel;
         Panel toolboxPanel;
@@ -15,18 +15,75 @@ namespace RacunarskiCentar
        
         public Form1()
         {
-           
-           
+            ToolStripButton b = new ToolStripButton();
+            b.Text = "Nazad";
+            b.Click += B_Click;
+            tb.Items.Add(b);
+            b = new ToolStripButton();
+            b.Text = "Undo";
+            
+            tb.Items.Add(b);
+            b.Click += B_Click1;
+            
             InitializeComponent();
-
+            BackColor = GraphicLoader.getColorLightGray();
             tb.BackColor = Color.DarkGray;
+            
             Controls.Add(tb);
             initRCView();
-            
             Height = 800;
             Width = 1000;
             MinimumSize = Size;
+            ResizeEnd += Form1_ResizeEnd;
+            ResizeBegin += Form1_ResizeBegin;
+
         }
+
+        private void B_Click1(object sender, EventArgs e)
+        {
+            if (DataControllercs.undoAvailable())
+            {
+                Action a = DataControllercs.undoAction();
+                initCurrentView();
+              
+            }
+            else
+            {
+                MessageBox.Show("Undo nije dostupan!");
+            }
+           
+        }
+
+        private void initCurrentView()
+        {
+            if (activeObject == null)
+            {
+                initRCView();
+            } else if(activeObject.GetType().Equals(typeof(Ucionica)))
+            {
+                initUcionicaView((Ucionica)activeObject);
+            }
+        }
+
+        private void B_Click(object sender, EventArgs e)
+        { 
+
+            if (activeObject!=null && activeObject.GetType().Equals(typeof(Ucionica)))
+            {
+                initRCView();
+            }
+        }
+
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            mainPanel.ResumeLayout(true);
+        }
+
+        private void Form1_ResizeBegin(object sender, EventArgs e)
+        {
+            mainPanel.SuspendLayout();
+        }
+
 
 
         private void initMainPanelFlow()
@@ -36,7 +93,7 @@ namespace RacunarskiCentar
             p.Padding = new Padding(15);
             p.FlowDirection = FlowDirection.LeftToRight;
             p.AutoScroll = true;
-            p.VerticalScroll.Visible = true;
+            p.VerticalScroll.Visible = false;
             initMainPanel(p);
         }
 
@@ -50,9 +107,9 @@ namespace RacunarskiCentar
         private void initMainPanel(Panel p)
         {
             p.Anchor = AnchorStyles.Right |AnchorStyles.Top  | AnchorStyles.Bottom | AnchorStyles.Left;
-            p.MinimumSize = new Size(Width- toolWidth, Height - tb.Height);
+            p.MinimumSize = new Size(Width- toolWidth, Height - tb.Height-40);
             p.Location = new Point(toolWidth, tb.Height);
-            p.BackColor = Color.FromArgb(176, 176, 183);
+            p.BackColor = GraphicLoader.getColorLightGray();
 
 
             Controls.Add(p);
@@ -71,10 +128,10 @@ namespace RacunarskiCentar
             if (toolboxPanel != null)
                 toolboxPanel.Dispose();
             p.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom ;
-            p.MinimumSize = new Size(toolWidth, Height - tb.Height);
+            p.MinimumSize = new Size(toolWidth, Height - tb.Height-40);
             p.Location = new Point(0, tb.Height);
          
-            p.BackColor = Color.FromArgb(73, 73, 73);
+            p.BackColor = GraphicLoader.getColorDarkGray();
             Controls.Add(p);
             toolboxPanel = p;
             
@@ -113,6 +170,7 @@ namespace RacunarskiCentar
         
         private void initRCView()
         {
+             activeObject = null;
             initMainPanelFlow();
             initToolPanel();
             Button button = new Button();
@@ -143,6 +201,7 @@ namespace RacunarskiCentar
             c.Width = 200;
             c.Height = 150;
             c.Margin = new Padding(15);
+            
             mainPanel.Controls.Add(c);
             c.DoubleClick += Ucionica_DoubleClick;
         }
@@ -163,6 +222,7 @@ namespace RacunarskiCentar
         {
             UcionicaControl uc = (UcionicaControl)sender;
             initUcionicaView(uc.GuiObject);
+
         }
 
     }
@@ -194,6 +254,7 @@ namespace RacunarskiCentar
 
         private void initUcionicaView(Ucionica ucionica)
         {
+            activeObject = ucionica;
             initMainPanel();
             initToolPanelTable();
             Smer s = new Smer("SW", "SOft kobas", DateTime.Now, "");
@@ -209,13 +270,10 @@ namespace RacunarskiCentar
 
             Raspored r = new Raspored(ucionica);
             RasporedControl rc = new RasporedControl(r, mainPanel);
-            rc.Height = mainPanel.Height;
-            rc.Width = mainPanel.Width;
             rc.Dock = DockStyle.Fill;
-            
+
 
             mainPanel.Controls.Add(rc);
-
             toolboxPanel.AutoScroll = true;
 
         }
@@ -226,7 +284,7 @@ namespace RacunarskiCentar
         {
             TableLayoutPanel t = (TableLayoutPanel)toolboxPanel;
             toolboxPanel.Padding = new Padding(15,0,0,0) ;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 8; i++)
             {
                 foreach (Smer smer in smerovi)
                 {
