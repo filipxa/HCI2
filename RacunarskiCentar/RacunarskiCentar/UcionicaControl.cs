@@ -19,6 +19,8 @@ namespace RacunarskiCentar
             InitializeComponent();
             MouseClick += EditClick;
             MouseDown += UcionicaControl_MouseDown;
+            AllowDrop = true;
+
         }
 
         private void UcionicaControl_MouseDown(object sender, MouseEventArgs e)

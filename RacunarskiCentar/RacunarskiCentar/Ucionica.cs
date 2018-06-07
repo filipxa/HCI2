@@ -104,7 +104,8 @@ namespace RacunarskiCentar
             Assets = ucionica.assets;
             installedSoftware = ucionica.installedSoftware;
             ID = ucionica.id;
-            raspored.restoreFromCopy(ucionica.raspored);
+            if(ucionica.raspored!=null)
+             raspored.restoreFromCopy(ucionica.raspored);
         }
     }
 

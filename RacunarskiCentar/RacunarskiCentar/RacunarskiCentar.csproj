@@ -98,6 +98,12 @@
       <DependentUpon>SoftwareForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Termin.cs" />
+    <Compile Include="TerminControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TerminControl.Designer.cs">
+      <DependentUpon>TerminControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="TerminForm.cs">
       <SubType>Form</SubType>
     </Compile>

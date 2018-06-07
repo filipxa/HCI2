@@ -22,11 +22,13 @@ namespace RacunarskiCentar
             InitializeComponent();
             InicijalizacijaComboBoxBrCasova();
             InicijalizacijaUnosVremena();
-            dateTimePicker1.MinDate = new DateTime(dan.Year, dan.Month, dan.Day, 7, 0, 0);
-            dateTimePicker1.MaxDate = new DateTime(dan.Year, dan.Month, dan.Day, 22, 0, 0);
+
+            DateTime ponedeljak = (nedelja == null) ? dan : nedelja.Ponedeljak;
+            dateTimePicker1.MinDate = new DateTime(ponedeljak.Year, ponedeljak.Month, dan.Day, 7, 0, 0);
+            dateTimePicker1.MaxDate = new DateTime(ponedeljak.Year, ponedeljak.Month, dan.Day, 22, 0, 0);
 
         }
-        public TerminForm(Termin termin) : this(null, null,new  DateTime(2018,10,10))//termin.Nedelja, termin.Predmet,termin.PocetakTermina)
+        public TerminForm(Termin termin) : this(termin.Nedelja, termin.Predmet, termin.PocetakTermina)
         {
             this.termin = termin;
         }
@@ -37,10 +39,6 @@ namespace RacunarskiCentar
             dateTimePicker1.CustomFormat = "HH:mm";
             dateTimePicker1.ShowUpDown = true;
         }
-
-        
-
-
 
         private void InicijalizacijaComboBoxBrCasova()
         {
@@ -54,13 +52,14 @@ namespace RacunarskiCentar
 
         }
 
+        private Termin getTerminFromFields()
+        {
+            termin = new Termin(dateTimePicker1.Value, 1, predmet, nedelja);
+            return termin;
+        }
         private void dateTimePicker1_Validated(object sender, EventArgs e)
         {
-            DateTime ceoDatum;
-            ceoDatum = nedelja.Ponedeljak;//ovde dodati datum iz nedelje
-            TimeSpan ts = new TimeSpan(dateTimePicker1.Value.Hour, dateTimePicker1.Value.Minute, 0);
-            ceoDatum = ceoDatum.Date + ts;
-            nedelja.isSlobodan(dateTimePicker1.Value, (int)comboBoxC.SelectedValue);
+            
 
         }
     }

@@ -15,7 +15,40 @@ namespace RacunarskiCentar
             this.duzinaTermina = duzinaTermina;
             Predmet = predmet;
             Nedelja = nedelja;
-            KrajTermina = pocetakTermina.AddMinutes(45 * duzinaTermina);
+            KrajTermina = PocetakTermina.AddMinutes(45 * duzinaTermina);
+        }
+
+        public Termin(DateTime pocetakTermina, DateTime krajTermina, Predmet predmet, Nedelja nedelja)
+        {
+            PocetakTermina = pocetakTermina;
+            Predmet = predmet;
+            Nedelja = nedelja;
+            KrajTermina = krajTermina;
+        }
+        //Proverava da li je bilo koji datum iz liste 
+        private bool DateBetween(DateTime date1, DateTime date2, params DateTime[] datesToCheck)
+        {
+            foreach(DateTime date in datesToCheck)
+            {
+                if (date1 <= date && date2 >= date)
+                {
+                    return true;
+                }
+            }
+            return false;
+           
+        }
+
+        public bool IsTerminIntersec(Termin t)
+        {
+            return DateBetween(t.pocetakTermina, t.krajTermina, pocetakTermina, krajTermina) || DateBetween(pocetakTermina, krajTermina, t.pocetakTermina, t.krajTermina);
+
+        }
+
+        public bool IsTerminIntersec(DateTime pocetak, DateTime kraj)
+        {
+            return DateBetween(pocetak, kraj, pocetakTermina, krajTermina) || DateBetween(pocetakTermina, krajTermina, pocetak, kraj);
+
         }
         public Nedelja Nedelja
         {

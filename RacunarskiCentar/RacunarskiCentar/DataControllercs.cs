@@ -134,4 +134,34 @@ namespace RacunarskiCentar
             throw new NotImplementedException();
         }
     }
+
+    public class ChainAction : Action
+    {
+        public List<Action> actions;
+        public ChainAction() : base(null)
+        {
+            actions = new List<Action>();
+
+        }
+        internal override void excuteAction()
+        {
+            foreach (Action action in actions)
+            {
+                action.excuteAction();
+            }
+        }
+
+        public override Action GetReverseAction()
+        {
+            List<Action> reverseActions = new List<Action>(actions);
+            ChainAction reverse = new ChainAction();
+            reverseActions.Reverse();
+            foreach (Action action in reverseActions)
+            {
+                reverse.actions.Add(action);
+            }
+
+            return reverse;
+        }
+    }
 }

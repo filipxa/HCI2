@@ -31,8 +31,9 @@ namespace RacunarskiCentar
             
             Controls.Add(tb);
             initRCView();
-            Height = 800;
-            Width = 1000;
+         
+            
+            ClientSize = new Size(1000,800);
             MinimumSize = Size;
             ResizeEnd += Form1_ResizeEnd;
             ResizeBegin += Form1_ResizeBegin;
@@ -107,7 +108,7 @@ namespace RacunarskiCentar
         private void initMainPanel(Panel p)
         {
             p.Anchor = AnchorStyles.Right |AnchorStyles.Top  | AnchorStyles.Bottom | AnchorStyles.Left;
-            p.MinimumSize = new Size(Width- toolWidth, Height - tb.Height-40);
+            p.MinimumSize = new Size(ClientSize.Width - toolWidth, ClientSize.Height - tb.Height);
             p.Location = new Point(toolWidth, tb.Height);
             p.BackColor = GraphicLoader.getColorLightGray();
 
@@ -128,13 +129,12 @@ namespace RacunarskiCentar
             if (toolboxPanel != null)
                 toolboxPanel.Dispose();
             p.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom ;
-            p.MinimumSize = new Size(toolWidth, Height - tb.Height-40);
+            p.MinimumSize = new Size(toolWidth, ClientSize.Height - tb.Height);
             p.Location = new Point(0, tb.Height);
          
             p.BackColor = GraphicLoader.getColorDarkGray();
             Controls.Add(p);
             toolboxPanel = p;
-            
 
 
         }
@@ -260,7 +260,7 @@ namespace RacunarskiCentar
             Smer s = new Smer("SW", "SOft kobas", DateTime.Now, "");
             for (int i = 0; i < 10; i++)
             {
-                Predmet p = new Predmet("p" + i.ToString(), "", "", "", 0, 0, 0);
+                Predmet p = new Predmet("p" + i.ToString(), "", "", "", 0, i, 0);
                 s.Predmeti.Add(p);
             }
             smerovi.Add(s);

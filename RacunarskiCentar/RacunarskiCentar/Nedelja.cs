@@ -18,6 +18,7 @@ namespace RacunarskiCentar
         {
             Termini = new List<Termin>();
             Raspored = raspored;
+            Ponedeljak = ponedeljak;
             
         }
         public Nedelja(Raspored raspoerd, List<Termin> termini,DateTime ponedeljak) : this(raspoerd,ponedeljak)
@@ -40,49 +41,71 @@ namespace RacunarskiCentar
             get => ponedeljak;
             set
             {
-                ponedeljak = value;
+                
+                int diff = (7 + (value.DayOfWeek - DayOfWeek.Monday)) % 7;
+
+                ponedeljak = new DateTime(value.Year, value.Month, value.Day - 1 * diff, 8, 0, 0);
+
             }
         }
-        public bool isSlobodan(DateTime vremePocetka, int brCasova)
+        public bool isSlobodan(Termin termin)
         {
-            DateTime vremeKraja = vremePocetka.AddMinutes(45 * brCasova);
 
             foreach (Termin t in termini)
-            {   //prvo je pocetak/kraj vremena koje je uneseno drugo je p/k vreman termina
-                int pocetakPPocetakT = DateTime.Compare(vremePocetka, t.PocetakTermina);//v,p if(v<0) v pre t,provera, termin
-                int pocetakPKrajT = DateTime.Compare(vremePocetka, t.KrajTermina);//
+            {
 
-                int krajPPocetakT = DateTime.Compare(vremeKraja, t.PocetakTermina);//
-                int krajPKrajT = DateTime.Compare(vremeKraja, t.PocetakTermina);//
-
-                //provera da li se pocetak ili kraj nalazi u toku termina
-                if (pocetakPPocetakT >= 0 && pocetakPKrajT<=0)
+                if (t.IsTerminIntersec(termin))
                 {
                     return false;
                 }
-                if (krajPPocetakT >= 0 && krajPKrajT <= 0)
-                {
-                    return false;
-                }
-                //proverava da li neki od termina se nalazi unutar zadatog vremena
-                if (pocetakPPocetakT <= 0 && krajPKrajT >= 0)
-                {
-                    return false;
-                }
-                
-    
             }
             return true;
         }
 
-        internal List<KeyValuePair<int, List<Termin>>> getDanTermine()
+        public bool isSlobodan(DateTime pocetakTermina, DateTime krajTermina, Termin ignoreTermin)
         {
-            List<KeyValuePair<int, List<Termin>>> rets = new List<KeyValuePair<int, List<Termin>>>();
-            for(int i=0;i<6; i++) 
-            {
-                rets.Add(new KeyValuePair<int, List<Termin>>(i, new List<Termin>()));
 
+            foreach (Termin t in termini)
+            {
+                if (t.Equals(ignoreTermin))
+                    continue;
+                if (t.IsTerminIntersec(pocetakTermina, krajTermina))
+                {
+                    return false;
+                }
             }
+            return true;
+        }
+        public bool isSlobodan(DateTime pocetakTermina, DateTime krajTermina)
+        {
+
+            foreach (Termin t in termini)
+            {
+
+                if (t.IsTerminIntersec(pocetakTermina, krajTermina))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+
+        internal Dictionary<int, List<Termin>> getDanTermine()
+        {
+
+            Dictionary<int, List<Termin>> rets = new Dictionary<int, List<Termin>>();
+            int dan;
+            for(int i = 0; i < 6; i++)
+            {
+                rets.Add(i, new List<Termin>());
+            }
+            foreach (Termin t in termini)
+            {
+                dan = t.PocetakTermina.Day - ponedeljak.Day;
+                rets[dan].Add(t);
+            }
+
             return rets;
         }
 

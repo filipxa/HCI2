@@ -18,7 +18,18 @@ namespace RacunarskiCentar
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             InitializeComponent();
             BackColor = Color.Transparent;
+            MouseDown += PredmetControl_MouseDown;
         }
+
+        private void PredmetControl_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && e.Clicks == 1)
+            {
+                DoDragDrop(GuiObject, DragDropEffects.All);
+            }
+
+        }
+    
 
         protected override void OnPaint(PaintEventArgs pe)
         {
