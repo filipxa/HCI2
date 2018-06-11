@@ -230,9 +230,10 @@ namespace RacunarskiCentar
         }
         private DateTime getDateFromY(Panel p, int y)
         {
-            float visinaPodeoka =parentRaspored.getVisinaPodeoka(); 
+            float visinaPodeoka = parentRaspored.getVisinaPodeoka(); 
             int vreme = y - (int)visinaNazivaDana;
-            vreme = vreme / (int)visinaPodeoka;
+            float brpodeoka = vreme / visinaPodeoka;
+            vreme = (int)brpodeoka;
             vreme = vreme * 15;
             return GuiObject.Ponedeljak.AddMinutes(vreme).AddDays(dani[p]);
         }
