@@ -64,7 +64,7 @@ namespace RacunarskiCentar
             return new HashSet<Software>();
         }
 
-        private class ComboValue
+        public class ComboValue
         {
             UcionicaAssets _value;
             public override string ToString()
@@ -141,6 +141,9 @@ namespace RacunarskiCentar
 
         }
 
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

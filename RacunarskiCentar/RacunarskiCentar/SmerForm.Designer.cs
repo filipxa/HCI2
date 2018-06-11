@@ -36,7 +36,7 @@
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.textBoxIme = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.textBoxOpis = new System.Windows.Forms.RichTextBox();
             this.buttonSacuvaj = new System.Windows.Forms.Button();
             this.buttonOdustani = new System.Windows.Forms.Button();
             this.buttonDodajPredmet = new System.Windows.Forms.Button();
@@ -94,6 +94,7 @@
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(220, 20);
             this.textBoxID.TabIndex = 5;
+            this.textBoxID.Validated += new System.EventHandler(this.textBoxID_Validated);
             // 
             // textBoxIme
             // 
@@ -109,13 +110,13 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(220, 20);
             this.dateTimePicker1.TabIndex = 7;
             // 
-            // richTextBox1
+            // textBoxOpis
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(24, 181);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(220, 106);
-            this.richTextBox1.TabIndex = 8;
-            this.richTextBox1.Text = "";
+            this.textBoxOpis.Location = new System.Drawing.Point(24, 181);
+            this.textBoxOpis.Name = "textBoxOpis";
+            this.textBoxOpis.Size = new System.Drawing.Size(220, 106);
+            this.textBoxOpis.TabIndex = 8;
+            this.textBoxOpis.Text = "";
             // 
             // buttonSacuvaj
             // 
@@ -125,6 +126,7 @@
             this.buttonSacuvaj.TabIndex = 10;
             this.buttonSacuvaj.Text = "Sacuvaj";
             this.buttonSacuvaj.UseVisualStyleBackColor = true;
+            this.buttonSacuvaj.Click += new System.EventHandler(this.buttonSacuvaj_Click);
             // 
             // buttonOdustani
             // 
@@ -161,7 +163,7 @@
             this.Controls.Add(this.buttonDodajPredmet);
             this.Controls.Add(this.buttonOdustani);
             this.Controls.Add(this.buttonSacuvaj);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.textBoxOpis);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBoxIme);
             this.Controls.Add(this.textBoxID);
@@ -187,7 +189,7 @@
         private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.TextBox textBoxIme;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox textBoxOpis;
         private System.Windows.Forms.Button buttonSacuvaj;
         private System.Windows.Forms.Button buttonOdustani;
         private System.Windows.Forms.Button buttonDodajPredmet;

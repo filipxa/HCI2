@@ -10,7 +10,7 @@ namespace RacunarskiCentar
     {   
         string id;
         string ime;
-        string smerPredmeta;
+        Smer smerPredmeta;
         string opis;
         int brLjudi;
         int brCasova;
@@ -19,7 +19,7 @@ namespace RacunarskiCentar
 
         HashSet<Software> installedSoftware;
 
-        public Predmet(string id, string ime, string smerPredmeta, string opis,int brLjudi, int brCasova, int brTermina)
+        public Predmet(string id, string ime, Smer smerPredmeta, string opis,int brLjudi, int brCasova, int brTermina)
         {  
             ID =id;
             Ime = ime;
@@ -33,7 +33,7 @@ namespace RacunarskiCentar
 
         }
 
-        public Predmet(string id, string ime, string smerPredmeta, string opis,int brLjudi, int brCasova, int brTermina, 
+        public Predmet(string id, string ime, Smer smerPredmeta, string opis,int brLjudi, int brCasova, int brTermina, 
             HashSet<UcionicaAssets> assets, HashSet<Software> installedSoftware) : this(id, ime, smerPredmeta, opis,brLjudi, brCasova,brTermina)
         {
 
@@ -86,7 +86,7 @@ namespace RacunarskiCentar
                 OnValueChanged(new EventArgs());
             }
         }
-        public string SmerPredmeta {
+        public Smer SmerPredmeta {
             get => smerPredmeta;
             set {
                 smerPredmeta = value;
