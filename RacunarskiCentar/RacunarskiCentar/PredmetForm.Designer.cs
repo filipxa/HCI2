@@ -166,7 +166,7 @@
             // 
             this.numericUpDownBrojLjudi.Location = new System.Drawing.Point(27, 95);
             this.numericUpDownBrojLjudi.Name = "numericUpDownBrojLjudi";
-            this.numericUpDownBrojLjudi.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDownBrojLjudi.Size = new System.Drawing.Size(146, 20);
             this.numericUpDownBrojLjudi.TabIndex = 17;
             this.numericUpDownBrojLjudi.Value = new decimal(new int[] {
             1,
@@ -215,7 +215,7 @@
             0,
             0});
             this.numericUpDownBrojTermina.Name = "numericUpDownBrojTermina";
-            this.numericUpDownBrojTermina.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDownBrojTermina.Size = new System.Drawing.Size(146, 20);
             this.numericUpDownBrojTermina.TabIndex = 19;
             this.numericUpDownBrojTermina.Value = new decimal(new int[] {
             1,

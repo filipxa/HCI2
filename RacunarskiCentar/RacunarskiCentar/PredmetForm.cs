@@ -28,7 +28,7 @@ namespace RacunarskiCentar
             Action action;
             if(predmet == null)
             {
-                predmet = new Predmet(textBoxID.Text, textBoxNaziv.Text, Convert.ToString(smer), richTextBoxOpis.Text, Convert.ToInt32(numericUpDownBrojLjudi), Convert.ToInt32(numericUpDownDuzinaTermina), Convert.ToInt32(numericUpDownBrojTermina));
+                predmet = new Predmet(textBoxID.Text, textBoxNaziv.Text, smer, richTextBoxOpis.Text, Convert.ToInt32(numericUpDownBrojLjudi), Convert.ToInt32(numericUpDownDuzinaTermina), Convert.ToInt32(numericUpDownBrojTermina));
 
                 action = new CreateAction(predmet);
             }
