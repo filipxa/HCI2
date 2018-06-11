@@ -47,7 +47,7 @@ namespace RacunarskiCentar
                 OnValueChanged(new EventArgs());
             }
         }
-        string Godina
+        public string Godina
         {
             get => godina;
             set

@@ -106,6 +106,8 @@ namespace RacunarskiCentar
                 termin.Nedelja.Termini.Add(termin);
         }
 
+
+
        static public List<Raspored> getRasporedi()
         {
             List<Raspored> rets = new List<Raspored>();
