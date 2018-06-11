@@ -18,7 +18,26 @@ namespace RacunarskiCentar
         public SoftwareForm(Software software)
         {
             this.software = software;
+            
             InitializeComponent();
+            this.checkBox1.CheckedChanged += CheckBox_CheckedChanged;
+            this.checkBox1.Checked = true;
+            this.checkBox2.CheckedChanged += CheckBox_CheckedChanged;
+        }
+
+        private void CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+          
+            if(!checkBox1.Checked && !checkBox2.Checked)
+            {
+                labelOS.ForeColor = Color.Red;
+            }
+            else
+            {
+                labelOS.ForeColor = Color.Black;
+            }
+            
+
         }
 
         public Action GetAction()
@@ -59,29 +78,6 @@ namespace RacunarskiCentar
 
             }
         }
-
-        private void buttonSacuvaj_Click(object sender, EventArgs e)
-        {
-            int rb = 1;
-            string poruka = "";
-            if(textBoxID.Text.Length == 0)
-            {
-                poruka += "#" + rb +": Morate uneti ID softvera.\n";
-                rb++;
-            }
-            if(!checkBox1.Checked && !checkBox2.Checked)
-            {
-                poruka += "#" + rb + ": Morate odabrati bar jedan operativni sistem.";
-                rb++;
-            }
-            if (poruka.Length > 0)
-            {
-                DialogResult = DialogResult.None;
-                MessageBox.Show(poruka, "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-
-            }
-        }
-
         private void textBoxIme_Validated(object sender, EventArgs e)
         {
             if (textBoxIme.Text.Length == 0)
@@ -93,6 +89,37 @@ namespace RacunarskiCentar
                 labelIme.ForeColor = Color.Black;
             }
         }
+
+        private void buttonSacuvaj_Click(object sender, EventArgs e)
+        {
+            int rb = 1;
+            string poruka = "";
+            if(textBoxID.Text.Length == 0)
+            {
+                poruka += "#" + rb +": Morate uneti ID softvera.\n";
+                rb++;
+            }
+            if(textBoxIme.Text.Length == 0)
+            {
+                labelIme.ForeColor = Color.Red;
+                poruka += "#" + rb + ": Morate uneti naziv softvera.\n";
+                rb++;
+            }
+            if(!checkBox1.Checked && !checkBox2.Checked)
+            {
+                labelOS.ForeColor = Color.Red;
+                poruka += "#" + rb + ": Morate odabrati bar jedan operativni sistem.";
+                rb++;
+            }
+            if (poruka.Length > 0)
+            {
+                DialogResult = DialogResult.None;
+                MessageBox.Show(poruka, "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+
+            }
+        }
+
+     
 
        
 

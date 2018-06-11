@@ -21,6 +21,58 @@ namespace RacunarskiCentar
         {
             this.ucionica = ucionica;
             InitializeComponent();
+            checkedListBox1.ItemCheck += CheckedListBox1_ItemCheck;
+
+            if (ucionica != null)
+            {
+                popuniPolja();
+            }
+        }
+
+        private void CheckedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            ComboValue cv = (ComboValue)checkedListBox1.Items[e.Index];
+            if (cv.Value.Equals(UcionicaAssets.windows) || cv.Value.Equals(UcionicaAssets.linux))
+            {
+                popuniSoftvere();
+                
+            }
+            
+
+        }
+
+        private List<Software> popuniSoftvere()
+        {
+            checkedListBox2.Items.Clear();
+            List<UcionicaAssets> listaSistema = new List<UcionicaAssets>();
+            
+            foreach (ComboValue cv in checkedListBox1.CheckedItems)
+            {
+                if (cv.Value.Equals(UcionicaAssets.linux) || (cv.Value.Equals(UcionicaAssets.windows)))
+                {
+                    listaSistema.Add(cv.Value);
+                }
+            }
+            return null;
+            // TO-DO: Vlada funkcija
+        }
+
+        private void popuniPolja()
+        {
+            textBoxID.Text = ucionica.ID;
+            numericUpDown1.Value = ucionica.BrRadnihMesta;
+            // popunjavanje assets-a
+            foreach (UcionicaAssets aset in Enums.GetValues(typeof(UcionicaAssets)))
+            {
+                bool check = ucionica.Assets.Contains(aset);
+                ComboValue cv = new ComboValue(aset);
+                checkedListBox1.Items.Add(cv, check);
+            }
+            // popunjavanje os-a
+            checkedListBox2.Items.AddRange(softverOperativanSistemFiltiriranje());
+
+
+
         }
 
         public Action GetAction()
@@ -131,6 +183,7 @@ namespace RacunarskiCentar
             {
                 poruka += "Morate uneti ID ucionice.";
             }
+            
             if (poruka.Length > 0)
             {
                 DialogResult = DialogResult.None;
@@ -145,5 +198,15 @@ namespace RacunarskiCentar
         {
 
         }
+
+        private void buttonSoftware_Click(object sender, EventArgs e)
+        {
+            
+            PredmetForm sf = new PredmetForm(null, null);
+            sf.ShowDialog();
+            
+        }
+
+      
     }
 }
