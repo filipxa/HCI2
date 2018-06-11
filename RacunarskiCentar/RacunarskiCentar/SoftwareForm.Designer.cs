@@ -141,7 +141,6 @@
             this.textBoxURL.Name = "textBoxURL";
             this.textBoxURL.Size = new System.Drawing.Size(220, 20);
             this.textBoxURL.TabIndex = 10;
-            this.textBoxURL.Validated += new System.EventHandler(this.textBoxURL_Validated);
             // 
             // textBoxGodina
             // 
@@ -149,7 +148,6 @@
             this.textBoxGodina.Name = "textBoxGodina";
             this.textBoxGodina.Size = new System.Drawing.Size(220, 20);
             this.textBoxGodina.TabIndex = 11;
-            this.textBoxGodina.Validated += new System.EventHandler(this.textBoxGodina_Validated);
             // 
             // textBoxCena
             // 
@@ -157,7 +155,6 @@
             this.textBoxCena.Name = "textBoxCena";
             this.textBoxCena.Size = new System.Drawing.Size(220, 20);
             this.textBoxCena.TabIndex = 12;
-            this.textBoxCena.Validated += new System.EventHandler(this.textBoxCena_Validated);
             // 
             // buttonSacuvaj
             // 
