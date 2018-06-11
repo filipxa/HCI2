@@ -15,9 +15,8 @@ namespace RacunarskiCentar
         public TerminControl(Termin termin, Panel panel) : base(termin, panel)
         {
             InitializeComponent();
-            this.BackColor = Color.Red;
             MouseDown += TerminControl_MouseDown;
-            
+            BackColor = GraphicLoader.getColorDarkGray();
         }
 
         private void TerminControl_MouseDown(object sender, MouseEventArgs e)
@@ -32,7 +31,6 @@ namespace RacunarskiCentar
 
         protected override void OnPaint(PaintEventArgs pe)
         {
-            
             base.OnPaint(pe);
         }
     }

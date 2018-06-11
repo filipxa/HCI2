@@ -99,8 +99,9 @@ namespace RacunarskiCentar
                     if (termin != null)
                     {
                         termin.Width = dan.Width;
-                        termin.Location = new Point(3, getYFromDateTime(termin.GuiObject.PocetakTermina, dan) + 5);
+                        termin.Location = new Point(3, getYFromDateTime(termin.GuiObject.PocetakTermina, dan));
                         termin.Size = new Size(dan.Width - 3, getYFromDateTime(termin.GuiObject.KrajTermina, dan) - getYFromDateTime(termin.GuiObject.PocetakTermina, dan));
+                        termin.Invalidate();
                     }
                 }
                
@@ -118,7 +119,7 @@ namespace RacunarskiCentar
             dan = (Panel)sender;
             PointF pointL;
             PointF pointR;
-            float visinaPodeoka = parentRaspored.visinaPodeoka;
+            float visinaPodeoka = parentRaspored.getVisinaPodeoka();
             Rectangle rec = new Rectangle(0, 0, dan.Width, (int)visinaNazivaDana);
             StringFormat sf = new StringFormat ();
            
@@ -209,6 +210,7 @@ namespace RacunarskiCentar
         {
             ChainAction chainAction = new ChainAction();
             Termin novi = new Termin(pocetakTermina, krajTermina, termin.Predmet, GuiObject);
+            
             chainAction.actions.Add(new DeleteAction(termin));
 
             chainAction.actions.Add(new CreateAction(novi));
@@ -228,21 +230,21 @@ namespace RacunarskiCentar
         }
         private DateTime getDateFromY(Panel p, int y)
         {
-            float visinaPodeoka = parentRaspored.visinaPodeoka;
+            float visinaPodeoka = parentRaspored.getVisinaPodeoka(); 
             int vreme = y - (int)visinaNazivaDana;
-            vreme = vreme / (int)visinaPodeoka;
+            float brpodeoka = vreme / visinaPodeoka;
+            vreme = (int)brpodeoka;
             vreme = vreme * 15;
             return GuiObject.Ponedeljak.AddMinutes(vreme).AddDays(dani[p]);
         }
 
         private int getYFromDateTime(DateTime time, Panel p)
         {
-            int hours = time.Hour;
+            int hours = time.Hour-7;
             int minutes = time.Minute;
-            hours -= 8;
-            float visinaPodeoka = (p.Height - visinaNazivaDana) / RasporedControl.brPodeoka;
-
-            return (hours*4 + minutes/15) * (int)visinaPodeoka + (int)visinaNazivaDana ;
+            int brPodeoka = hours * 4 + minutes / 15;
+            float visinaPodeoka = parentRaspored.getVisinaPodeoka();
+            return (int)Math.Round( brPodeoka * visinaPodeoka + visinaNazivaDana) ;
         }
 
         private void CreateTerminControl(Termin termin, Panel dan)
@@ -251,7 +253,7 @@ namespace RacunarskiCentar
             dan.Controls.Add(t);
             t.Width = dan.Width;
             t.Location = new Point(3, getYFromDateTime(termin.PocetakTermina, dan));
-            t.Size = new Size(dan.Width-3, getYFromDateTime(termin.KrajTermina, dan) - getYFromDateTime(termin.PocetakTermina, dan) + 15);
+            t.Size = new Size(dan.Width-3, getYFromDateTime(termin.KrajTermina, dan) - getYFromDateTime(termin.PocetakTermina, dan));
             
         }
 

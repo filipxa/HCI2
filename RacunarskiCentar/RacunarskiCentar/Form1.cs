@@ -260,7 +260,7 @@ namespace RacunarskiCentar
             Smer s = new Smer("SW", "SOft kobas", DateTime.Now, "");
             for (int i = 0; i < 10; i++)
             {
-                Predmet p = new Predmet("p" + i.ToString(), "", "", "", 0, i, 0);
+                Predmet p = new Predmet("p" + i.ToString(), "", s, "", 0, i, 0);
                 s.Predmeti.Add(p);
             }
             smerovi.Add(s);
@@ -291,8 +291,6 @@ namespace RacunarskiCentar
                     
                     SmerControl sc = new SmerControl(smer, toolboxPanel);
                     sc.ColapseedChanged += Sc_ValueChanged;
-
-                    
                     t.Controls.Add(sc);
 
                 }

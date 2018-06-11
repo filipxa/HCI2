@@ -44,6 +44,9 @@
             this.buttonSacuvaj = new System.Windows.Forms.Button();
             this.buttonOdustani = new System.Windows.Forms.Button();
             this.richTextBoxOpis = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // labelID
@@ -60,14 +63,14 @@
             this.labelIme.AutoSize = true;
             this.labelIme.Location = new System.Drawing.Point(22, 68);
             this.labelIme.Name = "labelIme";
-            this.labelIme.Size = new System.Drawing.Size(24, 13);
+            this.labelIme.Size = new System.Drawing.Size(34, 13);
             this.labelIme.TabIndex = 1;
-            this.labelIme.Text = "Ime";
+            this.labelIme.Text = "Naziv";
             // 
             // labelProizvodjac
             // 
             this.labelProizvodjac.AutoSize = true;
-            this.labelProizvodjac.Location = new System.Drawing.Point(22, 116);
+            this.labelProizvodjac.Location = new System.Drawing.Point(22, 162);
             this.labelProizvodjac.Name = "labelProizvodjac";
             this.labelProizvodjac.Size = new System.Drawing.Size(62, 13);
             this.labelProizvodjac.TabIndex = 2;
@@ -76,7 +79,7 @@
             // labelURL
             // 
             this.labelURL.AutoSize = true;
-            this.labelURL.Location = new System.Drawing.Point(22, 163);
+            this.labelURL.Location = new System.Drawing.Point(22, 209);
             this.labelURL.Name = "labelURL";
             this.labelURL.Size = new System.Drawing.Size(29, 13);
             this.labelURL.TabIndex = 3;
@@ -85,7 +88,7 @@
             // labelGodina
             // 
             this.labelGodina.AutoSize = true;
-            this.labelGodina.Location = new System.Drawing.Point(22, 208);
+            this.labelGodina.Location = new System.Drawing.Point(22, 254);
             this.labelGodina.Name = "labelGodina";
             this.labelGodina.Size = new System.Drawing.Size(41, 13);
             this.labelGodina.TabIndex = 4;
@@ -94,7 +97,7 @@
             // labelCena
             // 
             this.labelCena.AutoSize = true;
-            this.labelCena.Location = new System.Drawing.Point(22, 252);
+            this.labelCena.Location = new System.Drawing.Point(22, 298);
             this.labelCena.Name = "labelCena";
             this.labelCena.Size = new System.Drawing.Size(32, 13);
             this.labelCena.TabIndex = 5;
@@ -103,7 +106,7 @@
             // labelOpis
             // 
             this.labelOpis.AutoSize = true;
-            this.labelOpis.Location = new System.Drawing.Point(22, 297);
+            this.labelOpis.Location = new System.Drawing.Point(22, 343);
             this.labelOpis.Name = "labelOpis";
             this.labelOpis.Size = new System.Drawing.Size(28, 13);
             this.labelOpis.TabIndex = 6;
@@ -115,6 +118,7 @@
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(220, 20);
             this.textBoxID.TabIndex = 7;
+            this.textBoxID.Validated += new System.EventHandler(this.textBoxID_Validated);
             // 
             // textBoxIme
             // 
@@ -122,47 +126,49 @@
             this.textBoxIme.Name = "textBoxIme";
             this.textBoxIme.Size = new System.Drawing.Size(220, 20);
             this.textBoxIme.TabIndex = 8;
+            this.textBoxIme.Validated += new System.EventHandler(this.textBoxIme_Validated);
             // 
             // textBoxProizvodjac
             // 
-            this.textBoxProizvodjac.Location = new System.Drawing.Point(25, 133);
+            this.textBoxProizvodjac.Location = new System.Drawing.Point(25, 179);
             this.textBoxProizvodjac.Name = "textBoxProizvodjac";
             this.textBoxProizvodjac.Size = new System.Drawing.Size(220, 20);
             this.textBoxProizvodjac.TabIndex = 9;
             // 
             // textBoxURL
             // 
-            this.textBoxURL.Location = new System.Drawing.Point(25, 180);
+            this.textBoxURL.Location = new System.Drawing.Point(25, 226);
             this.textBoxURL.Name = "textBoxURL";
             this.textBoxURL.Size = new System.Drawing.Size(220, 20);
             this.textBoxURL.TabIndex = 10;
             // 
             // textBoxGodina
             // 
-            this.textBoxGodina.Location = new System.Drawing.Point(25, 225);
+            this.textBoxGodina.Location = new System.Drawing.Point(25, 271);
             this.textBoxGodina.Name = "textBoxGodina";
             this.textBoxGodina.Size = new System.Drawing.Size(220, 20);
             this.textBoxGodina.TabIndex = 11;
             // 
             // textBoxCena
             // 
-            this.textBoxCena.Location = new System.Drawing.Point(25, 269);
+            this.textBoxCena.Location = new System.Drawing.Point(25, 315);
             this.textBoxCena.Name = "textBoxCena";
             this.textBoxCena.Size = new System.Drawing.Size(220, 20);
             this.textBoxCena.TabIndex = 12;
             // 
             // buttonSacuvaj
             // 
-            this.buttonSacuvaj.Location = new System.Drawing.Point(170, 397);
+            this.buttonSacuvaj.Location = new System.Drawing.Point(170, 443);
             this.buttonSacuvaj.Name = "buttonSacuvaj";
             this.buttonSacuvaj.Size = new System.Drawing.Size(75, 23);
             this.buttonSacuvaj.TabIndex = 14;
             this.buttonSacuvaj.Text = "Sacuvaj";
             this.buttonSacuvaj.UseVisualStyleBackColor = true;
+            this.buttonSacuvaj.Click += new System.EventHandler(this.buttonSacuvaj_Click);
             // 
             // buttonOdustani
             // 
-            this.buttonOdustani.Location = new System.Drawing.Point(25, 397);
+            this.buttonOdustani.Location = new System.Drawing.Point(25, 443);
             this.buttonOdustani.Name = "buttonOdustani";
             this.buttonOdustani.Size = new System.Drawing.Size(75, 23);
             this.buttonOdustani.TabIndex = 15;
@@ -171,17 +177,48 @@
             // 
             // richTextBoxOpis
             // 
-            this.richTextBoxOpis.Location = new System.Drawing.Point(25, 319);
+            this.richTextBoxOpis.Location = new System.Drawing.Point(25, 365);
             this.richTextBoxOpis.Name = "richTextBoxOpis";
             this.richTextBoxOpis.Size = new System.Drawing.Size(220, 56);
             this.richTextBoxOpis.TabIndex = 16;
             this.richTextBoxOpis.Text = "";
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(22, 111);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Operativni sistem";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(25, 132);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(70, 17);
+            this.checkBox1.TabIndex = 17;
+            this.checkBox1.Text = "Windows";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(134, 132);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(51, 17);
+            this.checkBox2.TabIndex = 18;
+            this.checkBox2.Text = "Linux";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
             // SoftwareForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 453);
+            this.ClientSize = new System.Drawing.Size(286, 503);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.richTextBoxOpis);
             this.Controls.Add(this.buttonOdustani);
             this.Controls.Add(this.buttonSacuvaj);
@@ -224,5 +261,8 @@
         private System.Windows.Forms.Button buttonSacuvaj;
         private System.Windows.Forms.Button buttonOdustani;
         private System.Windows.Forms.RichTextBox richTextBoxOpis;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
