@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RacunarskiCentar
 {
-    class DataManger
+    public partial class DataManger
     {
         static List<Ucionica> ucionice = new List<Ucionica>();
         static List<Smer> smerovi = new List<Smer>();
@@ -14,7 +14,7 @@ namespace RacunarskiCentar
 
         internal static List<Smer> getSmers()
         {
-            return smerovi;
+            return smerFilterisanje();
         }
         public static void addObject(GUIObject guiObject)
         {
@@ -61,7 +61,7 @@ namespace RacunarskiCentar
 
         internal static List<Ucionica> getUcionice()
         {
-            return ucionice;
+            return ucionicaFilterisanje();
         }
 
         internal static void removeObject(GUIObject guiObject)
@@ -135,9 +135,9 @@ namespace RacunarskiCentar
         static public List<Predmet> getPredmeti()
         {
             List<Predmet> rets = new List<Predmet>();
-            foreach (Smer smer in smerovi)
+            foreach (Smer smer in getSmers()) // da filtriranje radi za isfiltirirane smerove 
             {
-                rets.AddRange(smer.Predmeti);
+                rets.AddRange(predmetFiltriranje(smer.Predmeti));// i predmete
             }
             return rets;
         }
@@ -186,6 +186,7 @@ namespace RacunarskiCentar
         {
             ned.Raspored.RadneNedelje.Remove(ned);
         }
+       
 
     }
 

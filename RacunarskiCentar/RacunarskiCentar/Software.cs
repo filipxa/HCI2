@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 namespace RacunarskiCentar
 {
     public class Software : GUIObject
@@ -10,6 +11,7 @@ namespace RacunarskiCentar
         string godina; //treba ograditit za godinu
         double cena;
         string opis;
+        HashSet<UcionicaAssets> assets;
         public Software(string id, string name, string proizvodjac, string URL, string godina, double cena, string opis) {
             ID = id;
             Ime = ime;
@@ -84,7 +86,7 @@ namespace RacunarskiCentar
                 OnValueChanged(new EventArgs());
             }
         }
-
+        public HashSet<UcionicaAssets> Assets { get => assets; set => assets = new HashSet<UcionicaAssets>(value); }
         public override GUIObject Copy()
         {
             throw new NotImplementedException();

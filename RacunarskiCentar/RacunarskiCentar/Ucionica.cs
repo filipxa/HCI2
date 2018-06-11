@@ -16,7 +16,7 @@ namespace RacunarskiCentar
         HashSet<Software> installedSoftware;
         Raspored raspored;
 
-        public Ucionica(String id, string opis, int brMesta)
+        public Ucionica(string id, string opis, int brMesta)
         {
             BrRadnihMesta = brMesta;
             ID = id;
@@ -28,7 +28,6 @@ namespace RacunarskiCentar
 
         public Ucionica(String id, string opis, int brMesta, HashSet<UcionicaAssets> assets, HashSet<Software> installedSoftware) : this(id, opis, brMesta)
         {
-
             if (assets != null)
             {
                 Assets = new HashSet<UcionicaAssets>(assets);
