@@ -22,10 +22,15 @@ namespace RacunarskiCentar
         const int sirinaDatePikera = 115;
 
         public const float sirinaOlovke = 1.5f; 
-        public float visinaPodeoka=0;
+        private float visinaPodeoka=0f;
         public const int brPodeoka = 60;
         //Velicina podeoka u minutama
         public const int velicinaPodeoka = 15;
+
+        public float getVisinaPodeoka()
+        {
+            return (Height - visinaDatePikera) / (float)brPodeoka;
+        }
         
         
         public RasporedControl(Raspored raspored, Panel panel): base(raspored, panel)

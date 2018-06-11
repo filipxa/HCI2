@@ -24,6 +24,7 @@ namespace RacunarskiCentar
             Predmet = predmet;
             Nedelja = nedelja;
             KrajTermina = krajTermina;
+            duzinaTermina = (int)(krajTermina - pocetakTermina).TotalMinutes / 45;
         }
         //Proverava da li je bilo koji datum iz liste 
         private bool DateBetween(DateTime date1, DateTime date2, params DateTime[] datesToCheck)
