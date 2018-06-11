@@ -237,10 +237,9 @@ namespace RacunarskiCentar
 
         private int getYFromDateTime(DateTime time, Panel p)
         {
-            int hours = time.Hour;
+            int hours = time.Hour-7;
             int minutes = time.Minute;
-            hours -= 8;
-            float visinaPodeoka = (p.Height - visinaNazivaDana) / RasporedControl.brPodeoka;
+            float visinaPodeoka = parentRaspored.visinaPodeoka;
 
             return (hours*4 + minutes/15) * (int)visinaPodeoka + (int)visinaNazivaDana ;
         }

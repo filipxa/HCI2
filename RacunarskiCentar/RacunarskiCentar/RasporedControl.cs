@@ -94,7 +94,6 @@ namespace RacunarskiCentar
                 return;
             }
 
-
             SizeF size = new SizeF(datumPanel.Width, visinaPodeoka * (60f / velicinaPodeoka));
             PointF point = new PointF();
             StringFormat format = new StringFormat();
@@ -102,7 +101,7 @@ namespace RacunarskiCentar
             format.Alignment = StringAlignment.Center;
             Graphics g = pe.Graphics;
             Pen penBold = new Pen(Color.Yellow, sirinaOlovke*3);
-            DateTime pocetak = new DateTime(1, 1, 1, 8, 0, 0);
+            DateTime pocetak = new DateTime(1, 1, 1, 7, 0, 0);
             
             for (int i = 0; i <= brPodeoka; i++)
             {
