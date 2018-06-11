@@ -37,9 +37,10 @@
             this.textBoxIme = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.buttonSacuvaj = new System.Windows.Forms.Button();
             this.buttonOdustani = new System.Windows.Forms.Button();
+            this.buttonDodajPredmet = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // labelID
@@ -54,7 +55,7 @@
             // labelIme
             // 
             this.labelIme.AutoSize = true;
-            this.labelIme.Location = new System.Drawing.Point(21, 72);
+            this.labelIme.Location = new System.Drawing.Point(21, 67);
             this.labelIme.Name = "labelIme";
             this.labelIme.Size = new System.Drawing.Size(24, 13);
             this.labelIme.TabIndex = 1;
@@ -63,7 +64,7 @@
             // labelDatumUvodjenja
             // 
             this.labelDatumUvodjenja.AutoSize = true;
-            this.labelDatumUvodjenja.Location = new System.Drawing.Point(21, 121);
+            this.labelDatumUvodjenja.Location = new System.Drawing.Point(21, 116);
             this.labelDatumUvodjenja.Name = "labelDatumUvodjenja";
             this.labelDatumUvodjenja.Size = new System.Drawing.Size(87, 13);
             this.labelDatumUvodjenja.TabIndex = 2;
@@ -72,7 +73,7 @@
             // labelOpis
             // 
             this.labelOpis.AutoSize = true;
-            this.labelOpis.Location = new System.Drawing.Point(21, 175);
+            this.labelOpis.Location = new System.Drawing.Point(21, 165);
             this.labelOpis.Name = "labelOpis";
             this.labelOpis.Size = new System.Drawing.Size(28, 13);
             this.labelOpis.TabIndex = 3;
@@ -96,39 +97,31 @@
             // 
             // textBoxIme
             // 
-            this.textBoxIme.Location = new System.Drawing.Point(24, 89);
+            this.textBoxIme.Location = new System.Drawing.Point(24, 84);
             this.textBoxIme.Name = "textBoxIme";
             this.textBoxIme.Size = new System.Drawing.Size(220, 20);
             this.textBoxIme.TabIndex = 6;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(24, 139);
+            this.dateTimePicker1.Location = new System.Drawing.Point(24, 134);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(220, 20);
             this.dateTimePicker1.TabIndex = 7;
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(24, 191);
+            this.richTextBox1.Location = new System.Drawing.Point(24, 181);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(220, 86);
+            this.richTextBox1.Size = new System.Drawing.Size(220, 106);
             this.richTextBox1.TabIndex = 8;
             this.richTextBox1.Text = "";
             // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(298, 36);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(232, 244);
-            this.checkedListBox1.TabIndex = 9;
-            // 
             // buttonSacuvaj
             // 
-            this.buttonSacuvaj.Location = new System.Drawing.Point(454, 313);
+            this.buttonSacuvaj.Location = new System.Drawing.Point(425, 282);
             this.buttonSacuvaj.Name = "buttonSacuvaj";
-            this.buttonSacuvaj.Size = new System.Drawing.Size(75, 23);
+            this.buttonSacuvaj.Size = new System.Drawing.Size(91, 53);
             this.buttonSacuvaj.TabIndex = 10;
             this.buttonSacuvaj.Text = "Sacuvaj";
             this.buttonSacuvaj.UseVisualStyleBackColor = true;
@@ -137,19 +130,37 @@
             // 
             this.buttonOdustani.Location = new System.Drawing.Point(298, 312);
             this.buttonOdustani.Name = "buttonOdustani";
-            this.buttonOdustani.Size = new System.Drawing.Size(75, 23);
+            this.buttonOdustani.Size = new System.Drawing.Size(101, 23);
             this.buttonOdustani.TabIndex = 11;
             this.buttonOdustani.Text = "Odustani";
             this.buttonOdustani.UseVisualStyleBackColor = true;
+            // 
+            // buttonDodajPredmet
+            // 
+            this.buttonDodajPredmet.Location = new System.Drawing.Point(298, 282);
+            this.buttonDodajPredmet.Name = "buttonDodajPredmet";
+            this.buttonDodajPredmet.Size = new System.Drawing.Size(101, 23);
+            this.buttonDodajPredmet.TabIndex = 12;
+            this.buttonDodajPredmet.Text = "Dodaj Predmet";
+            this.buttonDodajPredmet.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(298, 36);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(218, 238);
+            this.listBox1.TabIndex = 13;
             // 
             // SmerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 359);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.buttonDodajPredmet);
             this.Controls.Add(this.buttonOdustani);
             this.Controls.Add(this.buttonSacuvaj);
-            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBoxIme);
@@ -177,8 +188,9 @@
         private System.Windows.Forms.TextBox textBoxIme;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button buttonSacuvaj;
         private System.Windows.Forms.Button buttonOdustani;
+        private System.Windows.Forms.Button buttonDodajPredmet;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
