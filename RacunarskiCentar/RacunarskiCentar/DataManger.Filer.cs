@@ -11,6 +11,7 @@ namespace RacunarskiCentar
         static HashSet<UcionicaAssets> assetss = null;
         static Ucionica ucionicaFilter = new Ucionica("", "", -1, null, null);
         static Predmet predmetFilter = new Predmet("", "", null, "", -1, -1, -1);
+        static Software softverFilter = new Software("","","","","",-1,"");
         static Smer smerFilter = new Smer("", "", DateTime.MinValue, "", null);
 
         public static List<Ucionica> ucionicaFilterisanje()
@@ -27,12 +28,13 @@ namespace RacunarskiCentar
 
         public static List<Smer> smerFilterisanje()
         {
+            //getPredmeti().Where(x => (x.Assets.Intersect(predmetFilter.Assets).Count() == predmetFilter.Assets.Count()) || (predmetFilter.Assets == null)).ToList();
             return smerovi.Where(x => (x.ID.ToLower().Contains(smerFilter.ID.ToLower()) || smerFilter.ID == "")
             && ((x.Ime.ToLower().Contains(smerFilter.Ime.ToLower())) || (smerFilter.Ime == ""))
             && ((x.Predmeti.Intersect(smerFilter.Predmeti).Count() == smerFilter.Predmeti.Count()) || smerFilter.Predmeti == null)
             ).ToList();
         }
-
+        
         public static List<Predmet> predmetFiltriranje(List<Predmet> predmeti)
         {
             return predmeti.Where(x => (x.ID.ToLower().Contains(predmetFilter.ID.ToLower()) || predmetFilter.ID == "")
@@ -42,6 +44,11 @@ namespace RacunarskiCentar
            && (x.BrTermina >= predmetFilter.BrTermina)
            && ((x.Assets.Intersect(predmetFilter.Assets).Count() == predmetFilter.Assets.Count()) || (predmetFilter.Assets == null))
                 ).ToList();
+        }
+
+        public static List<Software> softverOperativanSistemFiltiriranje(List<UcionicaAssets> opSistem)
+        {
+            return softveri.Where(x=> (x.Assets.Intersect(opSistem).Count() == opSistem.Count())).ToList();
         }
 
         public static Ucionica UcionicFilter {
@@ -56,5 +63,7 @@ namespace RacunarskiCentar
         public static Smer SmerFilter{
             set => smerFilter = value;
         }
+
+
     }
 }
