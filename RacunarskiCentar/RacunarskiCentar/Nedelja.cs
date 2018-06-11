@@ -44,7 +44,7 @@ namespace RacunarskiCentar
                 
                 int diff = (7 + (value.DayOfWeek - DayOfWeek.Monday)) % 7;
 
-                ponedeljak = new DateTime(value.Year, value.Month, value.Day - 1 * diff, 8, 0, 0);
+                ponedeljak = new DateTime(value.Year, value.Month, value.Day - 1 * diff, 7, 0, 0);
 
             }
         }
@@ -57,7 +57,7 @@ namespace RacunarskiCentar
 
         public bool isSlobodan(DateTime pocetakTermina, DateTime krajTermina, Termin ignoreTermin)
         {
-            if(pocetakTermina.Hour<8 || krajTermina.Hour > 22 || krajTermina.Date>pocetakTermina.Date)
+            if(pocetakTermina.Hour<7 || krajTermina.Hour > 22 || krajTermina.Date>pocetakTermina.Date)
             {
                 return false;
             }

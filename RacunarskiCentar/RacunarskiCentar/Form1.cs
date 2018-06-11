@@ -291,8 +291,6 @@ namespace RacunarskiCentar
                     
                     SmerControl sc = new SmerControl(smer, toolboxPanel);
                     sc.ColapseedChanged += Sc_ValueChanged;
-
-                    
                     t.Controls.Add(sc);
 
                 }

@@ -13,12 +13,14 @@ namespace RacunarskiCentar
 {
     public partial class PredmetControl : CustomControlBase<Predmet>
     {
+
         public PredmetControl(Predmet predmet, Panel panel) : base(predmet, panel)
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             InitializeComponent();
             BackColor = Color.Transparent;
             MouseDown += PredmetControl_MouseDown;
+            
         }
 
         private void PredmetControl_MouseDown(object sender, MouseEventArgs e)
