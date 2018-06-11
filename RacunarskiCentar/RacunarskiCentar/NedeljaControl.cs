@@ -213,7 +213,7 @@ namespace RacunarskiCentar
 
             chainAction.actions.Add(new CreateAction(novi));
 
-            int dan = novi.PocetakTermina.Day -GuiObject.Ponedeljak.Day;
+            int dan = novi.PocetakTermina.Day - GuiObject.Ponedeljak.Day;
 
             CreateTerminControl(novi, getPanelFromDan(dan));
             DataControllercs.addAction(chainAction);
@@ -242,7 +242,7 @@ namespace RacunarskiCentar
             hours -= 8;
             float visinaPodeoka = (p.Height - visinaNazivaDana) / RasporedControl.brPodeoka;
 
-            return (hours*4 + minutes/15) * (int)visinaPodeoka + (int)visinaNazivaDana;
+            return (hours*4 + minutes/15) * (int)visinaPodeoka + (int)visinaNazivaDana ;
         }
 
         private void CreateTerminControl(Termin termin, Panel dan)
@@ -250,17 +250,10 @@ namespace RacunarskiCentar
             TerminControl t = new TerminControl(termin, dan);
             dan.Controls.Add(t);
             t.Width = dan.Width;
-            t.Location = new Point(3, getYFromDateTime(termin.PocetakTermina, dan) +5);
-            t.Size = new Size(dan.Width-3, getYFromDateTime(termin.KrajTermina, dan) - getYFromDateTime(termin.PocetakTermina, dan));
+            t.Location = new Point(3, getYFromDateTime(termin.PocetakTermina, dan));
+            t.Size = new Size(dan.Width-3, getYFromDateTime(termin.KrajTermina, dan) - getYFromDateTime(termin.PocetakTermina, dan) + 15);
             
         }
-
-        
-
- 
-
- 
-
 
     }
 }

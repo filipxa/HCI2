@@ -50,21 +50,19 @@ namespace RacunarskiCentar
         }
         public bool isSlobodan(Termin termin)
         {
+            
+            return isSlobodan(termin.PocetakTermina, termin.KrajTermina);
 
-            foreach (Termin t in termini)
-            {
-
-                if (t.IsTerminIntersec(termin))
-                {
-                    return false;
-                }
-            }
-            return true;
         }
 
         public bool isSlobodan(DateTime pocetakTermina, DateTime krajTermina, Termin ignoreTermin)
         {
-
+            if(pocetakTermina.Hour<8 || krajTermina.Hour > 22 || krajTermina.Date>pocetakTermina.Date)
+            {
+                return false;
+            }
+            if (krajTermina.Hour == 22 && (krajTermina.Minute > 0 || krajTermina.Second > 0))
+                return false;
             foreach (Termin t in termini)
             {
                 if (t.Equals(ignoreTermin))
@@ -78,16 +76,7 @@ namespace RacunarskiCentar
         }
         public bool isSlobodan(DateTime pocetakTermina, DateTime krajTermina)
         {
-
-            foreach (Termin t in termini)
-            {
-
-                if (t.IsTerminIntersec(pocetakTermina, krajTermina))
-                {
-                    return false;
-                }
-            }
-            return true;
+            return isSlobodan(pocetakTermina,krajTermina,null);
         }
 
 

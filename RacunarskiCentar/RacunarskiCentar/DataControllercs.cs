@@ -158,7 +158,7 @@ namespace RacunarskiCentar
             reverseActions.Reverse();
             foreach (Action action in reverseActions)
             {
-                reverse.actions.Add(action);
+                reverse.actions.Add(action.GetReverseAction());
             }
 
             return reverse;

@@ -23,7 +23,7 @@ namespace RacunarskiCentar
 
         public const float sirinaOlovke = 1.5f; 
         public float visinaPodeoka=0;
-        public const int brPodeoka = 56;
+        public const int brPodeoka = 60;
         //Velicina podeoka u minutama
         public const int velicinaPodeoka = 15;
         
