@@ -16,7 +16,7 @@ namespace RacunarskiCentar
         HashSet<Software> installedSoftware;
         Raspored raspored;
 
-        public Ucionica(String id, string opis, int brMesta)
+        public Ucionica(string id, string opis, int brMesta)
         {
             BrRadnihMesta = brMesta;
             ID = id;
