@@ -200,6 +200,7 @@
             this.Controls.Add(this.labelID);
             this.Name = "SoftwareForm";
             this.Text = "SoftwareForm";
+            //this.Load += new System.EventHandler(this.SoftwareForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

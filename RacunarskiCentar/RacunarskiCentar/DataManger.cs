@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RacunarskiCentar
 {
-    class DataManger
+    public partial class DataManger
     {
         static List<Ucionica> ucionice = new List<Ucionica>();
         static List<Smer> smerovi = new List<Smer>();
@@ -61,7 +61,7 @@ namespace RacunarskiCentar
 
         internal static List<Ucionica> getUcionice()
         {
-            return ucionice;
+            return ucionicaFilterisanje();
         }
 
         internal static void removeObject(GUIObject guiObject)
@@ -184,6 +184,7 @@ namespace RacunarskiCentar
         {
             ned.Raspored.RadneNedelje.Remove(ned);
         }
+       
 
     }
 

@@ -28,7 +28,6 @@ namespace RacunarskiCentar
 
         public Ucionica(String id, string opis, int brMesta, HashSet<UcionicaAssets> assets, HashSet<Software> installedSoftware) : this(id, opis, brMesta)
         {
-
             if (assets != null)
             {
                 Assets = new HashSet<UcionicaAssets>(assets);
