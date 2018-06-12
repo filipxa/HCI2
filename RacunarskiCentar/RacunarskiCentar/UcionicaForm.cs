@@ -56,7 +56,7 @@ namespace RacunarskiCentar
             {
                 if (cv.Value.Equals(UcionicaAssets.linux) || (cv.Value.Equals(UcionicaAssets.windows)))
                 {
-                    listaSistema.Add(cv.Value);
+                    listaSistema.Add((UcionicaAssets)cv.Value);
                 }
             }
             foreach(Software s in DataManger.softverOperativanSistemFiltiriranje(listaSistema))
@@ -118,7 +118,7 @@ namespace RacunarskiCentar
             {
                 
                 ComboValue item = ((ComboValue) itemChecked);
-                rets.Add(item.Value);
+                rets.Add((UcionicaAssets)item.Value);
 
             }
             return rets;
@@ -131,17 +131,23 @@ namespace RacunarskiCentar
 
         public class ComboValue
         {
-            UcionicaAssets _value;
+            object _value;
 
             public override string ToString()
             {
-                return _value.getDisplayName();
+                if(_value is UcionicaAssets)
+                {
+                    UcionicaAssets one = (UcionicaAssets)_value;
+                    return one.getDisplayName();
+                }
+                return _value.ToString();
+                
             }
-            public ComboValue(UcionicaAssets a)
+            public ComboValue(object a)
             {
                 this._value = a;
             }
-            public UcionicaAssets Value
+            public object Value
             {
                 get => _value;
                 set => _value = value;
