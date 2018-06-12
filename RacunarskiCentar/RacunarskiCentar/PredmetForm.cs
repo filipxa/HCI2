@@ -100,6 +100,9 @@ namespace RacunarskiCentar
                 DialogResult = DialogResult.None;
                 MessageBox.Show(poruka, "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
 
+                //Predmet pp = new Predmet("", "", null, "", -1, -1, -1);
+                //DataManger.addObject(pp);
+
             }
         }
     }
