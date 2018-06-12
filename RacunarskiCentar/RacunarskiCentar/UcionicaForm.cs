@@ -132,6 +132,7 @@ namespace RacunarskiCentar
         public class ComboValue
         {
             UcionicaAssets _value;
+
             public override string ToString()
             {
                 return _value.getDisplayName();
@@ -145,6 +146,7 @@ namespace RacunarskiCentar
                 get => _value;
                 set => _value = value;
             }
+            
         }
 
         private void UcionicaForm_Load(object sender, EventArgs e)
@@ -198,10 +200,7 @@ namespace RacunarskiCentar
             {
                 DialogResult = DialogResult.None;
                 MessageBox.Show(poruka, "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-
             }
-
-
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -212,7 +211,7 @@ namespace RacunarskiCentar
         private void buttonSoftware_Click(object sender, EventArgs e)
         {
             
-            PredmetForm sf = new PredmetForm(null, null);
+            UcionicaFilterForm sf = new UcionicaFilterForm();
             sf.ShowDialog();
             
         }
