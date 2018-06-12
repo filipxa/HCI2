@@ -44,7 +44,7 @@ namespace RacunarskiCentar
             {
                 if (cv.Value.Equals(UcionicaAssets.linux) || (cv.Value.Equals(UcionicaAssets.windows)))
                 {
-                    listaSistema.Add(cv.Value);
+                    listaSistema.Add((UcionicaAssets)cv.Value);
                 }
             }
 
@@ -75,7 +75,7 @@ namespace RacunarskiCentar
             {
 
                 ComboValue item = ((ComboValue)itemChecked);
-                rets.Add(item.Value);
+                rets.Add((UcionicaAssets)item.Value);
 
             }
             return rets;
