@@ -72,6 +72,12 @@
     <Compile Include="PredmetControl.Designer.cs">
       <DependentUpon>PredmetControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="PredmetFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PredmetFilterForm.Designer.cs">
+      <DependentUpon>PredmetFilterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PredmetForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,12 @@
     </Compile>
     <Compile Include="SmerForm.Designer.cs">
       <DependentUpon>SmerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SoftwareFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SoftwareFilterForm.Designer.cs">
+      <DependentUpon>SoftwareFilterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SoftwareForm.cs">
       <SubType>Form</SubType>
@@ -154,6 +166,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PredmetFilterForm.resx">
+      <DependentUpon>PredmetFilterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PredmetForm.resx">
       <DependentUpon>PredmetForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -168,6 +183,9 @@
     </Compile>
     <EmbeddedResource Include="SmerFilterForm.resx">
       <DependentUpon>SmerFilterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SoftwareFilterForm.resx">
+      <DependentUpon>SoftwareFilterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TerminForm.resx">
       <DependentUpon>TerminForm.cs</DependentUpon>

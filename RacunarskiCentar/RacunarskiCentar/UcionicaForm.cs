@@ -222,13 +222,7 @@ namespace RacunarskiCentar
 
         }
 
-        private void buttonSoftware_Click(object sender, EventArgs e)
-        {
-            
-            UcionicaFilterForm sf = new UcionicaFilterForm();
-            sf.ShowDialog();
-            
-        }
+      
 
       
     }
