@@ -21,8 +21,39 @@ namespace RacunarskiCentar
             this.smer = smer;
             this.predmet = predmet;
             InitializeComponent();
+            if(smer != null)
+                textBoxSmer.Text = smer.Ime;
+            if(predmet != null)
+            {
+                popuniPolja();
+            }
+            popuniOpremaBox();
         }
-        
+
+        private void popuniOpremaBox()
+        {
+            foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
+            {
+                bool postoji = false;
+                if(predmet != null)
+                {
+                    postoji = predmet.Assets.Contains(aset);
+                }
+                checkedListBox1.Items.Add(new ComboValue(aset), postoji);
+            }
+        }
+
+        private void popuniPolja()
+        {
+            textBoxID.Text = predmet.ID;
+            textBoxNaziv.Text = predmet.Ime;
+            numericUpDownBrojLjudi.Value = Convert.ToInt32(predmet.BrLjudi);
+            numericUpDownDuzinaTermina.Value = Convert.ToInt32(predmet.BrCasova);
+            numericUpDownBrojTermina.Value = Convert.ToInt32(predmet.BrTermina);
+            richTextBoxOpis.Text = predmet.Opis;
+
+        }
+
         public Action GetAction()
         {
             Action action;
@@ -85,6 +116,20 @@ namespace RacunarskiCentar
             }
         }
 
+        private void textBoxNaziv_Validated(object sender, EventArgs e)
+        {
+            if(textBoxNaziv.Text.Length == 0 )
+            {
+                labelNaziv.ForeColor = Color.Red;
+            }
+            else
+            {
+                labelNaziv.ForeColor = Color.Black;
+            }
+        }
+
+
+
         private void buttonSacuvaj_Click(object sender, EventArgs e)
         {
             int rb = 1;
@@ -92,6 +137,12 @@ namespace RacunarskiCentar
             if (textBoxID.Text.Length == 0)
             {
                 poruka += "#" + rb + ": Morate uneti ID predmeta.\n";
+                rb++;
+            }
+            if(textBoxNaziv.Text.Length==0)
+            {
+                labelNaziv.ForeColor = Color.Red;
+                poruka += "#" + rb + ": Morate uneti naziv predmeta.\n";
                 rb++;
             }
             
@@ -105,5 +156,7 @@ namespace RacunarskiCentar
 
             }
         }
+
+      
     }
 }

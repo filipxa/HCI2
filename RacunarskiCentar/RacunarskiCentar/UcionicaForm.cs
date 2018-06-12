@@ -21,6 +21,71 @@ namespace RacunarskiCentar
         {
             this.ucionica = ucionica;
             InitializeComponent();
+            foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
+            {
+                checkedListBox1.Items.Add(new ComboValue(aset), false);
+            }
+            checkedListBox1.ItemCheck += CheckedListBox1_ItemCheck;
+
+            if (ucionica != null)
+            {
+                popuniPolja();
+            }
+            popuniSoftvere();
+        }
+
+        private void CheckedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            ComboValue cv = (ComboValue)checkedListBox1.Items[e.Index];
+            if (cv.Value.Equals(UcionicaAssets.windows) || cv.Value.Equals(UcionicaAssets.linux))
+            {
+                popuniSoftvere();
+                
+            }
+            
+
+        }
+
+        // desni checkBox
+        private void popuniSoftvere()
+        {
+            checkedListBox2.Items.Clear();
+            List<UcionicaAssets> listaSistema = new List<UcionicaAssets>();
+            
+            foreach (ComboValue cv in checkedListBox1.CheckedItems)
+            {
+                if (cv.Value.Equals(UcionicaAssets.linux) || (cv.Value.Equals(UcionicaAssets.windows)))
+                {
+                    listaSistema.Add(cv.Value);
+                }
+            }
+            foreach(Software s in DataManger.softverOperativanSistemFiltiriranje(listaSistema))
+            {
+                bool postoji = false;
+                if(ucionica != null)
+                {
+                    postoji = ucionica.InstalledSoftware.Contains(s);
+                }
+                checkedListBox2.Items.Add(s, postoji);
+            }
+            
+        }
+
+        // popunjavanje cele forme
+        private void popuniPolja()
+        {
+            checkedListBox1.Items.Clear();
+            textBoxID.Text = ucionica.ID;
+            numericUpDown1.Value = ucionica.BrRadnihMesta;
+            // popunjavanje assets-a
+            foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
+            {
+                bool check = ucionica.Assets.Contains(aset);
+                ComboValue cv = new ComboValue(aset);
+                checkedListBox1.Items.Add(cv, check);
+            }
+            // popunjavanje os-a
+            richTextBox1.Text = ucionica.Opis;
         }
 
         public Action GetAction()
@@ -85,10 +150,7 @@ namespace RacunarskiCentar
         private void UcionicaForm_Load(object sender, EventArgs e)
         {
             DialogResult = DialogResult.None;
-            foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
-            {
-                checkedListBox1.Items.Add(new ComboValue(aset), false);
-            }
+            
         }
         
         private void textBoxID_Validated(object sender, EventArgs e)
@@ -131,6 +193,7 @@ namespace RacunarskiCentar
             {
                 poruka += "Morate uneti ID ucionice.";
             }
+            
             if (poruka.Length > 0)
             {
                 DialogResult = DialogResult.None;
@@ -145,5 +208,15 @@ namespace RacunarskiCentar
         {
 
         }
+
+        private void buttonSoftware_Click(object sender, EventArgs e)
+        {
+            
+            PredmetForm sf = new PredmetForm(null, null);
+            sf.ShowDialog();
+            
+        }
+
+      
     }
 }

@@ -44,7 +44,7 @@
             this.buttonSacuvaj = new System.Windows.Forms.Button();
             this.buttonOdustani = new System.Windows.Forms.Button();
             this.richTextBoxOpis = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelOS = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
@@ -168,6 +168,7 @@
             // 
             // buttonOdustani
             // 
+            this.buttonOdustani.DialogResult = System.Windows.Forms.DialogResult.No;
             this.buttonOdustani.Location = new System.Drawing.Point(25, 443);
             this.buttonOdustani.Name = "buttonOdustani";
             this.buttonOdustani.Size = new System.Drawing.Size(75, 23);
@@ -183,13 +184,13 @@
             this.richTextBoxOpis.TabIndex = 16;
             this.richTextBoxOpis.Text = "";
             // 
-            // label1
+            // labelOS
             // 
-            this.label1.Location = new System.Drawing.Point(22, 111);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Operativni sistem";
+            this.labelOS.Location = new System.Drawing.Point(22, 111);
+            this.labelOS.Name = "labelOS";
+            this.labelOS.Size = new System.Drawing.Size(105, 17);
+            this.labelOS.TabIndex = 0;
+            this.labelOS.Text = "Operativni sistem";
             // 
             // checkBox1
             // 
@@ -218,7 +219,7 @@
             this.ClientSize = new System.Drawing.Size(286, 503);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelOS);
             this.Controls.Add(this.richTextBoxOpis);
             this.Controls.Add(this.buttonOdustani);
             this.Controls.Add(this.buttonSacuvaj);
@@ -238,8 +239,13 @@
             this.Name = "SoftwareForm";
             this.Text = "SoftwareForm";
             //this.Load += new System.EventHandler(this.SoftwareForm_Load);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+
             this.ResumeLayout(false);
             this.PerformLayout();
+            
 
         }
 
@@ -261,7 +267,7 @@
         private System.Windows.Forms.Button buttonSacuvaj;
         private System.Windows.Forms.Button buttonOdustani;
         private System.Windows.Forms.RichTextBox richTextBoxOpis;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelOS;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
     }

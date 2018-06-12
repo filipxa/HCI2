@@ -36,11 +36,11 @@
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.textBoxIme = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBoxOpis = new System.Windows.Forms.RichTextBox();
             this.buttonSacuvaj = new System.Windows.Forms.Button();
             this.buttonOdustani = new System.Windows.Forms.Button();
             this.buttonDodajPredmet = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxPredmeti = new System.Windows.Forms.ListBox();
+            this.richTextBoxOpis = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // labelID
@@ -110,14 +110,6 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(220, 20);
             this.dateTimePicker1.TabIndex = 7;
             // 
-            // textBoxOpis
-            // 
-            this.textBoxOpis.Location = new System.Drawing.Point(24, 181);
-            this.textBoxOpis.Name = "textBoxOpis";
-            this.textBoxOpis.Size = new System.Drawing.Size(220, 106);
-            this.textBoxOpis.TabIndex = 8;
-            this.textBoxOpis.Text = "";
-            // 
             // buttonSacuvaj
             // 
             this.buttonSacuvaj.Location = new System.Drawing.Point(425, 282);
@@ -146,24 +138,32 @@
             this.buttonDodajPredmet.Text = "Dodaj Predmet";
             this.buttonDodajPredmet.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // listBoxPredmeti
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(298, 36);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(218, 238);
-            this.listBox1.TabIndex = 13;
+            this.listBoxPredmeti.FormattingEnabled = true;
+            this.listBoxPredmeti.Location = new System.Drawing.Point(298, 36);
+            this.listBoxPredmeti.Name = "listBoxPredmeti";
+            this.listBoxPredmeti.Size = new System.Drawing.Size(218, 238);
+            this.listBoxPredmeti.TabIndex = 13;
+            // 
+            // richTextBoxOpis
+            // 
+            this.richTextBoxOpis.Location = new System.Drawing.Point(24, 182);
+            this.richTextBoxOpis.Name = "richTextBoxOpis";
+            this.richTextBoxOpis.Size = new System.Drawing.Size(220, 92);
+            this.richTextBoxOpis.TabIndex = 14;
+            this.richTextBoxOpis.Text = "";
             // 
             // SmerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 359);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.richTextBoxOpis);
+            this.Controls.Add(this.listBoxPredmeti);
             this.Controls.Add(this.buttonDodajPredmet);
             this.Controls.Add(this.buttonOdustani);
             this.Controls.Add(this.buttonSacuvaj);
-            this.Controls.Add(this.textBoxOpis);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBoxIme);
             this.Controls.Add(this.textBoxID);
@@ -174,6 +174,10 @@
             this.Controls.Add(this.labelID);
             this.Name = "SmerForm";
             this.Text = "SmerForm";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,10 +193,10 @@
         private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.TextBox textBoxIme;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.RichTextBox textBoxOpis;
         private System.Windows.Forms.Button buttonSacuvaj;
         private System.Windows.Forms.Button buttonOdustani;
         private System.Windows.Forms.Button buttonDodajPredmet;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxPredmeti;
+        private System.Windows.Forms.RichTextBox richTextBoxOpis;
     }
 }
