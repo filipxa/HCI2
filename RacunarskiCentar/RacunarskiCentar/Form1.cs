@@ -12,7 +12,7 @@ namespace RacunarskiCentar
         Panel mainPanel;
         Panel toolboxPanel;
         ToolStrip tb = new ToolStrip();
-       
+
         public Form1()
         {
             ToolStripButton b = new ToolStripButton();
@@ -30,13 +30,13 @@ namespace RacunarskiCentar
             InitializeComponent();
             BackColor = GraphicLoader.getColorLightGray();
             tb.BackColor = Color.DarkGray;
-            
+
             Controls.Add(tb);
             initRCView();
 
-           
-            
-            ClientSize = new Size(1000,800);
+
+
+            ClientSize = new Size(1000, 800);
             MinimumSize = Size;
             ResizeEnd += Form1_ResizeEnd;
             ResizeBegin += Form1_ResizeBegin;
@@ -51,13 +51,13 @@ namespace RacunarskiCentar
             {
                 Action a = DataControllercs.undoAction();
                 initCurrentView();
-              
+
             }
             else
             {
                 MessageBox.Show("Undo nije dostupan!");
             }
-           
+
         }
 
         private void initCurrentView()
@@ -65,16 +65,16 @@ namespace RacunarskiCentar
             if (activeObject == null)
             {
                 initRCView();
-            } else if(activeObject.GetType().Equals(typeof(Ucionica)))
+            } else if (activeObject.GetType().Equals(typeof(Ucionica)))
             {
                 initUcionicaView((Ucionica)activeObject);
             }
         }
 
         private void B_Click(object sender, EventArgs e)
-        { 
+        {
 
-            if (activeObject!=null && activeObject.GetType().Equals(typeof(Ucionica)))
+            if (activeObject != null && activeObject.GetType().Equals(typeof(Ucionica)))
             {
                 initRCView();
             }
@@ -112,7 +112,7 @@ namespace RacunarskiCentar
 
         private void initMainPanel(Panel p)
         {
-            p.Anchor = AnchorStyles.Right |AnchorStyles.Top  | AnchorStyles.Bottom | AnchorStyles.Left;
+            p.Anchor = AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             p.MinimumSize = new Size(ClientSize.Width - toolWidth, ClientSize.Height - tb.Height);
             p.Location = new Point(toolWidth, tb.Height);
             p.BackColor = GraphicLoader.getColorLightGray();
@@ -133,10 +133,10 @@ namespace RacunarskiCentar
         {
             if (toolboxPanel != null)
                 toolboxPanel.Dispose();
-            p.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom ;
+            p.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
             p.MinimumSize = new Size(toolWidth, ClientSize.Height - tb.Height);
             p.Location = new Point(0, tb.Height);
-         
+
             p.BackColor = GraphicLoader.getColorDarkGray();
             Controls.Add(p);
             toolboxPanel = p;
@@ -144,14 +144,14 @@ namespace RacunarskiCentar
 
         }
         private void initToolPanel()
-        { 
+        {
             initToolPanel(new Panel());
         }
 
         private void initToolPanelTable()
         {
             Panel p = new TableLayoutPanel();
-           
+
             initToolPanel(p);
 
 
@@ -159,7 +159,7 @@ namespace RacunarskiCentar
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -172,10 +172,10 @@ namespace RacunarskiCentar
     public partial class Form1
     {
 
-        
+
         private void initRCView()
         {
-             activeObject = null;
+            activeObject = null;
             initMainPanelFlow();
             initToolPanel();
             Button button = new Button();
@@ -185,7 +185,7 @@ namespace RacunarskiCentar
             button.Size = new Size(toolboxPanel.Width, 30);
 
             button.Dock = DockStyle.Top;
-          
+
             toolboxPanel.Controls.Add(button);
 
 
@@ -206,7 +206,7 @@ namespace RacunarskiCentar
             c.Width = 200;
             c.Height = 150;
             c.Margin = new Padding(15);
-            
+
             mainPanel.Controls.Add(c);
             c.DoubleClick += Ucionica_DoubleClick;
         }
@@ -254,7 +254,7 @@ namespace RacunarskiCentar
     public partial class Form1
     {
 
-       
+
         List<Smer> smerovi = new List<Smer>();
 
         private void initUcionicaView(Ucionica ucionica)
@@ -288,12 +288,12 @@ namespace RacunarskiCentar
         private void populatePredmets()
         {
             TableLayoutPanel t = (TableLayoutPanel)toolboxPanel;
-            toolboxPanel.Padding = new Padding(15,0,0,0) ;
+            toolboxPanel.Padding = new Padding(15, 0, 0, 0);
             for (int i = 0; i < 8; i++)
             {
                 foreach (Smer smer in smerovi)
                 {
-                    
+
                     SmerControl sc = new SmerControl(smer, toolboxPanel);
                     sc.ColapseedChanged += Sc_ValueChanged;
                     t.Controls.Add(sc);
@@ -307,7 +307,7 @@ namespace RacunarskiCentar
 
         private void Sc_ValueChanged(object sender, EventArgs e)
         {
-            if((SmerControl)sender == selectedSmerControl)
+            if ((SmerControl)sender == selectedSmerControl)
             {
                 return;
             }
@@ -316,7 +316,7 @@ namespace RacunarskiCentar
                 selectedSmerControl.IsColapsed = true;
             }
             selectedSmerControl = (SmerControl)sender;
-           
+
         }
     }
 
@@ -327,10 +327,22 @@ namespace RacunarskiCentar
         {
             System.Diagnostics.Debug.WriteLine("DJOKA");
 
-            if (e.Control && e.Shift && e.KeyCode == Keys.P)
-            {
-                MessageBox.Show("Hello");
-            }
+            if (e.KeyCode == Keys.F1)
+                MessageBox.Show("DodajUcionicu");
+            else if (e.KeyCode == Keys.F2)
+                MessageBox.Show("DodajSmer");
+            else if (e.KeyCode == Keys.F3)
+                MessageBox.Show("DodajSoftver");
+            else if (e.KeyCode == Keys.F4)
+                MessageBox.Show("DodajPredmet");
+            else if (e.KeyCode == Keys.F9)
+                MessageBox.Show("Help");
+            else if (e.KeyCode == Keys.Back)
+                MessageBox.Show("Back");
+
+            if (e.Control && e.KeyCode == Keys.Z)
+                MessageBox.Show("Undo");
         }
     }
 }
+ 
