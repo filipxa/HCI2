@@ -100,6 +100,9 @@
             this.Controls.Add(this.textBoxIme);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.labelID);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SmerFilterForm";
             this.Text = "SmerFilterForm";
             this.ResumeLayout(false);

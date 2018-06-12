@@ -41,7 +41,7 @@ namespace RacunarskiCentar
             {
 
                 ComboValue item = ((ComboValue)itemChecked);
-                rets.Add(item.Value);
+                rets.Add((UcionicaAssets)item.Value);
 
             }
             return rets;

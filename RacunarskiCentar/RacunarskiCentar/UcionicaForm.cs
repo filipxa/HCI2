@@ -126,7 +126,15 @@ namespace RacunarskiCentar
 
         private HashSet<Software> getInstalledSoft()
         {
-            return new HashSet<Software>();
+            HashSet<Software> rets = new HashSet<Software>();
+            foreach (object itemChecked in checkedListBox1.CheckedItems)
+            {
+
+                ComboValue item = ((ComboValue)itemChecked);
+                rets.Add((Software)item.Value);
+
+            }
+            return rets;
         }
 
         public class ComboValue
