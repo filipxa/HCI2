@@ -18,6 +18,19 @@ namespace RacunarskiCentar
         {
             this.smer = smer;
             InitializeComponent();
+            if(smer != null)
+            {
+                popuniPolja();
+            }
+        }
+
+        private void popuniPolja()
+        {
+            textBoxID.Text = smer.ID;
+            textBoxIme.Text = smer.Ime;
+            dateTimePicker1.Value = Convert.ToDateTime(smer.DatumUvodjenja);
+            richTextBoxOpis.Text = smer.Opis;
+            listBoxPredmeti.DataSource = smer.Predmeti;
         }
 
         public Action GetAction()
@@ -25,7 +38,7 @@ namespace RacunarskiCentar
             Action action;
             if(smer == null)
             {
-                smer = new Smer(textBoxID.Text, textBoxIme.Text, Convert.ToDateTime(dateTimePicker1), textBoxOpis.Text);
+                smer = new Smer(textBoxID.Text, textBoxIme.Text, Convert.ToDateTime(dateTimePicker1), richTextBoxOpis.Text);
                 action = new CreateAction(smer);
             }
             else
@@ -34,8 +47,8 @@ namespace RacunarskiCentar
                 smer.ID = textBoxID.Text;
                 smer.Ime = textBoxIme.Text;
                 smer.DatumUvodjenja = Convert.ToDateTime(dateTimePicker1);
-                smer.Opis = textBoxOpis.Text;
-                foreach(Predmet p in listBox1.Items)
+                smer.Opis = richTextBoxOpis.Text;
+                foreach(Predmet p in listBoxPredmeti.Items)
                 {
                     smer.Predmeti.Add(p);
                 }

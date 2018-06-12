@@ -21,8 +21,39 @@ namespace RacunarskiCentar
             this.smer = smer;
             this.predmet = predmet;
             InitializeComponent();
+            if(smer != null)
+                textBoxSmer.Text = smer.Ime;
+            if(predmet != null)
+            {
+                popuniPolja();
+            }
+            popuniOpremaBox();
         }
-        
+
+        private void popuniOpremaBox()
+        {
+            foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
+            {
+                bool postoji = false;
+                if(predmet != null)
+                {
+                    postoji = predmet.Assets.Contains(aset);
+                }
+                checkedListBox1.Items.Add(new ComboValue(aset), postoji);
+            }
+        }
+
+        private void popuniPolja()
+        {
+            textBoxID.Text = predmet.ID;
+            textBoxNaziv.Text = predmet.Ime;
+            numericUpDownBrojLjudi.Value = Convert.ToInt32(predmet.BrLjudi);
+            numericUpDownDuzinaTermina.Value = Convert.ToInt32(predmet.BrCasova);
+            numericUpDownBrojTermina.Value = Convert.ToInt32(predmet.BrTermina);
+            richTextBoxOpis.Text = predmet.Opis;
+
+        }
+
         public Action GetAction()
         {
             Action action;

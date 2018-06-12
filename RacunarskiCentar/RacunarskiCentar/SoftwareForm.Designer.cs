@@ -239,8 +239,13 @@
             this.Name = "SoftwareForm";
             this.Text = "SoftwareForm";
             //this.Load += new System.EventHandler(this.SoftwareForm_Load);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+
             this.ResumeLayout(false);
             this.PerformLayout();
+            
 
         }
 

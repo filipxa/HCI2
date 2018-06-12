@@ -68,6 +68,10 @@
             this.Controls.Add(this.comboBoxC);
             this.Name = "TerminForm";
             this.Text = "TerminForm";
+
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
             this.ResumeLayout(false);
             this.PerformLayout();
 

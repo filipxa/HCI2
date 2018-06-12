@@ -23,6 +23,26 @@ namespace RacunarskiCentar
             this.checkBox1.CheckedChanged += CheckBox_CheckedChanged;
             this.checkBox1.Checked = true;
             this.checkBox2.CheckedChanged += CheckBox_CheckedChanged;
+
+            if(software != null)
+            {
+                popuniPolja();
+            }
+        }
+
+        private void popuniPolja()
+        {
+            textBoxID.Text = software.ID;
+            textBoxIme.Text = software.Ime;
+            bool prviCheckBox = software.Assets.Contains(UcionicaAssets.windows);
+            bool drugiCheckBox = software.Assets.Contains(UcionicaAssets.linux);
+            checkBox1.Checked = prviCheckBox;
+            checkBox2.Checked = drugiCheckBox;
+            textBoxProizvodjac.Text = software.Proizvodjac;
+            textBoxURL.Text = software.URL;
+            textBoxGodina.Text = software.Godina;
+            textBoxCena.Text = Convert.ToString(software.Cena);
+            richTextBoxOpis.Text = software.Opis;
         }
 
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
