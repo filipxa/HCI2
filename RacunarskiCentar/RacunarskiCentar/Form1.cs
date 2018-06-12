@@ -21,17 +21,20 @@ namespace RacunarskiCentar
             tb.Items.Add(b);
             b = new ToolStripButton();
             b.Text = "Undo";
-            
+            KeyDown += Form1_KeyDown;
             tb.Items.Add(b);
             b.Click += B_Click1;
-            
+
+            KeyPreview = true;
+
             InitializeComponent();
             BackColor = GraphicLoader.getColorLightGray();
             tb.BackColor = Color.DarkGray;
             
             Controls.Add(tb);
             initRCView();
-         
+
+           
             
             ClientSize = new Size(1000,800);
             MinimumSize = Size;
@@ -39,6 +42,8 @@ namespace RacunarskiCentar
             ResizeBegin += Form1_ResizeBegin;
 
         }
+
+
 
         private void B_Click1(object sender, EventArgs e)
         {
@@ -311,7 +316,21 @@ namespace RacunarskiCentar
                 selectedSmerControl.IsColapsed = true;
             }
             selectedSmerControl = (SmerControl)sender;
+           
+        }
+    }
 
+    // PRECICE  PRECICE PRECICE PRECICE PRECICE PRECICE PRECICE PRECICE PRECICE PRECICE
+    public partial class Form1
+    {
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("DJOKA");
+
+            if (e.Control && e.Shift && e.KeyCode == Keys.P)
+            {
+                MessageBox.Show("Hello");
+            }
         }
     }
 }
