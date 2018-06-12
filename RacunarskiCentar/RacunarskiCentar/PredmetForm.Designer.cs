@@ -267,16 +267,15 @@
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.labelNaziv);
             this.Controls.Add(this.labelID);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "PredmetForm";
             this.Text = "PredmetForm";
             this.Load += new System.EventHandler(this.PredmetForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojLjudi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDuzinaTermina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojTermina)).EndInit();
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MinimizeBox = false;
-            this.MaximizeBox = false;
-
             this.ResumeLayout(false);
             this.PerformLayout();
 

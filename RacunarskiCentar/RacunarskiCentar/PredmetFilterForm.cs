@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static RacunarskiCentar.UcionicaForm;
 
 namespace RacunarskiCentar
 {
@@ -15,6 +16,35 @@ namespace RacunarskiCentar
         public PredmetFilterForm()
         {
             InitializeComponent();
+            foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
+            {
+                checkedListBox1.Items.Add(new ComboValue(aset), false);
+            }
+        }
+
+      
+
+        private void buttonPotvrdi_Click(object sender, EventArgs e)
+        {
+            DataManger.PredmetFiler.ID = textBoxID.Text;
+            DataManger.PredmetFiler.BrLjudi = Convert.ToInt32(numericUpDownBrojLjudi);
+            DataManger.PredmetFiler.Ime = textBoxNaziv.Text;
+            DataManger.PredmetFiler.BrCasova = Convert.ToInt32(numericUpDownDuzinaTermina);
+            DataManger.PredmetFiler.BrTermina = Convert.ToInt32(numericUpDownBrojTermina);
+            DataManger.PredmetFiler.Assets = getUcionicaAssets();
+        }
+
+        private HashSet<UcionicaAssets> getUcionicaAssets()
+        {
+            HashSet<UcionicaAssets> rets = new HashSet<UcionicaAssets>();
+            foreach (object itemChecked in checkedListBox1.CheckedItems)
+            {
+
+                ComboValue item = ((ComboValue)itemChecked);
+                rets.Add(item.Value);
+
+            }
+            return rets;
         }
     }
 }
