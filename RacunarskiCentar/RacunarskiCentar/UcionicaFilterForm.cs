@@ -44,7 +44,7 @@ namespace RacunarskiCentar
             {
                 if (cv.Value.Equals(UcionicaAssets.linux) || (cv.Value.Equals(UcionicaAssets.windows)))
                 {
-                    listaSistema.Add(cv.Value);
+                    listaSistema.Add((UcionicaAssets)cv.Value);
                 }
             }
 
@@ -65,7 +65,15 @@ namespace RacunarskiCentar
 
         private HashSet<Software> getInstalledSoft()
         {
-            throw new NotImplementedException();
+            HashSet<Software> rets = new HashSet<Software>();
+            foreach (object itemChecked in checkedListBox1.CheckedItems)
+            {
+
+                ComboValue item = ((ComboValue)itemChecked);
+                rets.Add((Software)item.Value);
+
+            }
+            return rets;
         }
 
         private HashSet<UcionicaAssets> getUcionicaAssets()
@@ -75,7 +83,7 @@ namespace RacunarskiCentar
             {
 
                 ComboValue item = ((ComboValue)itemChecked);
-                rets.Add(item.Value);
+                rets.Add((UcionicaAssets)item.Value);
 
             }
             return rets;

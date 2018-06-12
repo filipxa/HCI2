@@ -153,6 +153,9 @@
             this.Controls.Add(this.labelDodatnaOprema);
             this.Controls.Add(this.labelBrRadnihMesta);
             this.Controls.Add(this.labelID);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "UcionicaFilterForm";
             this.Text = "UcionicaFilterForm";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrRadnihMesta)).EndInit();
