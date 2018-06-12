@@ -178,18 +178,88 @@ namespace RacunarskiCentar
             activeObject = null;
             initMainPanelFlow();
             initToolPanel();
+
             Button button = new Button();
             button.Text = "Dodaj učionicu";
             button.Click += btDodajKlik;
             button.BackColor = Color.LightGray;
             button.Size = new Size(toolboxPanel.Width, 30);
-
             button.Dock = DockStyle.Top;
 
+            Button button1 = new Button();
+            button1.Text = "Dodaj smer";
+            button1.Click += btSmerKlik;
+            button1.BackColor = Color.LightGray;
+            button1.Size = new Size(toolboxPanel.Width, 30);
+            button1.Dock = DockStyle.Top;
+
+            Button button2 = new Button();
+            button2.Text = "Dodaj softver";
+            button2.Click += btSoftverKlik;
+            button2.BackColor = Color.LightGray;
+            button2.Size = new Size(toolboxPanel.Width, 30);
+            button2.Dock = DockStyle.Top;
+
+            Button button3 = new Button();
+            button3.Text = "Dodaj predmet";
+            button3.Click += btPredmetKlik;
+            button3.BackColor = Color.LightGray;
+            button3.Size = new Size(toolboxPanel.Width, 30);
+            button3.Dock = DockStyle.Top;
+
             toolboxPanel.Controls.Add(button);
+            toolboxPanel.Controls.Add(button1);
+            toolboxPanel.Controls.Add(button2);
+            toolboxPanel.Controls.Add(button3);
+
 
 
             ucitajUcionice();
+        }
+
+        private void btPredmetKlik(object sender, EventArgs e)
+        {
+            PredmetForm f = new PredmetForm(null, null);  //SREDITI STA SE PROSLEDJUJE
+            DialogResult result = f.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                PredmetControl c = new PredmetControl((Predmet)f.GetAction().getGUIObject(), mainPanel);
+                //da li dodajemo negde
+            }
+        }
+
+        private void btSoftverKlik(object sender, EventArgs e)
+        {
+            SoftwareForm f = new SoftwareForm(null);
+            DialogResult result = f.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //SOFTWARE CONTROL??
+                //da li dodajemo negde
+            }
+        }
+
+        private void btSmerKlik(object sender, EventArgs e)
+        {
+            SmerForm f = new SmerForm(null);
+            DialogResult result = f.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                SmerControl c = new SmerControl((Smer)f.GetAction().getGUIObject(), mainPanel);
+                //da li dodajemo negde
+            }
+        }
+
+        private void btDodajKlik(object sender, EventArgs e)
+        {
+            UcionicaForm f = new UcionicaForm(null);
+            DialogResult result = f.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                UcionicaControl c = new UcionicaControl((Ucionica)f.GetAction().getGUIObject(), mainPanel);
+                dodajUcionicu(c);
+            }
+
         }
 
         private void ucitajUcionice()
@@ -211,17 +281,7 @@ namespace RacunarskiCentar
             c.DoubleClick += Ucionica_DoubleClick;
         }
 
-        private void btDodajKlik(object sender, EventArgs e)
-        {
-            UcionicaForm f = new UcionicaForm(null);
-            DialogResult result = f.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                UcionicaControl c = new UcionicaControl((Ucionica)f.GetAction().getGUIObject(), mainPanel);
-                dodajUcionicu(c);
-            }
-
-        }
+        
 
         private void Ucionica_DoubleClick(object sender, EventArgs e)
         {
@@ -328,13 +388,13 @@ namespace RacunarskiCentar
             System.Diagnostics.Debug.WriteLine("DJOKA");
 
             if (e.KeyCode == Keys.F1)
-                MessageBox.Show("DodajUcionicu");
+                btDodajKlik(null, null);//Da li moze ovako??????????????
             else if (e.KeyCode == Keys.F2)
-                MessageBox.Show("DodajSmer");
+                btSoftverKlik(null, null);
             else if (e.KeyCode == Keys.F3)
-                MessageBox.Show("DodajSoftver");
+                btSmerKlik(null, null);
             else if (e.KeyCode == Keys.F4)
-                MessageBox.Show("DodajPredmet");
+                btSmerKlik(null, null);
             else if (e.KeyCode == Keys.F9)
                 MessageBox.Show("Help");
             else if (e.KeyCode == Keys.Back)
