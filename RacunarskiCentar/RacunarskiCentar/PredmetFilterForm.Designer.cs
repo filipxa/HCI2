@@ -222,11 +222,12 @@
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.labelNaziv);
             this.Controls.Add(this.labelID);
-            this.Name = "PredmetFilterForm";
-            this.Text = "PredmetFilterForm";
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.Name = "PredmetFilterForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "PredmetFilterForm";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojTermina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDuzinaTermina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojLjudi)).EndInit();

@@ -127,7 +127,7 @@ namespace RacunarskiCentar
         private HashSet<Software> getInstalledSoft()
         {
             HashSet<Software> rets = new HashSet<Software>();
-            foreach (object itemChecked in checkedListBox1.CheckedItems)
+            foreach (object itemChecked in checkedListBox2.CheckedItems)
             {
 
                 ComboValue item = ((ComboValue)itemChecked);

@@ -21,8 +21,7 @@ namespace RacunarskiCentar
             this.smer = smer;
             this.predmet = predmet;
             InitializeComponent();
-            if(smer != null)
-                textBoxSmer.Text = smer.Ime;
+           
             if(predmet != null)
             {
                 popuniPolja();
@@ -59,7 +58,9 @@ namespace RacunarskiCentar
             Action action;
             if(predmet == null)
             {
-                predmet = new Predmet(textBoxID.Text, textBoxNaziv.Text, smer, richTextBoxOpis.Text, Convert.ToInt32(numericUpDownBrojLjudi), Convert.ToInt32(numericUpDownDuzinaTermina), Convert.ToInt32(numericUpDownBrojTermina));
+                predmet = new Predmet(textBoxID.Text, textBoxNaziv.Text, smer, richTextBoxOpis.Text, 
+                    Convert.ToInt32(numericUpDownBrojLjudi.Value), Convert.ToInt32(numericUpDownDuzinaTermina.Value), 
+                    Convert.ToInt32(numericUpDownBrojTermina.Value));
 
                 action = new CreateAction(predmet);
             }
@@ -150,13 +151,19 @@ namespace RacunarskiCentar
             {
                 DialogResult = DialogResult.None;
                 MessageBox.Show(poruka, "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-
-                //Predmet pp = new Predmet("", "", null, "", -1, -1, -1);
-                //DataManger.addObject(pp);
-
             }
+            
+            //DataManger.addObject(predmet);
+            //int id = 1;
+            //foreach (Predmet p in DataManger.getPredmeti())
+            //{
+            //    Console.WriteLine(id + ": ");
+            //    Console.WriteLine(p.ID + "   " + p.Ime);
+            //    id++;
+            //}
+
         }
 
-      
+
     }
 }

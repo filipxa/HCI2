@@ -36,42 +36,46 @@
             // comboBoxC
             // 
             this.comboBoxC.FormattingEnabled = true;
-            this.comboBoxC.Location = new System.Drawing.Point(240, 51);
+            this.comboBoxC.Location = new System.Drawing.Point(180, 41);
+            this.comboBoxC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxC.Name = "comboBoxC";
-            this.comboBoxC.Size = new System.Drawing.Size(129, 24);
+            this.comboBoxC.Size = new System.Drawing.Size(98, 21);
             this.comboBoxC.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 57);
+            this.label1.Location = new System.Drawing.Point(29, 46);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(260, 139);
+            this.dateTimePicker1.Location = new System.Drawing.Point(195, 113);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(90, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(68, 20);
             this.dateTimePicker1.TabIndex = 4;
             this.dateTimePicker1.Validated += new System.EventHandler(this.dateTimePicker1_Validated);
             // 
             // TerminForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 486);
+            this.ClientSize = new System.Drawing.Size(338, 395);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxC);
-            this.Name = "TerminForm";
-            this.Text = "TerminForm";
-
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MinimizeBox = false;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "TerminForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "TerminForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

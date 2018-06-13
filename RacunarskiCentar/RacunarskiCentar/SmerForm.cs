@@ -38,7 +38,7 @@ namespace RacunarskiCentar
             Action action;
             if(smer == null)
             {
-                smer = new Smer(textBoxID.Text, textBoxIme.Text, Convert.ToDateTime(dateTimePicker1), richTextBoxOpis.Text);
+                smer = new Smer(textBoxID.Text, textBoxIme.Text, Convert.ToDateTime(dateTimePicker1.Value), richTextBoxOpis.Text);
                 action = new CreateAction(smer);
             }
             else
@@ -75,6 +75,7 @@ namespace RacunarskiCentar
 
         private void buttonSacuvaj_Click(object sender, EventArgs e)
         {
+
             int rb = 1;
             string poruka = "";
             if (textBoxID.Text.Length == 0)
@@ -89,6 +90,20 @@ namespace RacunarskiCentar
                 MessageBox.Show(poruka, "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
 
             }
+
+            //Console.WriteLine(DataManger.getSmers().Count);
+            //foreach(Smer s in DataManger.getSmers())
+            //{
+            //    Console.WriteLine(s.ID + "  " + s.Ime);
+            //}
+
+            
+        }
+
+        private void buttonDodajPredmet_Click(object sender, EventArgs e)
+        {
+            PredmetForm pf = new PredmetForm(null, smer);
+            pf.ShowDialog();
         }
     }
 

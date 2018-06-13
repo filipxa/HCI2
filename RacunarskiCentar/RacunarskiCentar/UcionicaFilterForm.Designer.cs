@@ -157,6 +157,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UcionicaFilterForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UcionicaFilterForm";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrRadnihMesta)).EndInit();
             this.ResumeLayout(false);

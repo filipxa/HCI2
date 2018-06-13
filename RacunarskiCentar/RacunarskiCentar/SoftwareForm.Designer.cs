@@ -236,16 +236,14 @@
             this.Controls.Add(this.labelProizvodjac);
             this.Controls.Add(this.labelIme);
             this.Controls.Add(this.labelID);
-            this.Name = "SoftwareForm";
-            this.Text = "SoftwareForm";
-            //this.Load += new System.EventHandler(this.SoftwareForm_Load);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-
+            this.Name = "SoftwareForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "SoftwareForm";
             this.ResumeLayout(false);
             this.PerformLayout();
-            
 
         }
 
