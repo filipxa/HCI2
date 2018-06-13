@@ -12,6 +12,11 @@ namespace RacunarskiCentar
         double cena;
         string opis;
         HashSet<UcionicaAssets> assets;
+
+        public Software()
+        {
+
+        }
         public Software(string id, string name, string proizvodjac, string URL, string godina, double cena, string opis) {
             ID = id;
             Ime = ime;

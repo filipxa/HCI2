@@ -202,6 +202,7 @@
     <EmbeddedResource Include="UcionicaForm.resx">
       <DependentUpon>UcionicaForm.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="DataManager.Serialization.cs" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

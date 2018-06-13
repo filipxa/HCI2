@@ -135,8 +135,11 @@ namespace RacunarskiCentar
             {
                 DialogResult = DialogResult.None;
                 MessageBox.Show(poruka, "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-
+                return;
             }
+
+            GetAction();
+
         }
 
      

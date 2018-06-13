@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+
 
 namespace RacunarskiCentar
 {
+    
+
     public class Ucionica : GUIObject
     {
 
@@ -14,8 +18,13 @@ namespace RacunarskiCentar
         int brMesta;
         HashSet<UcionicaAssets> assets;
         HashSet<Software> installedSoftware;
+        
         Raspored raspored;
 
+        public Ucionica()
+        {
+
+        }
         public Ucionica(string id, string opis, int brMesta)
         {
             BrRadnihMesta = brMesta;

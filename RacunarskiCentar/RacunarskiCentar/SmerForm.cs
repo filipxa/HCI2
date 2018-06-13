@@ -46,7 +46,7 @@ namespace RacunarskiCentar
                 action = new EditAction(smer);
                 smer.ID = textBoxID.Text;
                 smer.Ime = textBoxIme.Text;
-                smer.DatumUvodjenja = Convert.ToDateTime(dateTimePicker1);
+                smer.DatumUvodjenja = Convert.ToDateTime(dateTimePicker1.Value);
                 smer.Opis = richTextBoxOpis.Text;
                 foreach(Predmet p in listBoxPredmeti.Items)
                 {
@@ -88,8 +88,10 @@ namespace RacunarskiCentar
             {
                 DialogResult = DialogResult.None;
                 MessageBox.Show(poruka, "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-
+                return;
             }
+            GetAction();
+
 
             //Console.WriteLine(DataManger.getSmers().Count);
             //foreach(Smer s in DataManger.getSmers())
@@ -97,7 +99,7 @@ namespace RacunarskiCentar
             //    Console.WriteLine(s.ID + "  " + s.Ime);
             //}
 
-            
+
         }
 
         private void buttonDodajPredmet_Click(object sender, EventArgs e)

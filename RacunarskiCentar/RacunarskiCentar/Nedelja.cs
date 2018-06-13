@@ -13,6 +13,10 @@ namespace RacunarskiCentar
             get => raspored;
             set => raspored = value;
         }
+        public Nedelja()
+        {
+
+        }
 
         public Nedelja(Raspored raspored, DateTime ponedeljak)
         {
