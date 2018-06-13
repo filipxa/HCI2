@@ -112,6 +112,7 @@
             // 
             // buttonSacuvaj
             // 
+            this.buttonSacuvaj.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonSacuvaj.Location = new System.Drawing.Point(425, 282);
             this.buttonSacuvaj.Name = "buttonSacuvaj";
             this.buttonSacuvaj.Size = new System.Drawing.Size(91, 53);
@@ -122,6 +123,7 @@
             // 
             // buttonOdustani
             // 
+            this.buttonOdustani.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonOdustani.Location = new System.Drawing.Point(298, 312);
             this.buttonOdustani.Name = "buttonOdustani";
             this.buttonOdustani.Size = new System.Drawing.Size(101, 23);
@@ -137,6 +139,7 @@
             this.buttonDodajPredmet.TabIndex = 12;
             this.buttonDodajPredmet.Text = "Dodaj Predmet";
             this.buttonDodajPredmet.UseVisualStyleBackColor = true;
+            this.buttonDodajPredmet.Click += new System.EventHandler(this.buttonDodajPredmet_Click);
             // 
             // listBoxPredmeti
             // 
@@ -172,12 +175,12 @@
             this.Controls.Add(this.labelDatumUvodjenja);
             this.Controls.Add(this.labelIme);
             this.Controls.Add(this.labelID);
-            this.Name = "SmerForm";
-            this.Text = "SmerForm";
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MinimizeBox = false;
             this.MaximizeBox = false;
-
+            this.MinimizeBox = false;
+            this.Name = "SmerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "SmerForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

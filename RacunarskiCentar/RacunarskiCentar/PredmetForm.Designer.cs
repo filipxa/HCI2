@@ -44,8 +44,6 @@
             this.numericUpDownBrojLjudi = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownDuzinaTermina = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownBrojTermina = new System.Windows.Forms.NumericUpDown();
-            this.labelSmer = new System.Windows.Forms.Label();
-            this.textBoxSmer = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojLjudi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDuzinaTermina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojTermina)).BeginInit();
@@ -63,7 +61,7 @@
             // labelNaziv
             // 
             this.labelNaziv.AutoSize = true;
-            this.labelNaziv.Location = new System.Drawing.Point(192, 74);
+            this.labelNaziv.Location = new System.Drawing.Point(192, 24);
             this.labelNaziv.Name = "labelNaziv";
             this.labelNaziv.Size = new System.Drawing.Size(81, 13);
             this.labelNaziv.TabIndex = 1;
@@ -79,7 +77,7 @@
             // 
             // textBoxNaziv
             // 
-            this.textBoxNaziv.Location = new System.Drawing.Point(195, 90);
+            this.textBoxNaziv.Location = new System.Drawing.Point(195, 40);
             this.textBoxNaziv.Name = "textBoxNaziv";
             this.textBoxNaziv.Size = new System.Drawing.Size(174, 20);
             this.textBoxNaziv.TabIndex = 4;
@@ -88,7 +86,7 @@
             // labelOpis
             // 
             this.labelOpis.AutoSize = true;
-            this.labelOpis.Location = new System.Drawing.Point(192, 174);
+            this.labelOpis.Location = new System.Drawing.Point(192, 124);
             this.labelOpis.Name = "labelOpis";
             this.labelOpis.Size = new System.Drawing.Size(75, 13);
             this.labelOpis.TabIndex = 5;
@@ -106,7 +104,7 @@
             // labelDuzinaTermina
             // 
             this.labelDuzinaTermina.AutoSize = true;
-            this.labelDuzinaTermina.Location = new System.Drawing.Point(192, 124);
+            this.labelDuzinaTermina.Location = new System.Drawing.Point(192, 74);
             this.labelDuzinaTermina.Name = "labelDuzinaTermina";
             this.labelDuzinaTermina.Size = new System.Drawing.Size(165, 13);
             this.labelDuzinaTermina.TabIndex = 8;
@@ -140,14 +138,15 @@
             // 
             // richTextBoxOpis
             // 
-            this.richTextBoxOpis.Location = new System.Drawing.Point(195, 190);
+            this.richTextBoxOpis.Location = new System.Drawing.Point(195, 140);
             this.richTextBoxOpis.Name = "richTextBoxOpis";
-            this.richTextBoxOpis.Size = new System.Drawing.Size(174, 169);
+            this.richTextBoxOpis.Size = new System.Drawing.Size(174, 219);
             this.richTextBoxOpis.TabIndex = 14;
             this.richTextBoxOpis.Text = "";
             // 
             // buttonSacuvaj
             // 
+            this.buttonSacuvaj.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonSacuvaj.Location = new System.Drawing.Point(294, 386);
             this.buttonSacuvaj.Name = "buttonSacuvaj";
             this.buttonSacuvaj.Size = new System.Drawing.Size(75, 23);
@@ -185,7 +184,7 @@
             0,
             0,
             0});
-            this.numericUpDownDuzinaTermina.Location = new System.Drawing.Point(195, 145);
+            this.numericUpDownDuzinaTermina.Location = new System.Drawing.Point(195, 95);
             this.numericUpDownDuzinaTermina.Maximum = new decimal(new int[] {
             270,
             0,
@@ -227,30 +226,11 @@
             0,
             0});
             // 
-            // labelSmer
-            // 
-            this.labelSmer.AutoSize = true;
-            this.labelSmer.Location = new System.Drawing.Point(192, 24);
-            this.labelSmer.Name = "labelSmer";
-            this.labelSmer.Size = new System.Drawing.Size(31, 13);
-            this.labelSmer.TabIndex = 20;
-            this.labelSmer.Text = "Smer";
-            // 
-            // textBoxSmer
-            // 
-            this.textBoxSmer.Location = new System.Drawing.Point(195, 40);
-            this.textBoxSmer.Name = "textBoxSmer";
-            this.textBoxSmer.ReadOnly = true;
-            this.textBoxSmer.Size = new System.Drawing.Size(174, 20);
-            this.textBoxSmer.TabIndex = 21;
-            // 
             // PredmetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(390, 431);
-            this.Controls.Add(this.textBoxSmer);
-            this.Controls.Add(this.labelSmer);
             this.Controls.Add(this.numericUpDownBrojTermina);
             this.Controls.Add(this.numericUpDownDuzinaTermina);
             this.Controls.Add(this.numericUpDownBrojLjudi);
@@ -300,7 +280,5 @@
         private System.Windows.Forms.NumericUpDown numericUpDownBrojLjudi;
         private System.Windows.Forms.NumericUpDown numericUpDownDuzinaTermina;
         private System.Windows.Forms.NumericUpDown numericUpDownBrojTermina;
-        private System.Windows.Forms.Label labelSmer;
-        private System.Windows.Forms.TextBox textBoxSmer;
     }
 }
