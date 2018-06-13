@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace RacunarskiCentar
 {
     public class Nedelja : GUIObject
     {
         List<Termin> termini;
+        [XmlIgnoreAttribute]
         Raspored raspored;
         DateTime ponedeljak;
        public Raspored Raspored

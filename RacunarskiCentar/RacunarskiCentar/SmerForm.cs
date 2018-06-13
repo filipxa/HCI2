@@ -13,14 +13,20 @@ namespace RacunarskiCentar
 {
     public partial class SmerForm : Form
     {
+        bool isCreate = false;
         private Smer smer;
         public SmerForm(Smer smer)
         {
+            DataControllercs.onAction += ActionExcuted;
             this.smer = smer;
             InitializeComponent();
             if(smer != null)
             {
                 popuniPolja();
+            }else
+            {
+                isCreate = true;
+                this.smer = new Smer();
             }
         }
 
@@ -36,9 +42,17 @@ namespace RacunarskiCentar
         public Action GetAction()
         {
             Action action;
-            if(smer == null)
+            if(isCreate)
             {
-                smer = new Smer(textBoxID.Text, textBoxIme.Text, Convert.ToDateTime(dateTimePicker1.Value), richTextBoxOpis.Text);
+                smer.ID = textBoxID.Text;
+                smer.Ime = textBoxIme.Text;
+                smer.DatumUvodjenja = Convert.ToDateTime(dateTimePicker1.Value);
+                smer.Opis = richTextBoxOpis.Text;
+                foreach (Predmet p in listBoxPredmeti.Items)
+                {
+                    smer.Predmeti.Add(p);
+                }
+
                 action = new CreateAction(smer);
             }
             else
@@ -93,19 +107,32 @@ namespace RacunarskiCentar
             GetAction();
 
 
-            //Console.WriteLine(DataManger.getSmers().Count);
-            //foreach(Smer s in DataManger.getSmers())
-            //{
-            //    Console.WriteLine(s.ID + "  " + s.Ime);
-            //}
-
+            
 
         }
 
+        private void ActionExcuted(object sender, Action e)
+        {
+            if (e is CreateAction)
+            {
+                
+                
+                Predmet u = e.getGUIObject() as Predmet;
+                if (u != null)
+                {
+                    if(u.SmerPredmeta == smer)
+                    {
+                        listBoxPredmeti.Items.Add(u);
+                    }
+                }
+            }
+           
+        }
         private void buttonDodajPredmet_Click(object sender, EventArgs e)
         {
             PredmetForm pf = new PredmetForm(null, smer);
             pf.ShowDialog();
+            
         }
     }
 

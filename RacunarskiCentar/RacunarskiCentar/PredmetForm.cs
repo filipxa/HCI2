@@ -151,16 +151,11 @@ namespace RacunarskiCentar
             {
                 DialogResult = DialogResult.None;
                 MessageBox.Show(poruka, "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                return;
             }
-            
-            //DataManger.addObject(predmet);
-            //int id = 1;
-            //foreach (Predmet p in DataManger.getPredmeti())
-            //{
-            //    Console.WriteLine(id + ": ");
-            //    Console.WriteLine(p.ID + "   " + p.Ime);
-            //    id++;
-            //}
+
+            GetAction();
+          
 
         }
 

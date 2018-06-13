@@ -16,7 +16,7 @@ namespace RacunarskiCentar
 
         public Smer()
         {
-
+            predmeti = new List<Predmet>();
         }
         public Smer(string id, string ime, DateTime datumUvodjenja, string opis)
         {

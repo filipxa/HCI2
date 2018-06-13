@@ -15,6 +15,7 @@ namespace RacunarskiCentar
 
         public Form1()
         {
+            
             ToolStripButton b = new ToolStripButton();
             b.Text = "Nazad";
             b.Click += B_Click;
@@ -24,6 +25,7 @@ namespace RacunarskiCentar
             KeyDown += Form1_KeyDown;
             tb.Items.Add(b);
             b.Click += Undo_Click1;
+            FormClosing += Form1_FormClosing;
 
             DataControllercs.onAction += ActionExcuted;
             KeyPreview = true;
@@ -43,6 +45,16 @@ namespace RacunarskiCentar
             ResizeBegin += Form1_ResizeBegin;
 
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DataManger.saveUcionica("ucionicaXML.xml");
+            DataManger.saveSmer("smerXML.xml");
+            DataManger.saveSoftware("softwareXML.xml");
+        }
+
+       
+
 
         private void ActionExcuted(object sender, Action e)
         {
@@ -264,12 +276,9 @@ namespace RacunarskiCentar
         private void btSmerKlik(object sender, EventArgs e)
         {
             SmerForm f = new SmerForm(null);
-            DialogResult result = f.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                SmerControl c = new SmerControl((Smer)f.GetAction().getGUIObject(), mainPanel);
-                //da li dodajemo negde
-            }
+            f.ShowDialog();
+            f.Dispose();
+           
         }
 
         private void btDodajKlik(object sender, EventArgs e)

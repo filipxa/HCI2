@@ -76,6 +76,7 @@ namespace RacunarskiCentar
         {
             checkedListBox1.Items.Clear();
             textBoxID.Text = ucionica.ID;
+            textBoxID.ReadOnly = true;
             numericUpDown1.Value = ucionica.BrRadnihMesta;
             // popunjavanje assets-a
             foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
@@ -214,8 +215,9 @@ namespace RacunarskiCentar
             {
                 DialogResult = DialogResult.None;
                 MessageBox.Show(poruka, "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                return;
             }
-            DataManger.saveUcionice("ucioniceXML.xml");
+            GetAction();
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Serialization;
 
 namespace RacunarskiCentar
 {
@@ -7,6 +8,7 @@ namespace RacunarskiCentar
         DateTime pocetakTermina;
         DateTime krajTermina;
         Predmet predmet;
+        [XmlIgnoreAttribute]
         Nedelja nedelja;
         int duzinaTermina; // Broj casova termina
 

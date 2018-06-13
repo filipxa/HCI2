@@ -10,7 +10,6 @@ namespace RacunarskiCentar
     public partial class DataManger
     {
         static List<Ucionica> ucionice = new List<Ucionica>();
-
         static List<Smer> smerovi = new List<Smer>();
         static List<Software> softveri = new List<Software>();
 
@@ -35,6 +34,10 @@ namespace RacunarskiCentar
             {
                 addSmer(guiObject as Smer);
             }
+            if(guiObject is Software)
+            {
+                addSoftware(guiObject as Software);
+            }
             if( guiObject is Raspored)
             {
                 addRaspored(guiObject as Raspored);
@@ -44,6 +47,11 @@ namespace RacunarskiCentar
             {
                 addNedelja(guiObject as Nedelja);
             }
+        }
+
+        private static void addSoftware(Software software)
+        {
+            softveri.Add(software);
         }
 
         private static void addRaspored(Raspored raspored)
