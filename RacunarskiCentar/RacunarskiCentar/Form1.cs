@@ -23,8 +23,9 @@ namespace RacunarskiCentar
             b.Text = "Undo";
             KeyDown += Form1_KeyDown;
             tb.Items.Add(b);
-            b.Click += B_Click1;
+            b.Click += Undo_Click1;
 
+            DataControllercs.onAction += ActionExcuted;
             KeyPreview = true;
 
             InitializeComponent();
@@ -34,7 +35,7 @@ namespace RacunarskiCentar
             Controls.Add(tb);
             initRCView();
 
-
+            
 
             ClientSize = new Size(1000, 800);
             MinimumSize = Size;
@@ -43,14 +44,35 @@ namespace RacunarskiCentar
 
         }
 
+        private void ActionExcuted(object sender, Action e)
+        {
+            if(e is CreateAction)
+            {
+                if (activeObject == null)
+                {
+                    Ucionica u = e.getGUIObject() as Ucionica;
+                    if (u != null)
+                    {
+                        UcionicaControl c = new UcionicaControl(u, mainPanel);
+                        dodajUcionicu(c);
+                    }
+                } else if(activeObject is Ucionica)
+                {
+                    Smer s = e.getGUIObject() as Smer;
+                    if (s != null)
+                    {
+                        dodajSmerControl(s);   
+                    }
 
+                }
+            }
+        }
 
-        private void B_Click1(object sender, EventArgs e)
+        private void Undo_Click1(object sender, EventArgs e)
         {
             if (DataControllercs.undoAvailable())
             {
                 Action a = DataControllercs.undoAction();
-                initCurrentView();
 
             }
             else
@@ -253,12 +275,7 @@ namespace RacunarskiCentar
         private void btDodajKlik(object sender, EventArgs e)
         {
             UcionicaForm f = new UcionicaForm(null);
-            DialogResult result = f.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                UcionicaControl c = new UcionicaControl((Ucionica)f.GetAction().getGUIObject(), mainPanel);
-                dodajUcionicu(c);
-            }
+            f.ShowDialog();
 
         }
 
@@ -315,20 +332,13 @@ namespace RacunarskiCentar
     {
 
 
-        List<Smer> smerovi = new List<Smer>();
 
         private void initUcionicaView(Ucionica ucionica)
         {
             activeObject = ucionica;
             initMainPanel();
             initToolPanelTable();
-            Smer s = new Smer("SW", "SOft kobas", DateTime.Now, "");
-            for (int i = 0; i < 10; i++)
-            {
-                Predmet p = new Predmet("p" + i.ToString(), "", s, "", 0, i, 0);
-                s.Predmeti.Add(p);
-            }
-            smerovi.Add(s);
+           
 
             populatePredmets();
 
@@ -348,21 +358,22 @@ namespace RacunarskiCentar
         private void populatePredmets()
         {
             TableLayoutPanel t = (TableLayoutPanel)toolboxPanel;
-            toolboxPanel.Padding = new Padding(15, 0, 0, 0);
-            for (int i = 0; i < 8; i++)
+            toolboxPanel.Padding = new Padding(13, 0, 0, 0);
+            foreach (Smer smer in DataManger.getSmers())
             {
-                foreach (Smer smer in smerovi)
-                {
 
-                    SmerControl sc = new SmerControl(smer, toolboxPanel);
-                    sc.ColapseedChanged += Sc_ValueChanged;
-                    t.Controls.Add(sc);
+                dodajSmerControl(smer);
 
-                }
             }
 
+        }
 
-
+        private void dodajSmerControl(Smer s)
+        {
+            TableLayoutPanel t = (TableLayoutPanel)toolboxPanel;
+            SmerControl sc = new SmerControl(s, toolboxPanel);
+            sc.ColapseedChanged += Sc_ValueChanged;
+            t.Controls.Add(sc);
         }
 
         private void Sc_ValueChanged(object sender, EventArgs e)

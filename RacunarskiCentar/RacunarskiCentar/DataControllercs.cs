@@ -9,9 +9,14 @@ namespace RacunarskiCentar
     static class DataControllercs
     {
         static Stack<Action> actionsHistory = new Stack<Action>();
+        static public EventHandler<Action> onAction;
         static public void addAction(Action action)
         {
             action.excuteAction();
+            if (onAction != null)
+            {
+                onAction(null, action);
+            }
             actionsHistory.Push(action);
         }
         static public  Action undoAction()
@@ -21,10 +26,15 @@ namespace RacunarskiCentar
             {
                 rets = actionsHistory.Pop().GetReverseAction();
                 rets.excuteAction();
+                if (onAction != null)
+                {
+                    onAction(null, rets);
+                }
             }
             return rets;
              
         }
+
 
         internal static bool undoAvailable()
         {
@@ -42,7 +52,13 @@ namespace RacunarskiCentar
             o = guiObject;
         }
         public abstract Action GetReverseAction();
-        internal abstract void excuteAction();
+        internal virtual void excuteAction()
+        {
+            if (DataControllercs.onAction != null)
+            {
+                DataControllercs.onAction(null, this);
+            }
+        }
         public GUIObject getGUIObject()
         {
             return o;
