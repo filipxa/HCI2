@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RacunarskiCentar
@@ -64,15 +59,15 @@ namespace RacunarskiCentar
             predmetPanel = new Panel();
             predmetPanel.Width = Width;
             predmetPanel.Location = new Point(0, smerHeight);
-            predmetPanel.BackColor = Color.Transparent; // parentPanel.BackColor;
-           
+            predmetPanel.BackColor = Color.Transparent;
 
             refreshPanels();
-
 
             MouseDown += SmerControl_Click;
             
         }
+
+
 
         private void refreshPanels()
         {
@@ -87,7 +82,6 @@ namespace RacunarskiCentar
            if(smerRec.Contains(new Point(e.Location.X, e.Location.Y)))
             {
                 IsColapsed = !isColapsed;
-               
             }
         }
 

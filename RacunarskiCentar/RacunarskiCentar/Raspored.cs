@@ -9,6 +9,7 @@ namespace RacunarskiCentar
         List<Nedelja> radneNedelje;
        
         Ucionica ucionica;
+
         [XmlIgnoreAttribute]
         public Ucionica Ucionica
         {
