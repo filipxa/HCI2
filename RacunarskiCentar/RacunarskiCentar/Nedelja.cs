@@ -7,10 +7,11 @@ namespace RacunarskiCentar
     public class Nedelja : GUIObject
     {
         List<Termin> termini;
-        [XmlIgnoreAttribute]
         Raspored raspored;
         DateTime ponedeljak;
-       public Raspored Raspored
+
+        [XmlIgnoreAttribute]
+        public Raspored Raspored
         {
             get => raspored;
             set => raspored = value;
