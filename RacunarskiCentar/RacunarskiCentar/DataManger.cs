@@ -42,11 +42,20 @@ namespace RacunarskiCentar
             {
                 addRaspored(guiObject as Raspored);
             }
+            if(guiObject is Predmet)
+            {
+                addPredmet(guiObject as Predmet);
+            }
 
             if (guiObject is Nedelja)
             {
                 addNedelja(guiObject as Nedelja);
             }
+        }
+
+        private static void addPredmet(Predmet predmet)
+        {
+            // TO-DO:
         }
 
         private static void addSoftware(Software software)
