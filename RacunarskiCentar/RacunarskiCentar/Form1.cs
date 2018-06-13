@@ -385,10 +385,9 @@ namespace RacunarskiCentar
     {
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("DJOKA");
 
             if (e.KeyCode == Keys.F1)
-                btDodajKlik(null, null);//Da li moze ovako??????????????
+                btDodajKlik(null, null);
             else if (e.KeyCode == Keys.F2)
                 btSoftverKlik(null, null);
             else if (e.KeyCode == Keys.F3)
