@@ -19,6 +19,10 @@ namespace RacunarskiCentar
 
         HashSet<Software> installedSoftware;
 
+        public Predmet()
+        {
+
+        }
         public Predmet(string id, string ime, Smer smerPredmeta, string opis,int brLjudi, int brCasova, int brTermina)
         {  
             ID =id;

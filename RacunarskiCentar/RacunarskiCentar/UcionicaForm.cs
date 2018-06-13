@@ -215,6 +215,7 @@ namespace RacunarskiCentar
                 DialogResult = DialogResult.None;
                 MessageBox.Show(poruka, "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
             }
+            DataManger.saveUcionice("ucioniceXML.xml");
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)

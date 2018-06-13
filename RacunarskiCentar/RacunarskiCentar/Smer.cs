@@ -14,7 +14,10 @@ namespace RacunarskiCentar
         string opis;
         List<Predmet> predmeti;
 
+        public Smer()
+        {
 
+        }
         public Smer(string id, string ime, DateTime datumUvodjenja, string opis)
         {
             ID = id;

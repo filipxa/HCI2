@@ -9,6 +9,11 @@ namespace RacunarskiCentar
         Predmet predmet;
         Nedelja nedelja;
         int duzinaTermina; // Broj casova termina
+
+        public Termin()
+        {
+
+        }
         public Termin(DateTime pocetakTermina, int duzinaTermina,Predmet predmet, Nedelja nedelja)
         {
             PocetakTermina = pocetakTermina;

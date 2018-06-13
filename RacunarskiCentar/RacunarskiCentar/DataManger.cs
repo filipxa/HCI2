@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace RacunarskiCentar
 {
     public partial class DataManger
     {
         static List<Ucionica> ucionice = new List<Ucionica>();
+
         static List<Smer> smerovi = new List<Smer>();
         static List<Software> softveri = new List<Software>();
+
+        
+
 
         internal static List<Smer> getSmers()
         {

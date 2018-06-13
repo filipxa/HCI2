@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace RacunarskiCentar
 {
     public class Raspored : GUIObject
     {
         List<Nedelja> radneNedelje;
+        [XmlIgnoreAttribute]
         Ucionica ucionica;
 
         public Ucionica Ucionica
@@ -14,6 +16,10 @@ namespace RacunarskiCentar
             set => ucionica = value;
         }
 
+        public Raspored()
+        {
+
+        }
         public Raspored(Ucionica ucionica)
         {
             radneNedelje = new List<Nedelja>();
