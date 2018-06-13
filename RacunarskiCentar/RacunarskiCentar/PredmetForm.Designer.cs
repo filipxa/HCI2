@@ -271,6 +271,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PredmetForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PredmetForm";
             this.Load += new System.EventHandler(this.PredmetForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojLjudi)).EndInit();
