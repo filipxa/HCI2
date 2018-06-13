@@ -23,7 +23,7 @@ namespace RacunarskiCentar
             this.checkBox1.CheckedChanged += CheckBox_CheckedChanged;
             this.checkBox1.Checked = true;
             this.checkBox2.CheckedChanged += CheckBox_CheckedChanged;
-
+            textBoxCena.Text = "0";
             if(software != null)
             {
                 popuniPolja();
@@ -65,7 +65,8 @@ namespace RacunarskiCentar
             Action action;
             if(software == null)
             {
-                software = new Software(textBoxID.Text, textBoxIme.Text, textBoxProizvodjac.Text, textBoxURL.Text, textBoxGodina.Text, Convert.ToDouble(textBoxCena.Text), richTextBoxOpis.Text);
+                software = new Software(textBoxID.Text, textBoxIme.Text, 
+                    textBoxProizvodjac.Text, textBoxURL.Text, textBoxGodina.Text, Convert.ToDouble(textBoxCena.Text), richTextBoxOpis.Text);
                 action = new CreateAction(software);
             }
             else
@@ -83,8 +84,8 @@ namespace RacunarskiCentar
             return action;
 
         }
-        Regex idRegex = new Regex("[a-zA-Z0-9]");
-
+        Regex idRegex = new Regex("[a-zA-Z0-9]+");
+        Regex cenaRegex = new Regex("[0-9]+");
         private void textBoxID_Validated(object sender, EventArgs e)
         {
             if (!idRegex.IsMatch(textBoxID.Text))
@@ -131,6 +132,7 @@ namespace RacunarskiCentar
                 poruka += "#" + rb + ": Morate odabrati bar jedan operativni sistem.";
                 rb++;
             }
+           
             if (poruka.Length > 0)
             {
                 DialogResult = DialogResult.None;
@@ -142,13 +144,18 @@ namespace RacunarskiCentar
 
         }
 
-     
+        private void textBoxCena_Validated(object sender, EventArgs e)
+        {
 
-       
+            try
+            {
+                Convert.ToDouble(textBoxCena.Text);
+            }
+            catch (Exception)
+            {
 
-
-       
-
-
+                textBoxCena.Text = "0";
+            }
+        }
     }
 }

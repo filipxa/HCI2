@@ -94,7 +94,7 @@ namespace RacunarskiCentar
         public HashSet<UcionicaAssets> Assets { get => assets; set => assets = new HashSet<UcionicaAssets>(value); }
         public override GUIObject Copy()
         {
-            throw new NotImplementedException();
+            return new Software(id, ime, proizvodjac, URL, godina, cena, opis);
         }
 
         internal override void restoreFromCopy(GUIObject guiObject)

@@ -11,7 +11,7 @@ namespace RacunarskiCentar
     public partial class DataManger
     {
 
-        public static void saveUcionice(string fileName)
+        public static void saveUcionica(string fileName)
         {
 
             using (var stream = new FileStream(fileName, FileMode.Create))
@@ -21,6 +21,29 @@ namespace RacunarskiCentar
                 //ucionice[0].Raspored.RadneNedelje.Add(new Nedelja(ucionice[0].Raspored, DateTime.Now));
                 var xml = new XmlSerializer(typeof(List<Ucionica>));
                 xml.Serialize(stream, ucionice);
+            }
+        }
+
+
+        public static void saveSmer(string fileName)
+        {
+
+            using (var stream = new FileStream(fileName, FileMode.Create))
+            {
+                var xml = new XmlSerializer(typeof(List<Smer>));
+                xml.Serialize(stream, smerovi);
+            }
+        }
+
+        public static void saveSoftware(string fileName)
+        {
+
+            using (var stream = new FileStream(fileName, FileMode.Create))
+            {
+
+
+                var xml = new XmlSerializer(typeof(List<Software>));
+                xml.Serialize(stream, softveri);
             }
         }
     }

@@ -155,9 +155,11 @@
             this.textBoxCena.Name = "textBoxCena";
             this.textBoxCena.Size = new System.Drawing.Size(220, 20);
             this.textBoxCena.TabIndex = 12;
+            this.textBoxCena.Validated += new System.EventHandler(this.textBoxCena_Validated);
             // 
             // buttonSacuvaj
             // 
+            this.buttonSacuvaj.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonSacuvaj.Location = new System.Drawing.Point(170, 443);
             this.buttonSacuvaj.Name = "buttonSacuvaj";
             this.buttonSacuvaj.Size = new System.Drawing.Size(75, 23);

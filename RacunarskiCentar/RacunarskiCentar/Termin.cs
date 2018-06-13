@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace RacunarskiCentar
 {
-    public class Termin : GUIObject
+    public class Termin : GUIObject, IXmlSerializable
     {
         DateTime pocetakTermina;
         DateTime krajTermina;
@@ -56,6 +59,7 @@ namespace RacunarskiCentar
             return DateBetween(pocetak, kraj, pocetakTermina, krajTermina) || DateBetween(pocetakTermina, krajTermina, pocetak, kraj);
 
         }
+        [XmlIgnoreAttribute]
         public Nedelja Nedelja
         {
             get => nedelja;
@@ -93,6 +97,21 @@ namespace RacunarskiCentar
             Predmet = predmet;
             Nedelja = nedelja;
             krajTermina = t.krajTermina;
+        }
+
+        public XmlSchema GetSchema()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            
         }
     }
 }

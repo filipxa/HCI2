@@ -24,7 +24,7 @@ namespace RacunarskiCentar
             Random r = new Random();
             for (int i = 1; i < 25; i++)
             {
-                ucionica = new Ucionica("MI-A2-2", "32", i*4, null, new HashSet<Software>());
+                ucionica = new Ucionica("MI-A2-" + i, "32", i*4, null, new HashSet<Software>());
                 for (int j = 1; j < 6; j++)
                 {
                     if (r.Next(100)>30)

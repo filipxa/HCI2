@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace RacunarskiCentar
 {
@@ -90,6 +91,7 @@ namespace RacunarskiCentar
                 OnValueChanged(new EventArgs());
             }
         }
+        [XmlIgnore]
         public Smer SmerPredmeta {
             get => smerPredmeta;
             set {
@@ -136,5 +138,11 @@ namespace RacunarskiCentar
             
             
         }
+        public override string ToString()
+        {
+            return ime;
+        }
+
     }
+    
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace RacunarskiCentar
 {
@@ -8,7 +9,9 @@ namespace RacunarskiCentar
         List<Termin> termini;
         Raspored raspored;
         DateTime ponedeljak;
-       public Raspored Raspored
+
+        [XmlIgnoreAttribute]
+        public Raspored Raspored
         {
             get => raspored;
             set => raspored = value;

@@ -32,15 +32,15 @@
             this.labelIme = new System.Windows.Forms.Label();
             this.labelDatumUvodjenja = new System.Windows.Forms.Label();
             this.labelOpis = new System.Windows.Forms.Label();
-            this.labelPredmeti = new System.Windows.Forms.Label();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.textBoxIme = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.buttonSacuvaj = new System.Windows.Forms.Button();
             this.buttonOdustani = new System.Windows.Forms.Button();
-            this.buttonDodajPredmet = new System.Windows.Forms.Button();
-            this.listBoxPredmeti = new System.Windows.Forms.ListBox();
             this.richTextBoxOpis = new System.Windows.Forms.RichTextBox();
+            this.labelPredmeti = new System.Windows.Forms.Label();
+            this.listBoxPredmeti = new System.Windows.Forms.ListBox();
+            this.buttonDodajPredmet = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelID
@@ -78,15 +78,6 @@
             this.labelOpis.Size = new System.Drawing.Size(28, 13);
             this.labelOpis.TabIndex = 3;
             this.labelOpis.Text = "Opis";
-            // 
-            // labelPredmeti
-            // 
-            this.labelPredmeti.AutoSize = true;
-            this.labelPredmeti.Location = new System.Drawing.Point(295, 20);
-            this.labelPredmeti.Name = "labelPredmeti";
-            this.labelPredmeti.Size = new System.Drawing.Size(48, 13);
-            this.labelPredmeti.TabIndex = 4;
-            this.labelPredmeti.Text = "Predmeti";
             // 
             // textBoxID
             // 
@@ -131,15 +122,22 @@
             this.buttonOdustani.Text = "Odustani";
             this.buttonOdustani.UseVisualStyleBackColor = true;
             // 
-            // buttonDodajPredmet
+            // richTextBoxOpis
             // 
-            this.buttonDodajPredmet.Location = new System.Drawing.Point(298, 282);
-            this.buttonDodajPredmet.Name = "buttonDodajPredmet";
-            this.buttonDodajPredmet.Size = new System.Drawing.Size(101, 23);
-            this.buttonDodajPredmet.TabIndex = 12;
-            this.buttonDodajPredmet.Text = "Dodaj Predmet";
-            this.buttonDodajPredmet.UseVisualStyleBackColor = true;
-            this.buttonDodajPredmet.Click += new System.EventHandler(this.buttonDodajPredmet_Click);
+            this.richTextBoxOpis.Location = new System.Drawing.Point(24, 182);
+            this.richTextBoxOpis.Name = "richTextBoxOpis";
+            this.richTextBoxOpis.Size = new System.Drawing.Size(220, 92);
+            this.richTextBoxOpis.TabIndex = 14;
+            this.richTextBoxOpis.Text = "";
+            // 
+            // labelPredmeti
+            // 
+            this.labelPredmeti.AutoSize = true;
+            this.labelPredmeti.Location = new System.Drawing.Point(295, 20);
+            this.labelPredmeti.Name = "labelPredmeti";
+            this.labelPredmeti.Size = new System.Drawing.Size(48, 13);
+            this.labelPredmeti.TabIndex = 4;
+            this.labelPredmeti.Text = "Predmeti";
             // 
             // listBoxPredmeti
             // 
@@ -149,13 +147,15 @@
             this.listBoxPredmeti.Size = new System.Drawing.Size(218, 238);
             this.listBoxPredmeti.TabIndex = 13;
             // 
-            // richTextBoxOpis
+            // buttonDodajPredmet
             // 
-            this.richTextBoxOpis.Location = new System.Drawing.Point(24, 182);
-            this.richTextBoxOpis.Name = "richTextBoxOpis";
-            this.richTextBoxOpis.Size = new System.Drawing.Size(220, 92);
-            this.richTextBoxOpis.TabIndex = 14;
-            this.richTextBoxOpis.Text = "";
+            this.buttonDodajPredmet.Location = new System.Drawing.Point(298, 282);
+            this.buttonDodajPredmet.Name = "buttonDodajPredmet";
+            this.buttonDodajPredmet.Size = new System.Drawing.Size(101, 23);
+            this.buttonDodajPredmet.TabIndex = 12;
+            this.buttonDodajPredmet.Text = "Dodaj Predmet";
+            this.buttonDodajPredmet.UseVisualStyleBackColor = true;
+            this.buttonDodajPredmet.Click += new System.EventHandler(this.buttonDodajPredmet_Click);
             // 
             // SmerForm
             // 
@@ -192,14 +192,14 @@
         private System.Windows.Forms.Label labelIme;
         private System.Windows.Forms.Label labelDatumUvodjenja;
         private System.Windows.Forms.Label labelOpis;
-        private System.Windows.Forms.Label labelPredmeti;
         private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.TextBox textBoxIme;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button buttonSacuvaj;
         private System.Windows.Forms.Button buttonOdustani;
-        private System.Windows.Forms.Button buttonDodajPredmet;
-        private System.Windows.Forms.ListBox listBoxPredmeti;
         private System.Windows.Forms.RichTextBox richTextBoxOpis;
+        private System.Windows.Forms.Label labelPredmeti;
+        private System.Windows.Forms.ListBox listBoxPredmeti;
+        private System.Windows.Forms.Button buttonDodajPredmet;
     }
 }
