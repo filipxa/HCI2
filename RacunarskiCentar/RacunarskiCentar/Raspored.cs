@@ -7,9 +7,9 @@ namespace RacunarskiCentar
     public class Raspored : GUIObject
     {
         List<Nedelja> radneNedelje;
-        [XmlIgnoreAttribute]
+       
         Ucionica ucionica;
-
+        [XmlIgnoreAttribute]
         public Ucionica Ucionica
         {
             get => ucionica;
