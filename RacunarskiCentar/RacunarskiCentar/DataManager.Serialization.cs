@@ -60,6 +60,26 @@ namespace RacunarskiCentar
             loadSmerovi("smerXML.xml");
             loadSoftware("softwareXML.xml");
             loadUcionice("ucionicaXML.xml");
+            foreach(Ucionica u in ucionice)
+            {
+                u.Raspored.Ucionica = u;
+                foreach(Nedelja ned in u.Raspored.RadneNedelje)
+                {
+                    ned.Raspored = u.Raspored;
+
+                    foreach(Termin t in ned.Termini)
+                    {
+                        t.Nedelja = ned;
+                    }
+                }
+            }
+            foreach(Smer smer in smerovi)
+            {
+                foreach(Predmet p in smer.Predmeti)
+                {
+                    p.SmerPredmeta = smer;
+                }
+            }
 
         }
 

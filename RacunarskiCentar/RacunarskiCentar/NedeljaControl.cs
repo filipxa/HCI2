@@ -80,7 +80,7 @@ namespace RacunarskiCentar
                 List<Termin> termini = pair.Value;
                 foreach (Termin termin in termini)
                 {
-                    //NAPRAVI TERMINE
+                    
                 }
 
             }
@@ -97,9 +97,6 @@ namespace RacunarskiCentar
         {
             resizeAllDani();
         }
-
-
-
 
         private void resizeAllDani()
         {
