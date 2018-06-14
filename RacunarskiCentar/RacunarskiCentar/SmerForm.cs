@@ -134,7 +134,18 @@ namespace RacunarskiCentar
                 {
                     if(u.SmerPredmeta == smer)
                     {
-                        listBoxPredmeti.Items.Add(u);
+                        List<Predmet> pomocna = new List<Predmet>();
+                        foreach(Predmet p in listBoxPredmeti.Items)
+                        {
+                            pomocna.Add(p);
+                        }
+                        pomocna.Add(u);
+                        listBoxPredmeti.DataSource = null;
+                        listBoxPredmeti.Items.Clear();
+                        foreach (Predmet p in pomocna)
+                            listBoxPredmeti.Items.Add(p);
+                        
+                        
                     }
                 }
             }
