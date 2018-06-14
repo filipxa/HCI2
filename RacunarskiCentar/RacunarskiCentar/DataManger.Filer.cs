@@ -48,10 +48,10 @@ namespace RacunarskiCentar
         public static List<Software> softverFiltriranje()
         {
             //ID, Ime, Proizvodjac, Cena
-            return softveri.Where(x => (x.ID.ToLower().Contains(softverFilter.ID.ToLower()) || softverFilter.ID == "")
-            && ((x.Ime.ToLower().Contains(softverFilter.Ime.ToLower())) || (softverFilter.Ime == ""))
-            && ((x.Proizvodjac.ToLower().Contains(softverFilter.Proizvodjac.ToLower())) || (softverFilter.Proizvodjac == ""))
-            && (x.Cena >= softverFilter.Cena)
+            return softveri.Where(x => (x.ID == null || x.ID.ToLower().Contains(softverFilter.ID.ToLower()) || softverFilter.ID == "")
+            && (x.Ime == null || (x.Ime.ToLower().Contains(softverFilter.Ime.ToLower())) || (softverFilter.Ime == ""))
+            && (x.Proizvodjac == null || (x.Proizvodjac.ToLower().Contains(softverFilter.Proizvodjac.ToLower())) || (softverFilter.Proizvodjac == ""))
+            && (x.Cena == null || x.Cena >= softverFilter.Cena)
             ).ToList();
         }
 

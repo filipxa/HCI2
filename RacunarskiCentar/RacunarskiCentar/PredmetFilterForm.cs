@@ -16,6 +16,22 @@ namespace RacunarskiCentar
         public PredmetFilterForm()
         {
             InitializeComponent();
+
+            initTabela();
+            
+
+
+            foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
+            {
+                checkedListBox1.Items.Add(new ComboValue(aset), false);
+            }
+            
+            
+
+        }
+
+        private void initTabela()
+        {
             dataGridView1.ColumnCount = 7;
 
             dataGridView1.Columns[0].Name = "ID";
@@ -25,15 +41,8 @@ namespace RacunarskiCentar
             dataGridView1.Columns[4].Name = "Br. ljudi";
             dataGridView1.Columns[5].Name = "Br. casova";
             dataGridView1.Columns[6].Name = "Br. termina";
-
-
-            foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
-            {
-                checkedListBox1.Items.Add(new ComboValue(aset), false);
-            }
+            dataGridView1.ReadOnly = true;
             popunjavanjeTabele();
-
-
         }
 
         private void popunjavanjeTabele()

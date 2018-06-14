@@ -21,8 +21,29 @@ namespace RacunarskiCentar
                 checkedListBox1.Items.Add(new ComboValue(aset), false);
             }
             checkedListBox1.ItemCheck += CheckedListBox1_ItemCheck;
+            initTabela();
         }
 
+
+        private void initTabela()
+        {
+            dataGridView1.ColumnCount = 3;
+
+            dataGridView1.Columns[0].Name = "ID";
+            dataGridView1.Columns[1].Name = "Opis";
+            dataGridView1.Columns[2].Name = "Br. mesta";
+            dataGridView1.ReadOnly = true;
+            popunjavanjeTabele();
+        }
+
+        private void popunjavanjeTabele()
+        {
+            foreach (Ucionica p in DataManger.getUcionice())
+            {
+                string[] row = { p.ID, p.Opis, Convert.ToString(p.BrRadnihMesta) };
+                dataGridView1.Rows.Add(row);
+            }
+        }
 
         private void CheckedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
         {

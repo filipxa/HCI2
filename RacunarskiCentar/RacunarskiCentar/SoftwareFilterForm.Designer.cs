@@ -38,6 +38,8 @@
             this.labelCena = new System.Windows.Forms.Label();
             this.buttonOdustani = new System.Windows.Forms.Button();
             this.buttonSacuvaj = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxIme
@@ -125,11 +127,20 @@
             this.buttonSacuvaj.UseVisualStyleBackColor = true;
             this.buttonSacuvaj.Click += new System.EventHandler(this.buttonSacuvaj_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(258, 18);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(592, 214);
+            this.dataGridView1.TabIndex = 19;
+            // 
             // SoftwareFilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(862, 261);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonOdustani);
             this.Controls.Add(this.buttonSacuvaj);
             this.Controls.Add(this.textBoxCena);
@@ -146,6 +157,7 @@
             this.Name = "SoftwareFilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SoftwareFilterForm";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,5 +175,6 @@
         private System.Windows.Forms.Label labelCena;
         private System.Windows.Forms.Button buttonOdustani;
         private System.Windows.Forms.Button buttonSacuvaj;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

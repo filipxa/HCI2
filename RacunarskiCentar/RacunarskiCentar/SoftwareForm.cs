@@ -120,7 +120,7 @@ namespace RacunarskiCentar
             {
                 foreach (Software s in DataManger.getSoftware())
                 {
-                    if (s.ID.Equals(software.ID))
+                    if (s.ID.Equals(textBoxID.Text))
                     {
                         poruka += "#" + rb + ": Sofver sa id-em " + textBoxID.Text + " vec postoji..\n";
                         rb++;

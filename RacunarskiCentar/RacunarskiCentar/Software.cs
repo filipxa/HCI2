@@ -15,9 +15,9 @@ namespace RacunarskiCentar
 
         public Software()
         {
-
+            assets = new HashSet<UcionicaAssets>();
         }
-        public Software(string id, string name, string proizvodjac, string URL, string godina, double cena, string opis) {
+        public Software(string id, string name, string proizvodjac, string URL, string godina, double cena, string opis) : this() {
             ID = id;
             Ime = ime;
             Proizvodjac = proizvodjac;
@@ -100,6 +100,11 @@ namespace RacunarskiCentar
         internal override void restoreFromCopy(GUIObject guiObject)
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return ID;
         }
     }
 }
