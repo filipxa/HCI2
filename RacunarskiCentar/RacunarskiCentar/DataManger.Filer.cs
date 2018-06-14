@@ -17,7 +17,7 @@ namespace RacunarskiCentar
         public static List<Ucionica> ucionicaFilterisanje()
         {
             //ID, BrRadnihMesta, Assets, InstalledSoftware
-            return ucionice.Where(x => ucionicaFilter.ID == "" || (x.ID.ToLower().Contains(ucionicaFilter.ID.ToLower()))
+            return ucionice.Where(x => ((ucionicaFilter.ID == "" ) || (x.ID.ToLower().Contains(ucionicaFilter.ID.ToLower())))
             && (x.BrRadnihMesta >= ucionicaFilter.BrRadnihMesta)
             && ((x.Assets.Intersect(ucionicaFilter.Assets).Count() == ucionicaFilter.Assets.Count()) || (ucionicaFilter.Assets == null))
             && ((x.InstalledSoftware.Intersect(ucionicaFilter.InstalledSoftware).Count() == ucionicaFilter.InstalledSoftware.Count()) || (ucionicaFilter.InstalledSoftware == null))
@@ -48,10 +48,10 @@ namespace RacunarskiCentar
         public static List<Software> softverFiltriranje()
         {
             //ID, Ime, Proizvodjac, Cena
-            return softveri.Where(x => (x.ID == null || x.ID.ToLower().Contains(softverFilter.ID.ToLower()) || softverFilter.ID == "")
+            return softveri.Where(x => (x.ID.ToLower().Contains(softverFilter.ID.ToLower()) || softverFilter.ID == "")
             && (x.Ime == null || (x.Ime.ToLower().Contains(softverFilter.Ime.ToLower())) || (softverFilter.Ime == ""))
             && (x.Proizvodjac == null || (x.Proizvodjac.ToLower().Contains(softverFilter.Proizvodjac.ToLower())) || (softverFilter.Proizvodjac == ""))
-            && (x.Cena == null || x.Cena >= softverFilter.Cena)
+            && ( x.Cena >= softverFilter.Cena)
             ).ToList();
         }
 

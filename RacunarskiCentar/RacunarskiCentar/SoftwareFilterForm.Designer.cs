@@ -34,12 +34,13 @@
             this.labelID = new System.Windows.Forms.Label();
             this.textBoxProizvodjac = new System.Windows.Forms.TextBox();
             this.labelProizvodjac = new System.Windows.Forms.Label();
-            this.textBoxCena = new System.Windows.Forms.TextBox();
             this.labelCena = new System.Windows.Forms.Label();
             this.buttonOdustani = new System.Windows.Forms.Button();
             this.buttonSacuvaj = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxIme
@@ -61,18 +62,18 @@
             this.labelIme.AutoSize = true;
             this.labelIme.Location = new System.Drawing.Point(27, 62);
             this.labelIme.Name = "labelIme";
-            this.labelIme.Size = new System.Drawing.Size(34, 13);
+            this.labelIme.Size = new System.Drawing.Size(37, 13);
             this.labelIme.TabIndex = 10;
-            this.labelIme.Text = "Naziv";
+            this.labelIme.Text = "Naziv:";
             // 
             // labelID
             // 
             this.labelID.AutoSize = true;
             this.labelID.Location = new System.Drawing.Point(27, 18);
             this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(18, 13);
+            this.labelID.Size = new System.Drawing.Size(21, 13);
             this.labelID.TabIndex = 9;
-            this.labelID.Text = "ID";
+            this.labelID.Text = "ID:";
             // 
             // textBoxProizvodjac
             // 
@@ -86,25 +87,18 @@
             this.labelProizvodjac.AutoSize = true;
             this.labelProizvodjac.Location = new System.Drawing.Point(27, 104);
             this.labelProizvodjac.Name = "labelProizvodjac";
-            this.labelProizvodjac.Size = new System.Drawing.Size(62, 13);
+            this.labelProizvodjac.Size = new System.Drawing.Size(65, 13);
             this.labelProizvodjac.TabIndex = 13;
-            this.labelProizvodjac.Text = "Proizvodjac";
-            // 
-            // textBoxCena
-            // 
-            this.textBoxCena.Location = new System.Drawing.Point(32, 161);
-            this.textBoxCena.Name = "textBoxCena";
-            this.textBoxCena.Size = new System.Drawing.Size(220, 20);
-            this.textBoxCena.TabIndex = 16;
+            this.labelProizvodjac.Text = "Proizvodjac:";
             // 
             // labelCena
             // 
             this.labelCena.AutoSize = true;
             this.labelCena.Location = new System.Drawing.Point(29, 144);
             this.labelCena.Name = "labelCena";
-            this.labelCena.Size = new System.Drawing.Size(32, 13);
+            this.labelCena.Size = new System.Drawing.Size(77, 13);
             this.labelCena.TabIndex = 15;
-            this.labelCena.Text = "Cena";
+            this.labelCena.Text = "Cena veca od:";
             // 
             // buttonOdustani
             // 
@@ -135,15 +129,32 @@
             this.dataGridView1.Size = new System.Drawing.Size(592, 214);
             this.dataGridView1.TabIndex = 19;
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Location = new System.Drawing.Point(30, 160);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(220, 20);
+            this.numericUpDown1.TabIndex = 20;
+            // 
             // SoftwareFilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(862, 261);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonOdustani);
             this.Controls.Add(this.buttonSacuvaj);
-            this.Controls.Add(this.textBoxCena);
             this.Controls.Add(this.labelCena);
             this.Controls.Add(this.textBoxProizvodjac);
             this.Controls.Add(this.labelProizvodjac);
@@ -158,6 +169,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SoftwareFilterForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,10 +183,10 @@
         private System.Windows.Forms.Label labelID;
         private System.Windows.Forms.TextBox textBoxProizvodjac;
         private System.Windows.Forms.Label labelProizvodjac;
-        private System.Windows.Forms.TextBox textBoxCena;
         private System.Windows.Forms.Label labelCena;
         private System.Windows.Forms.Button buttonOdustani;
         private System.Windows.Forms.Button buttonSacuvaj;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

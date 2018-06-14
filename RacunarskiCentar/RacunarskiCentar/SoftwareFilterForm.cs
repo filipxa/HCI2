@@ -16,22 +16,29 @@ namespace RacunarskiCentar
         public SoftwareFilterForm()
         {
             InitializeComponent();
-            initTabela();
+            this.VisibleChanged += initTabela;
+
+            numericUpDown1.ValueChanged += initTabela;
+            textBoxID.TextChanged += initTabela;
+            textBoxIme.TextChanged += initTabela;
+            textBoxProizvodjac.TextChanged += initTabela;
+
         }
+
 
         Regex cenaRegex = new Regex("^[0-9]*$");
 
+
+
         private void buttonSacuvaj_Click(object sender, EventArgs e)
         {
-            DataManger.SoftverFilter.ID = textBoxID.Text;
-            DataManger.SoftverFilter.Ime = textBoxIme.Text;
-            DataManger.SoftverFilter.Proizvodjac = textBoxProizvodjac.Text;
+            
             string poruka = "";
             
 
-            if (!cenaRegex.IsMatch(textBoxCena.Text))
+            if (!cenaRegex.IsMatch(numericUpDown1.Text))
             {
-                poruka += "#1" + ": Cena se mra sastojati samo od brojeva (0-9).\n";
+                poruka += "#1" + ": Cena se mora sastojati samo od brojeva (0-9).\n";
             }
             if (poruka.Length > 0)
             {
@@ -39,12 +46,20 @@ namespace RacunarskiCentar
                 MessageBox.Show(poruka, "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                 return;
             }
-            DataManger.SoftverFilter.Cena = Convert.ToDouble(textBoxCena.Text);
+            
             
             //this.Hide();
         }
-        private void initTabela()
+        private void initTabela(object sender, EventArgs e)
         {
+            if (!this.Visible)
+                return;
+            DataManger.SoftverFilter.ID = textBoxID.Text;
+            DataManger.SoftverFilter.Ime = textBoxIme.Text;
+            DataManger.SoftverFilter.Proizvodjac = textBoxProizvodjac.Text;
+            DataManger.SoftverFilter.Cena = Convert.ToDouble(numericUpDown1.Value);
+
+            dataGridView1.Rows.Clear();
             dataGridView1.ColumnCount = 7;
 
             dataGridView1.Columns[0].Name = "ID";
@@ -60,6 +75,7 @@ namespace RacunarskiCentar
 
         private void popunjavanjeTabele()
         {
+
             foreach (Software p in DataManger.getSoftware())
             {
                 string[] row = { p.ID, p.Ime, p.Proizvodjac, p.URL, p.Godina ,Convert.ToString(p.Cena), p.Opis };
