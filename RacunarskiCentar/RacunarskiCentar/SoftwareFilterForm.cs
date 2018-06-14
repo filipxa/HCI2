@@ -23,7 +23,7 @@ namespace RacunarskiCentar
             DataManger.SoftverFilter.Ime = textBoxIme.Text;
             DataManger.SoftverFilter.Proizvodjac = textBoxProizvodjac.Text;
             DataManger.SoftverFilter.Cena = Convert.ToInt32(textBoxCena);
-
+            this.Hide();
         }
     }
 }
