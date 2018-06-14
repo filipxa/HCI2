@@ -84,7 +84,7 @@ namespace RacunarskiCentar
 
         private void ToolFilterPredmeta(object sender, EventArgs e)
         {
-            pff.ShowDialog();
+            PredmetFilterForm pff = new PredmetFilterForm();
         }
 
         private void ToolFilterUcionica(object sender, EventArgs e)
@@ -322,7 +322,6 @@ namespace RacunarskiCentar
             SmerForm f = new SmerForm(null);
             f.ShowDialog();
             f.Dispose();
-           
         }
 
         private void btDodajKlik(object sender, EventArgs e)
@@ -357,7 +356,6 @@ namespace RacunarskiCentar
         {
             UcionicaControl uc = (UcionicaControl)sender;
             initUcionicaView(uc.GuiObject);
-
         }
 
     }
