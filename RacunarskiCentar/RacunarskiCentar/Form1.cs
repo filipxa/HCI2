@@ -5,9 +5,15 @@ using System.Windows.Forms;
 
 namespace RacunarskiCentar
 {
+    enum FormView
+    {
+        RACUNARSKI_CENTAR, UCIONICA
+    }
+
     public partial class Form1 : Form
     {
-        GUIObject activeObject = null;
+
+        FormView currentView = FormView.RACUNARSKI_CENTAR;
         private const int toolWidth = 250;
         Panel mainPanel;
         Panel toolboxPanel;
@@ -17,25 +23,33 @@ namespace RacunarskiCentar
         SmerFilterForm sff = new SmerFilterForm();
         //PredmetFilterForm pff = new PredmetFilterForm();
         SoftwareFilterForm soff = new SoftwareFilterForm();
+        ToolStripButton undoButton;
+        ToolStripButton redoButton;
 
         public Form1()
         {
             DataManger.load();
-            KeyDown += Form1_KeyDown;
-            ToolStripButton b = new ToolStripButton();
-            b.Text = "Nazad";
-            b.Click += B_Click;
-            tb.Items.Add(b);
-            b = new ToolStripButton();
-            b.Text = "Undo";
-          
-            tb.Items.Add(b);
-            b.Click += Undo_Click1;
+            ToolStripButton b;
 
+            KeyDown += Form1_KeyDown;
             b = new ToolStripButton();
-            b.Text = "Redo";
+            b.Click += nazadButtonClick;
+            b.Text = "Nazad";
             tb.Items.Add(b);
-            b.Click += Redo_Click1;
+
+            undoButton = new ToolStripButton();
+            undoButton.Text = "Undo";
+            undoButton.Click += Undo_Click1;
+            undoButton.Enabled = false;
+            tb.Items.Add(undoButton);
+
+            redoButton = new ToolStripButton();
+            redoButton.Text = "Redo";
+            redoButton.Enabled = false;
+            redoButton.Click += Redo_Click1;
+            tb.Items.Add(redoButton);
+
+
 
 
             b = new ToolStripButton();
@@ -77,6 +91,14 @@ namespace RacunarskiCentar
 
         }
 
+        private void nazadButtonClick(object sender, EventArgs e)
+        {
+            if (currentView.Equals(FormView.UCIONICA))
+            {
+                initRCView();
+            }
+        }
+
         private void Redo_Click1(object sender, EventArgs e)
         {
             DataControllercs.redoAction();
@@ -112,7 +134,7 @@ namespace RacunarskiCentar
         {
             if(e is CreateAction)
             {
-                if (activeObject == null)
+                if (currentView == FormView.RACUNARSKI_CENTAR)
                 {
                     Ucionica u = e.getGUIObject() as Ucionica;
                     if (u != null)
@@ -120,16 +142,17 @@ namespace RacunarskiCentar
                         UcionicaControl c = new UcionicaControl(u, mainPanel);
                         dodajUcionicu(c);
                     }
-                } else if(activeObject is Ucionica)
+                } else if(currentView == FormView.UCIONICA)
                 {
                     Smer s = e.getGUIObject() as Smer;
                     if (s != null)
                     {
                         dodajSmerControl(s);   
                     }
-
                 }
             }
+            redoButton.Enabled = DataControllercs.RedoAvailable();
+            undoButton.Enabled = DataControllercs.UndoAvailable();
         }
 
         private void Undo_Click1(object sender, EventArgs e)
@@ -137,31 +160,6 @@ namespace RacunarskiCentar
             if (DataControllercs.undoAvailable())
             {
                 Action a = DataControllercs.undoAction();
-            }
-            else
-            {
-                MessageBox.Show("Undo nije dostupan!");
-            }
-
-        }
-
-        private void initCurrentView()
-        {
-            if (activeObject == null)
-            {
-                initRCView();
-            } else if (activeObject.GetType().Equals(typeof(Ucionica)))
-            {
-                initUcionicaView((Ucionica)activeObject);
-            }
-        }
-
-        private void B_Click(object sender, EventArgs e)
-        {
-
-            if (activeObject != null && activeObject.GetType().Equals(typeof(Ucionica)))
-            {
-                initRCView();
             }
         }
 
@@ -260,7 +258,7 @@ namespace RacunarskiCentar
 
         private void initRCView()
         {
-            activeObject = null;
+            currentView = FormView.RACUNARSKI_CENTAR;
             initMainPanelFlow();
             initToolPanel();
 
@@ -385,7 +383,7 @@ namespace RacunarskiCentar
 
         private void initUcionicaView(Ucionica ucionica)
         {
-            activeObject = ucionica;
+            currentView = FormView.UCIONICA;
             initMainPanel();
             initToolPanelTable();
 
@@ -458,5 +456,20 @@ namespace RacunarskiCentar
                 MessageBox.Show("Undo");
         }
     }
+    // Tutorial     Tutorial        Tutorial        Tutorial        Tutorial
+    public partial class Form1
+    {
+        
+        
+
+
+
+    }
+
+
+
+
+
+
 }
  
