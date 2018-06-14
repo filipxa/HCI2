@@ -163,7 +163,7 @@ namespace RacunarskiCentar
             List<Predmet> rets = new List<Predmet>();
             foreach (Smer smer in smerovi) // da filtriranje radi za isfiltirirane smerove 
             {
-                rets.AddRange(smer.Predmeti);// i predmete
+                rets.AddRange(predmetFiltriranje(smer.Predmeti));// i predmete
             }
             return rets;
         }
