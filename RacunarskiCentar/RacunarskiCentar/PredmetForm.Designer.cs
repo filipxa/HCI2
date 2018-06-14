@@ -81,7 +81,6 @@
             this.textBoxNaziv.Name = "textBoxNaziv";
             this.textBoxNaziv.Size = new System.Drawing.Size(174, 20);
             this.textBoxNaziv.TabIndex = 4;
-           
             // 
             // labelOpis
             // 
@@ -196,7 +195,7 @@
             0,
             0});
             this.numericUpDownDuzinaTermina.Name = "numericUpDownDuzinaTermina";
-            this.numericUpDownDuzinaTermina.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDownDuzinaTermina.Size = new System.Drawing.Size(174, 20);
             this.numericUpDownDuzinaTermina.TabIndex = 18;
             this.numericUpDownDuzinaTermina.Value = new decimal(new int[] {
             45,
