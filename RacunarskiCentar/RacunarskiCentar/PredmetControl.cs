@@ -19,8 +19,27 @@ namespace RacunarskiCentar
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             InitializeComponent();
             BackColor = Color.Transparent;
+            MouseClick += EditClick;
             MouseDown += PredmetControl_MouseDown;
             
+        }
+
+        public void EditClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.Clicks == 1)
+            {
+                EditData();
+            }
+
+
+        }
+
+        public void EditData()
+        {
+            PredmetForm f = new PredmetForm(GuiObject, GuiObject.SmerPredmeta);
+            f.ShowDialog();
+            if (f.DialogResult == DialogResult.OK)
+                f.GetAction();
         }
 
         private void PredmetControl_MouseDown(object sender, MouseEventArgs e)
