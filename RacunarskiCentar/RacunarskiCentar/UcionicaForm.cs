@@ -39,20 +39,22 @@ namespace RacunarskiCentar
         private void CheckedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             ComboValue cv = (ComboValue)checkedListBox1.Items[e.Index];
-            if(e.NewValue == CheckState.Checked)
+             if (cv.Value.Equals(UcionicaAssets.windows) || cv.Value.Equals(UcionicaAssets.linux))
             {
-                OS.Add((UcionicaAssets)cv.Value);
-            }
-            else
-            {
-                OS.Remove((UcionicaAssets)cv.Value);
-            }
-            
-                popuniSoftvere();
-                
-            
-            
+                if (e.NewValue == CheckState.Checked)
+                {
+                    OS.Add((UcionicaAssets)cv.Value);
+                }
+                else
+                {
+                    OS.Remove((UcionicaAssets)cv.Value);
+                }
 
+                popuniSoftvere();
+            }
+          
+            
+                
         }
 
         // desni checkBox
