@@ -155,6 +155,18 @@ namespace RacunarskiCentar
             return rets;
         }
 
+        internal static Predmet getPredmetByID(string id)
+        {
+            foreach (Predmet p in getPredmeti())
+            {
+                if (p.ID.Equals(id))
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
+
         static public List<Termin> getTerminsBySmer(Smer s)
         {
             List<Termin> rets = new List<Termin>();
