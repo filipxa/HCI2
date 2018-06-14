@@ -37,7 +37,9 @@ namespace RacunarskiCentar
                     {
                         comboBoxSmer.Items.Add(s);
                     }
-                    comboBoxSmer.SelectedItem = comboBoxSmer.Items[0];
+                    if (comboBoxSmer.Items.Count == 0)
+                        comboBoxSmer.Enabled = false;
+                    //comboBoxSmer.SelectedItem = comboBoxSmer.Items[0];
                 }
             }
             popuniOpremaBox();
@@ -157,8 +159,11 @@ namespace RacunarskiCentar
 
             if (predmet == null)
             {
+               // int i = 1;
                 foreach (Predmet p in DataManger.getPredmeti())
                 {
+                    //Console.WriteLine(i + ":  " + p.ID);
+                    //i++;
                     if (p.ID.Equals(textBoxID.Text))
                     {
                         poruka += "#" + rb + ": Predmet sa id-em " + textBoxID.Text + " vec postoji..\n";
