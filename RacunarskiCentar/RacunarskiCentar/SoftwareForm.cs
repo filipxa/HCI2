@@ -115,7 +115,20 @@ namespace RacunarskiCentar
         {
             int rb = 1;
             string poruka = "";
-            if(textBoxID.Text.Length == 0)
+
+            if (software == null)
+            {
+                foreach (Software s in DataManger.getSoftware())
+                {
+                    if (s.ID.Equals(software.ID))
+                    {
+                        poruka += "#" + rb + ": Sofver sa id-em " + textBoxID.Text + " vec postoji..\n";
+                        rb++;
+                        break;
+                    }
+                }
+            }
+            if (textBoxID.Text.Length == 0)
             {
                 poruka += "#" + rb +": Morate uneti ID softvera.\n";
                 rb++;

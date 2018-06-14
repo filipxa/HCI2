@@ -199,9 +199,21 @@ namespace RacunarskiCentar
 
         private void buttonSacuvaj_Click(object sender, EventArgs e)
         {
-            //TO-DO: dugme sacuvaj 
-            //TO-DO: u msg boxu dopisati format id ucionice
+          
             string poruka = "";
+            int rb = 1;
+            if (ucionica == null)
+            {
+                foreach (Ucionica s in DataManger.getUcionice())
+                {
+                    if (s.ID.Equals(ucionica.ID))
+                    {
+                        poruka += "#" + rb + ": Ucionica sa id-em " + textBoxID.Text + " vec postoji..\n";
+                        rb++;
+                        break;
+                    }
+                }
+            }
             if (numericUpDown1.Value <= 0 || numericUpDown1.Value.Equals(""))
             {
                 poruka += "Broj mesta u ucionici mora biti veci od nula. \n";

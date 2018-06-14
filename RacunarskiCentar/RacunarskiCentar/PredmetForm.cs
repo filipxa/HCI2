@@ -23,18 +23,22 @@ namespace RacunarskiCentar
             this.predmet = predmet;
             InitializeComponent();
             comboBoxSmer.SelectedIndexChanged += ComboBoxSmer_SelectedIndexChanged;
-            if(predmet != null)
+            if (predmet != null)
             {
                 popuniPolja();
                 comboBoxSmer.Text = smer.Ime;
                 comboBoxSmer.Enabled = false;
-            }else
+            }
+            else
             {
-                foreach(Smer s in DataManger.getSmers())
+                if (smer == null)
                 {
-                    comboBoxSmer.Items.Add(s);
+                    foreach (Smer s in DataManger.getSmers())
+                    {
+                        comboBoxSmer.Items.Add(s);
+                    }
+                    comboBoxSmer.SelectedItem = comboBoxSmer.Items[0];
                 }
-                comboBoxSmer.SelectedItem = comboBoxSmer.Items[0];
             }
             popuniOpremaBox();
         }
@@ -159,6 +163,7 @@ namespace RacunarskiCentar
                     {
                         poruka += "#" + rb + ": Predmet sa id-em " + textBoxID.Text + " vec postoji..\n";
                         rb++;
+                        break;
                     }
                 }
             }

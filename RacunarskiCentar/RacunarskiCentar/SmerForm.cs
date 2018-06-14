@@ -92,6 +92,18 @@ namespace RacunarskiCentar
 
             int rb = 1;
             string poruka = "";
+            if(smer == null)
+            {
+                foreach(Smer s in DataManger.getSmers())
+                {
+                    if(s.ID.Equals(smer.ID))
+                    {
+                        poruka += "#" + rb + ": Smer sa id-em " + textBoxID.Text + " vec postoji..\n";
+                        rb++;
+                        break;
+                    }
+                }
+            }
             if (textBoxID.Text.Length == 0)
             {
                 poruka += "#" + rb + ": Morate uneti ID softvera.\n";
