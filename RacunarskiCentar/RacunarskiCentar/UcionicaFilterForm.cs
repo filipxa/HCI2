@@ -115,9 +115,7 @@ namespace RacunarskiCentar
             HashSet<Software> rets = new HashSet<Software>();
             foreach (object itemChecked in checkedListBox2.CheckedItems)
             {
-
-                ComboValue item = ((ComboValue)itemChecked);
-                rets.Add((Software)item.Value);
+                rets.Add((Software)itemChecked);
 
             }
             return rets;
