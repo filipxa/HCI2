@@ -20,6 +20,7 @@ namespace RacunarskiCentar
             DataControllercs.onAction += ActionExcuted;
             this.smer = smer;
             InitializeComponent();
+            Disposed += SmerForm_Disposed;
             if(smer != null)
             {
                 popuniPolja();
@@ -28,6 +29,11 @@ namespace RacunarskiCentar
                 isCreate = true;
                 this.smer = new Smer();
             }
+        }
+
+        private void SmerForm_Disposed(object sender, EventArgs e)
+        {
+            DataControllercs.onAction -= ActionExcuted;
         }
 
         private void popuniPolja()

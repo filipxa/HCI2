@@ -55,7 +55,7 @@ namespace RacunarskiCentar
 
         private static void addPredmet(Predmet predmet)
         {
-            // TO-DO:
+            predmet.SmerPredmeta.Predmeti.Add(predmet);
         }
 
         private static void addSoftware(Software software)

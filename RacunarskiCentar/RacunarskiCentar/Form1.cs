@@ -15,7 +15,7 @@ namespace RacunarskiCentar
 
         public Form1()
         {
-            DataManger.load();   
+          
             ToolStripButton b = new ToolStripButton();
             b.Text = "Nazad";
             b.Click += B_Click;
@@ -37,8 +37,6 @@ namespace RacunarskiCentar
             Controls.Add(tb);
             initRCView();
 
-            
-
             ClientSize = new Size(1000, 800);
             MinimumSize = Size;
             ResizeEnd += Form1_ResizeEnd;
@@ -50,9 +48,6 @@ namespace RacunarskiCentar
         {
             DataManger.save();
         }
-
-       
-
 
         private void ActionExcuted(object sender, Action e)
         {
@@ -83,7 +78,6 @@ namespace RacunarskiCentar
             if (DataControllercs.undoAvailable())
             {
                 Action a = DataControllercs.undoAction();
-
             }
             else
             {
@@ -252,23 +246,15 @@ namespace RacunarskiCentar
         private void btPredmetKlik(object sender, EventArgs e)
         {
             PredmetForm f = new PredmetForm(null, null);  //SREDITI STA SE PROSLEDJUJE
-            DialogResult result = f.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                PredmetControl c = new PredmetControl((Predmet)f.GetAction().getGUIObject(), mainPanel);
-                //da li dodajemo negde
-            }
+            f.ShowDialog();
+            f.Dispose();
         }
 
         private void btSoftverKlik(object sender, EventArgs e)
         {
             SoftwareForm f = new SoftwareForm(null);
-            DialogResult result = f.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                //SOFTWARE CONTROL??
-                //da li dodajemo negde
-            }
+            f.ShowDialog();
+           
         }
 
         private void btSmerKlik(object sender, EventArgs e)
@@ -345,10 +331,8 @@ namespace RacunarskiCentar
             activeObject = ucionica;
             initMainPanel();
             initToolPanelTable();
-           
 
             populatePredmets();
-
 
             Raspored r = new Raspored(ucionica);
             RasporedControl rc = new RasporedControl(r, mainPanel);

@@ -36,11 +36,29 @@ namespace RacunarskiCentar
             parentRaspored = rasporedControl;
             this.visinaNazivaDana = visinaNazivaDana;
             daniPanel = new Panel();
-
+            DataControllercs.onAction += ActionExcuted;
             daniPanel.Dock = DockStyle.Fill;
             Controls.Add(daniPanel);
             InitDani(nedelja);
             Layout += NedeljaControl_Layout;
+            
+        }
+
+        private void ActionExcuted(object sender, Action e)
+        {
+            if (e is CreateAction)
+            {
+
+
+                Termin t = e.getGUIObject() as Termin;
+                if (t != null)
+                {
+                    if (t.Nedelja.Equals(GuiObject))
+                    {
+                        CreateTerminControl(t);
+                    }
+                }
+            }
         }
 
         private void InitDani(Nedelja nedelja)
@@ -99,8 +117,8 @@ namespace RacunarskiCentar
                     if (termin != null)
                     {
                         termin.Width = dan.Width;
-                        termin.Location = new Point(3, getYFromDateTime(termin.GuiObject.PocetakTermina, dan));
-                        termin.Size = new Size(dan.Width - 3, getYFromDateTime(termin.GuiObject.KrajTermina, dan) - getYFromDateTime(termin.GuiObject.PocetakTermina, dan));
+                        termin.Location = new Point(3, getYFromDateTime(termin.GuiObject.PocetakTermina));
+                        termin.Size = new Size(dan.Width - 3, getYFromDateTime(termin.GuiObject.KrajTermina) - getYFromDateTime(termin.GuiObject.PocetakTermina));
                         termin.Invalidate();
                     }
                 }
@@ -144,7 +162,6 @@ namespace RacunarskiCentar
                 {
                     g.DrawLine(pen, pointL, pointR);
                 }
-
                 pocetak = pocetak.AddMinutes(15);
 
             }
@@ -186,7 +203,7 @@ namespace RacunarskiCentar
                 if (GuiObject.isSlobodan(termin))
                 {
                     DataControllercs.addAction(new CreateAction(termin));
-                    CreateTerminControl(termin, (Panel)sender);
+                    CreateTerminControl(termin);
                 }
 
             }
@@ -215,9 +232,8 @@ namespace RacunarskiCentar
 
             chainAction.actions.Add(new CreateAction(novi));
 
-            int dan = novi.PocetakTermina.Day - GuiObject.Ponedeljak.Day;
-
-            CreateTerminControl(novi, getPanelFromDan(dan));
+            
+            CreateTerminControl(novi);
             DataControllercs.addAction(chainAction);
 
         }
@@ -238,7 +254,7 @@ namespace RacunarskiCentar
             return GuiObject.Ponedeljak.AddMinutes(vreme).AddDays(dani[p]);
         }
 
-        private int getYFromDateTime(DateTime time, Panel p)
+        private int getYFromDateTime(DateTime time)
         {
             int hours = time.Hour-7;
             int minutes = time.Minute;
@@ -247,13 +263,16 @@ namespace RacunarskiCentar
             return (int)Math.Round( brPodeoka * visinaPodeoka + visinaNazivaDana) ;
         }
 
-        private void CreateTerminControl(Termin termin, Panel dan)
+        private void CreateTerminControl(Termin termin)
         {
+            int danBr = termin.PocetakTermina.Day - GuiObject.Ponedeljak.Day;
+            Panel dan = getPanelFromDan(danBr);
+
             TerminControl t = new TerminControl(termin, dan);
             dan.Controls.Add(t);
             t.Width = dan.Width;
-            t.Location = new Point(3, getYFromDateTime(termin.PocetakTermina, dan));
-            t.Size = new Size(dan.Width-3, getYFromDateTime(termin.KrajTermina, dan) - getYFromDateTime(termin.PocetakTermina, dan));
+            t.Location = new Point(3, getYFromDateTime(termin.PocetakTermina));
+            t.Size = new Size(dan.Width-3, getYFromDateTime(termin.KrajTermina) - getYFromDateTime(termin.PocetakTermina));
             
         }
 
