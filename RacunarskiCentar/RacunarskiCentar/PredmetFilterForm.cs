@@ -16,13 +16,34 @@ namespace RacunarskiCentar
         public PredmetFilterForm()
         {
             InitializeComponent();
+            dataGridView1.ColumnCount = 7;
+
+            dataGridView1.Columns[0].Name = "ID";
+            dataGridView1.Columns[1].Name = "Ime";
+            dataGridView1.Columns[2].Name = "Smer";
+            dataGridView1.Columns[3].Name = "Opis";
+            dataGridView1.Columns[4].Name = "Br. ljudi";
+            dataGridView1.Columns[5].Name = "Br. casova";
+            dataGridView1.Columns[6].Name = "Br. termina";
+
+
             foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
             {
                 checkedListBox1.Items.Add(new ComboValue(aset), false);
             }
+            popunjavanjeTabele();
+
+
         }
 
-      
+        private void popunjavanjeTabele()
+        {
+            foreach (Predmet p in DataManger.getPredmeti())
+            {
+                string[] row = { p.ID, p.Ime, p.SmerPredmeta.Ime, p.Opis, Convert.ToString(p.BrLjudi), Convert.ToString(p.BrCasova), Convert.ToString(p.BrTermina) };
+                dataGridView1.Rows.Add(row);
+            }
+        }
 
         private void buttonPotvrdi_Click(object sender, EventArgs e)
         {
@@ -47,5 +68,6 @@ namespace RacunarskiCentar
             }
             return rets;
         }
+
     }
 }

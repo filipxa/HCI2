@@ -57,6 +57,8 @@ namespace RacunarskiCentar
             loadUcionice("ucionicaXML.xml");
             foreach(Ucionica u in ucionice)
             {
+                if (u.Raspored == null)
+                    continue;
                 u.Raspored.Ucionica = u;
                 foreach(Nedelja ned in u.Raspored.RadneNedelje)
                 {

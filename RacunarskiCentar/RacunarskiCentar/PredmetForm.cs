@@ -26,7 +26,7 @@ namespace RacunarskiCentar
             if (predmet != null)
             {
                 popuniPolja();
-                comboBoxSmer.Text = smer.Ime;
+                comboBoxSmer.Text = predmet.SmerPredmeta.Ime;
                 comboBoxSmer.Enabled = false;
             }
             else
