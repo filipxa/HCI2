@@ -22,12 +22,26 @@ namespace RacunarskiCentar
             this.smer = smer;
             this.predmet = predmet;
             InitializeComponent();
-           
+            comboBoxSmer.SelectedIndexChanged += ComboBoxSmer_SelectedIndexChanged;
             if(predmet != null)
             {
                 popuniPolja();
+                comboBoxSmer.Text = smer.Ime;
+                comboBoxSmer.Enabled = false;
+            }else
+            {
+                foreach(Smer s in DataManger.getSmers())
+                {
+                    comboBoxSmer.Items.Add(s);
+                }
+                comboBoxSmer.SelectedItem = comboBoxSmer.Items[0];
             }
             popuniOpremaBox();
+        }
+
+        private void ComboBoxSmer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            smer = (Smer)comboBoxSmer.SelectedValue;
         }
 
         private void popuniOpremaBox()

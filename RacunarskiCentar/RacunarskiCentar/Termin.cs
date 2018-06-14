@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 namespace RacunarskiCentar
 {
-    public class Termin : GUIObject, IXmlSerializable
+    public class Termin : GUIObject
     {
         DateTime pocetakTermina;
         DateTime krajTermina;
@@ -65,10 +65,17 @@ namespace RacunarskiCentar
             get => nedelja;
             set => nedelja = value;
         }
+        [XmlIgnoreAttribute]
         public Predmet Predmet
         {
             get => predmet;
             set => predmet = value;
+        }
+        [XmlElement("Predmet")]
+        public string PredmetSerialised
+        {
+            get { return Predmet.ID; }
+            set { predmet = DataManger.getPredmetByID(value); }
         }
         public DateTime PocetakTermina
         {
@@ -99,19 +106,6 @@ namespace RacunarskiCentar
             krajTermina = t.krajTermina;
         }
 
-        public XmlSchema GetSchema()
-        {
-            throw new NotImplementedException();
-        }
 
-        public void ReadXml(XmlReader reader)
-        {
-
-        }
-
-        public void WriteXml(XmlWriter writer)
-        {
-            
-        }
     }
 }

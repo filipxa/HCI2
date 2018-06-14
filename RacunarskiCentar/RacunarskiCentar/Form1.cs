@@ -19,7 +19,7 @@ namespace RacunarskiCentar
 
         public Form1()
         {
-            
+            DataManger.load();   
             ToolStripButton b = new ToolStripButton();
             b.Text = "Nazad";
             b.Click += B_Click;
@@ -83,9 +83,7 @@ namespace RacunarskiCentar
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DataManger.saveUcionica("ucionicaXML.xml");
-            DataManger.saveSmer("smerXML.xml");
-            DataManger.saveSoftware("softwareXML.xml");
+            DataManger.save();
         }
 
        
