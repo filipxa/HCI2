@@ -9,6 +9,7 @@ namespace RacunarskiCentar
     static class DataControllercs
     {
         static Stack<Action> actionsHistory = new Stack<Action>();
+        static Stack<Action> actionsRedo = new Stack<Action>();
         static public EventHandler<Action> onAction;
         static public void addAction(Action action)
         {
@@ -18,6 +19,7 @@ namespace RacunarskiCentar
                 onAction(null, action);
             }
             actionsHistory.Push(action);
+            actionsRedo.Clear();
         }
         static public  Action undoAction()
         {
@@ -30,9 +32,31 @@ namespace RacunarskiCentar
                 {
                     onAction(null, rets);
                 }
+                actionsRedo.Push(rets);
             }
+            
             return rets;
              
+        }
+
+        static public Action redoAction()
+        {
+            Action rets = null;
+           
+            if (actionsRedo.Count > 0)
+            {
+
+                rets = actionsRedo.Pop().GetReverseAction();
+                rets.excuteAction();
+                if (onAction != null)
+                {
+                    onAction(null, rets);
+                }
+                actionsHistory.Push(rets);
+            }
+            
+            return rets;
+
         }
 
 

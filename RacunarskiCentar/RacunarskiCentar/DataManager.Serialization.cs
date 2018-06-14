@@ -16,9 +16,6 @@ namespace RacunarskiCentar
 
             using (var stream = new FileStream(fileName, FileMode.Create))
             {
-
-               // ucionice[0].Raspored = new Raspored(ucionice[0]);
-                //ucionice[0].Raspored.RadneNedelje.Add(new Nedelja(ucionice[0].Raspored, DateTime.Now));
                 var xml = new XmlSerializer(typeof(List<Ucionica>));
                 xml.Serialize(stream, ucionice);
             }
@@ -40,8 +37,6 @@ namespace RacunarskiCentar
 
             using (var stream = new FileStream(fileName, FileMode.Create))
             {
-
-
                 var xml = new XmlSerializer(typeof(List<Software>));
                 xml.Serialize(stream, softveri);
             }
@@ -60,6 +55,26 @@ namespace RacunarskiCentar
             loadSmerovi("smerXML.xml");
             loadSoftware("softwareXML.xml");
             loadUcionice("ucionicaXML.xml");
+            foreach(Ucionica u in ucionice)
+            {
+                u.Raspored.Ucionica = u;
+                foreach(Nedelja ned in u.Raspored.RadneNedelje)
+                {
+                    ned.Raspored = u.Raspored;
+
+                    foreach(Termin t in ned.Termini)
+                    {
+                        t.Nedelja = ned;
+                    }
+                }
+            }
+            foreach(Smer smer in smerovi)
+            {
+                foreach(Predmet p in smer.Predmeti)
+                {
+                    p.SmerPredmeta = smer;
+                }
+            }
 
         }
 
@@ -117,7 +132,6 @@ namespace RacunarskiCentar
             catch (Exception)
             {
 
-               
             }
            
 

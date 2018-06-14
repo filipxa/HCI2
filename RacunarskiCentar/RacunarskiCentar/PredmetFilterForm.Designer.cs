@@ -198,6 +198,7 @@
             // 
             // buttonOdustani
             // 
+            this.buttonOdustani.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonOdustani.Location = new System.Drawing.Point(197, 299);
             this.buttonOdustani.Name = "buttonOdustani";
             this.buttonOdustani.Size = new System.Drawing.Size(75, 23);

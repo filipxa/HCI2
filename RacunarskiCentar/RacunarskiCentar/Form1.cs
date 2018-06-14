@@ -20,16 +20,22 @@ namespace RacunarskiCentar
 
         public Form1()
         {
-            DataManger.load();   
+            KeyDown += Form1_KeyDown;
             ToolStripButton b = new ToolStripButton();
             b.Text = "Nazad";
             b.Click += B_Click;
             tb.Items.Add(b);
             b = new ToolStripButton();
             b.Text = "Undo";
-            KeyDown += Form1_KeyDown;
+          
             tb.Items.Add(b);
             b.Click += Undo_Click1;
+
+            b = new ToolStripButton();
+            b.Text = "Redo";
+            tb.Items.Add(b);
+            b.Click += Redo_Click1;
+
 
             b = new ToolStripButton();
             b.Text = "Filter ucionica";
@@ -63,13 +69,16 @@ namespace RacunarskiCentar
             Controls.Add(tb);
             initRCView();
 
-            
-
             ClientSize = new Size(1000, 800);
             MinimumSize = Size;
             ResizeEnd += Form1_ResizeEnd;
             ResizeBegin += Form1_ResizeBegin;
 
+        }
+
+        private void Redo_Click1(object sender, EventArgs e)
+        {
+            DataControllercs.redoAction();
         }
 
         private void ToolFilterSoftvera(object sender, EventArgs e)
@@ -96,9 +105,6 @@ namespace RacunarskiCentar
         {
             DataManger.save();
         }
-
-       
-
 
         private void ActionExcuted(object sender, Action e)
         {
@@ -129,7 +135,6 @@ namespace RacunarskiCentar
             if (DataControllercs.undoAvailable())
             {
                 Action a = DataControllercs.undoAction();
-
             }
             else
             {
@@ -298,23 +303,15 @@ namespace RacunarskiCentar
         private void btPredmetKlik(object sender, EventArgs e)
         {
             PredmetForm f = new PredmetForm(null, null);  //SREDITI STA SE PROSLEDJUJE
-            DialogResult result = f.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                PredmetControl c = new PredmetControl((Predmet)f.GetAction().getGUIObject(), mainPanel);
-                //da li dodajemo negde
-            }
+            f.ShowDialog();
+            f.Dispose();
         }
 
         private void btSoftverKlik(object sender, EventArgs e)
         {
             SoftwareForm f = new SoftwareForm(null);
-            DialogResult result = f.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                //SOFTWARE CONTROL??
-                //da li dodajemo negde
-            }
+            f.ShowDialog();
+           
         }
 
         private void btSmerKlik(object sender, EventArgs e)
@@ -389,15 +386,12 @@ namespace RacunarskiCentar
             activeObject = ucionica;
             initMainPanel();
             initToolPanelTable();
-           
 
             populatePredmets();
-
 
             Raspored r = new Raspored(ucionica);
             RasporedControl rc = new RasporedControl(r, mainPanel);
             rc.Dock = DockStyle.Fill;
-
 
             mainPanel.Controls.Add(rc);
             toolboxPanel.AutoScroll = true;
@@ -412,11 +406,8 @@ namespace RacunarskiCentar
             toolboxPanel.Padding = new Padding(13, 0, 0, 0);
             foreach (Smer smer in DataManger.getSmers())
             {
-
                 dodajSmerControl(smer);
-
             }
-
         }
 
         private void dodajSmerControl(Smer s)
