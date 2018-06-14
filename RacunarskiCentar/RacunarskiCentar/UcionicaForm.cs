@@ -17,6 +17,7 @@ namespace RacunarskiCentar
         //TO-DO: srediti regex za nazive ucionica
         Regex idRegex = new Regex("[a-zA-Z0-9]");
         private Ucionica ucionica;
+        List<UcionicaAssets> OS = new List<UcionicaAssets>();
         public UcionicaForm(Ucionica ucionica)
         {
             this.ucionica = ucionica;
@@ -26,6 +27,7 @@ namespace RacunarskiCentar
                 checkedListBox1.Items.Add(new ComboValue(aset), false);
             }
             checkedListBox1.ItemCheck += CheckedListBox1_ItemCheck;
+            
 
             if (ucionica != null)
             {
@@ -37,11 +39,18 @@ namespace RacunarskiCentar
         private void CheckedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             ComboValue cv = (ComboValue)checkedListBox1.Items[e.Index];
-            if (cv.Value.Equals(UcionicaAssets.windows) || cv.Value.Equals(UcionicaAssets.linux))
+            if(e.NewValue == CheckState.Checked)
             {
+                OS.Add((UcionicaAssets)cv.Value);
+            }
+            else
+            {
+                OS.Remove((UcionicaAssets)cv.Value);
+            }
+            
                 popuniSoftvere();
                 
-            }
+            
             
 
         }
@@ -52,14 +61,7 @@ namespace RacunarskiCentar
             checkedListBox2.Items.Clear();
             List<UcionicaAssets> listaSistema = new List<UcionicaAssets>();
             
-            foreach (ComboValue cv in checkedListBox1.CheckedItems)
-            {
-                if (cv.Value.Equals(UcionicaAssets.linux) || (cv.Value.Equals(UcionicaAssets.windows)))
-                {
-                    listaSistema.Add((UcionicaAssets)cv.Value);
-                }
-            }
-            foreach(Software s in DataManger.softverOperativanSistemFiltiriranje(listaSistema))
+            foreach(Software s in DataManger.softverOperativanSistemFiltiriranje(OS))
             {
                 bool postoji = false;
                 if(ucionica != null)
