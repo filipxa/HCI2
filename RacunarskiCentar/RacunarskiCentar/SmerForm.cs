@@ -98,6 +98,18 @@ namespace RacunarskiCentar
 
             int rb = 1;
             string poruka = "";
+            if(smer == null)
+            {
+                foreach(Smer s in DataManger.getSmers())
+                {
+                    if(s.ID.Equals(smer.ID))
+                    {
+                        poruka += "#" + rb + ": Smer sa id-em " + textBoxID.Text + " vec postoji..\n";
+                        rb++;
+                        break;
+                    }
+                }
+            }
             if (textBoxID.Text.Length == 0)
             {
                 poruka += "#" + rb + ": Morate uneti ID softvera.\n";
@@ -128,7 +140,18 @@ namespace RacunarskiCentar
                 {
                     if(u.SmerPredmeta == smer)
                     {
-                        listBoxPredmeti.Items.Add(u);
+                        List<Predmet> pomocna = new List<Predmet>();
+                        foreach(Predmet p in listBoxPredmeti.Items)
+                        {
+                            pomocna.Add(p);
+                        }
+                        pomocna.Add(u);
+                        listBoxPredmeti.DataSource = null;
+                        listBoxPredmeti.Items.Clear();
+                        foreach (Predmet p in pomocna)
+                            listBoxPredmeti.Items.Add(p);
+                        
+                        
                     }
                 }
             }

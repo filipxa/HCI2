@@ -85,6 +85,10 @@ namespace RacunarskiCentar
         {
             return ucionicaFilterisanje();
         }
+        internal static List<Software> getSoftware()
+        {
+            return softverFiltriranje();
+        }
 
         internal static void removeObject(GUIObject guiObject)
         {

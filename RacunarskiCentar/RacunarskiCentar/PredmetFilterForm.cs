@@ -27,11 +27,12 @@ namespace RacunarskiCentar
         private void buttonPotvrdi_Click(object sender, EventArgs e)
         {
             DataManger.PredmetFiler.ID = textBoxID.Text;
-            DataManger.PredmetFiler.BrLjudi = Convert.ToInt32(numericUpDownBrojLjudi);
+            DataManger.PredmetFiler.BrLjudi = Convert.ToInt32(numericUpDownBrojLjudi.Value);
             DataManger.PredmetFiler.Ime = textBoxNaziv.Text;
-            DataManger.PredmetFiler.BrCasova = Convert.ToInt32(numericUpDownDuzinaTermina);
-            DataManger.PredmetFiler.BrTermina = Convert.ToInt32(numericUpDownBrojTermina);
+            DataManger.PredmetFiler.BrCasova = Convert.ToInt32(numericUpDownDuzinaTermina.Value);
+            DataManger.PredmetFiler.BrTermina = Convert.ToInt32(numericUpDownBrojTermina.Value);
             DataManger.PredmetFiler.Assets = getUcionicaAssets();
+            this.Hide();
         }
 
         private HashSet<UcionicaAssets> getUcionicaAssets()

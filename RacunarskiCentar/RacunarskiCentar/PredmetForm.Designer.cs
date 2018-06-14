@@ -44,6 +44,8 @@
             this.numericUpDownBrojLjudi = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownDuzinaTermina = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownBrojTermina = new System.Windows.Forms.NumericUpDown();
+            this.labelSmer = new System.Windows.Forms.Label();
+            this.comboBoxSmer = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojLjudi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDuzinaTermina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojTermina)).BeginInit();
@@ -85,7 +87,7 @@
             // labelOpis
             // 
             this.labelOpis.AutoSize = true;
-            this.labelOpis.Location = new System.Drawing.Point(192, 124);
+            this.labelOpis.Location = new System.Drawing.Point(192, 167);
             this.labelOpis.Name = "labelOpis";
             this.labelOpis.Size = new System.Drawing.Size(75, 13);
             this.labelOpis.TabIndex = 5;
@@ -94,7 +96,7 @@
             // labelBrojLjudi
             // 
             this.labelBrojLjudi.AutoSize = true;
-            this.labelBrojLjudi.Location = new System.Drawing.Point(24, 74);
+            this.labelBrojLjudi.Location = new System.Drawing.Point(192, 122);
             this.labelBrojLjudi.Name = "labelBrojLjudi";
             this.labelBrojLjudi.Size = new System.Drawing.Size(46, 13);
             this.labelBrojLjudi.TabIndex = 6;
@@ -105,9 +107,9 @@
             this.labelDuzinaTermina.AutoSize = true;
             this.labelDuzinaTermina.Location = new System.Drawing.Point(192, 74);
             this.labelDuzinaTermina.Name = "labelDuzinaTermina";
-            this.labelDuzinaTermina.Size = new System.Drawing.Size(165, 13);
+            this.labelDuzinaTermina.Size = new System.Drawing.Size(164, 13);
             this.labelDuzinaTermina.TabIndex = 8;
-            this.labelDuzinaTermina.Text = "Duzina jednog termina u minutima";
+            this.labelDuzinaTermina.Text = "Minimalan broj casova po terminu";
             // 
             // labelBrojTermina
             // 
@@ -137,9 +139,9 @@
             // 
             // richTextBoxOpis
             // 
-            this.richTextBoxOpis.Location = new System.Drawing.Point(195, 140);
+            this.richTextBoxOpis.Location = new System.Drawing.Point(195, 190);
             this.richTextBoxOpis.Name = "richTextBoxOpis";
-            this.richTextBoxOpis.Size = new System.Drawing.Size(174, 219);
+            this.richTextBoxOpis.Size = new System.Drawing.Size(174, 169);
             this.richTextBoxOpis.TabIndex = 14;
             this.richTextBoxOpis.Text = "";
             // 
@@ -166,9 +168,9 @@
             // 
             // numericUpDownBrojLjudi
             // 
-            this.numericUpDownBrojLjudi.Location = new System.Drawing.Point(27, 95);
+            this.numericUpDownBrojLjudi.Location = new System.Drawing.Point(195, 141);
             this.numericUpDownBrojLjudi.Name = "numericUpDownBrojLjudi";
-            this.numericUpDownBrojLjudi.Size = new System.Drawing.Size(146, 20);
+            this.numericUpDownBrojLjudi.Size = new System.Drawing.Size(78, 20);
             this.numericUpDownBrojLjudi.TabIndex = 17;
             this.numericUpDownBrojLjudi.Value = new decimal(new int[] {
             1,
@@ -178,27 +180,22 @@
             // 
             // numericUpDownDuzinaTermina
             // 
-            this.numericUpDownDuzinaTermina.Increment = new decimal(new int[] {
-            45,
-            0,
-            0,
-            0});
             this.numericUpDownDuzinaTermina.Location = new System.Drawing.Point(195, 95);
             this.numericUpDownDuzinaTermina.Maximum = new decimal(new int[] {
-            270,
+            6,
             0,
             0,
             0});
             this.numericUpDownDuzinaTermina.Minimum = new decimal(new int[] {
-            45,
+            1,
             0,
             0,
             0});
             this.numericUpDownDuzinaTermina.Name = "numericUpDownDuzinaTermina";
-            this.numericUpDownDuzinaTermina.Size = new System.Drawing.Size(174, 20);
+            this.numericUpDownDuzinaTermina.Size = new System.Drawing.Size(78, 20);
             this.numericUpDownDuzinaTermina.TabIndex = 18;
             this.numericUpDownDuzinaTermina.Value = new decimal(new int[] {
-            45,
+            1,
             0,
             0,
             0});
@@ -217,7 +214,7 @@
             0,
             0});
             this.numericUpDownBrojTermina.Name = "numericUpDownBrojTermina";
-            this.numericUpDownBrojTermina.Size = new System.Drawing.Size(146, 20);
+            this.numericUpDownBrojTermina.Size = new System.Drawing.Size(76, 20);
             this.numericUpDownBrojTermina.TabIndex = 19;
             this.numericUpDownBrojTermina.Value = new decimal(new int[] {
             1,
@@ -225,11 +222,30 @@
             0,
             0});
             // 
+            // labelSmer
+            // 
+            this.labelSmer.AutoSize = true;
+            this.labelSmer.Location = new System.Drawing.Point(24, 74);
+            this.labelSmer.Name = "labelSmer";
+            this.labelSmer.Size = new System.Drawing.Size(31, 13);
+            this.labelSmer.TabIndex = 20;
+            this.labelSmer.Text = "Smer";
+            // 
+            // comboBoxSmer
+            // 
+            this.comboBoxSmer.FormattingEnabled = true;
+            this.comboBoxSmer.Location = new System.Drawing.Point(27, 95);
+            this.comboBoxSmer.Name = "comboBoxSmer";
+            this.comboBoxSmer.Size = new System.Drawing.Size(146, 21);
+            this.comboBoxSmer.TabIndex = 21;
+            // 
             // PredmetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(390, 431);
+            this.Controls.Add(this.comboBoxSmer);
+            this.Controls.Add(this.labelSmer);
             this.Controls.Add(this.numericUpDownBrojTermina);
             this.Controls.Add(this.numericUpDownDuzinaTermina);
             this.Controls.Add(this.numericUpDownBrojLjudi);
@@ -279,5 +295,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownBrojLjudi;
         private System.Windows.Forms.NumericUpDown numericUpDownDuzinaTermina;
         private System.Windows.Forms.NumericUpDown numericUpDownBrojTermina;
+        private System.Windows.Forms.Label labelSmer;
+        private System.Windows.Forms.ComboBox comboBoxSmer;
     }
 }

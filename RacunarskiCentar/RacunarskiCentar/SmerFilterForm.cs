@@ -21,6 +21,7 @@ namespace RacunarskiCentar
         {
             DataManger.SmerFilter.ID = textBox1.Text;
             DataManger.SmerFilter.Ime = textBoxIme.Text;
+            this.Hide();
         }
     }
 }

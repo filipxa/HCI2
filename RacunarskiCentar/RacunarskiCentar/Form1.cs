@@ -13,6 +13,11 @@ namespace RacunarskiCentar
         Panel toolboxPanel;
         ToolStrip tb = new ToolStrip();
 
+        UcionicaFilterForm uff = new UcionicaFilterForm();
+        SmerFilterForm sff = new SmerFilterForm();
+        PredmetFilterForm pff = new PredmetFilterForm();
+        SoftwareFilterForm soff = new SoftwareFilterForm();
+
         public Form1()
         {
           
@@ -25,6 +30,27 @@ namespace RacunarskiCentar
             KeyDown += Form1_KeyDown;
             tb.Items.Add(b);
             b.Click += Undo_Click1;
+
+            b = new ToolStripButton();
+            b.Text = "Filter ucionica";
+            b.Click += ToolFilterUcionica;
+            tb.Items.Add(b);
+
+            b = new ToolStripButton();
+            b.Text = "Filter smera";
+            b.Click += ToolFilterSmera;
+            tb.Items.Add(b);
+
+            b = new ToolStripButton();
+            b.Text = "Filter predmeta";
+            b.Click += ToolFilterPredmeta;
+            tb.Items.Add(b);
+
+            b = new ToolStripButton();
+            b.Text = "Filter softvera";
+            b.Click += ToolFilterSoftvera;
+            tb.Items.Add(b);
+
             FormClosing += Form1_FormClosing;
 
             DataControllercs.onAction += ActionExcuted;
@@ -42,6 +68,26 @@ namespace RacunarskiCentar
             ResizeEnd += Form1_ResizeEnd;
             ResizeBegin += Form1_ResizeBegin;
 
+        }
+
+        private void ToolFilterSoftvera(object sender, EventArgs e)
+        {
+            soff.ShowDialog();
+        }
+
+        private void ToolFilterSmera(object sender, EventArgs e)
+        {
+            sff.ShowDialog();
+        }
+
+        private void ToolFilterPredmeta(object sender, EventArgs e)
+        {
+            pff.ShowDialog();
+        }
+
+        private void ToolFilterUcionica(object sender, EventArgs e)
+        {
+            uff.ShowDialog();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

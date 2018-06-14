@@ -15,6 +15,7 @@ namespace RacunarskiCentar
         private const int smerHeight = 45;
         bool isColapsed = true;
         EventHandler colapseedChanged;
+
         public event EventHandler ColapseedChanged
         {
             add
@@ -63,11 +64,27 @@ namespace RacunarskiCentar
 
             refreshPanels();
 
+            MouseClick += EditClick;
             MouseDown += SmerControl_Click;
             
         }
 
+        public void EditClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.Clicks == 1)
+            {
+                EditData();
+            }
 
+        }
+
+        public void EditData()
+        {
+            SmerForm f = new SmerForm(GuiObject);
+            f.ShowDialog();
+            if (f.DialogResult == DialogResult.OK)
+                f.GetAction();
+        }
 
         private void refreshPanels()
         {
@@ -76,6 +93,8 @@ namespace RacunarskiCentar
             updatePredmetPanelSize();
             updatePredmetPanelElements();
         }
+
+
 
         private void SmerControl_Click(object sender, MouseEventArgs e)
         {
@@ -145,7 +164,7 @@ namespace RacunarskiCentar
             refreshPanels();
             base.onValueChaged(sender, e);
         }
-
+        
         protected override void OnPaint(PaintEventArgs pe)
         {
 
