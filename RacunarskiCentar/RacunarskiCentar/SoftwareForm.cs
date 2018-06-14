@@ -68,6 +68,14 @@ namespace RacunarskiCentar
             {
                 software = new Software(textBoxID.Text, textBoxIme.Text, 
                     textBoxProizvodjac.Text, textBoxURL.Text, textBoxGodina.Text, Convert.ToDouble(textBoxCena.Text), richTextBoxOpis.Text);
+                if (checkBox1.Checked)
+                {
+                    software.Assets.Add(UcionicaAssets.windows);
+                }
+                if (checkBox2.Checked)
+                {
+                    software.Assets.Add(UcionicaAssets.linux);
+                }
                 action = new CreateAction(software);
             }
             else
@@ -80,7 +88,14 @@ namespace RacunarskiCentar
                 software.Godina = textBoxGodina.Text;
                 software.Cena = Convert.ToDouble(textBoxCena.Text);
                 software.Opis = richTextBoxOpis.Text;
-                
+                if (checkBox1.Checked)
+                {
+                    software.Assets.Add(UcionicaAssets.windows);
+                }
+                if (checkBox2.Checked)
+                {
+                    software.Assets.Add(UcionicaAssets.linux);
+                }
             }
             
             DataControllercs.addAction(action);

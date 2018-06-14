@@ -87,8 +87,7 @@ namespace RacunarskiCentar
             MinimumSize = Size;
             ResizeEnd += Form1_ResizeEnd;
             ResizeBegin += Form1_ResizeBegin;
-            Tutorial t = new Tutorial(this);
-            t.nextStep();
+          
 
         }
 

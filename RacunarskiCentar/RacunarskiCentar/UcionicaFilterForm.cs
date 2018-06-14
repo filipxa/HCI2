@@ -94,7 +94,12 @@ namespace RacunarskiCentar
 
             foreach (Software s in DataManger.softverOperativanSistemFiltiriranje(OS))
             {
-                checkedListBox2.Items.Add(s, false);
+                bool postoji = false;
+                if (DataManger.UcionicaFilter != null)
+                {
+                    postoji = DataManger.UcionicaFilter.InstalledSoftware.Contains(s);
+                }
+                checkedListBox2.Items.Add(s, postoji);
             }
 
         }

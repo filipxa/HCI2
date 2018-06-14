@@ -27,6 +27,7 @@ namespace RacunarskiCentar
         {
             if (currentLevel == Level.Nista)
             {
+                
                 initPocetak();
             }
         }
