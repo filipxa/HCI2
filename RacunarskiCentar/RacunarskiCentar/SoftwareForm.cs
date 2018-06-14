@@ -85,7 +85,7 @@ namespace RacunarskiCentar
 
         }
         Regex idRegex = new Regex("[a-zA-Z0-9]+");
-        Regex cenaRegex = new Regex("[0-9]+");
+        Regex cenaRegex = new Regex("^[0-9]*$");
         private void textBoxID_Validated(object sender, EventArgs e)
         {
             if (!idRegex.IsMatch(textBoxID.Text))

@@ -16,6 +16,7 @@ namespace RacunarskiCentar
         UcionicaFilterForm uff = new UcionicaFilterForm();
         SmerFilterForm sff = new SmerFilterForm();
         PredmetFilterForm pff = new PredmetFilterForm();
+        SoftwareFilterForm soff = new SoftwareFilterForm();
 
         public Form1()
         {
@@ -45,6 +46,11 @@ namespace RacunarskiCentar
             b.Click += ToolFilterPredmeta;
             tb.Items.Add(b);
 
+            b = new ToolStripButton();
+            b.Text = "Filter softvera";
+            b.Click += ToolFilterSoftvera;
+            tb.Items.Add(b);
+
             FormClosing += Form1_FormClosing;
 
             DataControllercs.onAction += ActionExcuted;
@@ -64,6 +70,11 @@ namespace RacunarskiCentar
             ResizeEnd += Form1_ResizeEnd;
             ResizeBegin += Form1_ResizeBegin;
 
+        }
+
+        private void ToolFilterSoftvera(object sender, EventArgs e)
+        {
+            soff.ShowDialog();
         }
 
         private void ToolFilterSmera(object sender, EventArgs e)

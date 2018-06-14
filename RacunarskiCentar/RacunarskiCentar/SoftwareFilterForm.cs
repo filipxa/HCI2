@@ -18,7 +18,7 @@ namespace RacunarskiCentar
             InitializeComponent();
         }
 
-        Regex cenaRegex = new Regex("[0-9]+");
+        Regex cenaRegex = new Regex("^[0-9]*$");
 
         private void buttonSacuvaj_Click(object sender, EventArgs e)
         {
@@ -38,8 +38,8 @@ namespace RacunarskiCentar
                 MessageBox.Show(poruka, "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                 return;
             }
-
-            this.Hide();
+            DataManger.SoftverFilter.Cena = Convert.ToDouble(textBoxCena.Text);
+            //this.Hide();
         }
     }
 }
