@@ -206,7 +206,8 @@ namespace RacunarskiCentar
             {
                 foreach (Ucionica s in DataManger.getUcionice())
                 {
-                    if (s.ID.Equals(ucionica.ID))
+                    
+                    if (textBoxID.Text.ToLower().Equals(s.ID.ToLower()))
                     {
                         poruka += "#" + rb + ": Ucionica sa id-em " + textBoxID.Text + " vec postoji..\n";
                         rb++;
