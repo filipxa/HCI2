@@ -24,6 +24,7 @@ namespace RacunarskiCentar
             this.checkBox1.Checked = true;
             this.checkBox2.CheckedChanged += CheckBox_CheckedChanged;
             textBoxCena.Text = "0";
+            
             if(software != null)
             {
                 popuniPolja();
@@ -79,7 +80,9 @@ namespace RacunarskiCentar
                 software.Godina = textBoxGodina.Text;
                 software.Cena = Convert.ToDouble(textBoxCena.Text);
                 software.Opis = richTextBoxOpis.Text;
+                
             }
+            
             DataControllercs.addAction(action);
             return action;
 
