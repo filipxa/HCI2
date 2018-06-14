@@ -16,6 +16,7 @@ namespace RacunarskiCentar
     {
         private Predmet predmet;
         private Smer smer;
+
         public PredmetForm(Predmet predmet, Smer smer)
         {
             this.smer = smer;
@@ -69,9 +70,9 @@ namespace RacunarskiCentar
                 action = new EditAction(predmet);
                 predmet.ID = textBoxID.Text;
                 predmet.Ime = textBoxNaziv.Text;
-                predmet.BrLjudi = Convert.ToInt32(numericUpDownBrojLjudi);
-                predmet.BrCasova = Convert.ToInt32(numericUpDownDuzinaTermina);
-                predmet.BrTermina = Convert.ToInt32(numericUpDownBrojTermina);
+                predmet.BrLjudi = Convert.ToInt32(numericUpDownBrojLjudi.Value);
+                predmet.BrCasova = Convert.ToInt32(numericUpDownDuzinaTermina.Value);
+                predmet.BrTermina = Convert.ToInt32(numericUpDownBrojTermina.Value);
                 predmet.Opis = richTextBoxOpis.Text;
                 predmet.Assets = getUcionicaAssets();
             }
@@ -135,6 +136,18 @@ namespace RacunarskiCentar
         {
             int rb = 1;
             string poruka = "";
+
+            if (predmet == null)
+            {
+                foreach (Predmet p in DataManger.getPredmeti())
+                {
+                    if (p.ID.Equals(textBoxID.Text))
+                    {
+                        poruka += "#" + rb + ": Predmet sa id-em " + textBoxID.Text + " vec postoji..\n";
+                        rb++;
+                    }
+                }
+            }
             if (textBoxID.Text.Length == 0)
             {
                 poruka += "#" + rb + ": Morate uneti ID predmeta.\n";
