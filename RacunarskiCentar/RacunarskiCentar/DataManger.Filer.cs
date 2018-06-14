@@ -57,7 +57,7 @@ namespace RacunarskiCentar
 
         public static List<Software> softverOperativanSistemFiltiriranje(List<UcionicaAssets> opSistem)
         {
-            return softveri.Where(x=> (x.Assets.Intersect(opSistem).Count() == opSistem.Count())).ToList();
+            return softveri.Where(x=> (x.Assets.Intersect(opSistem).Count() > 0 )).ToList();
         }
 
         public static Ucionica UcionicaFilter {
