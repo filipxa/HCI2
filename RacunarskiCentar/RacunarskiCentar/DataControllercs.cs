@@ -8,16 +8,12 @@ namespace RacunarskiCentar
 {
     static class DataControllercs
     {
-        static Stack<Action> actionsHistory = new Stack<Action>();
-        static Stack<Action> actionsRedo = new Stack<Action>();
+        public static Stack<Action> actionsHistory = new Stack<Action>();
+        public static Stack<Action> actionsRedo = new Stack<Action>();
         static public EventHandler<Action> onAction;
         static public void addAction(Action action)
         {
             action.excuteAction();
-            if (onAction != null)
-            {
-                onAction(null, action);
-            }
             actionsHistory.Push(action);
             actionsRedo.Clear();
         }
@@ -28,10 +24,6 @@ namespace RacunarskiCentar
             {
                 rets = actionsHistory.Pop().GetReverseAction();
                 rets.excuteAction();
-                if (onAction != null)
-                {
-                    onAction(null, rets);
-                }
                 actionsRedo.Push(rets);
             }
             
@@ -48,10 +40,6 @@ namespace RacunarskiCentar
 
                 rets = actionsRedo.Pop().GetReverseAction();
                 rets.excuteAction();
-                if (onAction != null)
-                {
-                    onAction(null, rets);
-                }
                 actionsHistory.Push(rets);
             }
             
@@ -61,6 +49,16 @@ namespace RacunarskiCentar
 
 
         internal static bool undoAvailable()
+        {
+            return actionsHistory.Count > 0;
+        }
+
+        internal static bool RedoAvailable()
+        {
+            return actionsRedo.Count > 0;
+        }
+
+        internal static bool UndoAvailable()
         {
             return actionsHistory.Count > 0;
         }
@@ -110,6 +108,7 @@ namespace RacunarskiCentar
             {
                 t.Delete();
             }
+            base.excuteAction();
         }
 
         public override Action GetReverseAction()
@@ -129,6 +128,7 @@ namespace RacunarskiCentar
             {
                 DataManger.addObject(t);
             }
+            base.excuteAction();
         }
 
         public override Action GetReverseAction()
@@ -147,7 +147,7 @@ namespace RacunarskiCentar
         }
         internal override void excuteAction()
         {
-            
+            base.excuteAction();
         }
 
         public override Action GetReverseAction()
@@ -185,6 +185,8 @@ namespace RacunarskiCentar
         }
         internal override void excuteAction()
         {
+           
+
             foreach (Action action in actions)
             {
                 action.excuteAction();

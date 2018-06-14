@@ -98,10 +98,13 @@ namespace RacunarskiCentar
 
         private void SmerControl_Click(object sender, MouseEventArgs e)
         {
-           if(smerRec.Contains(new Point(e.Location.X, e.Location.Y)))
-            {
-                IsColapsed = !isColapsed;
+            if (e.Button == MouseButtons.Left){
+                if (smerRec.Contains(new Point(e.Location.X, e.Location.Y)))
+                {
+                    IsColapsed = !isColapsed;
+                }
             }
+           
         }
 
         private void updatePredmetPanelSize()
@@ -127,7 +130,7 @@ namespace RacunarskiCentar
 
         private void updatePredmetPanelElements()
         {
-            List<Predmet> predmetiToAdd = new List<Predmet>();
+            HashSet<Predmet> predmetiToAdd = new HashSet<Predmet>();
             foreach (Predmet predmet in GuiObject.Predmeti)
             {
                 bool found = false;

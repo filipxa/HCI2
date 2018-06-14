@@ -54,6 +54,7 @@ namespace RacunarskiCentar
                 smer.Ime = textBoxIme.Text;
                 smer.DatumUvodjenja = Convert.ToDateTime(dateTimePicker1.Value);
                 smer.Opis = richTextBoxOpis.Text;
+                smer.Predmeti.Clear();
                 foreach (Predmet p in listBoxPredmeti.Items)
                 {
                     smer.Predmeti.Add(p);
@@ -133,25 +134,13 @@ namespace RacunarskiCentar
         {
             if (e is CreateAction)
             {
-                
-                
-                Predmet u = e.getGUIObject() as Predmet;
-                if (u != null)
+
+                Predmet p = e.getGUIObject() as Predmet;
+                if (p != null)
                 {
-                    if(u.SmerPredmeta == smer)
+                    if (p.SmerPredmeta.Equals(smer))
                     {
-                        List<Predmet> pomocna = new List<Predmet>();
-                        foreach(Predmet p in listBoxPredmeti.Items)
-                        {
-                            pomocna.Add(p);
-                        }
-                        pomocna.Add(u);
-                        listBoxPredmeti.DataSource = null;
-                        listBoxPredmeti.Items.Clear();
-                        foreach (Predmet p in pomocna)
-                            listBoxPredmeti.Items.Add(p);
-                        
-                        
+                        listBoxPredmeti.Items.Add(p);
                     }
                 }
             }
