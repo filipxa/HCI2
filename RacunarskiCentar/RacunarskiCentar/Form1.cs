@@ -15,11 +15,12 @@ namespace RacunarskiCentar
 
         UcionicaFilterForm uff = new UcionicaFilterForm();
         SmerFilterForm sff = new SmerFilterForm();
-        PredmetFilterForm pff = new PredmetFilterForm();
+        //PredmetFilterForm pff = new PredmetFilterForm();
         SoftwareFilterForm soff = new SoftwareFilterForm();
 
         public Form1()
         {
+            DataManger.load();
             KeyDown += Form1_KeyDown;
             ToolStripButton b = new ToolStripButton();
             b.Text = "Nazad";
@@ -94,6 +95,7 @@ namespace RacunarskiCentar
         private void ToolFilterPredmeta(object sender, EventArgs e)
         {
             PredmetFilterForm pff = new PredmetFilterForm();
+            pff.ShowDialog();
         }
 
         private void ToolFilterUcionica(object sender, EventArgs e)
