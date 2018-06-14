@@ -13,22 +13,42 @@ namespace RacunarskiCentar
 {
     public partial class UcionicaFilterForm : Form
     {
+        List<UcionicaAssets> OS = new List<UcionicaAssets>();
         public UcionicaFilterForm()
         {
+            
+
             InitializeComponent();
             foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
             {
                 checkedListBox1.Items.Add(new ComboValue(aset), false);
             }
+
+
+            this.VisibleChanged += initTabela;
+
             checkedListBox1.ItemCheck += CheckedListBox1_ItemCheck;
-            initTabela();
+
+            numericUpDownBrRadnihMesta.ValueChanged += initTabela;
+            textBoxID.TextChanged += initTabela;
+            checkedListBox1.SelectedValueChanged += initTabela;
+            checkedListBox2.SelectedValueChanged += initTabela;
         }
 
 
-        private void initTabela()
+        private void initTabela(object sender, EventArgs e)
         {
-            dataGridView1.ColumnCount = 3;
+            
+            if (!this.Visible)
+                return;
 
+            DataManger.UcionicaFilter.ID = textBoxID.Text;
+            DataManger.UcionicaFilter.BrRadnihMesta = Convert.ToInt32(numericUpDownBrRadnihMesta.Value);
+            DataManger.UcionicaFilter.Assets = getUcionicaAssets();
+            DataManger.UcionicaFilter.InstalledSoftware = getInstalledSoft();
+
+            dataGridView1.Rows.Clear();
+            dataGridView1.ColumnCount = 3;
             dataGridView1.Columns[0].Name = "ID";
             dataGridView1.Columns[1].Name = "Opis";
             dataGridView1.Columns[2].Name = "Br. mesta";
@@ -50,26 +70,29 @@ namespace RacunarskiCentar
             ComboValue cv = (ComboValue)checkedListBox1.Items[e.Index];
             if (cv.Value.Equals(UcionicaAssets.windows) || cv.Value.Equals(UcionicaAssets.linux))
             {
-                popuniSoftvere();
+                if (e.NewValue == CheckState.Checked)
+                {
+                    OS.Add((UcionicaAssets)cv.Value);
+                }
+                else
+                {
+                    OS.Remove((UcionicaAssets)cv.Value);
+                }
 
+                popuniSoftvere();
             }
+
+
+
         }
 
-
+        // desni checkBox
         private void popuniSoftvere()
         {
             checkedListBox2.Items.Clear();
             List<UcionicaAssets> listaSistema = new List<UcionicaAssets>();
 
-            foreach (ComboValue cv in checkedListBox1.CheckedItems)
-            {
-                if (cv.Value.Equals(UcionicaAssets.linux) || (cv.Value.Equals(UcionicaAssets.windows)))
-                {
-                    listaSistema.Add((UcionicaAssets)cv.Value);
-                }
-            }
-
-            foreach (Software s in DataManger.softverOperativanSistemFiltiriranje(listaSistema))
+            foreach (Software s in DataManger.softverOperativanSistemFiltiriranje(OS))
             {
                 checkedListBox2.Items.Add(s, false);
             }
@@ -78,10 +101,7 @@ namespace RacunarskiCentar
 
         private void buttonPotvrdi_Click(object sender, EventArgs e)
         {
-            DataManger.UcionicaFilter.ID = textBoxID.Text;
-            DataManger.UcionicaFilter.BrRadnihMesta = Convert.ToInt32(numericUpDownBrRadnihMesta.Value);
-            DataManger.UcionicaFilter.Assets = getUcionicaAssets();
-            DataManger.UcionicaFilter.InstalledSoftware = getInstalledSoft();
+            
             this.Hide();
         }
 
