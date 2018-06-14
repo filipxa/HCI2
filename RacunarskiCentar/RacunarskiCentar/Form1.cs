@@ -15,13 +15,12 @@ namespace RacunarskiCentar
 
         FormView currentView = FormView.RACUNARSKI_CENTAR;
         private const int toolWidth = 250;
-        Panel mainPanel;
-        Panel toolboxPanel;
+        public Panel mainPanel;
+        public Panel toolboxPanel;
         ToolStrip tb = new ToolStrip();
 
         UcionicaFilterForm uff = new UcionicaFilterForm();
         SmerFilterForm sff = new SmerFilterForm();
-        //PredmetFilterForm pff = new PredmetFilterForm();
         SoftwareFilterForm soff = new SoftwareFilterForm();
         ToolStripButton undoButton;
         ToolStripButton redoButton;
@@ -88,6 +87,8 @@ namespace RacunarskiCentar
             MinimumSize = Size;
             ResizeEnd += Form1_ResizeEnd;
             ResizeBegin += Form1_ResizeBegin;
+            Tutorial t = new Tutorial(this);
+            t.nextStep();
 
         }
 
