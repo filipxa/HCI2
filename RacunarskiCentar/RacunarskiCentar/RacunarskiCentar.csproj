@@ -135,6 +135,7 @@
     <Compile Include="TerminForm.Designer.cs">
       <DependentUpon>TerminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tutorial.cs" />
     <Compile Include="Ucionica.cs" />
     <Compile Include="Software.cs" />
     <Compile Include="Form1.cs">
