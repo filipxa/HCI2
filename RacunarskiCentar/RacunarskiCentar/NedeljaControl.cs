@@ -80,7 +80,7 @@ namespace RacunarskiCentar
                 List<Termin> termini = pair.Value;
                 foreach (Termin termin in termini)
                 {
-                    
+                    CreateTerminControl(termin);
                 }
 
             }
@@ -211,9 +211,7 @@ namespace RacunarskiCentar
                 DateTime krajTermina = pocetakTermina.Add(ts);
                 if (GuiObject.isSlobodan(pocetakTermina, krajTermina, t))
                 {
-                   
                     transferTerminToNewDate((Panel)sender, termin, pocetakTermina, krajTermina);
-                   
                 }
             }
            

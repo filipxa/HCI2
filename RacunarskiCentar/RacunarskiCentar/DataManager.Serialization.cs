@@ -16,9 +16,6 @@ namespace RacunarskiCentar
 
             using (var stream = new FileStream(fileName, FileMode.Create))
             {
-
-               // ucionice[0].Raspored = new Raspored(ucionice[0]);
-                //ucionice[0].Raspored.RadneNedelje.Add(new Nedelja(ucionice[0].Raspored, DateTime.Now));
                 var xml = new XmlSerializer(typeof(List<Ucionica>));
                 xml.Serialize(stream, ucionice);
             }
@@ -40,8 +37,6 @@ namespace RacunarskiCentar
 
             using (var stream = new FileStream(fileName, FileMode.Create))
             {
-
-
                 var xml = new XmlSerializer(typeof(List<Software>));
                 xml.Serialize(stream, softveri);
             }
@@ -137,7 +132,6 @@ namespace RacunarskiCentar
             catch (Exception)
             {
 
-               
             }
            
 
