@@ -17,7 +17,7 @@ namespace RacunarskiCentar
             using (var stream = new FileStream(fileName, FileMode.Create))
             {
 
-                ucionice[0].Raspored = new Raspored(ucionice[0]);
+               // ucionice[0].Raspored = new Raspored(ucionice[0]);
                 //ucionice[0].Raspored.RadneNedelje.Add(new Nedelja(ucionice[0].Raspored, DateTime.Now));
                 var xml = new XmlSerializer(typeof(List<Ucionica>));
                 xml.Serialize(stream, ucionice);
@@ -46,5 +46,84 @@ namespace RacunarskiCentar
                 xml.Serialize(stream, softveri);
             }
         }
+
+        public static void save()
+        {
+            DataManger.saveUcionica("ucionicaXML.xml");
+            DataManger.saveSmer("smerXML.xml");
+            DataManger.saveSoftware("softwareXML.xml");
+        }
+
+        public static void load()
+        {
+              
+            loadSmerovi("smerXML.xml");
+            loadSoftware("softwareXML.xml");
+            loadUcionice("ucionicaXML.xml");
+
+        }
+
+        private static void loadSoftware(string fileName)
+        {
+            try
+            {
+                using (StreamReader reader = new StreamReader(fileName))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Software>));
+                    softveri = (List<Software>)serializer.Deserialize(reader);
+                    reader.Close();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+           
+
+        }
+
+        private static void loadUcionice(string fileName)
+        {
+            try
+            {
+                using (StreamReader reader = new StreamReader(fileName))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Ucionica>));
+                    ucionice = (List<Ucionica>)serializer.Deserialize(reader);
+                    reader.Close();
+                }
+            }
+            catch (Exception)
+            {
+
+                
+            }
+
+          
+
+        }
+
+        private static void loadSmerovi(string fileName)
+        {
+            try
+            {
+                using (StreamReader reader = new StreamReader(fileName))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Smer>));
+                    smerovi = (List<Smer>)serializer.Deserialize(reader);
+                    reader.Close();
+                }
+            }
+            catch (Exception)
+            {
+
+               
+            }
+           
+
+        }
+
+
+
     }
 }

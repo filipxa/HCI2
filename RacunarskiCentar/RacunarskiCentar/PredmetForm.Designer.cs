@@ -83,7 +83,6 @@
             this.textBoxNaziv.Name = "textBoxNaziv";
             this.textBoxNaziv.Size = new System.Drawing.Size(174, 20);
             this.textBoxNaziv.TabIndex = 4;
-            this.textBoxNaziv.Validated += new System.EventHandler(this.textBoxNaziv_Validated);
             // 
             // labelOpis
             // 
