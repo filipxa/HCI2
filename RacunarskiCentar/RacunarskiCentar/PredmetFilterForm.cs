@@ -17,23 +17,37 @@ namespace RacunarskiCentar
         {
             InitializeComponent();
 
-            initTabela();
-            
-
+            this.VisibleChanged += initTabela;
+            textBoxID.TextChanged += initTabela;
+            textBoxNaziv.TextChanged += initTabela;
+            numericUpDownBrojLjudi.ValueChanged += initTabela;
+            numericUpDownBrojTermina.ValueChanged += initTabela;
+            numericUpDownDuzinaTermina.ValueChanged += initTabela;
 
             foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
             {
                 checkedListBox1.Items.Add(new ComboValue(aset), false);
             }
-            
-            
+            //checkedListBox1.ItemCheck += initTabela;
+            checkedListBox1.SelectedValueChanged += initTabela;
+
 
         }
 
-        private void initTabela()
+        private void initTabela(object sender, EventArgs e)
         {
-            dataGridView1.ColumnCount = 7;
+            if (!this.Visible)
+                return;
 
+            DataManger.PredmetFiler.ID = textBoxID.Text;
+            DataManger.PredmetFiler.BrLjudi = Convert.ToInt32(numericUpDownBrojLjudi.Value);
+            DataManger.PredmetFiler.Ime = textBoxNaziv.Text;
+            DataManger.PredmetFiler.BrCasova = Convert.ToInt32(numericUpDownDuzinaTermina.Value);
+            DataManger.PredmetFiler.BrTermina = Convert.ToInt32(numericUpDownBrojTermina.Value);
+            DataManger.PredmetFiler.Assets = getUcionicaAssets();
+
+            dataGridView1.Rows.Clear();
+            dataGridView1.ColumnCount = 7;
             dataGridView1.Columns[0].Name = "ID";
             dataGridView1.Columns[1].Name = "Ime";
             dataGridView1.Columns[2].Name = "Smer";
@@ -42,6 +56,7 @@ namespace RacunarskiCentar
             dataGridView1.Columns[5].Name = "Br. casova";
             dataGridView1.Columns[6].Name = "Br. termina";
             dataGridView1.ReadOnly = true;
+
             popunjavanjeTabele();
         }
 
@@ -56,12 +71,7 @@ namespace RacunarskiCentar
 
         private void buttonPotvrdi_Click(object sender, EventArgs e)
         {
-            DataManger.PredmetFiler.ID = textBoxID.Text;
-            DataManger.PredmetFiler.BrLjudi = Convert.ToInt32(numericUpDownBrojLjudi.Value);
-            DataManger.PredmetFiler.Ime = textBoxNaziv.Text;
-            DataManger.PredmetFiler.BrCasova = Convert.ToInt32(numericUpDownDuzinaTermina.Value);
-            DataManger.PredmetFiler.BrTermina = Convert.ToInt32(numericUpDownBrojTermina.Value);
-            DataManger.PredmetFiler.Assets = getUcionicaAssets();
+            
             this.Hide();
         }
 

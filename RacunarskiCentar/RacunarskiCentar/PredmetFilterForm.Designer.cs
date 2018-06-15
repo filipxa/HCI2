@@ -73,11 +73,6 @@
             // 
             // numericUpDownDuzinaTermina
             // 
-            this.numericUpDownDuzinaTermina.Increment = new decimal(new int[] {
-            45,
-            0,
-            0,
-            0});
             this.numericUpDownDuzinaTermina.Location = new System.Drawing.Point(18, 198);
             this.numericUpDownDuzinaTermina.Maximum = new decimal(new int[] {
             270,
@@ -85,7 +80,7 @@
             0,
             0});
             this.numericUpDownDuzinaTermina.Minimum = new decimal(new int[] {
-            45,
+            1,
             0,
             0,
             0});
@@ -93,7 +88,7 @@
             this.numericUpDownDuzinaTermina.Size = new System.Drawing.Size(59, 20);
             this.numericUpDownDuzinaTermina.TabIndex = 30;
             this.numericUpDownDuzinaTermina.Value = new decimal(new int[] {
-            45,
+            1,
             0,
             0,
             0});
@@ -239,7 +234,7 @@
             this.MinimizeBox = false;
             this.Name = "PredmetFilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PredmetFilterForm";
+            this.Text = "Filter predmeta";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojTermina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDuzinaTermina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojLjudi)).EndInit();

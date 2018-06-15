@@ -180,7 +180,7 @@
             this.MinimizeBox = false;
             this.Name = "SmerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SmerForm";
+            this.Text = "Dodaj smer";
             this.ResumeLayout(false);
             this.PerformLayout();
 
