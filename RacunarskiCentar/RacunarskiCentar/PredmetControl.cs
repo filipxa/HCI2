@@ -38,8 +38,7 @@ namespace RacunarskiCentar
         {
             PredmetForm f = new PredmetForm(GuiObject, GuiObject.SmerPredmeta);
             f.ShowDialog();
-            if (f.DialogResult == DialogResult.OK)
-                f.GetAction();
+            f.Dispose();
         }
 
         private void PredmetControl_MouseDown(object sender, MouseEventArgs e)

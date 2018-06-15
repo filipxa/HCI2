@@ -46,8 +46,6 @@ namespace RacunarskiCentar
         {
             UcionicaForm f = new UcionicaForm(GuiObject);
             f.ShowDialog();
-            if(f.DialogResult==DialogResult.OK)
-                 f.GetAction();
         }
 
 

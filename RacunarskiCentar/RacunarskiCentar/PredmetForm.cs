@@ -74,7 +74,7 @@ namespace RacunarskiCentar
 
         }
 
-        public Action GetAction()
+        private Action GetAction()
         {
             Action action;
             if(predmet == null)

@@ -175,7 +175,7 @@ namespace RacunarskiCentar
             Ucionica ucionica = DataManger.GetUcionicaID(id);
             DeleteAction d = new DeleteAction(ucionica);
             DataControllercs.addAction(d);
-
+            BringToFront();
         }
     }
 }

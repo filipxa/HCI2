@@ -93,7 +93,7 @@ namespace RacunarskiCentar
             richTextBox1.Text = ucionica.Opis;
         }
 
-        public Action GetAction()
+        private Action GetAction()
         {
             Action action;
             if (ucionica == null)
