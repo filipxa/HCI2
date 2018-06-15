@@ -139,6 +139,7 @@ namespace RacunarskiCentar
             List<Raspored> rets = new List<Raspored>();
             foreach (Ucionica ucionica in ucionice)
             {
+                if(ucionica.Raspored!=null)
                 rets.Add(ucionica.Raspored);
 
             }
@@ -153,6 +154,7 @@ namespace RacunarskiCentar
             List<Nedelja> rets = new List<Nedelja>();
             foreach(Raspored ras in getRasporedi())
             {
+              
                 rets.AddRange(ras.RadneNedelje);
             }
             return rets;

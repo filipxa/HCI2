@@ -25,7 +25,6 @@ namespace RacunarskiCentar
                     return;
                 }
             }
-            action.excuteAction();
             actionsHistory.Push(action);
             actionsRedo.Clear();
             action.excuteAction();
