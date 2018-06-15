@@ -243,7 +243,7 @@
             this.MinimizeBox = false;
             this.Name = "SoftwareForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SoftwareForm";
+            this.Text = "Softver";
             this.ResumeLayout(false);
             this.PerformLayout();
 

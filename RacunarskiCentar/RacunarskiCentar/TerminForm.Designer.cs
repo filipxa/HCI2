@@ -75,7 +75,7 @@
             this.MinimizeBox = false;
             this.Name = "TerminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TerminForm";
+            this.Text = "Termin";
             this.ResumeLayout(false);
             this.PerformLayout();
 

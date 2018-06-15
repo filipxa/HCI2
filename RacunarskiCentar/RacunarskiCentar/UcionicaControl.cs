@@ -56,11 +56,18 @@ namespace RacunarskiCentar
             base.OnPaint(pe);
             Graphics g = pe.Graphics;
             Rectangle rc = ClientRectangle;
-            
+
+            if (IsTutorial)
+            {
+                GraphicLoader.drawImages(g, rc, "Ucionica", "base", "Tut");
+            }
+            else
+            {
+                GraphicLoader.drawImages(g, rc, "Ucionica", "base");
+            }
 
             GraphicLoader.drawImages(g, rc, "Ucionica");
-
-            foreach(UcionicaAssets aset in GuiObject.Assets)
+            foreach (UcionicaAssets aset in GuiObject.Assets)
             {
                 GraphicLoader.drawImages(g, rc, "Ucionica", "assets", ((int)aset).ToString());
             }

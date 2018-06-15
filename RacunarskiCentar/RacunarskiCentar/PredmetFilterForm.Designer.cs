@@ -254,7 +254,7 @@
             this.MinimizeBox = false;
             this.Name = "PredmetFilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PredmetFilterForm";
+            this.Text = "Filter predmeta";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojTermina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDuzinaTermina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojLjudi)).EndInit();
