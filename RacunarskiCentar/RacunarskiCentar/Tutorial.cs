@@ -20,7 +20,7 @@ namespace RacunarskiCentar
         private bool levelZavrsen = false;
         private enum Level
         {
-            Nista, Pocetak, ToolBar, ToolBoxPanel, MainPanel, UcionicaDKlik, UcionicaView
+            Nista, Pocetak, ToolBar, ToolBoxPanel, MainPanel, UcionicaDKlik, UcionicaView, UVToolBox
         }
         public Tutorial(Form1 f)
         {
@@ -69,6 +69,14 @@ namespace RacunarskiCentar
                 InitUcionicaDKlik();
             }
             else if (currentLevel == Level.UcionicaDKlik)
+            {
+                initUcionicaView();
+            }
+            else if (currentLevel == Level.UcionicaView)
+            {
+                initUcionicaView();
+            }
+            else if (currentLevel == Level.UcionicaView)
             {
                 initUcionicaView();
             }
@@ -172,8 +180,6 @@ namespace RacunarskiCentar
 
             });
         }
-
-
 
 
     }

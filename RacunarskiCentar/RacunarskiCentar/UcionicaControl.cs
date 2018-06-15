@@ -67,8 +67,6 @@ namespace RacunarskiCentar
             }
 
             GraphicLoader.drawImages(g, rc, "Ucionica");
-
-
             foreach (UcionicaAssets aset in GuiObject.Assets)
             {
                 GraphicLoader.drawImages(g, rc, "Ucionica", "assets", ((int)aset).ToString());
