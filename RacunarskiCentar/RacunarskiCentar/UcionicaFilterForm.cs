@@ -189,19 +189,21 @@ namespace RacunarskiCentar
         {
             try
             {
+                int index = dataGridView1.CurrentCell.RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[index];
+                string id = selectedRow.Cells[0].Value.ToString();
+                System.Diagnostics.Debug.WriteLine(id);
+                
+                Ucionica ucionica = DataManger.GetUcionicaID(id);
+                DeleteAction d = new DeleteAction(ucionica);
+                DataControllercs.addAction(d);
+                BringToFront();
             }
             catch
             {
                 this.BringToFront();
             }
-            int index = dataGridView1.CurrentCell.RowIndex;
-            DataGridViewRow selectedRow = dataGridView1.Rows[index];
-            string id = selectedRow.Cells[0].Value.ToString();
-            System.Diagnostics.Debug.WriteLine(id);
-            DeleteAction d = new DeleteAction(ucionica);
-            Ucionica ucionica = DataManger.GetUcionicaID(id);
-            DataControllercs.addAction(d);
-            BringToFront();
+           
             //brisanje ovde
         }
     }
