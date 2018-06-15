@@ -59,9 +59,12 @@ namespace RacunarskiCentar
             DataManger.SoftverFilter.Proizvodjac = textBoxProizvodjac.Text;
             DataManger.SoftverFilter.Cena = Convert.ToDouble(numericUpDown1.Value);
 
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
             dataGridView1.Rows.Clear();
             dataGridView1.ColumnCount = 7;
-
+            dataGridView1.RowHeadersVisible = false;
             dataGridView1.Columns[0].Name = "ID";
             dataGridView1.Columns[1].Name = "Ime";
             dataGridView1.Columns[2].Name = "Proizvodjac";
