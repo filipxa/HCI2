@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static RacunarskiCentar.UcionicaForm;
 
@@ -39,7 +34,6 @@ namespace RacunarskiCentar
                     }
                     if (comboBoxSmer.Items.Count == 0)
                         comboBoxSmer.Enabled = false;
-                    //comboBoxSmer.SelectedItem = comboBoxSmer.Items[0];
                 }
             }
             popuniOpremaBox();
@@ -117,10 +111,7 @@ namespace RacunarskiCentar
         private void PredmetForm_Load(object sender, EventArgs e)
         {
             DialogResult = DialogResult.None;
-            //foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
-            //{
-            //    checkedListBox1.Items.Add(new ComboValue(aset), false);
-            //}
+
         }
         Regex idRegex = new Regex("[a-zA-Z0-9]");
 
@@ -132,9 +123,7 @@ namespace RacunarskiCentar
             }
             else
             {
-                // TO-DO: proveriti da li vec postoji id u bazi
                 labelID.ForeColor = Color.Black;
-
             }
         }
 
@@ -159,11 +148,9 @@ namespace RacunarskiCentar
 
             if (predmet == null)
             {
-               // int i = 1;
                 foreach (Predmet p in DataManger.getPredmeti())
                 {
-                    //Console.WriteLine(i + ":  " + p.ID);
-                    //i++;
+
                     if (p.ID.Equals(textBoxID.Text))
                     {
                         poruka += "#" + rb + ": Predmet sa id-em " + textBoxID.Text + " vec postoji..\n";

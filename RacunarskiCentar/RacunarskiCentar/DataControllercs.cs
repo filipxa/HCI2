@@ -227,6 +227,7 @@ namespace RacunarskiCentar
         {
             preRestore = o.Copy();
             o.restoreFromCopy(memo);
+            base.excuteAction();
         }
 
         public override Action GetReverseAction()
@@ -246,11 +247,11 @@ namespace RacunarskiCentar
         internal override void excuteAction()
         {
            
-
             foreach (Action action in actions)
             {
                 action.excuteAction();
             }
+            base.excuteAction();
         }
 
         public override Action GetReverseAction()
