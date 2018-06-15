@@ -17,7 +17,7 @@ namespace RacunarskiCentar
         {
             assets = new HashSet<UcionicaAssets>();
         }
-        public Software(string id, string name, string proizvodjac, string URL, string godina, double cena, string opis) : this() {
+        public Software(string id, string ime, string proizvodjac, string url, string godina, double cena, string opis) : this() {
             ID = id;
             Ime = ime;
             Proizvodjac = proizvodjac;

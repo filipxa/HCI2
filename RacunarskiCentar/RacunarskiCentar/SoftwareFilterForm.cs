@@ -89,14 +89,41 @@ namespace RacunarskiCentar
 
         private void buttonOrisi_Click(object sender, EventArgs e)
         {
-            int index = dataGridView1.CurrentCell.RowIndex;
-            DataGridViewRow selectedRow = dataGridView1.Rows[index];
-            string id = selectedRow.Cells[0].Value.ToString();
-            System.Diagnostics.Debug.WriteLine(id);
-            //brisanje ovde
-            Software software = DataManger.GetSoftverID(id);
-            DeleteAction d = new DeleteAction(software);
-            DataControllercs.addAction(d);
+            try {
+                int index = dataGridView1.CurrentCell.RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[index];
+                string id = selectedRow.Cells[0].Value.ToString();
+                System.Diagnostics.Debug.WriteLine(id);
+                //brisanje ovde
+                Software software = DataManger.GetSoftverID(id);
+                DeleteAction d = new DeleteAction(software);
+                DataControllercs.addAction(d);
+                this.BringToFront();
+            }
+            catch {
+                this.BringToFront();
+            }
+            
+        }
+
+        private void buttonIzmena_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = dataGridView1.CurrentCell.RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[index];
+                string id = selectedRow.Cells[0].Value.ToString();
+                System.Diagnostics.Debug.WriteLine(id);
+                Software software = DataManger.GetSoftverID(id);
+                SoftwareForm f = new SoftwareForm(software);
+                f.ShowDialog();
+                DialogResult = DialogResult.None;
+                this.BringToFront();
+            }
+            catch
+            {
+                this.BringToFront();
+            }
         }
     }
 }

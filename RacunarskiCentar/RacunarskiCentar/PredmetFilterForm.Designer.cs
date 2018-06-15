@@ -45,6 +45,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBoxSmer = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.Izmeni = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojTermina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDuzinaTermina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojLjudi)).BeginInit();
@@ -228,11 +229,22 @@
             this.label2.TabIndex = 37;
             this.label2.Text = "Smer ID";
             // 
+            // Izmeni
+            // 
+            this.Izmeni.Location = new System.Drawing.Point(110, 299);
+            this.Izmeni.Name = "Izmeni";
+            this.Izmeni.Size = new System.Drawing.Size(75, 23);
+            this.Izmeni.TabIndex = 38;
+            this.Izmeni.Text = "Izmeni";
+            this.Izmeni.UseVisualStyleBackColor = true;
+            this.Izmeni.Click += new System.EventHandler(this.Izmeni_Click);
+            // 
             // PredmetFilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1131, 614);
+            this.Controls.Add(this.Izmeni);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxSmer);
             this.Controls.Add(this.dataGridView1);
@@ -283,5 +295,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBoxSmer;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button Izmeni;
     }
 }

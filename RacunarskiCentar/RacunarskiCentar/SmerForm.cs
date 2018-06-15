@@ -69,8 +69,7 @@ namespace RacunarskiCentar
                 smer.Ime = textBoxIme.Text;
                 smer.DatumUvodjenja = Convert.ToDateTime(dateTimePicker1.Value);
                 smer.Opis = richTextBoxOpis.Text;
-                smer.Predmeti.Clear();
-                foreach (Predmet p in listBoxPredmeti.Items)
+                foreach(Predmet p in listBoxPredmeti.Items)
                 {
                     smer.Predmeti.Add(p);
                 }

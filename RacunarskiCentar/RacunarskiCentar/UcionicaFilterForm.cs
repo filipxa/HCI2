@@ -167,15 +167,42 @@ namespace RacunarskiCentar
         }
         private void buttonOdustani_Click(object sender, EventArgs e)
         {
-            int index = dataGridView1.CurrentCell.RowIndex;
-            DataGridViewRow selectedRow = dataGridView1.Rows[index];
-            string id = selectedRow.Cells[0].Value.ToString();
-            System.Diagnostics.Debug.WriteLine(id);
-            //brisanje ovde
-            Ucionica ucionica = DataManger.GetUcionicaID(id);
-            DeleteAction d = new DeleteAction(ucionica);
-            DataControllercs.addAction(d);
+            try
+            {
+                int index = dataGridView1.CurrentCell.RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[index];
+                string id = selectedRow.Cells[0].Value.ToString();
+                System.Diagnostics.Debug.WriteLine(id);
+                //brisanje ovde
+                Ucionica ucionica = DataManger.GetUcionicaID(id);
+                DeleteAction d = new DeleteAction(ucionica);
+                DataControllercs.addAction(d);
+                this.BringToFront();
+            }
+            catch
+            {
+                this.BringToFront();
+            }
+        }
 
+        private void buttonIzmeni_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = dataGridView1.CurrentCell.RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[index];
+                string id = selectedRow.Cells[0].Value.ToString();
+                System.Diagnostics.Debug.WriteLine(id);
+                Ucionica ucionica = DataManger.GetUcionicaID(id);
+                UcionicaForm f = new UcionicaForm(ucionica);
+                f.ShowDialog();
+                DialogResult = DialogResult.None;
+                this.BringToFront();
+            }
+            catch
+            {
+                this.BringToFront();
+            }
         }
     }
 }

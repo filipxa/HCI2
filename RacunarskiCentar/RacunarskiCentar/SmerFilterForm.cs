@@ -76,14 +76,43 @@ namespace RacunarskiCentar
 
         private void buttonObrisi_Click(object sender, EventArgs e)
         {
-            int index = dataGridView1.CurrentCell.RowIndex;
-            DataGridViewRow selectedRow = dataGridView1.Rows[index];
-            string id = selectedRow.Cells[0].Value.ToString();
-            System.Diagnostics.Debug.WriteLine(id);
-            //brisanje ovde
-            Smer smer = DataManger.GetSmerID(id);
-            DeleteAction d = new DeleteAction(smer);
-            DataControllercs.addAction(d);
+            try
+            {
+                int index = dataGridView1.CurrentCell.RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[index];
+                string id = selectedRow.Cells[0].Value.ToString();
+                System.Diagnostics.Debug.WriteLine(id);
+                //brisanje ovde
+                Smer smer = DataManger.GetSmerID(id);
+                DeleteAction d = new DeleteAction(smer);
+                DataControllercs.addAction(d);
+                this.BringToFront();
+            }
+            catch
+            {
+                this.BringToFront();
+            }
+        }
+
+        private void buttonIzmena_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = dataGridView1.CurrentCell.RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[index];
+                string id = selectedRow.Cells[0].Value.ToString();
+                System.Diagnostics.Debug.WriteLine(id);
+
+                Smer smer = DataManger.GetSmerID(id);
+                SmerForm f = new SmerForm(smer);
+                f.ShowDialog();
+                DialogResult = DialogResult.None;
+                this.BringToFront();
+            }
+            catch
+            {
+                this.BringToFront();
+            }
         }
     }
 }

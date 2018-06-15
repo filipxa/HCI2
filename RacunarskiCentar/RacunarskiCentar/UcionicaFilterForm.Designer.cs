@@ -39,6 +39,7 @@
             this.buttonPotvrdi = new System.Windows.Forms.Button();
             this.buttonOdustani = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.buttonIzmeni = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrRadnihMesta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -147,11 +148,22 @@
             this.dataGridView1.Size = new System.Drawing.Size(329, 593);
             this.dataGridView1.TabIndex = 10;
             // 
+            // buttonIzmeni
+            // 
+            this.buttonIzmeni.Location = new System.Drawing.Point(22, 303);
+            this.buttonIzmeni.Name = "buttonIzmeni";
+            this.buttonIzmeni.Size = new System.Drawing.Size(75, 23);
+            this.buttonIzmeni.TabIndex = 11;
+            this.buttonIzmeni.Text = "Izmeni";
+            this.buttonIzmeni.UseVisualStyleBackColor = true;
+            this.buttonIzmeni.Click += new System.EventHandler(this.buttonIzmeni_Click);
+            // 
             // UcionicaFilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(722, 625);
+            this.Controls.Add(this.buttonIzmeni);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonOdustani);
             this.Controls.Add(this.buttonPotvrdi);
@@ -163,7 +175,6 @@
             this.Controls.Add(this.labelDodatnaOprema);
             this.Controls.Add(this.labelBrRadnihMesta);
             this.Controls.Add(this.labelID);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UcionicaFilterForm";
@@ -189,5 +200,6 @@
         private System.Windows.Forms.Button buttonPotvrdi;
         private System.Windows.Forms.Button buttonOdustani;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button buttonIzmeni;
     }
 }

@@ -122,5 +122,26 @@ namespace RacunarskiCentar
             DeleteAction d = new DeleteAction(predmet);
             DataControllercs.addAction(d);
         }
+
+        private void Izmeni_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = dataGridView1.CurrentCell.RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[index];
+                string id = selectedRow.Cells[0].Value.ToString();
+                System.Diagnostics.Debug.WriteLine(id);
+
+                Predmet predmet = DataManger.getPredmetByID(id);
+                PredmetForm f = new PredmetForm(predmet,predmet.SmerPredmeta);
+                f.ShowDialog();
+                DialogResult = DialogResult.None;
+                this.BringToFront();
+            }
+            catch
+            {
+                this.BringToFront();
+            }
+        }
     }
 }

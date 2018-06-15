@@ -39,6 +39,7 @@
             this.buttonSacuvaj = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.buttonIzmena = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -102,7 +103,7 @@
             // 
             // buttonOrisi
             // 
-            this.buttonOrisi.Location = new System.Drawing.Point(32, 209);
+            this.buttonOrisi.Location = new System.Drawing.Point(177, 260);
             this.buttonOrisi.Name = "buttonOrisi";
             this.buttonOrisi.Size = new System.Drawing.Size(75, 23);
             this.buttonOrisi.TabIndex = 18;
@@ -113,7 +114,7 @@
             // buttonSacuvaj
             // 
             this.buttonSacuvaj.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonSacuvaj.Location = new System.Drawing.Point(162, 209);
+            this.buttonSacuvaj.Location = new System.Drawing.Point(12, 218);
             this.buttonSacuvaj.Name = "buttonSacuvaj";
             this.buttonSacuvaj.Size = new System.Drawing.Size(90, 23);
             this.buttonSacuvaj.TabIndex = 17;
@@ -146,11 +147,22 @@
             this.numericUpDown1.Size = new System.Drawing.Size(220, 20);
             this.numericUpDown1.TabIndex = 20;
             // 
+            // buttonIzmena
+            // 
+            this.buttonIzmena.Location = new System.Drawing.Point(126, 218);
+            this.buttonIzmena.Name = "buttonIzmena";
+            this.buttonIzmena.Size = new System.Drawing.Size(75, 23);
+            this.buttonIzmena.TabIndex = 21;
+            this.buttonIzmena.Text = "Izmena";
+            this.buttonIzmena.UseVisualStyleBackColor = true;
+            this.buttonIzmena.Click += new System.EventHandler(this.buttonIzmena_Click);
+            // 
             // SoftwareFilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 626);
+            this.Controls.Add(this.buttonIzmena);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonOrisi);
@@ -188,5 +200,6 @@
         private System.Windows.Forms.Button buttonSacuvaj;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button buttonIzmena;
     }
 }
