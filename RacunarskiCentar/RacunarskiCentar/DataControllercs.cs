@@ -217,6 +217,7 @@ namespace RacunarskiCentar
     public class RestoreAction : Action
     {
         GUIObject memo;
+        GUIObject preRestore;
         public RestoreAction(GUIObject guiObject,  GUIObject memo) : base(guiObject)
         {
             o = guiObject;
@@ -224,12 +225,14 @@ namespace RacunarskiCentar
         }
         internal override void excuteAction()
         {
+            preRestore = o.Copy();
             o.restoreFromCopy(memo);
+            base.excuteAction();
         }
 
         public override Action GetReverseAction()
         {
-            throw new NotImplementedException();
+            return new EditAction(preRestore);
         }
     }
 
@@ -244,11 +247,11 @@ namespace RacunarskiCentar
         internal override void excuteAction()
         {
            
-
             foreach (Action action in actions)
             {
                 action.excuteAction();
             }
+            base.excuteAction();
         }
 
         public override Action GetReverseAction()

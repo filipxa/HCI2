@@ -200,7 +200,7 @@ namespace RacunarskiCentar
                 if (GuiObject.isSlobodan(termin))
                 {
                     DataControllercs.addAction(new CreateAction(termin));
-                    CreateTerminControl(termin);
+                    
                 }
 
             }
@@ -226,9 +226,7 @@ namespace RacunarskiCentar
             chainAction.actions.Add(new DeleteAction(termin));
 
             chainAction.actions.Add(new CreateAction(novi));
-
-            
-            CreateTerminControl(novi);
+           
             DataControllercs.addAction(chainAction);
 
         }

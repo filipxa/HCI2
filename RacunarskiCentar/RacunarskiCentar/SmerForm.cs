@@ -42,10 +42,14 @@ namespace RacunarskiCentar
             textBoxIme.Text = smer.Ime;
             dateTimePicker1.Value = Convert.ToDateTime(smer.DatumUvodjenja);
             richTextBoxOpis.Text = smer.Opis;
-            listBoxPredmeti.DataSource = smer.Predmeti;
+            foreach(Predmet p in smer.Predmeti)
+            {
+                listBoxPredmeti.Items.Add(p);
+            }
+            
         }
 
-        public Action GetAction()
+        private Action GetAction()
         {
             Action action;
             if(isCreate)

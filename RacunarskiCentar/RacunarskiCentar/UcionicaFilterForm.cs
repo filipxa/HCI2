@@ -31,8 +31,8 @@ namespace RacunarskiCentar
             DataControllercs.onAction += ActionExcuted;
             numericUpDownBrRadnihMesta.ValueChanged += initTabela;
             textBoxID.TextChanged += initTabela;
-            checkedListBox1.SelectedValueChanged += initTabela;
-            checkedListBox2.SelectedValueChanged += initTabela;
+
+            checkedListBox2.ItemCheck += initTabela;
             FormClosing += Form_Closing;
         }
 
@@ -99,7 +99,7 @@ namespace RacunarskiCentar
             }
 
 
-
+            initTabela(null,null);
         }
 
         // desni checkBox
@@ -189,20 +189,20 @@ namespace RacunarskiCentar
         {
             try
             {
-                int index = dataGridView1.CurrentCell.RowIndex;
-                DataGridViewRow selectedRow = dataGridView1.Rows[index];
-                string id = selectedRow.Cells[0].Value.ToString();
-                System.Diagnostics.Debug.WriteLine(id);
-                Ucionica ucionica = DataManger.GetUcionicaID(id);
-                UcionicaForm f = new UcionicaForm(ucionica);
-                f.ShowDialog();
-                DialogResult = DialogResult.None;
-                this.BringToFront();
             }
             catch
             {
                 this.BringToFront();
             }
+            int index = dataGridView1.CurrentCell.RowIndex;
+            DataGridViewRow selectedRow = dataGridView1.Rows[index];
+            string id = selectedRow.Cells[0].Value.ToString();
+            System.Diagnostics.Debug.WriteLine(id);
+            DeleteAction d = new DeleteAction(ucionica);
+            Ucionica ucionica = DataManger.GetUcionicaID(id);
+            DataControllercs.addAction(d);
+            BringToFront();
+            //brisanje ovde
         }
     }
 }

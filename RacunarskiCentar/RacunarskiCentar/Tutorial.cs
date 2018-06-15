@@ -88,13 +88,26 @@ namespace RacunarskiCentar
             }
             else if (currentLevel == Level.TerminMove)
             {
-
+                DataControllercs.isTutorial = false;
             }
         }
 
         private void initTerminMove()
         {
-            throw new NotImplementedException();
+            currentLevel = Level.TerminMove;
+            DataControllercs.allowedTypes.Add(typeof(ChainAction));
+            createControl("Prevucite termin na drugi dan kako bi ste ga pomerili.", 20);
+            tc.Click += new EventHandler(delegate (Object o, EventArgs a)
+            {
+                if (levelZavrsen)
+                {
+                    levelZavrsen = false;
+                    nextStep();
+                }
+
+            });
+
+            DataControllercs.onAction += ActionExcuted;
         }
 
         private void initUVPredmet()
@@ -126,7 +139,6 @@ namespace RacunarskiCentar
          
 
         }
-
         private void ActionExcuted(object sender, Action e)
         {
             if (currentLevel == Level.UVPredmet)
@@ -141,7 +153,19 @@ namespace RacunarskiCentar
                     }
                 }
             }
-           
+
+            if (currentLevel == Level.TerminMove)
+            {
+                if (e is ChainAction)
+                {
+                    tc.Text = "Uspešno ste premestili termin! Pritisnite na ovaj prozor kako biste završili tutorijal.";
+                    levelZavrsen = true;
+                    DataControllercs.onAction -= ActionExcuted;
+                    DataControllercs.isTutorial = false;
+                }
+            }
+
+
         }
 
         private void initUVToolBox()

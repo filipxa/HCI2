@@ -82,8 +82,7 @@ namespace RacunarskiCentar
         {
             SmerForm f = new SmerForm(GuiObject);
             f.ShowDialog();
-            if (f.DialogResult == DialogResult.OK)
-                f.GetAction();
+
         }
 
         private void refreshPanels()

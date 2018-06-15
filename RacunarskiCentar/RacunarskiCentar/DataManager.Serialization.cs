@@ -88,7 +88,7 @@ namespace RacunarskiCentar
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(List<Software>));
                     softveri = (List<Software>)serializer.Deserialize(reader);
-                    reader.Close();
+                   
                 }
             }
             catch (Exception)
@@ -107,7 +107,6 @@ namespace RacunarskiCentar
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(List<Ucionica>));
                     ucionice = (List<Ucionica>)serializer.Deserialize(reader);
-                    reader.Close();
                 }
             }
             catch (Exception)
@@ -128,7 +127,6 @@ namespace RacunarskiCentar
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(List<Smer>));
                     smerovi = (List<Smer>)serializer.Deserialize(reader);
-                    reader.Close();
                 }
             }
             catch (Exception)

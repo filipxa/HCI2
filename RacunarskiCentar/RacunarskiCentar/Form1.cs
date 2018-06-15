@@ -126,8 +126,8 @@ namespace RacunarskiCentar
             sff.Controls.Add(generateToolStrip());
             soff.Controls.Add(generateToolStrip());
             pff.Controls.Add(generateToolStrip());
-            //Tutorial t = new Tutorial(this);
-            //t.nextStep();
+            Tutorial t = new Tutorial(this);
+            t.nextStep();
 
         }
 

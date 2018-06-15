@@ -21,7 +21,6 @@ namespace RacunarskiCentar
             BackColor = Color.Transparent;
             MouseClick += EditClick;
             MouseDown += PredmetControl_MouseDown;
-            
         }
 
         public void EditClick(object sender, MouseEventArgs e)
@@ -30,16 +29,13 @@ namespace RacunarskiCentar
             {
                 EditData();
             }
-
-
         }
 
         public void EditData()
         {
             PredmetForm f = new PredmetForm(GuiObject, GuiObject.SmerPredmeta);
             f.ShowDialog();
-            if (f.DialogResult == DialogResult.OK)
-                f.GetAction();
+            f.Dispose();
         }
 
         private void PredmetControl_MouseDown(object sender, MouseEventArgs e)
@@ -48,7 +44,6 @@ namespace RacunarskiCentar
             {
                 DoDragDrop(GuiObject, DragDropEffects.All);
             }
-
         }
     
 
@@ -65,7 +60,6 @@ namespace RacunarskiCentar
             {
                 GraphicLoader.drawImages(g, ClientRectangle, "Predmet", "0");
             }
-
             StringFormat sf = new StringFormat();
             sf.LineAlignment = StringAlignment.Center;
             sf.Alignment = StringAlignment.Center;
