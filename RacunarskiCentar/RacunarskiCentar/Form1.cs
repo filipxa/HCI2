@@ -63,22 +63,22 @@ namespace RacunarskiCentar
             if (undoButtons.Count == 1)
             {
                 b = new ToolStripButton();
-                b.Text = "Filter ucionica";
+                b.Text = "Ucionice";
                 b.Click += ToolFilterUcionica;
                 tb.Items.Add(b);
 
                 b = new ToolStripButton();
-                b.Text = "Filter smera";
+                b.Text = "Smerovi";
                 b.Click += ToolFilterSmera;
                 tb.Items.Add(b);
 
                 b = new ToolStripButton();
-                b.Text = "Filter predmeta";
+                b.Text = "Predmeti";
                 b.Click += ToolFilterPredmeta;
                 tb.Items.Add(b);
 
                 b = new ToolStripButton();
-                b.Text = "Filter softvera";
+                b.Text = "Softveri";
                 b.Click += ToolFilterSoftvera;
                 tb.Items.Add(b);
             }
@@ -126,8 +126,8 @@ namespace RacunarskiCentar
             sff.Controls.Add(generateToolStrip());
             soff.Controls.Add(generateToolStrip());
             pff.Controls.Add(generateToolStrip());
-            Tutorial t = new Tutorial(this);
-            t.nextStep();
+           /* Tutorial t = new Tutorial(this);
+            t.nextStep();*/
 
         }
 

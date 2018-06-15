@@ -46,14 +46,14 @@
             // 
             // textBoxIme
             // 
-            this.textBoxIme.Location = new System.Drawing.Point(30, 78);
+            this.textBoxIme.Location = new System.Drawing.Point(30, 98);
             this.textBoxIme.Name = "textBoxIme";
             this.textBoxIme.Size = new System.Drawing.Size(220, 20);
             this.textBoxIme.TabIndex = 12;
             // 
             // textBoxID
             // 
-            this.textBoxID.Location = new System.Drawing.Point(30, 34);
+            this.textBoxID.Location = new System.Drawing.Point(30, 54);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(220, 20);
             this.textBoxID.TabIndex = 11;
@@ -61,7 +61,7 @@
             // labelIme
             // 
             this.labelIme.AutoSize = true;
-            this.labelIme.Location = new System.Drawing.Point(27, 62);
+            this.labelIme.Location = new System.Drawing.Point(27, 82);
             this.labelIme.Name = "labelIme";
             this.labelIme.Size = new System.Drawing.Size(37, 13);
             this.labelIme.TabIndex = 10;
@@ -70,7 +70,7 @@
             // labelID
             // 
             this.labelID.AutoSize = true;
-            this.labelID.Location = new System.Drawing.Point(27, 18);
+            this.labelID.Location = new System.Drawing.Point(27, 38);
             this.labelID.Name = "labelID";
             this.labelID.Size = new System.Drawing.Size(21, 13);
             this.labelID.TabIndex = 9;
@@ -78,7 +78,7 @@
             // 
             // textBoxProizvodjac
             // 
-            this.textBoxProizvodjac.Location = new System.Drawing.Point(30, 121);
+            this.textBoxProizvodjac.Location = new System.Drawing.Point(30, 141);
             this.textBoxProizvodjac.Name = "textBoxProizvodjac";
             this.textBoxProizvodjac.Size = new System.Drawing.Size(220, 20);
             this.textBoxProizvodjac.TabIndex = 14;
@@ -86,7 +86,7 @@
             // labelProizvodjac
             // 
             this.labelProizvodjac.AutoSize = true;
-            this.labelProizvodjac.Location = new System.Drawing.Point(27, 104);
+            this.labelProizvodjac.Location = new System.Drawing.Point(27, 124);
             this.labelProizvodjac.Name = "labelProizvodjac";
             this.labelProizvodjac.Size = new System.Drawing.Size(65, 13);
             this.labelProizvodjac.TabIndex = 13;
@@ -95,7 +95,7 @@
             // labelCena
             // 
             this.labelCena.AutoSize = true;
-            this.labelCena.Location = new System.Drawing.Point(29, 144);
+            this.labelCena.Location = new System.Drawing.Point(29, 164);
             this.labelCena.Name = "labelCena";
             this.labelCena.Size = new System.Drawing.Size(77, 13);
             this.labelCena.TabIndex = 15;
@@ -103,7 +103,7 @@
             // 
             // buttonOrisi
             // 
-            this.buttonOrisi.Location = new System.Drawing.Point(177, 260);
+            this.buttonOrisi.Location = new System.Drawing.Point(32, 256);
             this.buttonOrisi.Name = "buttonOrisi";
             this.buttonOrisi.Size = new System.Drawing.Size(75, 23);
             this.buttonOrisi.TabIndex = 18;
@@ -114,7 +114,7 @@
             // buttonSacuvaj
             // 
             this.buttonSacuvaj.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonSacuvaj.Location = new System.Drawing.Point(12, 218);
+            this.buttonSacuvaj.Location = new System.Drawing.Point(30, 216);
             this.buttonSacuvaj.Name = "buttonSacuvaj";
             this.buttonSacuvaj.Size = new System.Drawing.Size(90, 23);
             this.buttonSacuvaj.TabIndex = 17;
@@ -125,7 +125,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(258, 18);
+            this.dataGridView1.Location = new System.Drawing.Point(258, 38);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(725, 596);
             this.dataGridView1.TabIndex = 19;
@@ -137,7 +137,7 @@
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(30, 160);
+            this.numericUpDown1.Location = new System.Drawing.Point(30, 180);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -149,7 +149,7 @@
             // 
             // buttonIzmena
             // 
-            this.buttonIzmena.Location = new System.Drawing.Point(126, 218);
+            this.buttonIzmena.Location = new System.Drawing.Point(132, 216);
             this.buttonIzmena.Name = "buttonIzmena";
             this.buttonIzmena.Size = new System.Drawing.Size(75, 23);
             this.buttonIzmena.TabIndex = 21;
@@ -161,7 +161,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(995, 626);
+            this.ClientSize = new System.Drawing.Size(995, 648);
             this.Controls.Add(this.buttonIzmena);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.dataGridView1);
@@ -179,7 +179,7 @@
             this.MinimizeBox = false;
             this.Name = "SoftwareFilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Filter softvera";
+            this.Text = "Softveri obrada";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);

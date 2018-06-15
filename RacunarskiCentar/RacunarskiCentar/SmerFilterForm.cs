@@ -50,6 +50,7 @@ namespace RacunarskiCentar
             DataManger.SmerFilter.ID = textBox1.Text;
             DataManger.SmerFilter.Ime = textBoxIme.Text;
 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;

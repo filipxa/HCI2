@@ -25,7 +25,7 @@ namespace RacunarskiCentar
         public Tutorial(Form1 f)
         {
             form = f;
-            currentLevel = Level.UcionicaDKlik;
+            currentLevel = Level.Nista;
             DataControllercs.isTutorial = true;
             DataControllercs.allowedTypes.Add(typeof(EditAction));
             DataControllercs.allowedTypes.Add(typeof(RestoreAction));

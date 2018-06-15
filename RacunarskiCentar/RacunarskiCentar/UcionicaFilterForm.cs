@@ -52,7 +52,7 @@ namespace RacunarskiCentar
             
             if (!this.Visible)
                 return;
-
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataManger.UcionicaFilter.ID = textBoxID.Text;
             DataManger.UcionicaFilter.BrRadnihMesta = Convert.ToInt32(numericUpDownBrRadnihMesta.Value);
             DataManger.UcionicaFilter.Assets = getUcionicaAssets();

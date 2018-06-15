@@ -42,7 +42,7 @@
             // labelID
             // 
             this.labelID.AutoSize = true;
-            this.labelID.Location = new System.Drawing.Point(13, 22);
+            this.labelID.Location = new System.Drawing.Point(13, 34);
             this.labelID.Name = "labelID";
             this.labelID.Size = new System.Drawing.Size(18, 13);
             this.labelID.TabIndex = 0;
@@ -50,14 +50,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 38);
+            this.textBox1.Location = new System.Drawing.Point(16, 50);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(182, 20);
             this.textBox1.TabIndex = 1;
             // 
             // textBoxIme
             // 
-            this.textBoxIme.Location = new System.Drawing.Point(16, 88);
+            this.textBoxIme.Location = new System.Drawing.Point(16, 100);
             this.textBoxIme.Name = "textBoxIme";
             this.textBoxIme.Size = new System.Drawing.Size(182, 20);
             this.textBoxIme.TabIndex = 2;
@@ -65,7 +65,7 @@
             // labelNaziv
             // 
             this.labelNaziv.AutoSize = true;
-            this.labelNaziv.Location = new System.Drawing.Point(13, 72);
+            this.labelNaziv.Location = new System.Drawing.Point(13, 84);
             this.labelNaziv.Name = "labelNaziv";
             this.labelNaziv.Size = new System.Drawing.Size(34, 13);
             this.labelNaziv.TabIndex = 3;
@@ -74,7 +74,7 @@
             // buttonPotvrdi
             // 
             this.buttonPotvrdi.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonPotvrdi.Location = new System.Drawing.Point(100, 132);
+            this.buttonPotvrdi.Location = new System.Drawing.Point(100, 144);
             this.buttonPotvrdi.Name = "buttonPotvrdi";
             this.buttonPotvrdi.Size = new System.Drawing.Size(90, 23);
             this.buttonPotvrdi.TabIndex = 4;
@@ -84,7 +84,7 @@
             // 
             // buttonObrisi
             // 
-            this.buttonObrisi.Location = new System.Drawing.Point(16, 131);
+            this.buttonObrisi.Location = new System.Drawing.Point(16, 143);
             this.buttonObrisi.Name = "buttonObrisi";
             this.buttonObrisi.Size = new System.Drawing.Size(75, 23);
             this.buttonObrisi.TabIndex = 5;
@@ -95,14 +95,14 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(205, 22);
+            this.dataGridView1.Location = new System.Drawing.Point(205, 34);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(446, 565);
             this.dataGridView1.TabIndex = 6;
             // 
             // buttonIzmena
             // 
-            this.buttonIzmena.Location = new System.Drawing.Point(16, 161);
+            this.buttonIzmena.Location = new System.Drawing.Point(16, 173);
             this.buttonIzmena.Name = "buttonIzmena";
             this.buttonIzmena.Size = new System.Drawing.Size(75, 23);
             this.buttonIzmena.TabIndex = 7;
@@ -128,7 +128,7 @@
             this.MinimizeBox = false;
             this.Name = "SmerFilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Filter smera";
+            this.Text = "Smerovi obrada";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

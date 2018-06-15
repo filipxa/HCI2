@@ -21,7 +21,8 @@ namespace RacunarskiCentar
             this.smer = smer;
             InitializeComponent();
             Disposed += SmerForm_Disposed;
-            if(smer != null)
+
+            if (smer != null)
             {
                 popuniPolja();
             }else
@@ -29,6 +30,7 @@ namespace RacunarskiCentar
                 isCreate = true;
                 this.smer = new Smer();
             }
+
         }
 
         private void SmerForm_Disposed(object sender, EventArgs e)
@@ -153,9 +155,19 @@ namespace RacunarskiCentar
         private void buttonDodajPredmet_Click(object sender, EventArgs e)
         {
             PredmetForm pf = new PredmetForm(null, smer);
-            pf.ShowDialog();
-            
+            pf.ShowDialog();  
         }
+
+        private void buttonObrisiPredmet_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            //baguje brisanje treba se napravi kako treba
+            string id = listBoxPredmeti.SelectedItem.ToString();
+            Predmet predmet = DataManger.getPredmetByID(id);
+            DeleteAction d = new DeleteAction(predmet);
+            DataControllercs.addAction(d);
+        }
+
     }
 
 }

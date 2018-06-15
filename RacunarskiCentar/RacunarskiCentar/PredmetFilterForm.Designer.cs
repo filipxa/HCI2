@@ -54,7 +54,7 @@
             // 
             // numericUpDownBrojTermina
             // 
-            this.numericUpDownBrojTermina.Location = new System.Drawing.Point(18, 236);
+            this.numericUpDownBrojTermina.Location = new System.Drawing.Point(18, 251);
             this.numericUpDownBrojTermina.Maximum = new decimal(new int[] {
             6,
             0,
@@ -76,7 +76,7 @@
             // 
             // numericUpDownDuzinaTermina
             // 
-            this.numericUpDownDuzinaTermina.Location = new System.Drawing.Point(18, 197);
+            this.numericUpDownDuzinaTermina.Location = new System.Drawing.Point(18, 212);
             this.numericUpDownDuzinaTermina.Maximum = new decimal(new int[] {
             270,
             0,
@@ -98,7 +98,7 @@
             // 
             // numericUpDownBrojLjudi
             // 
-            this.numericUpDownBrojLjudi.Location = new System.Drawing.Point(18, 158);
+            this.numericUpDownBrojLjudi.Location = new System.Drawing.Point(18, 173);
             this.numericUpDownBrojLjudi.Name = "numericUpDownBrojLjudi";
             this.numericUpDownBrojLjudi.Size = new System.Drawing.Size(59, 20);
             this.numericUpDownBrojLjudi.TabIndex = 29;
@@ -111,7 +111,7 @@
             // labelBrojTermina
             // 
             this.labelBrojTermina.AutoSize = true;
-            this.labelBrojTermina.Location = new System.Drawing.Point(15, 220);
+            this.labelBrojTermina.Location = new System.Drawing.Point(15, 235);
             this.labelBrojTermina.Name = "labelBrojTermina";
             this.labelBrojTermina.Size = new System.Drawing.Size(62, 13);
             this.labelBrojTermina.TabIndex = 28;
@@ -120,7 +120,7 @@
             // labelDuzinaTermina
             // 
             this.labelDuzinaTermina.AutoSize = true;
-            this.labelDuzinaTermina.Location = new System.Drawing.Point(15, 181);
+            this.labelDuzinaTermina.Location = new System.Drawing.Point(15, 196);
             this.labelDuzinaTermina.Name = "labelDuzinaTermina";
             this.labelDuzinaTermina.Size = new System.Drawing.Size(165, 13);
             this.labelDuzinaTermina.TabIndex = 27;
@@ -129,7 +129,7 @@
             // labelBrojLjudi
             // 
             this.labelBrojLjudi.AutoSize = true;
-            this.labelBrojLjudi.Location = new System.Drawing.Point(15, 142);
+            this.labelBrojLjudi.Location = new System.Drawing.Point(15, 157);
             this.labelBrojLjudi.Name = "labelBrojLjudi";
             this.labelBrojLjudi.Size = new System.Drawing.Size(46, 13);
             this.labelBrojLjudi.TabIndex = 26;
@@ -137,14 +137,14 @@
             // 
             // textBoxNaziv
             // 
-            this.textBoxNaziv.Location = new System.Drawing.Point(18, 80);
+            this.textBoxNaziv.Location = new System.Drawing.Point(18, 95);
             this.textBoxNaziv.Name = "textBoxNaziv";
             this.textBoxNaziv.Size = new System.Drawing.Size(156, 20);
             this.textBoxNaziv.TabIndex = 25;
             // 
             // textBoxID
             // 
-            this.textBoxID.Location = new System.Drawing.Point(18, 41);
+            this.textBoxID.Location = new System.Drawing.Point(18, 56);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(156, 20);
             this.textBoxID.TabIndex = 24;
@@ -152,7 +152,7 @@
             // labelNaziv
             // 
             this.labelNaziv.AutoSize = true;
-            this.labelNaziv.Location = new System.Drawing.Point(15, 64);
+            this.labelNaziv.Location = new System.Drawing.Point(15, 79);
             this.labelNaziv.Name = "labelNaziv";
             this.labelNaziv.Size = new System.Drawing.Size(81, 13);
             this.labelNaziv.TabIndex = 23;
@@ -161,7 +161,7 @@
             // labelID
             // 
             this.labelID.AutoSize = true;
-            this.labelID.Location = new System.Drawing.Point(15, 24);
+            this.labelID.Location = new System.Drawing.Point(15, 39);
             this.labelID.Name = "labelID";
             this.labelID.Size = new System.Drawing.Size(18, 13);
             this.labelID.TabIndex = 22;
@@ -170,7 +170,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(194, 25);
+            this.label1.Location = new System.Drawing.Point(194, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 13);
             this.label1.TabIndex = 33;
@@ -179,14 +179,14 @@
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(197, 41);
+            this.checkedListBox1.Location = new System.Drawing.Point(197, 56);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(174, 229);
             this.checkedListBox1.TabIndex = 32;
             // 
             // buttonPotvrdi
             // 
-            this.buttonPotvrdi.Location = new System.Drawing.Point(281, 299);
+            this.buttonPotvrdi.Location = new System.Drawing.Point(281, 314);
             this.buttonPotvrdi.Name = "buttonPotvrdi";
             this.buttonPotvrdi.Size = new System.Drawing.Size(90, 23);
             this.buttonPotvrdi.TabIndex = 22;
@@ -197,7 +197,7 @@
             // buttonObrisi
             // 
             this.buttonObrisi.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonObrisi.Location = new System.Drawing.Point(197, 299);
+            this.buttonObrisi.Location = new System.Drawing.Point(197, 314);
             this.buttonObrisi.Name = "buttonObrisi";
             this.buttonObrisi.Size = new System.Drawing.Size(75, 23);
             this.buttonObrisi.TabIndex = 34;
@@ -215,7 +215,7 @@
             // 
             // textBoxSmer
             // 
-            this.textBoxSmer.Location = new System.Drawing.Point(18, 119);
+            this.textBoxSmer.Location = new System.Drawing.Point(18, 134);
             this.textBoxSmer.Name = "textBoxSmer";
             this.textBoxSmer.Size = new System.Drawing.Size(156, 20);
             this.textBoxSmer.TabIndex = 36;
@@ -223,7 +223,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 103);
+            this.label2.Location = new System.Drawing.Point(15, 118);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 37;
@@ -231,7 +231,7 @@
             // 
             // Izmeni
             // 
-            this.Izmeni.Location = new System.Drawing.Point(110, 299);
+            this.Izmeni.Location = new System.Drawing.Point(110, 314);
             this.Izmeni.Name = "Izmeni";
             this.Izmeni.Size = new System.Drawing.Size(75, 23);
             this.Izmeni.TabIndex = 38;
@@ -267,7 +267,7 @@
             this.MinimizeBox = false;
             this.Name = "PredmetFilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Filter predmeta";
+            this.Text = "Predmeti obrada";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojTermina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDuzinaTermina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojLjudi)).EndInit();

@@ -47,7 +47,7 @@
             // labelID
             // 
             this.labelID.AutoSize = true;
-            this.labelID.Location = new System.Drawing.Point(12, 20);
+            this.labelID.Location = new System.Drawing.Point(11, 30);
             this.labelID.Name = "labelID";
             this.labelID.Size = new System.Drawing.Size(18, 13);
             this.labelID.TabIndex = 0;
@@ -56,7 +56,7 @@
             // labelBrRadnihMesta
             // 
             this.labelBrRadnihMesta.AutoSize = true;
-            this.labelBrRadnihMesta.Location = new System.Drawing.Point(204, 23);
+            this.labelBrRadnihMesta.Location = new System.Drawing.Point(203, 33);
             this.labelBrRadnihMesta.Name = "labelBrRadnihMesta";
             this.labelBrRadnihMesta.Size = new System.Drawing.Size(88, 13);
             this.labelBrRadnihMesta.TabIndex = 1;
@@ -65,7 +65,7 @@
             // labelDodatnaOprema
             // 
             this.labelDodatnaOprema.AutoSize = true;
-            this.labelDodatnaOprema.Location = new System.Drawing.Point(12, 74);
+            this.labelDodatnaOprema.Location = new System.Drawing.Point(11, 84);
             this.labelDodatnaOprema.Name = "labelDodatnaOprema";
             this.labelDodatnaOprema.Size = new System.Drawing.Size(86, 13);
             this.labelDodatnaOprema.TabIndex = 2;
@@ -74,7 +74,7 @@
             // labelNeophodanSoftver
             // 
             this.labelNeophodanSoftver.AutoSize = true;
-            this.labelNeophodanSoftver.Location = new System.Drawing.Point(204, 74);
+            this.labelNeophodanSoftver.Location = new System.Drawing.Point(203, 84);
             this.labelNeophodanSoftver.Name = "labelNeophodanSoftver";
             this.labelNeophodanSoftver.Size = new System.Drawing.Size(98, 13);
             this.labelNeophodanSoftver.TabIndex = 3;
@@ -82,14 +82,14 @@
             // 
             // textBoxID
             // 
-            this.textBoxID.Location = new System.Drawing.Point(15, 39);
+            this.textBoxID.Location = new System.Drawing.Point(14, 49);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(162, 20);
             this.textBoxID.TabIndex = 4;
             // 
             // numericUpDownBrRadnihMesta
             // 
-            this.numericUpDownBrRadnihMesta.Location = new System.Drawing.Point(207, 40);
+            this.numericUpDownBrRadnihMesta.Location = new System.Drawing.Point(206, 50);
             this.numericUpDownBrRadnihMesta.Minimum = new decimal(new int[] {
             1,
             0,
@@ -107,7 +107,7 @@
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(15, 93);
+            this.checkedListBox1.Location = new System.Drawing.Point(14, 103);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(162, 184);
             this.checkedListBox1.TabIndex = 6;
@@ -115,14 +115,14 @@
             // checkedListBox2
             // 
             this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(207, 93);
+            this.checkedListBox2.Location = new System.Drawing.Point(206, 103);
             this.checkedListBox2.Name = "checkedListBox2";
             this.checkedListBox2.Size = new System.Drawing.Size(168, 184);
             this.checkedListBox2.TabIndex = 7;
             // 
             // buttonPotvrdi
             // 
-            this.buttonPotvrdi.Location = new System.Drawing.Point(250, 304);
+            this.buttonPotvrdi.Location = new System.Drawing.Point(249, 314);
             this.buttonPotvrdi.Name = "buttonPotvrdi";
             this.buttonPotvrdi.Size = new System.Drawing.Size(90, 23);
             this.buttonPotvrdi.TabIndex = 8;
@@ -132,7 +132,7 @@
             // 
             // buttonOdustani
             // 
-            this.buttonOdustani.Location = new System.Drawing.Point(150, 304);
+            this.buttonOdustani.Location = new System.Drawing.Point(149, 314);
             this.buttonOdustani.Name = "buttonOdustani";
             this.buttonOdustani.Size = new System.Drawing.Size(90, 23);
             this.buttonOdustani.TabIndex = 9;
@@ -143,14 +143,14 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(381, 20);
+            this.dataGridView1.Location = new System.Drawing.Point(380, 30);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(329, 593);
             this.dataGridView1.TabIndex = 10;
             // 
             // buttonIzmeni
             // 
-            this.buttonIzmeni.Location = new System.Drawing.Point(22, 303);
+            this.buttonIzmeni.Location = new System.Drawing.Point(21, 313);
             this.buttonIzmeni.Name = "buttonIzmeni";
             this.buttonIzmeni.Size = new System.Drawing.Size(75, 23);
             this.buttonIzmeni.TabIndex = 11;
@@ -162,7 +162,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(722, 625);
+            this.ClientSize = new System.Drawing.Size(722, 637);
             this.Controls.Add(this.buttonIzmeni);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonOdustani);
@@ -179,7 +179,7 @@
             this.MinimizeBox = false;
             this.Name = "UcionicaFilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Filter učionica";
+            this.Text = "Učionice obrada";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrRadnihMesta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

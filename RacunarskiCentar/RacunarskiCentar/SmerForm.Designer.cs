@@ -41,6 +41,7 @@
             this.labelPredmeti = new System.Windows.Forms.Label();
             this.listBoxPredmeti = new System.Windows.Forms.ListBox();
             this.buttonDodajPredmet = new System.Windows.Forms.Button();
+            this.buttonObrisiPredmet = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelID
@@ -104,9 +105,9 @@
             // buttonSacuvaj
             // 
             this.buttonSacuvaj.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonSacuvaj.Location = new System.Drawing.Point(425, 282);
+            this.buttonSacuvaj.Location = new System.Drawing.Point(425, 312);
             this.buttonSacuvaj.Name = "buttonSacuvaj";
-            this.buttonSacuvaj.Size = new System.Drawing.Size(91, 53);
+            this.buttonSacuvaj.Size = new System.Drawing.Size(91, 23);
             this.buttonSacuvaj.TabIndex = 10;
             this.buttonSacuvaj.Text = "Sacuvaj";
             this.buttonSacuvaj.UseVisualStyleBackColor = true;
@@ -157,11 +158,22 @@
             this.buttonDodajPredmet.UseVisualStyleBackColor = true;
             this.buttonDodajPredmet.Click += new System.EventHandler(this.buttonDodajPredmet_Click);
             // 
+            // buttonObrisiPredmet
+            // 
+            this.buttonObrisiPredmet.Location = new System.Drawing.Point(425, 282);
+            this.buttonObrisiPredmet.Name = "buttonObrisiPredmet";
+            this.buttonObrisiPredmet.Size = new System.Drawing.Size(91, 23);
+            this.buttonObrisiPredmet.TabIndex = 15;
+            this.buttonObrisiPredmet.Text = "Obriši predmet";
+            this.buttonObrisiPredmet.UseVisualStyleBackColor = true;
+            this.buttonObrisiPredmet.Click += new System.EventHandler(this.buttonObrisiPredmet_Click);
+            // 
             // SmerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 359);
+            this.Controls.Add(this.buttonObrisiPredmet);
             this.Controls.Add(this.richTextBoxOpis);
             this.Controls.Add(this.listBoxPredmeti);
             this.Controls.Add(this.buttonDodajPredmet);
@@ -180,7 +192,7 @@
             this.MinimizeBox = false;
             this.Name = "SmerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dodaj smer";
+            this.Text = "Smer";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,5 +213,6 @@
         private System.Windows.Forms.Label labelPredmeti;
         private System.Windows.Forms.ListBox listBoxPredmeti;
         private System.Windows.Forms.Button buttonDodajPredmet;
+        private System.Windows.Forms.Button buttonObrisiPredmet;
     }
 }

@@ -62,6 +62,7 @@ namespace RacunarskiCentar
             DataManger.PredmetFiler.Assets = getUcionicaAssets();
             DataManger.PredmetFiler.SmerPredmeta = new Smer(textBoxSmer.Text, "", DateTime.MinValue, "", null);
 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;
