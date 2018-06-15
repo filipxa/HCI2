@@ -46,6 +46,10 @@ namespace RacunarskiCentar
             DataManger.UcionicaFilter.BrRadnihMesta = Convert.ToInt32(numericUpDownBrRadnihMesta.Value);
             DataManger.UcionicaFilter.Assets = getUcionicaAssets();
             DataManger.UcionicaFilter.InstalledSoftware = getInstalledSoft();
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            //dataGridView1.ColumnHeadersVisible = false;
 
             dataGridView1.Rows.Clear();
             dataGridView1.ColumnCount = 3;
@@ -54,6 +58,7 @@ namespace RacunarskiCentar
             dataGridView1.Columns[2].Name = "Br. mesta";
             dataGridView1.ReadOnly = true;
             popunjavanjeTabele();
+            
         }
 
         private void popunjavanjeTabele()

@@ -84,8 +84,28 @@ namespace RacunarskiCentar
             }
         }
 
-        public HashSet<UcionicaAssets> Assets { get => assets; set => assets = new HashSet<UcionicaAssets>(value); }
-        public HashSet<Software> InstalledSoftware { get => installedSoftware; set => installedSoftware = new HashSet<Software>(value); }
+        public HashSet<UcionicaAssets> Assets {
+            get => assets;
+            set {
+                assets = new HashSet<UcionicaAssets>(value);
+                OnValueChanged(new EventArgs());
+            }
+        }
+
+        public void addAsset(UcionicaAssets asset)
+        {
+            assets.Add(asset);
+            OnValueChanged(new EventArgs());
+        }
+        public HashSet<Software> InstalledSoftware
+        {
+            get => installedSoftware;
+            set
+            {
+                installedSoftware = new HashSet<Software>(value);
+                OnValueChanged(new EventArgs());
+            }
+        }
 
         public override GUIObject Copy()
         {

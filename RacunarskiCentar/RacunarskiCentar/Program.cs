@@ -29,7 +29,7 @@ namespace RacunarskiCentar
                 {
                     if (r.Next(100)>30)
                     {
-                        ucionica.Assets.Add((UcionicaAssets)j);
+                        ucionica.addAsset((UcionicaAssets)j);
                     }
                     
                 }

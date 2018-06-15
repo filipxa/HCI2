@@ -109,6 +109,8 @@ namespace RacunarskiCentar
                 ucionica.ID = textBoxID.Text;
                 ucionica.Opis = richTextBox1.Text;
                 ucionica.BrRadnihMesta = Convert.ToInt32(numericUpDown1.Value);
+                ucionica.Assets = getUcionicaAssets();
+                ucionica.InstalledSoftware = getInstalledSoft();
 
             }
             DataControllercs.addAction(action);
