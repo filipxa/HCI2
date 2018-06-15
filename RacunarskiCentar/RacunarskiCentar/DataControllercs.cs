@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace RacunarskiCentar
 {
@@ -11,18 +12,36 @@ namespace RacunarskiCentar
         public static Stack<Action> actionsHistory = new Stack<Action>();
         public static Stack<Action> actionsRedo = new Stack<Action>();
         static public EventHandler<Action> onAction;
+        public static bool isTutorial = false;
+        public static List<Type> allowedTypes = new List<Type>();
         static public void addAction(Action action)
         {
-            
+            if (isTutorial)
+            {
+
+                if (!allowedTypes.Contains(action.GetType()))
+                {
+                    prikaziMessageBox();
+                    return;
+                }
+            }
+            action.excuteAction();
             actionsHistory.Push(action);
             actionsRedo.Clear();
             action.excuteAction();
         }
         static public  Action undoAction()
         {
+           
             Action rets=null;
             if (actionsHistory.Count > 0)
             {
+                if (isTutorial && !allowedTypes.Contains(actionsHistory.Peek().GetType()))
+                {
+                    prikaziMessageBox();
+                    return null;
+                }
+
                 rets = actionsHistory.Pop().GetReverseAction();
               
                 actionsRedo.Push(rets);
@@ -39,6 +58,12 @@ namespace RacunarskiCentar
            
             if (actionsRedo.Count > 0)
             {
+                if (isTutorial && !allowedTypes.Contains(actionsHistory.Peek().GetType()))
+                {
+                    prikaziMessageBox();
+                    return null;
+                }
+
 
                 rets = actionsRedo.Pop().GetReverseAction();
                
@@ -49,7 +74,17 @@ namespace RacunarskiCentar
             return rets;
 
         }
-
+        static DateTime lastMessageBox = DateTime.Now;
+        private static void prikaziMessageBox()
+        {
+            TimeSpan ts = DateTime.Now - lastMessageBox;
+            if (true)
+            {
+                MessageBox.Show("Brisanje podataka nije moguće za vreme tutorijala!", "Upozrenje");
+                lastMessageBox = DateTime.Now;
+            }
+           
+        }
 
         internal static bool undoAvailable()
         {
