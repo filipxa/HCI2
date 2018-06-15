@@ -39,7 +39,7 @@ namespace RacunarskiCentar
         {
             foreach(DateTime date in datesToCheck)
             {
-                if (date1 <= date && date2 >= date)
+                if (date1 < date && date2 > date)
                 {
                     return true;
                 }

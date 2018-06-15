@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace RacunarskiCentar
@@ -9,6 +10,8 @@ namespace RacunarskiCentar
     {
         RACUNARSKI_CENTAR, UCIONICA
     }
+
+
 
     public partial class Form1 : Form
     {
@@ -22,54 +25,85 @@ namespace RacunarskiCentar
         UcionicaFilterForm uff = new UcionicaFilterForm();
         SmerFilterForm sff = new SmerFilterForm();
         SoftwareFilterForm soff = new SoftwareFilterForm();
-        ToolStripButton undoButton;
-        ToolStripButton redoButton;
-
-        public Form1()
+        PredmetFilterForm pff = new PredmetFilterForm();
+        List<ToolStripButton> undoButtons = new List<ToolStripButton>();
+        List<ToolStripButton> redoButtons = new List<ToolStripButton>();
+        
+        public ToolStrip generateToolStrip()
         {
-            DataManger.load();
             ToolStripButton b;
-
-            KeyDown += Form1_KeyDown;
+            ToolStrip tb = new ToolStrip();
             b = new ToolStripButton();
-            b.Click += nazadButtonClick;
             b.Text = "Nazad";
+            if (undoButtons.Count == 0)
+            {
+                b.Click += nazadButtonClick;
+            }
+            else
+            {
+                b.Click += filterFormaNazadKlik;
+            }
             tb.Items.Add(b);
 
-            undoButton = new ToolStripButton();
+            ToolStripButton undoButton = new ToolStripButton();
             undoButton.Text = "Undo";
             undoButton.Click += Undo_Click1;
             undoButton.Enabled = false;
+
+            undoButtons.Add(undoButton);
             tb.Items.Add(undoButton);
 
-            redoButton = new ToolStripButton();
+            ToolStripButton redoButton = new ToolStripButton();
             redoButton.Text = "Redo";
             redoButton.Enabled = false;
             redoButton.Click += Redo_Click1;
             tb.Items.Add(redoButton);
+            redoButtons.Add(redoButton);
 
+            if (undoButtons.Count == 1)
+            {
+                b = new ToolStripButton();
+                b.Text = "Filter ucionica";
+                b.Click += ToolFilterUcionica;
+                tb.Items.Add(b);
 
+                b = new ToolStripButton();
+                b.Text = "Filter smera";
+                b.Click += ToolFilterSmera;
+                tb.Items.Add(b);
 
+                b = new ToolStripButton();
+                b.Text = "Filter predmeta";
+                b.Click += ToolFilterPredmeta;
+                tb.Items.Add(b);
 
-            b = new ToolStripButton();
-            b.Text = "Filter ucionica";
-            b.Click += ToolFilterUcionica;
-            tb.Items.Add(b);
+                b = new ToolStripButton();
+                b.Text = "Filter softvera";
+                b.Click += ToolFilterSoftvera;
+                tb.Items.Add(b);
+            }
+            tb.BackColor = Color.DarkGray;
+            return tb;
+        }
 
-            b = new ToolStripButton();
-            b.Text = "Filter smera";
-            b.Click += ToolFilterSmera;
-            tb.Items.Add(b);
+        private void filterFormaNazadKlik(object sender, EventArgs e)
+        {
+            ToolStripButton button = (ToolStripButton)sender;
+            Form f = (Form)button.GetCurrentParent().Parent;
+            f.Hide();
+            BringToFront();
+        }
 
-            b = new ToolStripButton();
-            b.Text = "Filter predmeta";
-            b.Click += ToolFilterPredmeta;
-            tb.Items.Add(b);
+        public Form1()
+        {
+            undoButtons = new List<ToolStripButton>();
+            redoButtons = new List<ToolStripButton>();
+            DataManger.load();
+            
 
-            b = new ToolStripButton();
-            b.Text = "Filter softvera";
-            b.Click += ToolFilterSoftvera;
-            tb.Items.Add(b);
+            KeyDown += Form1_KeyDown;
+            tb = generateToolStrip();
+
 
             FormClosing += Form1_FormClosing;
 
@@ -78,7 +112,7 @@ namespace RacunarskiCentar
 
             InitializeComponent();
             BackColor = GraphicLoader.getColorLightGray();
-            tb.BackColor = Color.DarkGray;
+           
 
             Controls.Add(tb);
             initRCView();
@@ -87,6 +121,11 @@ namespace RacunarskiCentar
             MinimumSize = Size;
             ResizeEnd += Form1_ResizeEnd;
             ResizeBegin += Form1_ResizeBegin;
+
+            uff.Controls.Add(generateToolStrip());
+            sff.Controls.Add(generateToolStrip());
+            soff.Controls.Add(generateToolStrip());
+            pff.Controls.Add(generateToolStrip());
             //Tutorial t = new Tutorial(this);
             //t.nextStep();
 
@@ -107,23 +146,52 @@ namespace RacunarskiCentar
 
         private void ToolFilterSoftvera(object sender, EventArgs e)
         {
-            soff.ShowDialog();
+            if (!soff.Visible)
+            {
+                soff.Show();
+            }
+            else
+            {
+                soff.Hide();
+            }
         }
 
         private void ToolFilterSmera(object sender, EventArgs e)
         {
-            sff.ShowDialog();
+            if (!sff.Visible)
+            {
+                sff.Show();
+            }
+            else
+            {
+                sff.Hide();
+            }
         }
 
         private void ToolFilterPredmeta(object sender, EventArgs e)
         {
-            PredmetFilterForm pff = new PredmetFilterForm();
-            pff.ShowDialog();
+
+            if (!pff.Visible)
+            {
+                pff.Show();
+            }
+            else
+            {
+                pff.Hide();
+            }
         }
 
         private void ToolFilterUcionica(object sender, EventArgs e)
         {
-            uff.ShowDialog();
+
+            if (!uff.Visible)
+            {
+                uff.Show();
+            }
+            else
+            {
+                uff.Hide();
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -152,8 +220,16 @@ namespace RacunarskiCentar
                     }
                 }
             }
-            redoButton.Enabled = DataControllercs.RedoAvailable();
-            undoButton.Enabled = DataControllercs.UndoAvailable();
+            foreach(ToolStripButton b in undoButtons)
+            {
+                b.Enabled = DataControllercs.UndoAvailable();
+            }
+            foreach (ToolStripButton b in redoButtons)
+            {
+                b.Enabled = DataControllercs.RedoAvailable();
+            }
+          
+           
         }
 
         private void Undo_Click1(object sender, EventArgs e)

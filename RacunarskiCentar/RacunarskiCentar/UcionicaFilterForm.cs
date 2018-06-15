@@ -33,6 +33,13 @@ namespace RacunarskiCentar
             textBoxID.TextChanged += initTabela;
             checkedListBox1.SelectedValueChanged += initTabela;
             checkedListBox2.SelectedValueChanged += initTabela;
+            FormClosing += Form_Closing;
+        }
+
+        private void Form_Closing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
         }
 
         private void ActionExcuted(object sender, Action e)

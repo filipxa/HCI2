@@ -35,7 +35,15 @@ namespace RacunarskiCentar
 
 
             DataControllercs.onAction += ActionExcuted;
+            FormClosing += Form_Closing;
         }
+
+        private void Form_Closing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
+        }
+
         private void ActionExcuted(object sender, Action e)
         {
             initTabela(sender, new EventArgs());

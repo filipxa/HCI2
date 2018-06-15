@@ -29,7 +29,6 @@ namespace RacunarskiCentar
             DataControllercs.isTutorial = true;
             DataControllercs.allowedTypes.Add(typeof(EditAction));
             DataControllercs.allowedTypes.Add(typeof(RestoreAction));
-            DataControllercs.allowedTypes.Add(typeof(ChainAction));
         }
         private void removeControl()
         {

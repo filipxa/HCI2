@@ -29,6 +29,7 @@ namespace RacunarskiCentar
             actionsRedo.Clear();
             action.excuteAction();
         }
+        
         static public  Action undoAction()
         {
            
@@ -76,12 +77,32 @@ namespace RacunarskiCentar
         static DateTime lastMessageBox = DateTime.Now;
         private static void prikaziMessageBox()
         {
+            string tipovi = "";
             TimeSpan ts = DateTime.Now - lastMessageBox;
-            if (true)
+            if (!allowedTypes.Contains(typeof(CreateAction)))
             {
-                MessageBox.Show("Brisanje podataka nije moguće za vreme tutorijala!", "Upozrenje");
-                lastMessageBox = DateTime.Now;
+                tipovi += "dodavanje";
             }
+            if (!allowedTypes.Contains(typeof(DeleteAction)))
+            {
+                if (tipovi.Length > 0)
+                {
+                    tipovi += ", ";
+                }
+                tipovi += "brisanje";
+            }
+            if (!allowedTypes.Contains(typeof(ChainAction)))
+            {
+                if (tipovi.Length > 0)
+                {
+                    tipovi += ", ";
+                }
+                tipovi += "pomeranje";
+            }
+
+            MessageBox.Show("Za vreme tutorijala nije dozvoljeno " + tipovi + "  podataka.", "Upozrenje");
+            lastMessageBox = DateTime.Now;
+
            
         }
 
