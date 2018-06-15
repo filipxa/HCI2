@@ -20,6 +20,7 @@ namespace RacunarskiCentar
             this.VisibleChanged += initTabela;
             textBoxID.TextChanged += initTabela;
             textBoxNaziv.TextChanged += initTabela;
+            textBoxSmer.TextChanged += initTabela;
             numericUpDownBrojLjudi.ValueChanged += initTabela;
             numericUpDownBrojTermina.ValueChanged += initTabela;
             numericUpDownDuzinaTermina.ValueChanged += initTabela;
@@ -28,8 +29,9 @@ namespace RacunarskiCentar
             {
                 checkedListBox1.Items.Add(new ComboValue(aset), false);
             }
+
+            checkedListBox1.MouseClick += initTabela;
             //checkedListBox1.ItemCheck += initTabela;
-            checkedListBox1.SelectedValueChanged += initTabela;
 
 
         }
@@ -45,8 +47,13 @@ namespace RacunarskiCentar
             DataManger.PredmetFiler.BrCasova = Convert.ToInt32(numericUpDownDuzinaTermina.Value);
             DataManger.PredmetFiler.BrTermina = Convert.ToInt32(numericUpDownBrojTermina.Value);
             DataManger.PredmetFiler.Assets = getUcionicaAssets();
+            DataManger.PredmetFiler.SmerPredmeta = new Smer(textBoxSmer.Text, "", DateTime.MinValue, "", null);
 
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
             dataGridView1.Rows.Clear();
+            dataGridView1.RowHeadersVisible = false;
             dataGridView1.ColumnCount = 7;
             dataGridView1.Columns[0].Name = "ID";
             dataGridView1.Columns[1].Name = "Ime";
@@ -64,7 +71,7 @@ namespace RacunarskiCentar
         {
             foreach (Predmet p in DataManger.getPredmeti())
             {
-                string[] row = { p.ID, p.Ime, p.SmerPredmeta.Ime, p.Opis, Convert.ToString(p.BrLjudi), Convert.ToString(p.BrCasova), Convert.ToString(p.BrTermina) };
+                string[] row = { p.ID, p.Ime, p.SmerPredmeta.ID, p.Opis, Convert.ToString(p.BrLjudi), Convert.ToString(p.BrCasova), Convert.ToString(p.BrTermina) };
                 dataGridView1.Rows.Add(row);
             }
         }

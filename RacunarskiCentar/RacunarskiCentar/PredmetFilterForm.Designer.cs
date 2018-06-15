@@ -43,6 +43,8 @@
             this.buttonPotvrdi = new System.Windows.Forms.Button();
             this.buttonOdustani = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBoxSmer = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojTermina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDuzinaTermina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojLjudi)).BeginInit();
@@ -51,7 +53,7 @@
             // 
             // numericUpDownBrojTermina
             // 
-            this.numericUpDownBrojTermina.Location = new System.Drawing.Point(18, 245);
+            this.numericUpDownBrojTermina.Location = new System.Drawing.Point(18, 236);
             this.numericUpDownBrojTermina.Maximum = new decimal(new int[] {
             6,
             0,
@@ -73,7 +75,7 @@
             // 
             // numericUpDownDuzinaTermina
             // 
-            this.numericUpDownDuzinaTermina.Location = new System.Drawing.Point(18, 198);
+            this.numericUpDownDuzinaTermina.Location = new System.Drawing.Point(18, 197);
             this.numericUpDownDuzinaTermina.Maximum = new decimal(new int[] {
             270,
             0,
@@ -95,9 +97,9 @@
             // 
             // numericUpDownBrojLjudi
             // 
-            this.numericUpDownBrojLjudi.Location = new System.Drawing.Point(18, 95);
+            this.numericUpDownBrojLjudi.Location = new System.Drawing.Point(18, 158);
             this.numericUpDownBrojLjudi.Name = "numericUpDownBrojLjudi";
-            this.numericUpDownBrojLjudi.Size = new System.Drawing.Size(156, 20);
+            this.numericUpDownBrojLjudi.Size = new System.Drawing.Size(59, 20);
             this.numericUpDownBrojLjudi.TabIndex = 29;
             this.numericUpDownBrojLjudi.Value = new decimal(new int[] {
             1,
@@ -108,7 +110,7 @@
             // labelBrojTermina
             // 
             this.labelBrojTermina.AutoSize = true;
-            this.labelBrojTermina.Location = new System.Drawing.Point(15, 224);
+            this.labelBrojTermina.Location = new System.Drawing.Point(15, 220);
             this.labelBrojTermina.Name = "labelBrojTermina";
             this.labelBrojTermina.Size = new System.Drawing.Size(62, 13);
             this.labelBrojTermina.TabIndex = 28;
@@ -117,7 +119,7 @@
             // labelDuzinaTermina
             // 
             this.labelDuzinaTermina.AutoSize = true;
-            this.labelDuzinaTermina.Location = new System.Drawing.Point(15, 177);
+            this.labelDuzinaTermina.Location = new System.Drawing.Point(15, 181);
             this.labelDuzinaTermina.Name = "labelDuzinaTermina";
             this.labelDuzinaTermina.Size = new System.Drawing.Size(165, 13);
             this.labelDuzinaTermina.TabIndex = 27;
@@ -126,7 +128,7 @@
             // labelBrojLjudi
             // 
             this.labelBrojLjudi.AutoSize = true;
-            this.labelBrojLjudi.Location = new System.Drawing.Point(15, 74);
+            this.labelBrojLjudi.Location = new System.Drawing.Point(15, 142);
             this.labelBrojLjudi.Name = "labelBrojLjudi";
             this.labelBrojLjudi.Size = new System.Drawing.Size(46, 13);
             this.labelBrojLjudi.TabIndex = 26;
@@ -134,7 +136,7 @@
             // 
             // textBoxNaziv
             // 
-            this.textBoxNaziv.Location = new System.Drawing.Point(18, 143);
+            this.textBoxNaziv.Location = new System.Drawing.Point(18, 80);
             this.textBoxNaziv.Name = "textBoxNaziv";
             this.textBoxNaziv.Size = new System.Drawing.Size(156, 20);
             this.textBoxNaziv.TabIndex = 25;
@@ -149,7 +151,7 @@
             // labelNaziv
             // 
             this.labelNaziv.AutoSize = true;
-            this.labelNaziv.Location = new System.Drawing.Point(15, 127);
+            this.labelNaziv.Location = new System.Drawing.Point(15, 64);
             this.labelNaziv.Name = "labelNaziv";
             this.labelNaziv.Size = new System.Drawing.Size(81, 13);
             this.labelNaziv.TabIndex = 23;
@@ -206,14 +208,32 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(377, 41);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(526, 281);
+            this.dataGridView1.Size = new System.Drawing.Size(742, 561);
             this.dataGridView1.TabIndex = 35;
+            // 
+            // textBoxSmer
+            // 
+            this.textBoxSmer.Location = new System.Drawing.Point(18, 119);
+            this.textBoxSmer.Name = "textBoxSmer";
+            this.textBoxSmer.Size = new System.Drawing.Size(156, 20);
+            this.textBoxSmer.TabIndex = 36;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "Smer ID";
             // 
             // PredmetFilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 345);
+            this.ClientSize = new System.Drawing.Size(1131, 614);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxSmer);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonOdustani);
             this.Controls.Add(this.buttonPotvrdi);
@@ -260,5 +280,7 @@
         private System.Windows.Forms.Button buttonPotvrdi;
         private System.Windows.Forms.Button buttonOdustani;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox textBoxSmer;
+        private System.Windows.Forms.Label label2;
     }
 }

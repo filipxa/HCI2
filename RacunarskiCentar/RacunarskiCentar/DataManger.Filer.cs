@@ -39,6 +39,7 @@ namespace RacunarskiCentar
             return predmeti.Where(x => (x.ID.ToLower().Contains(predmetFilter.ID.ToLower()) || predmetFilter.ID == "")
             && ((x.Ime.ToLower().Contains(predmetFilter.Ime.ToLower())) || (predmetFilter.Ime == ""))
             && (x.BrLjudi >= predmetFilter.BrLjudi)
+            && (predmetFilter.SmerPredmeta == null || x.SmerPredmeta.ID.ToLower().Contains(predmetFilter.SmerPredmeta.ID.ToLower()))
             && (x.BrCasova >= predmetFilter.BrCasova)
             && (x.BrTermina >= predmetFilter.BrTermina)
             && ((x.Assets.Intersect(predmetFilter.Assets).Count() == predmetFilter.Assets.Count()) || (predmetFilter.Assets == null))

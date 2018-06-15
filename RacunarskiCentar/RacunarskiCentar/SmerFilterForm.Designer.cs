@@ -34,6 +34,8 @@
             this.labelNaziv = new System.Windows.Forms.Label();
             this.buttonPotvrdi = new System.Windows.Forms.Button();
             this.buttonOdustani = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelID
@@ -89,11 +91,20 @@
             this.buttonOdustani.Text = "Odustani";
             this.buttonOdustani.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(205, 22);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(446, 565);
+            this.dataGridView1.TabIndex = 6;
+            // 
             // SmerFilterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(222, 181);
+            this.ClientSize = new System.Drawing.Size(663, 611);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonOdustani);
             this.Controls.Add(this.buttonPotvrdi);
             this.Controls.Add(this.labelNaziv);
@@ -106,6 +117,7 @@
             this.Name = "SmerFilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SmerFilterForm";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,5 +131,6 @@
         private System.Windows.Forms.Label labelNaziv;
         private System.Windows.Forms.Button buttonPotvrdi;
         private System.Windows.Forms.Button buttonOdustani;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
