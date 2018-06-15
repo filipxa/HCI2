@@ -105,7 +105,7 @@
             this.MinimizeBox = false;
             this.Name = "SmerFilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SmerFilterForm";
+            this.Text = "Filter smera";
             this.ResumeLayout(false);
             this.PerformLayout();
 

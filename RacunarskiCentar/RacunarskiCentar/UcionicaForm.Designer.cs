@@ -160,7 +160,7 @@
             this.MinimizeBox = false;
             this.Name = "UcionicaForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UcionicaForm";
+            this.Text = "Učionica";
             this.Load += new System.EventHandler(this.UcionicaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
