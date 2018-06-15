@@ -31,8 +31,8 @@ namespace RacunarskiCentar
             DataControllercs.onAction += ActionExcuted;
             numericUpDownBrRadnihMesta.ValueChanged += initTabela;
             textBoxID.TextChanged += initTabela;
-            checkedListBox1.SelectedValueChanged += initTabela;
-            checkedListBox2.SelectedValueChanged += initTabela;
+
+            checkedListBox2.ItemCheck += initTabela;
             FormClosing += Form_Closing;
         }
 
@@ -99,7 +99,7 @@ namespace RacunarskiCentar
             }
 
 
-
+            initTabela(null,null);
         }
 
         // desni checkBox
