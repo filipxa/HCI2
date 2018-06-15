@@ -121,24 +121,23 @@
             // 
             // buttonPotvrdi
             // 
-            this.buttonPotvrdi.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonPotvrdi.Location = new System.Drawing.Point(300, 304);
+            this.buttonPotvrdi.Location = new System.Drawing.Point(250, 304);
             this.buttonPotvrdi.Name = "buttonPotvrdi";
-            this.buttonPotvrdi.Size = new System.Drawing.Size(75, 23);
+            this.buttonPotvrdi.Size = new System.Drawing.Size(90, 23);
             this.buttonPotvrdi.TabIndex = 8;
-            this.buttonPotvrdi.Text = "Potvrdi";
+            this.buttonPotvrdi.Text = "Dodaj ucionicu";
             this.buttonPotvrdi.UseVisualStyleBackColor = true;
             this.buttonPotvrdi.Click += new System.EventHandler(this.buttonPotvrdi_Click);
             // 
             // buttonOdustani
             // 
-            this.buttonOdustani.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonOdustani.Location = new System.Drawing.Point(207, 304);
+            this.buttonOdustani.Location = new System.Drawing.Point(150, 304);
             this.buttonOdustani.Name = "buttonOdustani";
-            this.buttonOdustani.Size = new System.Drawing.Size(75, 23);
+            this.buttonOdustani.Size = new System.Drawing.Size(90, 23);
             this.buttonOdustani.TabIndex = 9;
-            this.buttonOdustani.Text = "Odustani";
+            this.buttonOdustani.Text = "Obrisi";
             this.buttonOdustani.UseVisualStyleBackColor = true;
+            this.buttonOdustani.Click += new System.EventHandler(this.buttonOdustani_Click);
             // 
             // dataGridView1
             // 

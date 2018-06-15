@@ -35,7 +35,7 @@
             this.textBoxProizvodjac = new System.Windows.Forms.TextBox();
             this.labelProizvodjac = new System.Windows.Forms.Label();
             this.labelCena = new System.Windows.Forms.Label();
-            this.buttonOdustani = new System.Windows.Forms.Button();
+            this.buttonOrisi = new System.Windows.Forms.Button();
             this.buttonSacuvaj = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -100,24 +100,24 @@
             this.labelCena.TabIndex = 15;
             this.labelCena.Text = "Cena veca od:";
             // 
-            // buttonOdustani
+            // buttonOrisi
             // 
-            this.buttonOdustani.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.buttonOdustani.Location = new System.Drawing.Point(32, 209);
-            this.buttonOdustani.Name = "buttonOdustani";
-            this.buttonOdustani.Size = new System.Drawing.Size(75, 23);
-            this.buttonOdustani.TabIndex = 18;
-            this.buttonOdustani.Text = "Odustani";
-            this.buttonOdustani.UseVisualStyleBackColor = true;
+            this.buttonOrisi.Location = new System.Drawing.Point(32, 209);
+            this.buttonOrisi.Name = "buttonOrisi";
+            this.buttonOrisi.Size = new System.Drawing.Size(75, 23);
+            this.buttonOrisi.TabIndex = 18;
+            this.buttonOrisi.Text = "Obrisi";
+            this.buttonOrisi.UseVisualStyleBackColor = true;
+            this.buttonOrisi.Click += new System.EventHandler(this.buttonOrisi_Click);
             // 
             // buttonSacuvaj
             // 
             this.buttonSacuvaj.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonSacuvaj.Location = new System.Drawing.Point(177, 209);
+            this.buttonSacuvaj.Location = new System.Drawing.Point(162, 209);
             this.buttonSacuvaj.Name = "buttonSacuvaj";
-            this.buttonSacuvaj.Size = new System.Drawing.Size(75, 23);
+            this.buttonSacuvaj.Size = new System.Drawing.Size(90, 23);
             this.buttonSacuvaj.TabIndex = 17;
-            this.buttonSacuvaj.Text = "Sacuvaj";
+            this.buttonSacuvaj.Text = "Dodaj softver";
             this.buttonSacuvaj.UseVisualStyleBackColor = true;
             this.buttonSacuvaj.Click += new System.EventHandler(this.buttonSacuvaj_Click);
             // 
@@ -126,7 +126,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(258, 18);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(725, 589);
+            this.dataGridView1.Size = new System.Drawing.Size(725, 596);
             this.dataGridView1.TabIndex = 19;
             // 
             // numericUpDown1
@@ -153,7 +153,7 @@
             this.ClientSize = new System.Drawing.Size(995, 626);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.buttonOdustani);
+            this.Controls.Add(this.buttonOrisi);
             this.Controls.Add(this.buttonSacuvaj);
             this.Controls.Add(this.labelCena);
             this.Controls.Add(this.textBoxProizvodjac);
@@ -184,7 +184,7 @@
         private System.Windows.Forms.TextBox textBoxProizvodjac;
         private System.Windows.Forms.Label labelProizvodjac;
         private System.Windows.Forms.Label labelCena;
-        private System.Windows.Forms.Button buttonOdustani;
+        private System.Windows.Forms.Button buttonOrisi;
         private System.Windows.Forms.Button buttonSacuvaj;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;

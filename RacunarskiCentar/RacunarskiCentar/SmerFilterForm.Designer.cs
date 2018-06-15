@@ -33,7 +33,7 @@
             this.textBoxIme = new System.Windows.Forms.TextBox();
             this.labelNaziv = new System.Windows.Forms.Label();
             this.buttonPotvrdi = new System.Windows.Forms.Button();
-            this.buttonOdustani = new System.Windows.Forms.Button();
+            this.buttonObrisi = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -73,23 +73,23 @@
             // buttonPotvrdi
             // 
             this.buttonPotvrdi.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonPotvrdi.Location = new System.Drawing.Point(123, 132);
+            this.buttonPotvrdi.Location = new System.Drawing.Point(100, 132);
             this.buttonPotvrdi.Name = "buttonPotvrdi";
-            this.buttonPotvrdi.Size = new System.Drawing.Size(75, 23);
+            this.buttonPotvrdi.Size = new System.Drawing.Size(90, 23);
             this.buttonPotvrdi.TabIndex = 4;
-            this.buttonPotvrdi.Text = "Potvrdi";
+            this.buttonPotvrdi.Text = "Dodaj smer";
             this.buttonPotvrdi.UseVisualStyleBackColor = true;
             this.buttonPotvrdi.Click += new System.EventHandler(this.buttonPotvrdi_Click);
             // 
-            // buttonOdustani
+            // buttonObrisi
             // 
-            this.buttonOdustani.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.buttonOdustani.Location = new System.Drawing.Point(16, 131);
-            this.buttonOdustani.Name = "buttonOdustani";
-            this.buttonOdustani.Size = new System.Drawing.Size(75, 23);
-            this.buttonOdustani.TabIndex = 5;
-            this.buttonOdustani.Text = "Odustani";
-            this.buttonOdustani.UseVisualStyleBackColor = true;
+            this.buttonObrisi.Location = new System.Drawing.Point(16, 131);
+            this.buttonObrisi.Name = "buttonObrisi";
+            this.buttonObrisi.Size = new System.Drawing.Size(75, 23);
+            this.buttonObrisi.TabIndex = 5;
+            this.buttonObrisi.Text = "Obrisi";
+            this.buttonObrisi.UseVisualStyleBackColor = true;
+            this.buttonObrisi.Click += new System.EventHandler(this.buttonObrisi_Click);
             // 
             // dataGridView1
             // 
@@ -105,7 +105,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 611);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.buttonOdustani);
+            this.Controls.Add(this.buttonObrisi);
             this.Controls.Add(this.buttonPotvrdi);
             this.Controls.Add(this.labelNaziv);
             this.Controls.Add(this.textBoxIme);
@@ -130,7 +130,7 @@
         private System.Windows.Forms.TextBox textBoxIme;
         private System.Windows.Forms.Label labelNaziv;
         private System.Windows.Forms.Button buttonPotvrdi;
-        private System.Windows.Forms.Button buttonOdustani;
+        private System.Windows.Forms.Button buttonObrisi;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

@@ -13,9 +13,10 @@ namespace RacunarskiCentar
         static public EventHandler<Action> onAction;
         static public void addAction(Action action)
         {
-            action.excuteAction();
+            
             actionsHistory.Push(action);
             actionsRedo.Clear();
+            action.excuteAction();
         }
         static public  Action undoAction()
         {
@@ -23,8 +24,9 @@ namespace RacunarskiCentar
             if (actionsHistory.Count > 0)
             {
                 rets = actionsHistory.Pop().GetReverseAction();
-                rets.excuteAction();
+              
                 actionsRedo.Push(rets);
+                rets.excuteAction();
             }
             
             return rets;
@@ -39,8 +41,9 @@ namespace RacunarskiCentar
             {
 
                 rets = actionsRedo.Pop().GetReverseAction();
-                rets.excuteAction();
+               
                 actionsHistory.Push(rets);
+                rets.excuteAction();
             }
             
             return rets;

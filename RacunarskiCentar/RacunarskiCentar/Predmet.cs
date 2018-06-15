@@ -140,7 +140,7 @@ namespace RacunarskiCentar
         }
         public override string ToString()
         {
-            return ime;
+            return ID;
         }
 
     }

@@ -34,6 +34,11 @@ namespace RacunarskiCentar
             //checkedListBox1.ItemCheck += initTabela;
 
 
+            DataControllercs.onAction += ActionExcuted;
+        }
+        private void ActionExcuted(object sender, Action e)
+        {
+            initTabela(sender, new EventArgs());
         }
 
         private void initTabela(object sender, EventArgs e)
@@ -69,7 +74,7 @@ namespace RacunarskiCentar
 
         private void popunjavanjeTabele()
         {
-            foreach (Predmet p in DataManger.getPredmeti())
+            foreach (Predmet p in DataManger.getPredmetiFilterr())
             {
                 string[] row = { p.ID, p.Ime, p.SmerPredmeta.ID, p.Opis, Convert.ToString(p.BrLjudi), Convert.ToString(p.BrCasova), Convert.ToString(p.BrTermina) };
                 dataGridView1.Rows.Add(row);
@@ -78,8 +83,11 @@ namespace RacunarskiCentar
 
         private void buttonPotvrdi_Click(object sender, EventArgs e)
         {
-            
-            this.Hide();
+            PredmetForm f = new PredmetForm(null, null);
+            f.ShowDialog();
+            DialogResult = DialogResult.None;
+            initTabela(sender, e);
+            //this.Hide();
         }
 
         private HashSet<UcionicaAssets> getUcionicaAssets()
@@ -95,5 +103,16 @@ namespace RacunarskiCentar
             return rets;
         }
 
+        private void buttonObrisi_Click(object sender, EventArgs e)
+        {
+            int index = dataGridView1.CurrentCell.RowIndex;
+            DataGridViewRow selectedRow = dataGridView1.Rows[index];
+            string id = selectedRow.Cells[0].Value.ToString();
+            System.Diagnostics.Debug.WriteLine(id);
+            //brisanje ovde
+            Predmet predmet = DataManger.getPredmetByID(id);
+            DeleteAction d = new DeleteAction(predmet);
+            DataControllercs.addAction(d);
+        }
     }
 }

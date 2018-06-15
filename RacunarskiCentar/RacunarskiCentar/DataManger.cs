@@ -158,12 +158,22 @@ namespace RacunarskiCentar
             return rets;
         }
 
-        static public List<Predmet> getPredmeti()
+        static public List<Predmet> getPredmetiFilterr()
         {
             List<Predmet> rets = new List<Predmet>();
             foreach (Smer smer in smerovi) // da filtriranje radi za isfiltirirane smerove 
             {
                 rets.AddRange(predmetFiltriranje(smer.Predmeti));// i predmete
+            }
+            return rets;
+        }
+
+        static public List<Predmet> getPredmeti()
+        {
+            List<Predmet> rets = new List<Predmet>();
+            foreach (Smer smer in smerovi) // da filtriranje radi za isfiltirirane smerove 
+            {
+                rets.AddRange(smer.Predmeti);// i predmete
             }
             return rets;
         }
@@ -205,7 +215,35 @@ namespace RacunarskiCentar
             }
             return rets;
         }
+        static public Ucionica GetUcionicaID(string id)
+        {
+            foreach (Ucionica u in ucionice)
+            {
+                if (u.ID.ToLower().Trim().Equals(id.ToLower().Trim()))
+                    return u;
+            }
+            return null;
+        }
 
+        static public Software GetSoftverID(string id)
+        {
+            foreach (Software u in softveri)
+            {
+                if (u.ID.ToLower().Trim().Equals(id.ToLower().Trim()))
+                    return u;
+            }
+            return null;
+        }
+
+        static public Smer GetSmerID(string id)
+        {
+            foreach (Smer u in smerovi)
+            {
+                if (u.ID.ToLower().Trim().Equals(id.ToLower().Trim()))
+                    return u;
+            }
+            return null;
+        }
         static public void removeTermin(Termin termin)
         {
             termin.Nedelja.Termini.Remove(termin);

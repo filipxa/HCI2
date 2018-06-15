@@ -28,13 +28,17 @@ namespace RacunarskiCentar
             this.VisibleChanged += initTabela;
 
             checkedListBox1.ItemCheck += CheckedListBox1_ItemCheck;
-
+            DataControllercs.onAction += ActionExcuted;
             numericUpDownBrRadnihMesta.ValueChanged += initTabela;
             textBoxID.TextChanged += initTabela;
             checkedListBox1.SelectedValueChanged += initTabela;
             checkedListBox2.SelectedValueChanged += initTabela;
         }
 
+        private void ActionExcuted(object sender, Action e)
+        {
+            initTabela(sender, new EventArgs());
+        }
 
         private void initTabela(object sender, EventArgs e)
         {
@@ -111,8 +115,10 @@ namespace RacunarskiCentar
 
         private void buttonPotvrdi_Click(object sender, EventArgs e)
         {
-            
-            this.Hide();
+            UcionicaForm f = new UcionicaForm(null);
+            f.ShowDialog();
+            DialogResult = DialogResult.None;
+          
         }
 
         private HashSet<Software> getInstalledSoft()
@@ -137,6 +143,32 @@ namespace RacunarskiCentar
 
             }
             return rets;
+        }
+
+        private void datagridview1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+
+                string a = Convert.ToString(selectedRow.Cells["you have to mention you cell  corresponding column name"].Value);
+
+
+            }
+        }
+        private void buttonOdustani_Click(object sender, EventArgs e)
+        {
+            int index = dataGridView1.CurrentCell.RowIndex;
+            DataGridViewRow selectedRow = dataGridView1.Rows[index];
+            string id = selectedRow.Cells[0].Value.ToString();
+            System.Diagnostics.Debug.WriteLine(id);
+            //brisanje ovde
+            Ucionica ucionica = DataManger.GetUcionicaID(id);
+            DeleteAction d = new DeleteAction(ucionica);
+            DataControllercs.addAction(d);
+
         }
     }
 }

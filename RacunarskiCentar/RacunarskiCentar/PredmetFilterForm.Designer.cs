@@ -41,7 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.buttonPotvrdi = new System.Windows.Forms.Button();
-            this.buttonOdustani = new System.Windows.Forms.Button();
+            this.buttonObrisi = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBoxSmer = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -185,23 +185,24 @@
             // 
             // buttonPotvrdi
             // 
-            this.buttonPotvrdi.Location = new System.Drawing.Point(296, 299);
+            this.buttonPotvrdi.Location = new System.Drawing.Point(281, 299);
             this.buttonPotvrdi.Name = "buttonPotvrdi";
-            this.buttonPotvrdi.Size = new System.Drawing.Size(75, 23);
+            this.buttonPotvrdi.Size = new System.Drawing.Size(90, 23);
             this.buttonPotvrdi.TabIndex = 22;
-            this.buttonPotvrdi.Text = "Potvrdi";
+            this.buttonPotvrdi.Text = "Dodaj predemt";
             this.buttonPotvrdi.UseVisualStyleBackColor = true;
             this.buttonPotvrdi.Click += new System.EventHandler(this.buttonPotvrdi_Click);
             // 
-            // buttonOdustani
+            // buttonObrisi
             // 
-            this.buttonOdustani.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonOdustani.Location = new System.Drawing.Point(197, 299);
-            this.buttonOdustani.Name = "buttonOdustani";
-            this.buttonOdustani.Size = new System.Drawing.Size(75, 23);
-            this.buttonOdustani.TabIndex = 34;
-            this.buttonOdustani.Text = "Odustani";
-            this.buttonOdustani.UseVisualStyleBackColor = true;
+            this.buttonObrisi.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonObrisi.Location = new System.Drawing.Point(197, 299);
+            this.buttonObrisi.Name = "buttonObrisi";
+            this.buttonObrisi.Size = new System.Drawing.Size(75, 23);
+            this.buttonObrisi.TabIndex = 34;
+            this.buttonObrisi.Text = "Obrisi";
+            this.buttonObrisi.UseVisualStyleBackColor = true;
+            this.buttonObrisi.Click += new System.EventHandler(this.buttonObrisi_Click);
             // 
             // dataGridView1
             // 
@@ -235,7 +236,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxSmer);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.buttonOdustani);
+            this.Controls.Add(this.buttonObrisi);
             this.Controls.Add(this.buttonPotvrdi);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkedListBox1);
@@ -278,7 +279,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button buttonPotvrdi;
-        private System.Windows.Forms.Button buttonOdustani;
+        private System.Windows.Forms.Button buttonObrisi;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBoxSmer;
         private System.Windows.Forms.Label label2;

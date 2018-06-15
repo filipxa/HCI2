@@ -18,11 +18,19 @@ namespace RacunarskiCentar
             this.VisibleChanged += initTabela;
             textBox1.TextChanged += initTabela;
             textBoxIme.TextChanged += initTabela;
+            DataControllercs.onAction += ActionExcuted;
         }
-
+        private void ActionExcuted(object sender, Action e)
+        {
+            initTabela(sender, new EventArgs());
+        }
         private void buttonPotvrdi_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            SmerForm f = new SmerForm(null);
+            f.ShowDialog();
+            DialogResult = DialogResult.None;
+            initTabela(sender, e);
+            //this.Hide();
         }
         private void initTabela(object sender, EventArgs e)
         {
@@ -56,6 +64,18 @@ namespace RacunarskiCentar
                 string[] row = { p.ID, p.Ime, p.DatumUvodjenja.ToString(), p.Opis };
                 dataGridView1.Rows.Add(row);
             }
+        }
+
+        private void buttonObrisi_Click(object sender, EventArgs e)
+        {
+            int index = dataGridView1.CurrentCell.RowIndex;
+            DataGridViewRow selectedRow = dataGridView1.Rows[index];
+            string id = selectedRow.Cells[0].Value.ToString();
+            System.Diagnostics.Debug.WriteLine(id);
+            //brisanje ovde
+            Smer smer = DataManger.GetSmerID(id);
+            DeleteAction d = new DeleteAction(smer);
+            DataControllercs.addAction(d);
         }
     }
 }

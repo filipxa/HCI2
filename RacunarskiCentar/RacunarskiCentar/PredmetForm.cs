@@ -26,7 +26,7 @@ namespace RacunarskiCentar
             if (predmet != null)
             {
                 popuniPolja();
-                comboBoxSmer.Text = predmet.SmerPredmeta.Ime;
+                comboBoxSmer.Text = predmet.SmerPredmeta.ToString();
                 comboBoxSmer.Enabled = false;
             }
             else
@@ -35,7 +35,7 @@ namespace RacunarskiCentar
                 {
                     foreach (Smer s in DataManger.getSmers())
                     {
-                        comboBoxSmer.Items.Add(s);
+                        comboBoxSmer.Items.Add(s.ToString());
                     }
                     if (comboBoxSmer.Items.Count == 0)
                         comboBoxSmer.Enabled = false;

@@ -23,8 +23,12 @@ namespace RacunarskiCentar
             textBoxIme.TextChanged += initTabela;
             textBoxProizvodjac.TextChanged += initTabela;
 
+            DataControllercs.onAction += ActionExcuted;
         }
-
+        private void ActionExcuted(object sender, Action e)
+        {
+            initTabela(sender, new EventArgs());
+        }
 
         Regex cenaRegex = new Regex("^[0-9]*$");
 
@@ -32,22 +36,12 @@ namespace RacunarskiCentar
 
         private void buttonSacuvaj_Click(object sender, EventArgs e)
         {
-            
-            string poruka = "";
-            
 
-            if (!cenaRegex.IsMatch(numericUpDown1.Text))
-            {
-                poruka += "#1" + ": Cena se mora sastojati samo od brojeva (0-9).\n";
-            }
-            if (poruka.Length > 0)
-            {
-                DialogResult = DialogResult.None;
-                MessageBox.Show(poruka, "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                return;
-            }
-            
-            
+            SoftwareForm f = new SoftwareForm(null);
+            f.ShowDialog();
+            DialogResult = DialogResult.None;
+            initTabela(sender, e);
+            //f.Dispose();
             //this.Hide();
         }
         private void initTabela(object sender, EventArgs e)
@@ -84,6 +78,18 @@ namespace RacunarskiCentar
                 string[] row = { p.ID, p.Ime, p.Proizvodjac, p.URL, p.Godina ,Convert.ToString(p.Cena), p.Opis };
                 dataGridView1.Rows.Add(row);
             }
+        }
+
+        private void buttonOrisi_Click(object sender, EventArgs e)
+        {
+            int index = dataGridView1.CurrentCell.RowIndex;
+            DataGridViewRow selectedRow = dataGridView1.Rows[index];
+            string id = selectedRow.Cells[0].Value.ToString();
+            System.Diagnostics.Debug.WriteLine(id);
+            //brisanje ovde
+            Software software = DataManger.GetSoftverID(id);
+            DeleteAction d = new DeleteAction(software);
+            DataControllercs.addAction(d);
         }
     }
 }
