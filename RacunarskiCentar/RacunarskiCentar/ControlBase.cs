@@ -11,6 +11,7 @@ namespace RacunarskiCentar
     {
         T guiObject;
         protected Panel parentPanel;
+        private bool isTutorial = false;
         public CustomControlBase(T guiObject, Panel panel)
         {
             GuiObject = guiObject;
@@ -41,6 +42,19 @@ namespace RacunarskiCentar
                    
                 Invalidate();
                 
+            }
+        }
+
+        public bool IsTutorial {
+            get => isTutorial;
+
+            set {
+                if (isTutorial != value)
+                {
+                    isTutorial = value;
+                    onValueChaged(null, null);
+                }
+               
             }
         }
 

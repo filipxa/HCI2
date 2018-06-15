@@ -17,7 +17,7 @@ namespace RacunarskiCentar
         private const int toolWidth = 250;
         public Panel mainPanel;
         public Panel toolboxPanel;
-        ToolStrip tb = new ToolStrip();
+        public ToolStrip tb = new ToolStrip();
 
         UcionicaFilterForm uff = new UcionicaFilterForm();
         SmerFilterForm sff = new SmerFilterForm();
@@ -87,7 +87,8 @@ namespace RacunarskiCentar
             MinimumSize = Size;
             ResizeEnd += Form1_ResizeEnd;
             ResizeBegin += Form1_ResizeBegin;
-          
+            Tutorial t = new Tutorial(this);
+            t.nextStep();
 
         }
 
@@ -357,19 +358,7 @@ namespace RacunarskiCentar
 
     }
 
-    class TreeNodeObject : TreeNode
-    {
-        GUIObject o;
-        public GUIObject GuiObject
-        {
-            get => o;
-            set => o = value;
-        }
-        public TreeNodeObject(String name, GUIObject gui) : base(name)
-        {
-            GuiObject = gui;
-        }
-    }
+
 
 
     /// <summary>
