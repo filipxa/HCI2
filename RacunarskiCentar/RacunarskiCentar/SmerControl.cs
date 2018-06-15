@@ -10,7 +10,7 @@ namespace RacunarskiCentar
     public partial class SmerControl : CustomControlBase<Smer>
     {
         Rectangle smerRec;
-        Panel predmetPanel;
+        public Panel predmetPanel;
         private const int predmetHeight = 30;
         private const int smerHeight = 45;
         bool isColapsed = true;
@@ -182,6 +182,10 @@ namespace RacunarskiCentar
             else
             {
                 GraphicLoader.drawImages(g, smerRec, "Smer", "0");
+            }
+            if (IsTutorial)
+            {
+                GraphicLoader.drawImages(g, smerRec, "Smer", "tut");
             }
             StringFormat sf = new StringFormat();
             sf.LineAlignment = StringAlignment.Center;

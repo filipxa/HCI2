@@ -57,7 +57,15 @@ namespace RacunarskiCentar
 
             base.OnPaint(pe);
             Graphics g = pe.Graphics;
-            GraphicLoader.drawImages(g, ClientRectangle, "Predmet");
+            if (IsTutorial)
+            {
+                GraphicLoader.drawImages(g, ClientRectangle, "Predmet", "tut");
+            }
+            else
+            {
+                GraphicLoader.drawImages(g, ClientRectangle, "Predmet", "0");
+            }
+
             StringFormat sf = new StringFormat();
             sf.LineAlignment = StringAlignment.Center;
             sf.Alignment = StringAlignment.Center;

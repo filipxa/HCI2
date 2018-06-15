@@ -20,12 +20,16 @@ namespace RacunarskiCentar
         private bool levelZavrsen = false;
         private enum Level
         {
-            Nista, Pocetak, ToolBar, ToolBoxPanel, MainPanel, UcionicaDKlik, UcionicaView, UVToolBox
+            Nista, Pocetak, ToolBar, ToolBoxPanel, MainPanel, UcionicaDKlik, UcionicaView, UVToolBox, UVSmer, UVPredmet, TerminMove
         }
         public Tutorial(Form1 f)
         {
             form = f;
-            currentLevel = Level.Nista;
+            currentLevel = Level.UcionicaDKlik;
+            DataControllercs.isTutorial = true;
+            DataControllercs.allowedTypes.Add(typeof(EditAction));
+            DataControllercs.allowedTypes.Add(typeof(RestoreAction));
+            DataControllercs.allowedTypes.Add(typeof(ChainAction));
         }
         private void removeControl()
         {
@@ -37,9 +41,11 @@ namespace RacunarskiCentar
         private void createControl(string text, float fontSize)
         {
             tc = new TutorialControl(text, fontSize, form);
+
             tc.Location = new Point((form.Width - tc.Width) / 2, (form.Height - tc.Height) / 4 * 3);
             form.Controls.Add(tc);
             tc.BringToFront();
+            
 
         }
         public void nextStep()
@@ -47,24 +53,21 @@ namespace RacunarskiCentar
             removeControl();
             if (currentLevel == Level.Nista)
             {
-                
                 initPocetak();
-            } else if (currentLevel == Level.Pocetak)
+            }
+            else if (currentLevel == Level.Pocetak)
             {
-               
                 initToolBar();
             }
             else if (currentLevel == Level.ToolBar)
             {
-
                 initToolBoxPanel();
             }
             else if (currentLevel == Level.ToolBoxPanel)
             {
-
                 initMainPanel();
             }
-            else if(currentLevel == Level.MainPanel)
+            else if (currentLevel == Level.MainPanel)
             {
                 InitUcionicaDKlik();
             }
@@ -74,27 +77,126 @@ namespace RacunarskiCentar
             }
             else if (currentLevel == Level.UcionicaView)
             {
-                initUcionicaView();
+                initUVToolBox();
             }
-            else if (currentLevel == Level.UcionicaView)
+            else if (currentLevel == Level.UVToolBox)
             {
-                initUcionicaView();
+                initUVPredmet();
             }
+            else if (currentLevel == Level.UVPredmet)
+            {
+                initTerminMove();
+            }
+            else if (currentLevel == Level.TerminMove)
+            {
+
+            }
+        }
+
+        private void initTerminMove()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void initUVPredmet()
+        {
+            currentLevel = Level.UVPredmet;
+            
+            SmerControl sc = (SmerControl)form.toolboxPanel.Controls[0];
+            PredmetControl p = (PredmetControl)sc.predmetPanel.Controls[0];
+            p.IsTutorial = true;
+            createControl("Prevucite obeleženi predmet na raspored kako biste napravili novi termin.", 20);
+            DataControllercs.allowedTypes.Add(typeof(Termin));
+            DataControllercs.allowedTypes.Add(typeof(CreateAction));
+
+            tc.Click += new EventHandler(delegate (Object o, EventArgs a)
+            {
+                if (levelZavrsen)
+                {
+                    levelZavrsen = false;
+                    nextStep();
+                }
+
+            });
+            tc.TextChanged+= new EventHandler(delegate (Object o, EventArgs a)
+            {
+                p.IsTutorial = false;
+
+            });
+            DataControllercs.onAction += ActionExcuted;
+         
+
+        }
+
+        private void ActionExcuted(object sender, Action e)
+        {
+            if (currentLevel == Level.UVPredmet)
+            {
+                if (e is CreateAction)
+                {
+                    if (e.getGUIObject() is Termin)
+                    {
+                        tc.Text = "Uspešno ste napravili termin. \n Za nastavak pritisnite na ovaj prozor.";
+                        levelZavrsen = true;
+                        DataControllercs.onAction -= ActionExcuted;
+                    }
+                }
+            }
+           
+        }
+
+        private void initUVToolBox()
+        {
+            currentLevel = Level.UVToolBox;
+            SmerControl sc = (SmerControl)form.toolboxPanel.Controls[0];
+            if (!sc.IsColapsed)
+            {
+                nextStep();
+                return;
+            }
+            createControl("Pritisnite na smer kako biste vam se prikazali predmeti tog smera i kako biste nastavili tutorijal.", 20);
+            MouseEventHandler e = new MouseEventHandler(delegate (Object o, MouseEventArgs a)
+            {
+                if (a.Button == MouseButtons.Left && a.Clicks == 1)
+                {
+                    tc.Text = "Uspešno ste otvorili prozor za izmenu Učionice. \n Za nastavak zatvorite dialog za izmenu i pritisnite na ovaj prozor.";
+                    sc.IsTutorial = false;
+                    nextStep();
+                }
+
+
+            });
+            sc.IsTutorial = true;
+            sc.MouseDown += e;
+           
+           
         }
 
         private void initUcionicaView()
         {
+
             currentLevel = Level.UcionicaView;
             UcionicaControl ucionica = (UcionicaControl)form.mainPanel.Controls[0];
+            createControl("Kako biste pristupili izmeni rasporeda konkretne učionice i nastavku tutorijala pritisnite dupli klik na obeleženu učionicu.", 20);
             EventHandler e = new EventHandler(delegate (Object o, EventArgs a)
             {
-                nextStep();
+                tc.Text = "Uspešno ste otvorili prikaz Učionice. \n Za nastavak pritisnite na ovaj prozor.";
+                levelZavrsen = true;
                 ucionica.IsTutorial = false;
 
             });
             ucionica.DoubleClick += e;
             ucionica.IsTutorial = true;
-            createControl("Kako biste pristupili izmeni rasporeda konkretne učionice i nastavku tutorijala pritisnite dupli klik na obeleženu učionicu.", 20);
+            tc.Click += new EventHandler(delegate (Object o, EventArgs a)
+            {
+                if (levelZavrsen)
+                {
+                    levelZavrsen = false;
+                    nextStep();
+                }
+
+            });
+          
 
         }
 

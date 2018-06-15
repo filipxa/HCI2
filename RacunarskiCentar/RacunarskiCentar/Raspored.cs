@@ -10,6 +10,8 @@ namespace RacunarskiCentar
        
         Ucionica ucionica;
 
+      
+
         [XmlIgnoreAttribute]
         public Ucionica Ucionica
         {
@@ -37,7 +39,9 @@ namespace RacunarskiCentar
             get => radneNedelje;
             set => radneNedelje = new List<Nedelja>(value);
         }
-        
+       
+
+
 
         public override GUIObject Copy()
         {
