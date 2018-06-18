@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.numericUpDownBrojTermina = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownDuzinaTermina = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownBrojLjudi = new System.Windows.Forms.NumericUpDown();
@@ -46,6 +47,7 @@
             this.textBoxSmer = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Izmeni = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojTermina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDuzinaTermina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojLjudi)).BeginInit();
@@ -102,6 +104,7 @@
             this.numericUpDownBrojLjudi.Name = "numericUpDownBrojLjudi";
             this.numericUpDownBrojLjudi.Size = new System.Drawing.Size(59, 20);
             this.numericUpDownBrojLjudi.TabIndex = 29;
+            this.toolTip1.SetToolTip(this.numericUpDownBrojLjudi, "Broj ljudi koji prisustvuje predavanju.");
             this.numericUpDownBrojLjudi.Value = new decimal(new int[] {
             1,
             0,
@@ -141,6 +144,7 @@
             this.textBoxNaziv.Name = "textBoxNaziv";
             this.textBoxNaziv.Size = new System.Drawing.Size(156, 20);
             this.textBoxNaziv.TabIndex = 25;
+            this.toolTip1.SetToolTip(this.textBoxNaziv, "Naziv predmeta.");
             // 
             // textBoxID
             // 
@@ -148,6 +152,7 @@
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(156, 20);
             this.textBoxID.TabIndex = 24;
+            this.toolTip1.SetToolTip(this.textBoxID, "Jedinstveno obelezje predmeta.");
             // 
             // labelNaziv
             // 
@@ -157,6 +162,7 @@
             this.labelNaziv.Size = new System.Drawing.Size(81, 13);
             this.labelNaziv.TabIndex = 23;
             this.labelNaziv.Text = "Naziv predmeta";
+            this.toolTip1.SetToolTip(this.labelNaziv, "Naziv predmeta.");
             // 
             // labelID
             // 
@@ -166,6 +172,7 @@
             this.labelID.Size = new System.Drawing.Size(18, 13);
             this.labelID.TabIndex = 22;
             this.labelID.Text = "ID";
+            this.toolTip1.SetToolTip(this.labelID, "Jedinstveno obelezje predmeta.");
             // 
             // label1
             // 
@@ -183,6 +190,7 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(174, 229);
             this.checkedListBox1.TabIndex = 32;
+            this.toolTip1.SetToolTip(this.checkedListBox1, "Lista neophodne opreme na predmetu.");
             // 
             // buttonPotvrdi
             // 
@@ -191,6 +199,7 @@
             this.buttonPotvrdi.Size = new System.Drawing.Size(90, 23);
             this.buttonPotvrdi.TabIndex = 22;
             this.buttonPotvrdi.Text = "Dodaj predemt";
+            this.toolTip1.SetToolTip(this.buttonPotvrdi, "Dodaj predmet.");
             this.buttonPotvrdi.UseVisualStyleBackColor = true;
             this.buttonPotvrdi.Click += new System.EventHandler(this.buttonPotvrdi_Click);
             // 
@@ -202,6 +211,7 @@
             this.buttonObrisi.Size = new System.Drawing.Size(75, 23);
             this.buttonObrisi.TabIndex = 34;
             this.buttonObrisi.Text = "Obrisi";
+            this.toolTip1.SetToolTip(this.buttonObrisi, "Obrisi.");
             this.buttonObrisi.UseVisualStyleBackColor = true;
             this.buttonObrisi.Click += new System.EventHandler(this.buttonObrisi_Click);
             // 
@@ -219,6 +229,7 @@
             this.textBoxSmer.Name = "textBoxSmer";
             this.textBoxSmer.Size = new System.Drawing.Size(156, 20);
             this.textBoxSmer.TabIndex = 36;
+            this.toolTip1.SetToolTip(this.textBoxSmer, "Jedinstveno obelezje smera.");
             // 
             // label2
             // 
@@ -236,6 +247,7 @@
             this.Izmeni.Size = new System.Drawing.Size(75, 23);
             this.Izmeni.TabIndex = 38;
             this.Izmeni.Text = "Izmeni";
+            this.toolTip1.SetToolTip(this.Izmeni, "Izmeni.");
             this.Izmeni.UseVisualStyleBackColor = true;
             this.Izmeni.Click += new System.EventHandler(this.Izmeni_Click);
             // 
@@ -296,5 +308,6 @@
         private System.Windows.Forms.TextBox textBoxSmer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Izmeni;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -375,6 +375,22 @@ namespace RacunarskiCentar
 
 
             ucitajUcionice();
+
+            
+            ToolTip toolTip1 = new ToolTip();
+            
+            toolTip1.AutoPopDelay = 3000;
+            toolTip1.InitialDelay = 500;
+            toolTip1.ReshowDelay = 500;
+            
+            toolTip1.ShowAlways = true;
+            
+            toolTip1.SetToolTip(button, "Koristeci ovu opciju mozete dodati novu ucionicu.");
+            toolTip1.SetToolTip(button1, "Koristeci ovu opciju mozete dodati novi smer.");
+            toolTip1.SetToolTip(button2, "Koristeci ovu opciju mozete dodati novi softver.");
+            toolTip1.SetToolTip(button3, "Koristeci ovu opciju mozete dodati novi predmet.");
+
+
         }
 
         private void btPredmetKlik(object sender, EventArgs e)

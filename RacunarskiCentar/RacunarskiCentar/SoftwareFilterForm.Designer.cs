@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textBoxIme = new System.Windows.Forms.TextBox();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.labelIme = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.buttonIzmena = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -50,6 +52,7 @@
             this.textBoxIme.Name = "textBoxIme";
             this.textBoxIme.Size = new System.Drawing.Size(220, 20);
             this.textBoxIme.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.textBoxIme, "Naziv softvera.");
             // 
             // textBoxID
             // 
@@ -57,6 +60,7 @@
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(220, 20);
             this.textBoxID.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.textBoxID, "Jedinstveno obelezje softvera.");
             // 
             // labelIme
             // 
@@ -66,6 +70,7 @@
             this.labelIme.Size = new System.Drawing.Size(37, 13);
             this.labelIme.TabIndex = 10;
             this.labelIme.Text = "Naziv:";
+            this.toolTip1.SetToolTip(this.labelIme, "Naziv softvera.");
             // 
             // labelID
             // 
@@ -75,6 +80,7 @@
             this.labelID.Size = new System.Drawing.Size(21, 13);
             this.labelID.TabIndex = 9;
             this.labelID.Text = "ID:";
+            this.toolTip1.SetToolTip(this.labelID, "Jedinstveno obelezje softvera.");
             // 
             // textBoxProizvodjac
             // 
@@ -82,6 +88,7 @@
             this.textBoxProizvodjac.Name = "textBoxProizvodjac";
             this.textBoxProizvodjac.Size = new System.Drawing.Size(220, 20);
             this.textBoxProizvodjac.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.textBoxProizvodjac, "Proizvodjac softvera.");
             // 
             // labelProizvodjac
             // 
@@ -91,6 +98,7 @@
             this.labelProizvodjac.Size = new System.Drawing.Size(65, 13);
             this.labelProizvodjac.TabIndex = 13;
             this.labelProizvodjac.Text = "Proizvodjac:";
+            this.toolTip1.SetToolTip(this.labelProizvodjac, "Proizvodjac softvera.");
             // 
             // labelCena
             // 
@@ -108,6 +116,7 @@
             this.buttonOrisi.Size = new System.Drawing.Size(75, 23);
             this.buttonOrisi.TabIndex = 18;
             this.buttonOrisi.Text = "Obrisi";
+            this.toolTip1.SetToolTip(this.buttonOrisi, "Obrisi softver.");
             this.buttonOrisi.UseVisualStyleBackColor = true;
             this.buttonOrisi.Click += new System.EventHandler(this.buttonOrisi_Click);
             // 
@@ -119,6 +128,7 @@
             this.buttonSacuvaj.Size = new System.Drawing.Size(90, 23);
             this.buttonSacuvaj.TabIndex = 17;
             this.buttonSacuvaj.Text = "Dodaj softver";
+            this.toolTip1.SetToolTip(this.buttonSacuvaj, "Dodaj softver.");
             this.buttonSacuvaj.UseVisualStyleBackColor = true;
             this.buttonSacuvaj.Click += new System.EventHandler(this.buttonSacuvaj_Click);
             // 
@@ -154,6 +164,7 @@
             this.buttonIzmena.Size = new System.Drawing.Size(75, 23);
             this.buttonIzmena.TabIndex = 21;
             this.buttonIzmena.Text = "Izmena";
+            this.toolTip1.SetToolTip(this.buttonIzmena, "Izmeni softver.");
             this.buttonIzmena.UseVisualStyleBackColor = true;
             this.buttonIzmena.Click += new System.EventHandler(this.buttonIzmena_Click);
             // 
@@ -201,5 +212,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Button buttonIzmena;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelID = new System.Windows.Forms.Label();
             this.labelIme = new System.Windows.Forms.Label();
             this.labelDatumUvodjenja = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@
             this.listBoxPredmeti = new System.Windows.Forms.ListBox();
             this.buttonDodajPredmet = new System.Windows.Forms.Button();
             this.buttonObrisiPredmet = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // labelID
@@ -52,6 +54,7 @@
             this.labelID.Size = new System.Drawing.Size(18, 13);
             this.labelID.TabIndex = 0;
             this.labelID.Text = "ID";
+            this.toolTip1.SetToolTip(this.labelID, "Jedinstveno obelezje smera.");
             // 
             // labelIme
             // 
@@ -61,6 +64,7 @@
             this.labelIme.Size = new System.Drawing.Size(24, 13);
             this.labelIme.TabIndex = 1;
             this.labelIme.Text = "Ime";
+            this.toolTip1.SetToolTip(this.labelIme, "Ime smera.");
             // 
             // labelDatumUvodjenja
             // 
@@ -86,6 +90,7 @@
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(220, 20);
             this.textBoxID.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.textBoxID, "Jedinstveno obelezje smera.");
             this.textBoxID.Validated += new System.EventHandler(this.textBoxID_Validated);
             // 
             // textBoxIme
@@ -94,6 +99,7 @@
             this.textBoxIme.Name = "textBoxIme";
             this.textBoxIme.Size = new System.Drawing.Size(220, 20);
             this.textBoxIme.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.textBoxIme, "Ime smera.");
             // 
             // dateTimePicker1
             // 
@@ -101,6 +107,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(220, 20);
             this.dateTimePicker1.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.dateTimePicker1, "Datum uvodjenja smera.");
             // 
             // buttonSacuvaj
             // 
@@ -110,6 +117,7 @@
             this.buttonSacuvaj.Size = new System.Drawing.Size(91, 23);
             this.buttonSacuvaj.TabIndex = 10;
             this.buttonSacuvaj.Text = "Sacuvaj";
+            this.toolTip1.SetToolTip(this.buttonSacuvaj, "Sacuvaj i zatvori.");
             this.buttonSacuvaj.UseVisualStyleBackColor = true;
             this.buttonSacuvaj.Click += new System.EventHandler(this.buttonSacuvaj_Click);
             // 
@@ -121,6 +129,7 @@
             this.buttonOdustani.Size = new System.Drawing.Size(101, 23);
             this.buttonOdustani.TabIndex = 11;
             this.buttonOdustani.Text = "Odustani";
+            this.toolTip1.SetToolTip(this.buttonOdustani, "Zatvori bez cuvanja.");
             this.buttonOdustani.UseVisualStyleBackColor = true;
             // 
             // richTextBoxOpis
@@ -130,6 +139,7 @@
             this.richTextBoxOpis.Size = new System.Drawing.Size(220, 92);
             this.richTextBoxOpis.TabIndex = 14;
             this.richTextBoxOpis.Text = "";
+            this.toolTip1.SetToolTip(this.richTextBoxOpis, "Detaljniji opis smera.");
             // 
             // labelPredmeti
             // 
@@ -147,6 +157,7 @@
             this.listBoxPredmeti.Name = "listBoxPredmeti";
             this.listBoxPredmeti.Size = new System.Drawing.Size(218, 238);
             this.listBoxPredmeti.TabIndex = 13;
+            this.toolTip1.SetToolTip(this.listBoxPredmeti, "Lista postojecih predmeta.");
             // 
             // buttonDodajPredmet
             // 
@@ -155,6 +166,7 @@
             this.buttonDodajPredmet.Size = new System.Drawing.Size(101, 23);
             this.buttonDodajPredmet.TabIndex = 12;
             this.buttonDodajPredmet.Text = "Dodaj Predmet";
+            this.toolTip1.SetToolTip(this.buttonDodajPredmet, "Dodaj novi predmet.");
             this.buttonDodajPredmet.UseVisualStyleBackColor = true;
             this.buttonDodajPredmet.Click += new System.EventHandler(this.buttonDodajPredmet_Click);
             // 
@@ -165,6 +177,7 @@
             this.buttonObrisiPredmet.Size = new System.Drawing.Size(91, 23);
             this.buttonObrisiPredmet.TabIndex = 15;
             this.buttonObrisiPredmet.Text = "Obriši predmet";
+            this.toolTip1.SetToolTip(this.buttonObrisiPredmet, "Obrisi postojeci predmet.");
             this.buttonObrisiPredmet.UseVisualStyleBackColor = true;
             this.buttonObrisiPredmet.Click += new System.EventHandler(this.buttonObrisiPredmet_Click);
             // 
@@ -214,5 +227,6 @@
         private System.Windows.Forms.ListBox listBoxPredmeti;
         private System.Windows.Forms.Button buttonDodajPredmet;
         private System.Windows.Forms.Button buttonObrisiPredmet;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -115,5 +115,10 @@ namespace RacunarskiCentar
                 this.BringToFront();
             }
         }
+
+        private void SmerFilterForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

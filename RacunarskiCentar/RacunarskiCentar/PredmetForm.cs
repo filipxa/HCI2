@@ -89,6 +89,8 @@ namespace RacunarskiCentar
                 predmet.BrTermina = Convert.ToInt32(numericUpDownBrojTermina.Value);
                 predmet.Opis = richTextBoxOpis.Text;
                 predmet.Assets = getUcionicaAssets();
+
+                
             }
 
             DataControllercs.addAction(action);

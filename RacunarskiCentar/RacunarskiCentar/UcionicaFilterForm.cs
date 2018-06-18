@@ -61,7 +61,7 @@ namespace RacunarskiCentar
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;
             //dataGridView1.ColumnHeadersVisible = false;
-
+            
             dataGridView1.Rows.Clear();
             dataGridView1.ColumnCount = 3;
             dataGridView1.Columns[0].Name = "ID";
@@ -119,6 +119,8 @@ namespace RacunarskiCentar
             }
 
         }
+
+        
 
         private void buttonPotvrdi_Click(object sender, EventArgs e)
         {
