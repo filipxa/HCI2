@@ -274,7 +274,6 @@
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.labelNaziv);
             this.Controls.Add(this.labelID);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PredmetFilterForm";

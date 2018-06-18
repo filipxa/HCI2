@@ -13,7 +13,9 @@ namespace RacunarskiCentar
 {
     public partial class UcionicaFilterForm : Form
     {
-        List<UcionicaAssets> OS = new List<UcionicaAssets>();
+        List<UcionicaAssets> uAssets = new List<UcionicaAssets>();
+        HashSet<Software> softwares = new HashSet<Software>();
+        
         public UcionicaFilterForm()
         {
             
@@ -32,8 +34,25 @@ namespace RacunarskiCentar
             numericUpDownBrRadnihMesta.ValueChanged += initTabela;
             textBoxID.TextChanged += initTabela;
 
-            checkedListBox2.ItemCheck += initTabela;
+            checkedListBox2.ItemCheck += CheckedListBox2_ItemCheck;
+
+
             FormClosing += Form_Closing;
+        }
+
+        private void CheckedListBox2_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            Software soft = (Software)checkedListBox2.Items[e.Index];
+            if (e.NewValue==CheckState.Checked)
+            {
+                softwares.Add(soft);
+            }
+            else
+            {
+                softwares.Remove(soft);
+            }
+            initTabela(sender, e);
+            
         }
 
         private void Form_Closing(object sender, FormClosingEventArgs e)
@@ -55,7 +74,7 @@ namespace RacunarskiCentar
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataManger.UcionicaFilter.ID = textBoxID.Text;
             DataManger.UcionicaFilter.BrRadnihMesta = Convert.ToInt32(numericUpDownBrRadnihMesta.Value);
-            DataManger.UcionicaFilter.Assets = getUcionicaAssets();
+            DataManger.UcionicaFilter.Assets = new HashSet<UcionicaAssets>(uAssets);
             DataManger.UcionicaFilter.InstalledSoftware = getInstalledSoft();
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -84,16 +103,17 @@ namespace RacunarskiCentar
         private void CheckedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             ComboValue cv = (ComboValue)checkedListBox1.Items[e.Index];
+            if (e.NewValue == CheckState.Checked)
+            {
+                uAssets.Add((UcionicaAssets)cv.Value);
+            }
+            else
+            {
+                uAssets.Remove((UcionicaAssets)cv.Value);
+            }
             if (cv.Value.Equals(UcionicaAssets.windows) || cv.Value.Equals(UcionicaAssets.linux))
             {
-                if (e.NewValue == CheckState.Checked)
-                {
-                    OS.Add((UcionicaAssets)cv.Value);
-                }
-                else
-                {
-                    OS.Remove((UcionicaAssets)cv.Value);
-                }
+               
 
                 popuniSoftvere();
             }
@@ -107,8 +127,9 @@ namespace RacunarskiCentar
         {
             checkedListBox2.Items.Clear();
             List<UcionicaAssets> listaSistema = new List<UcionicaAssets>();
+            listaSistema = uAssets.Where(x => x.Equals(UcionicaAssets.windows) || x.Equals(UcionicaAssets.linux)).ToList();
 
-            foreach (Software s in DataManger.softverOperativanSistemFiltiriranje(OS))
+            foreach (Software s in DataManger.softverOperativanSistemFiltiriranje(listaSistema))
             {
                 bool postoji = false;
                 if (DataManger.UcionicaFilter != null)
@@ -132,27 +153,11 @@ namespace RacunarskiCentar
 
         private HashSet<Software> getInstalledSoft()
         {
-            HashSet<Software> rets = new HashSet<Software>();
-            foreach (object itemChecked in checkedListBox2.CheckedItems)
-            {
-                rets.Add((Software)itemChecked);
-
-            }
-            return rets;
+           
+            return softwares;
         }
 
-        private HashSet<UcionicaAssets> getUcionicaAssets()
-        {
-            HashSet<UcionicaAssets> rets = new HashSet<UcionicaAssets>();
-            foreach (object itemChecked in checkedListBox1.CheckedItems)
-            {
 
-                ComboValue item = ((ComboValue)itemChecked);
-                rets.Add((UcionicaAssets)item.Value);
-
-            }
-            return rets;
-        }
 
         private void datagridview1_SelectionChanged(object sender, EventArgs e)
         {
@@ -197,9 +202,11 @@ namespace RacunarskiCentar
                 System.Diagnostics.Debug.WriteLine(id);
                 
                 Ucionica ucionica = DataManger.GetUcionicaID(id);
-                DeleteAction d = new DeleteAction(ucionica);
-                DataControllercs.addAction(d);
+                UcionicaForm uf = new UcionicaForm(ucionica);
+                
                 BringToFront();
+                uf.ShowDialog();
+                uf.Dispose();
             }
             catch
             {

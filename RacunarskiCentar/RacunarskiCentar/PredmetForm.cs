@@ -17,7 +17,7 @@ namespace RacunarskiCentar
             this.smer = smer;
             this.predmet = predmet;
             InitializeComponent();
-            comboBoxSmer.SelectedIndexChanged += ComboBoxSmer_SelectedIndexChanged;
+            comboBoxSmer.SelectedValueChanged += ComboBoxSmer_SelectedIndexChanged;
             if (predmet != null)
             {
                 popuniPolja();
@@ -30,10 +30,15 @@ namespace RacunarskiCentar
                 {
                     foreach (Smer s in DataManger.getSmers())
                     {
-                        comboBoxSmer.Items.Add(s.ToString());
+                        comboBoxSmer.Items.Add(s);
                     }
                     if (comboBoxSmer.Items.Count == 0)
                         comboBoxSmer.Enabled = false;
+                }
+                else
+                {
+                    comboBoxSmer.Text = smer.ToString();
+                    comboBoxSmer.Enabled = false;
                 }
             }
             popuniOpremaBox();
@@ -41,7 +46,7 @@ namespace RacunarskiCentar
 
         private void ComboBoxSmer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            smer = (Smer)comboBoxSmer.SelectedValue;
+            smer = (Smer)comboBoxSmer.SelectedItem;
         }
 
         private void popuniOpremaBox()
@@ -89,6 +94,7 @@ namespace RacunarskiCentar
                 predmet.BrTermina = Convert.ToInt32(numericUpDownBrojTermina.Value);
                 predmet.Opis = richTextBoxOpis.Text;
                 predmet.Assets = getUcionicaAssets();
+                predmet.SmerPredmeta = smer;
 
                 
             }

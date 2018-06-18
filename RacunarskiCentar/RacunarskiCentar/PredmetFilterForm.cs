@@ -17,6 +17,8 @@ namespace RacunarskiCentar
         {
             InitializeComponent();
 
+            this.dataGridView1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top  | AnchorStyles.Left ;
+            
             this.VisibleChanged += initTabela;
             textBoxID.TextChanged += initTabela;
             textBoxNaziv.TextChanged += initTabela;
@@ -30,8 +32,8 @@ namespace RacunarskiCentar
                 checkedListBox1.Items.Add(new ComboValue(aset), false);
             }
 
-            checkedListBox1.MouseClick += initTabela;
-            //checkedListBox1.ItemCheck += initTabela;
+            //checkedListBox1.MouseClick += initTabela;
+            checkedListBox1.ItemCheck += initTabela;
 
 
             DataControllercs.onAction += ActionExcuted;
