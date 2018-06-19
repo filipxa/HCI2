@@ -20,7 +20,7 @@ namespace RacunarskiCentar
         private bool levelZavrsen = false;
         private enum Level
         {
-            Nista, Pocetak, ToolBar, ToolBoxPanel, MainPanel, UcionicaDKlik, UcionicaView, UVToolBox, UVSmer, UVPredmet, TerminMove, Undo, Redo, Nazad
+            Nista, Pocetak, ToolBar, ToolBoxPanel, MainPanel, StatusStrip, UcionicaDKlik, UcionicaView, UVToolBox, UVSmer, UVPredmet, TerminMove, Undo, Redo, Nazad
         }
         public Tutorial(Form1 f)
         {
@@ -66,6 +66,9 @@ namespace RacunarskiCentar
             }
             else if (currentLevel == Level.MainPanel)
             {
+                initStatusStrip();
+            } else if (currentLevel == Level.StatusStrip)
+            {
                 InitUcionicaDKlik();
             }
             else if (currentLevel == Level.UcionicaDKlik)
@@ -101,7 +104,6 @@ namespace RacunarskiCentar
                 TutorialEnd();
             }
         }
-
 
 
 
@@ -143,7 +145,7 @@ namespace RacunarskiCentar
             form.tb.Enabled = true;
             Color old;
             ToolStripButton undoButton;
-            createControl("Pritisnite 'Redo' kako biste se vratili korak unapred.", 20);
+            createControl("Pritisnite 'Redo' kako biste vratili poslednje poništenu akciju.", 20);
             foreach (ToolStripItem item in form.tb.Items)
             {
                 if (item.Name.Equals("redo"))
@@ -174,7 +176,7 @@ namespace RacunarskiCentar
             form.tb.Enabled = true;
             Color old;
             ToolStripButton undoButton;
-            createControl("Pritisnite 'Undo' kako biste se vratili korak unazad.", 20);
+            createControl("Pritisnite 'Undo' kako biste poništili poslednju akciju.", 20);
             foreach (ToolStripItem item in form.tb.Items)
             {
                 if (item.Name.Equals("undo"))
@@ -187,7 +189,6 @@ namespace RacunarskiCentar
                     {
                         nextStep();
                         item.BackColor = old;
-
                     };
                 }
                 else
@@ -195,8 +196,6 @@ namespace RacunarskiCentar
                     item.Enabled = false;
                 }
             }
-
-
         }
 
         private void TutorialEnd()
@@ -374,7 +373,20 @@ namespace RacunarskiCentar
             });
 
         }
+        private void initStatusStrip()
+        {
+            currentLevel = Level.StatusStrip;
+            Color old = form.sStrip.BackColor;
+            form.sStrip.BackColor = Color.Yellow;
+            createControl(" Suhi popuni me", 20);
+            tc.Click += new EventHandler(delegate (Object o, EventArgs a)
+            {
+                form.sStrip.BackColor = old;
+                nextStep();
 
+            });
+
+        }
         private void initMainPanel()
         {
             currentLevel = Level.MainPanel;
@@ -387,6 +399,7 @@ namespace RacunarskiCentar
                 nextStep();
 
             });
+
         }
         private void initToolBoxPanel()
         {
@@ -489,7 +502,7 @@ namespace RacunarskiCentar
             g.DrawString(Text, font, new SolidBrush(Color.Yellow), rec, sf);
             Rectangle frame = new Rectangle(1, 1, Width - 2, Height - 2);
             g.DrawRectangle(p, frame);
-            
+
             base.OnPaint(pe);
 
         }

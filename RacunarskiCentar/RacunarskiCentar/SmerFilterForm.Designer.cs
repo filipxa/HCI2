@@ -90,7 +90,7 @@
             // 
             // buttonObrisi
             // 
-            this.buttonObrisi.Location = new System.Drawing.Point(16, 143);
+            this.buttonObrisi.Location = new System.Drawing.Point(19, 183);
             this.buttonObrisi.Name = "buttonObrisi";
             this.buttonObrisi.Size = new System.Drawing.Size(75, 23);
             this.buttonObrisi.TabIndex = 5;
@@ -109,7 +109,7 @@
             // 
             // buttonIzmena
             // 
-            this.buttonIzmena.Location = new System.Drawing.Point(16, 173);
+            this.buttonIzmena.Location = new System.Drawing.Point(19, 144);
             this.buttonIzmena.Name = "buttonIzmena";
             this.buttonIzmena.Size = new System.Drawing.Size(75, 23);
             this.buttonIzmena.TabIndex = 7;

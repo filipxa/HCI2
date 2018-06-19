@@ -123,11 +123,12 @@
             // labelDuzinaTermina
             // 
             this.labelDuzinaTermina.AutoSize = true;
+            this.labelDuzinaTermina.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
             this.labelDuzinaTermina.Location = new System.Drawing.Point(15, 196);
             this.labelDuzinaTermina.Name = "labelDuzinaTermina";
-            this.labelDuzinaTermina.Size = new System.Drawing.Size(165, 13);
+            this.labelDuzinaTermina.Size = new System.Drawing.Size(125, 13);
             this.labelDuzinaTermina.TabIndex = 27;
-            this.labelDuzinaTermina.Text = "Duzina jednog termina u minutima";
+            this.labelDuzinaTermina.Text = "Minimalna dužina termina";
             // 
             // labelBrojLjudi
             // 
@@ -209,7 +210,7 @@
             this.buttonObrisi.Name = "buttonObrisi";
             this.buttonObrisi.Size = new System.Drawing.Size(75, 23);
             this.buttonObrisi.TabIndex = 34;
-            this.buttonObrisi.Text = "Obrisi";
+            this.buttonObrisi.Text = "Obriši";
             this.toolTip1.SetToolTip(this.buttonObrisi, "Obrisi.");
             this.buttonObrisi.UseVisualStyleBackColor = true;
             this.buttonObrisi.Click += new System.EventHandler(this.buttonObrisi_Click);

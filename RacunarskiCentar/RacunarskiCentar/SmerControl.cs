@@ -10,6 +10,7 @@ namespace RacunarskiCentar
     public partial class SmerControl : CustomControlBase<Smer>
     {
         Rectangle smerRec;
+        Ucionica ucionica;
         public Panel predmetPanel;
         private const int predmetHeight = 30;
         private const int smerHeight = 45;
@@ -48,10 +49,10 @@ namespace RacunarskiCentar
                 Invalidate(); 
             }
         }
-        public SmerControl(Smer smer, Panel panel): base(smer, panel)
+        public SmerControl(Smer smer, Panel panel, Ucionica ucionica): base(smer, panel)
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-
+            this.ucionica = ucionica;
             InitializeComponent();
             Width = 200;
             Height = smerHeight;
