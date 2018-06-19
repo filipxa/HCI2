@@ -80,7 +80,7 @@ namespace RacunarskiCentar
             if (undoButtons.Count == 1)
             {
                 b = new ToolStripButton();
-                b.Text = "Ucionice";
+                b.Text = "Učionice";
                 b.Click += ToolFilterUcionica;
                 tb.Items.Add(b);
 
