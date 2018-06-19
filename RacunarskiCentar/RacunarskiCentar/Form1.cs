@@ -140,6 +140,7 @@ namespace RacunarskiCentar
             DataManger.load();
             
 
+            KeyDown += shortcutKeydown;
             KeyDown += Form1_KeyDown;
             tb = generateToolStrip();
 
@@ -168,22 +169,22 @@ namespace RacunarskiCentar
 
             uff.Controls.Add(generateToolStrip());
             uff.Controls.Add(generateStatusBar());
-            uff.KeyDown += Form1_KeyDown;
+            uff.KeyDown += shortcutKeydown;
             uff.KeyPreview = true;
 
             sff.Controls.Add(generateToolStrip());
             sff.Controls.Add(generateStatusBar());
-            sff.KeyDown += Form1_KeyDown;
+            sff.KeyDown += shortcutKeydown;
             sff.KeyPreview = true;
 
             soff.Controls.Add(generateToolStrip());
             soff.Controls.Add(generateStatusBar());
-            soff.KeyDown += Form1_KeyDown;
+            soff.KeyDown += shortcutKeydown;
             soff.KeyPreview = true;
 
             pff.Controls.Add(generateToolStrip());
             pff.Controls.Add(generateStatusBar());
-            pff.KeyDown += Form1_KeyDown;
+            pff.KeyDown += shortcutKeydown;
             pff.KeyPreview = true;
 
 
@@ -584,7 +585,7 @@ namespace RacunarskiCentar
     // PRECICE  PRECICE PRECICE PRECICE PRECICE PRECICE PRECICE PRECICE PRECICE PRECICE
     public partial class Form1
     {
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void shortcutKeydown(object sender, KeyEventArgs e)
         {
 
              if (e.Control && e.KeyCode == Keys.D1)
@@ -614,9 +615,9 @@ namespace RacunarskiCentar
                 Redo_Click1(null, null);
             }
         }
-        private void Form1_KeyDow(object sender, KeyEventArgs e)
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F1)
+            if (e.KeyCode == Keys.F1) 
                 DataManger.goToHelp("");
 
         }
