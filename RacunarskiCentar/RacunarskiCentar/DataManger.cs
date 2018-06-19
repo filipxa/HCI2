@@ -66,24 +66,18 @@ namespace RacunarskiCentar
         private static void addRaspored(Raspored raspored)
         {
             raspored.Ucionica.Raspored = raspored;
-            foreach (Nedelja ned in raspored.RadneNedelje)
-            {
-                addNedelja(ned);
-            }
+           
         }
 
         private static void addNedelja(Nedelja ned)
         {
             ned.Raspored.RadneNedelje.Add(ned);
-            foreach (Termin ter in ned.Termini)
-            {
-                addTermin(ter);
-            }
+           
         }
 
         internal static List<Ucionica> getUcionice()
         {
-            return ucionicaFilterisanje();
+            return ucionice;
         }
         internal static List<Software> getSoftware()
         {
@@ -114,7 +108,17 @@ namespace RacunarskiCentar
             {
                 removeNedelja(guiObject as Nedelja);
             }
+            if (guiObject is Software)
+            {
+                softveri.Remove(guiObject as Software);
+            }
+            if (guiObject is Predmet)
+            {
+                removePredmet(guiObject as Predmet);
+            }
         }
+
+
 
         private static void addSmer(Smer smer)
         {
@@ -264,7 +268,12 @@ namespace RacunarskiCentar
         {
             ned.Raspored.RadneNedelje.Remove(ned);
         }
-       
+
+        private static void removePredmet(Predmet predmet)
+        {
+            predmet.SmerPredmeta.Predmeti.Remove(predmet);
+        }
+
 
     }
 

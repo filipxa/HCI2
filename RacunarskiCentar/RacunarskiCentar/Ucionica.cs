@@ -23,15 +23,16 @@ namespace RacunarskiCentar
 
         public Ucionica()
         {
-
+            raspored = new Raspored(this);
+            Assets = new HashSet<UcionicaAssets>();
+            InstalledSoftware = new HashSet<Software>();
         }
-        public Ucionica(string id, string opis, int brMesta)
+        public Ucionica(string id, string opis, int brMesta) : this()
         {
             BrRadnihMesta = brMesta;
             ID = id;
             Opis = opis;
-            Assets = new HashSet<UcionicaAssets>();
-            InstalledSoftware = new HashSet<Software>();
+           
 
         }
 

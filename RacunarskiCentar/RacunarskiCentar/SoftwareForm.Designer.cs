@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelID = new System.Windows.Forms.Label();
             this.labelIme = new System.Windows.Forms.Label();
             this.labelProizvodjac = new System.Windows.Forms.Label();
@@ -47,6 +48,7 @@
             this.labelOS = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // labelID
@@ -57,6 +59,7 @@
             this.labelID.Size = new System.Drawing.Size(18, 13);
             this.labelID.TabIndex = 0;
             this.labelID.Text = "ID";
+            this.toolTip1.SetToolTip(this.labelID, "Jedinstveno obelezje sofvera.");
             // 
             // labelIme
             // 
@@ -66,6 +69,7 @@
             this.labelIme.Size = new System.Drawing.Size(34, 13);
             this.labelIme.TabIndex = 1;
             this.labelIme.Text = "Naziv";
+            this.toolTip1.SetToolTip(this.labelIme, "Naziv softvera.");
             // 
             // labelProizvodjac
             // 
@@ -75,6 +79,7 @@
             this.labelProizvodjac.Size = new System.Drawing.Size(62, 13);
             this.labelProizvodjac.TabIndex = 2;
             this.labelProizvodjac.Text = "Proizvodjac";
+            this.toolTip1.SetToolTip(this.labelProizvodjac, "Proizvodjac sofvera.");
             // 
             // labelURL
             // 
@@ -84,6 +89,7 @@
             this.labelURL.Size = new System.Drawing.Size(29, 13);
             this.labelURL.TabIndex = 3;
             this.labelURL.Text = "URL";
+            this.toolTip1.SetToolTip(this.labelURL, "URL Adresa.");
             // 
             // labelGodina
             // 
@@ -93,6 +99,7 @@
             this.labelGodina.Size = new System.Drawing.Size(41, 13);
             this.labelGodina.TabIndex = 4;
             this.labelGodina.Text = "Godina";
+            this.toolTip1.SetToolTip(this.labelGodina, "Godina softvera.");
             // 
             // labelCena
             // 
@@ -102,6 +109,7 @@
             this.labelCena.Size = new System.Drawing.Size(32, 13);
             this.labelCena.TabIndex = 5;
             this.labelCena.Text = "Cena";
+            this.toolTip1.SetToolTip(this.labelCena, "Cena softvera.");
             // 
             // labelOpis
             // 
@@ -111,6 +119,7 @@
             this.labelOpis.Size = new System.Drawing.Size(28, 13);
             this.labelOpis.TabIndex = 6;
             this.labelOpis.Text = "Opis";
+            this.toolTip1.SetToolTip(this.labelOpis, "Opis softvera.");
             // 
             // textBoxID
             // 
@@ -118,6 +127,7 @@
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(220, 20);
             this.textBoxID.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.textBoxID, "Jedinstveno obelezje sofvera.");
             this.textBoxID.Validated += new System.EventHandler(this.textBoxID_Validated);
             // 
             // textBoxIme
@@ -126,6 +136,7 @@
             this.textBoxIme.Name = "textBoxIme";
             this.textBoxIme.Size = new System.Drawing.Size(220, 20);
             this.textBoxIme.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.textBoxIme, "Naziv softvera.");
             this.textBoxIme.Validated += new System.EventHandler(this.textBoxIme_Validated);
             // 
             // textBoxProizvodjac
@@ -134,6 +145,7 @@
             this.textBoxProizvodjac.Name = "textBoxProizvodjac";
             this.textBoxProizvodjac.Size = new System.Drawing.Size(220, 20);
             this.textBoxProizvodjac.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.textBoxProizvodjac, "Proizvodjac sofvera.");
             // 
             // textBoxURL
             // 
@@ -141,6 +153,7 @@
             this.textBoxURL.Name = "textBoxURL";
             this.textBoxURL.Size = new System.Drawing.Size(220, 20);
             this.textBoxURL.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.textBoxURL, "URL Adresa.");
             // 
             // textBoxGodina
             // 
@@ -148,6 +161,7 @@
             this.textBoxGodina.Name = "textBoxGodina";
             this.textBoxGodina.Size = new System.Drawing.Size(220, 20);
             this.textBoxGodina.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.textBoxGodina, "Godina softvera.");
             // 
             // textBoxCena
             // 
@@ -155,6 +169,7 @@
             this.textBoxCena.Name = "textBoxCena";
             this.textBoxCena.Size = new System.Drawing.Size(220, 20);
             this.textBoxCena.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.textBoxCena, "Cena softvera.");
             this.textBoxCena.Validated += new System.EventHandler(this.textBoxCena_Validated);
             // 
             // buttonSacuvaj
@@ -165,6 +180,7 @@
             this.buttonSacuvaj.Size = new System.Drawing.Size(75, 23);
             this.buttonSacuvaj.TabIndex = 14;
             this.buttonSacuvaj.Text = "Sacuvaj";
+            this.toolTip1.SetToolTip(this.buttonSacuvaj, "Sacuvaj i zatvori.");
             this.buttonSacuvaj.UseVisualStyleBackColor = true;
             this.buttonSacuvaj.Click += new System.EventHandler(this.buttonSacuvaj_Click);
             // 
@@ -176,6 +192,7 @@
             this.buttonOdustani.Size = new System.Drawing.Size(75, 23);
             this.buttonOdustani.TabIndex = 15;
             this.buttonOdustani.Text = "Odustani";
+            this.toolTip1.SetToolTip(this.buttonOdustani, "Odustani.");
             this.buttonOdustani.UseVisualStyleBackColor = true;
             // 
             // richTextBoxOpis
@@ -185,6 +202,7 @@
             this.richTextBoxOpis.Size = new System.Drawing.Size(220, 56);
             this.richTextBoxOpis.TabIndex = 16;
             this.richTextBoxOpis.Text = "";
+            this.toolTip1.SetToolTip(this.richTextBoxOpis, "Opis softvera.");
             // 
             // labelOS
             // 
@@ -270,5 +288,6 @@
         private System.Windows.Forms.Label labelOS;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

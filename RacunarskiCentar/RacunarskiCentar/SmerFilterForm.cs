@@ -15,6 +15,16 @@ namespace RacunarskiCentar
         public SmerFilterForm()
         {
             InitializeComponent();
+
+            dataGridView1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Left;
+            MinimumSize = Size;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.RowHeadersVisible = false;
+            FormBorderStyle = FormBorderStyle.Sizable;
+
             this.VisibleChanged += initTabela;
             textBox1.TextChanged += initTabela;
             textBoxIme.TextChanged += initTabela;
@@ -36,9 +46,7 @@ namespace RacunarskiCentar
         {
             SmerForm f = new SmerForm(null);
             f.ShowDialog();
-            DialogResult = DialogResult.None;
-            initTabela(sender, e);
-            //this.Hide();
+            f.Dispose();
         }
         private void initTabela(object sender, EventArgs e)
         {
@@ -50,12 +58,8 @@ namespace RacunarskiCentar
             DataManger.SmerFilter.ID = textBox1.Text;
             DataManger.SmerFilter.Ime = textBoxIme.Text;
 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.MultiSelect = false;
+
             dataGridView1.ColumnCount = 4;
-            dataGridView1.RowHeadersVisible = false;
             dataGridView1.Columns[0].Name = "ID";
             dataGridView1.Columns[1].Name = "Ime";
             dataGridView1.Columns[2].Name = "Datum uvodjenja";
@@ -83,15 +87,12 @@ namespace RacunarskiCentar
                 DataGridViewRow selectedRow = dataGridView1.Rows[index];
                 string id = selectedRow.Cells[0].Value.ToString();
                 System.Diagnostics.Debug.WriteLine(id);
-                //brisanje ovde
                 Smer smer = DataManger.GetSmerID(id);
                 DeleteAction d = new DeleteAction(smer);
                 DataControllercs.addAction(d);
-                this.BringToFront();
             }
             catch
             {
-                this.BringToFront();
             }
         }
 
@@ -107,13 +108,17 @@ namespace RacunarskiCentar
                 Smer smer = DataManger.GetSmerID(id);
                 SmerForm f = new SmerForm(smer);
                 f.ShowDialog();
-                DialogResult = DialogResult.None;
-                this.BringToFront();
+                f.Dispose();
             }
             catch
             {
-                this.BringToFront();
+
             }
+        }
+
+        private void SmerFilterForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

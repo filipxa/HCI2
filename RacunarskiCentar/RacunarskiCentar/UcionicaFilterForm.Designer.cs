@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelID = new System.Windows.Forms.Label();
             this.labelBrRadnihMesta = new System.Windows.Forms.Label();
             this.labelDodatnaOprema = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@
             this.buttonOdustani = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonIzmeni = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrRadnihMesta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +54,7 @@
             this.labelID.Size = new System.Drawing.Size(18, 13);
             this.labelID.TabIndex = 0;
             this.labelID.Text = "ID";
+            this.toolTip1.SetToolTip(this.labelID, "Jedinstveno obelezje ucionice");
             // 
             // labelBrRadnihMesta
             // 
@@ -79,6 +82,7 @@
             this.labelNeophodanSoftver.Size = new System.Drawing.Size(98, 13);
             this.labelNeophodanSoftver.TabIndex = 3;
             this.labelNeophodanSoftver.Text = "Neophodan softver";
+            this.toolTip1.SetToolTip(this.labelNeophodanSoftver, "Neophodan softver u ucionici.");
             // 
             // textBoxID
             // 
@@ -86,6 +90,7 @@
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(162, 20);
             this.textBoxID.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.textBoxID, "Jedinstveno obelezje ucionice");
             // 
             // numericUpDownBrRadnihMesta
             // 
@@ -98,6 +103,7 @@
             this.numericUpDownBrRadnihMesta.Name = "numericUpDownBrRadnihMesta";
             this.numericUpDownBrRadnihMesta.Size = new System.Drawing.Size(85, 20);
             this.numericUpDownBrRadnihMesta.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.numericUpDownBrRadnihMesta, "Broj radnih mesta.");
             this.numericUpDownBrRadnihMesta.Value = new decimal(new int[] {
             1,
             0,
@@ -111,6 +117,7 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(162, 184);
             this.checkedListBox1.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.checkedListBox1, "Lista opreme u ucionici.");
             // 
             // checkedListBox2
             // 
@@ -119,6 +126,7 @@
             this.checkedListBox2.Name = "checkedListBox2";
             this.checkedListBox2.Size = new System.Drawing.Size(168, 184);
             this.checkedListBox2.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.checkedListBox2, "Neophodan softver u ucionici.");
             // 
             // buttonPotvrdi
             // 
@@ -127,6 +135,7 @@
             this.buttonPotvrdi.Size = new System.Drawing.Size(90, 23);
             this.buttonPotvrdi.TabIndex = 8;
             this.buttonPotvrdi.Text = "Dodaj ucionicu";
+            this.toolTip1.SetToolTip(this.buttonPotvrdi, "Dodaj ucionicu.");
             this.buttonPotvrdi.UseVisualStyleBackColor = true;
             this.buttonPotvrdi.Click += new System.EventHandler(this.buttonPotvrdi_Click);
             // 
@@ -137,8 +146,9 @@
             this.buttonOdustani.Size = new System.Drawing.Size(90, 23);
             this.buttonOdustani.TabIndex = 9;
             this.buttonOdustani.Text = "Obrisi";
+            this.toolTip1.SetToolTip(this.buttonOdustani, "Obrisi ucionicu.");
             this.buttonOdustani.UseVisualStyleBackColor = true;
-            this.buttonOdustani.Click += new System.EventHandler(this.buttonOdustani_Click);
+            this.buttonOdustani.Click += new System.EventHandler(this.buttonObrisi_Click);
             // 
             // dataGridView1
             // 
@@ -155,6 +165,7 @@
             this.buttonIzmeni.Size = new System.Drawing.Size(75, 23);
             this.buttonIzmeni.TabIndex = 11;
             this.buttonIzmeni.Text = "Izmeni";
+            this.toolTip1.SetToolTip(this.buttonIzmeni, "Izmeni ucionicu.");
             this.buttonIzmeni.UseVisualStyleBackColor = true;
             this.buttonIzmeni.Click += new System.EventHandler(this.buttonIzmeni_Click);
             // 
@@ -201,5 +212,6 @@
         private System.Windows.Forms.Button buttonOdustani;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonIzmeni;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

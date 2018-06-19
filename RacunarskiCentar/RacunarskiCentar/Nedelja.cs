@@ -50,8 +50,10 @@ namespace RacunarskiCentar
             {
                 
                 int diff = (7 + (value.DayOfWeek - DayOfWeek.Monday)) % 7;
+                int day = - 1 * diff;
 
-                ponedeljak = new DateTime(value.Year, value.Month, value.Day - 1 * diff, 7, 0, 0);
+                ponedeljak = new DateTime(value.Year, value.Month,  value.Day, 7, 0, 0);
+                ponedeljak = ponedeljak.AddDays(day);
 
             }
         }
@@ -122,5 +124,28 @@ namespace RacunarskiCentar
             Termini = ned.Termini;
             Ponedeljak = ned.Ponedeljak;
         }
+
+        private bool DateBetween(DateTime date1, DateTime date2, params DateTime[] datesToCheck)
+        {
+            foreach (DateTime date in datesToCheck)
+            {
+                if (date1 <= date && date2 >= date)
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
+
+        public bool IsInNedelja(DateTime date)
+        {
+            DateTime krajNedelje = new DateTime(ponedeljak.Year, ponedeljak.Month, ponedeljak.Day, 23, 59, 59);
+            krajNedelje = krajNedelje.AddDays(6);
+
+            return DateBetween(ponedeljak, krajNedelje, date);
+        }
+
+     
     }
 }

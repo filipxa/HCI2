@@ -13,12 +13,24 @@ namespace RacunarskiCentar
 {
     public partial class UcionicaFilterForm : Form
     {
-        List<UcionicaAssets> OS = new List<UcionicaAssets>();
+        List<UcionicaAssets> uAssets = new List<UcionicaAssets>();
+        HashSet<Software> softwares = new HashSet<Software>();
+        
         public UcionicaFilterForm()
         {
             
 
             InitializeComponent();
+            dataGridView1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Left;
+            MinimumSize = Size;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.RowHeadersVisible = false;
+            FormBorderStyle = FormBorderStyle.Sizable;
+
+
             foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
             {
                 checkedListBox1.Items.Add(new ComboValue(aset), false);
@@ -28,12 +40,32 @@ namespace RacunarskiCentar
             this.VisibleChanged += initTabela;
 
             checkedListBox1.ItemCheck += CheckedListBox1_ItemCheck;
+
+
+
             DataControllercs.onAction += ActionExcuted;
             numericUpDownBrRadnihMesta.ValueChanged += initTabela;
             textBoxID.TextChanged += initTabela;
 
-            checkedListBox2.ItemCheck += initTabela;
+            checkedListBox2.ItemCheck += CheckedListBox2_ItemCheck;
+
+
             FormClosing += Form_Closing;
+        }
+
+        private void CheckedListBox2_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            Software soft = (Software)checkedListBox2.Items[e.Index];
+            if (e.NewValue==CheckState.Checked)
+            {
+                softwares.Add(soft);
+            }
+            else
+            {
+                softwares.Remove(soft);
+            }
+            initTabela(sender, e);
+            
         }
 
         private void Form_Closing(object sender, FormClosingEventArgs e)
@@ -52,16 +84,12 @@ namespace RacunarskiCentar
             
             if (!this.Visible)
                 return;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataManger.UcionicaFilter.ID = textBoxID.Text;
             DataManger.UcionicaFilter.BrRadnihMesta = Convert.ToInt32(numericUpDownBrRadnihMesta.Value);
-            DataManger.UcionicaFilter.Assets = getUcionicaAssets();
+            DataManger.UcionicaFilter.Assets = new HashSet<UcionicaAssets>(uAssets);
             DataManger.UcionicaFilter.InstalledSoftware = getInstalledSoft();
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.MultiSelect = false;
-            //dataGridView1.ColumnHeadersVisible = false;
 
+            
             dataGridView1.Rows.Clear();
             dataGridView1.ColumnCount = 3;
             dataGridView1.Columns[0].Name = "ID";
@@ -74,7 +102,7 @@ namespace RacunarskiCentar
 
         private void popunjavanjeTabele()
         {
-            foreach (Ucionica p in DataManger.getUcionice())
+            foreach (Ucionica p in DataManger.ucionicaFilterisanje())
             {
                 string[] row = { p.ID, p.Opis, Convert.ToString(p.BrRadnihMesta) };
                 dataGridView1.Rows.Add(row);
@@ -84,16 +112,17 @@ namespace RacunarskiCentar
         private void CheckedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             ComboValue cv = (ComboValue)checkedListBox1.Items[e.Index];
+            if (e.NewValue == CheckState.Checked)
+            {
+                uAssets.Add((UcionicaAssets)cv.Value);
+            }
+            else
+            {
+                uAssets.Remove((UcionicaAssets)cv.Value);
+            }
             if (cv.Value.Equals(UcionicaAssets.windows) || cv.Value.Equals(UcionicaAssets.linux))
             {
-                if (e.NewValue == CheckState.Checked)
-                {
-                    OS.Add((UcionicaAssets)cv.Value);
-                }
-                else
-                {
-                    OS.Remove((UcionicaAssets)cv.Value);
-                }
+               
 
                 popuniSoftvere();
             }
@@ -107,8 +136,9 @@ namespace RacunarskiCentar
         {
             checkedListBox2.Items.Clear();
             List<UcionicaAssets> listaSistema = new List<UcionicaAssets>();
+            listaSistema = uAssets.Where(x => x.Equals(UcionicaAssets.windows) || x.Equals(UcionicaAssets.linux)).ToList();
 
-            foreach (Software s in DataManger.softverOperativanSistemFiltiriranje(OS))
+            foreach (Software s in DataManger.softverOperativanSistemFiltiriranje(listaSistema))
             {
                 bool postoji = false;
                 if (DataManger.UcionicaFilter != null)
@@ -120,6 +150,8 @@ namespace RacunarskiCentar
 
         }
 
+        
+
         private void buttonPotvrdi_Click(object sender, EventArgs e)
         {
             UcionicaForm f = new UcionicaForm(null);
@@ -130,27 +162,11 @@ namespace RacunarskiCentar
 
         private HashSet<Software> getInstalledSoft()
         {
-            HashSet<Software> rets = new HashSet<Software>();
-            foreach (object itemChecked in checkedListBox2.CheckedItems)
-            {
-                rets.Add((Software)itemChecked);
-
-            }
-            return rets;
+           
+            return softwares;
         }
 
-        private HashSet<UcionicaAssets> getUcionicaAssets()
-        {
-            HashSet<UcionicaAssets> rets = new HashSet<UcionicaAssets>();
-            foreach (object itemChecked in checkedListBox1.CheckedItems)
-            {
 
-                ComboValue item = ((ComboValue)itemChecked);
-                rets.Add((UcionicaAssets)item.Value);
-
-            }
-            return rets;
-        }
 
         private void datagridview1_SelectionChanged(object sender, EventArgs e)
         {
@@ -165,7 +181,7 @@ namespace RacunarskiCentar
 
             }
         }
-        private void buttonOdustani_Click(object sender, EventArgs e)
+        private void buttonObrisi_Click(object sender, EventArgs e)
         {
             try
             {
@@ -173,17 +189,19 @@ namespace RacunarskiCentar
                 DataGridViewRow selectedRow = dataGridView1.Rows[index];
                 string id = selectedRow.Cells[0].Value.ToString();
                 System.Diagnostics.Debug.WriteLine(id);
-                //brisanje ovde
                 Ucionica ucionica = DataManger.GetUcionicaID(id);
                 DeleteAction d = new DeleteAction(ucionica);
                 DataControllercs.addAction(d);
-                this.BringToFront();
+
             }
             catch
             {
-                this.BringToFront();
+               
             }
+
         }
+
+
 
         private void buttonIzmeni_Click(object sender, EventArgs e)
         {
@@ -195,13 +213,14 @@ namespace RacunarskiCentar
                 System.Diagnostics.Debug.WriteLine(id);
                 
                 Ucionica ucionica = DataManger.GetUcionicaID(id);
-                DeleteAction d = new DeleteAction(ucionica);
-                DataControllercs.addAction(d);
-                BringToFront();
+                UcionicaForm uf = new UcionicaForm(ucionica);
+                
+                uf.ShowDialog();
+                uf.Dispose();
             }
             catch
             {
-                this.BringToFront();
+              
             }
            
             //brisanje ovde

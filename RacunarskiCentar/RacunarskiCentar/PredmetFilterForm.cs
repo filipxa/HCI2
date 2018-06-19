@@ -13,9 +13,19 @@ namespace RacunarskiCentar
 {
     public partial class PredmetFilterForm : Form
     {
+        HashSet<UcionicaAssets> uAssets = new HashSet<UcionicaAssets>();
         public PredmetFilterForm()
         {
             InitializeComponent();
+
+            this.dataGridView1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top  | AnchorStyles.Left ;
+            MinimumSize = Size;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.RowHeadersVisible = false;
+            FormBorderStyle = FormBorderStyle.Sizable;
 
             this.VisibleChanged += initTabela;
             textBoxID.TextChanged += initTabela;
@@ -25,17 +35,33 @@ namespace RacunarskiCentar
             numericUpDownBrojTermina.ValueChanged += initTabela;
             numericUpDownDuzinaTermina.ValueChanged += initTabela;
 
+
             foreach (UcionicaAssets aset in Enum.GetValues(typeof(UcionicaAssets)))
             {
                 checkedListBox1.Items.Add(new ComboValue(aset), false);
             }
 
-            checkedListBox1.MouseClick += initTabela;
-            //checkedListBox1.ItemCheck += initTabela;
-
+            checkedListBox1.ItemCheck += CheckedListBox1_ItemCheck;
+           
 
             DataControllercs.onAction += ActionExcuted;
             FormClosing += Form_Closing;
+        }
+
+        private void CheckedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            ComboValue cv = (ComboValue)checkedListBox1.Items[e.Index];
+            if (e.NewValue == CheckState.Checked)
+            {
+                uAssets.Add((UcionicaAssets)cv.Value);
+            }
+            else
+            {
+                uAssets.Remove((UcionicaAssets)cv.Value);
+            }
+
+
+            initTabela(null, null);
         }
 
         private void Form_Closing(object sender, FormClosingEventArgs e)
@@ -62,12 +88,7 @@ namespace RacunarskiCentar
             DataManger.PredmetFiler.Assets = getUcionicaAssets();
             DataManger.PredmetFiler.SmerPredmeta = new Smer(textBoxSmer.Text, "", DateTime.MinValue, "", null);
 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.MultiSelect = false;
             dataGridView1.Rows.Clear();
-            dataGridView1.RowHeadersVisible = false;
             dataGridView1.ColumnCount = 7;
             dataGridView1.Columns[0].Name = "ID";
             dataGridView1.Columns[1].Name = "Ime";
@@ -94,34 +115,32 @@ namespace RacunarskiCentar
         {
             PredmetForm f = new PredmetForm(null, null);
             f.ShowDialog();
-            DialogResult = DialogResult.None;
-            initTabela(sender, e);
-            //this.Hide();
+            f.Dispose();
         }
 
         private HashSet<UcionicaAssets> getUcionicaAssets()
         {
-            HashSet<UcionicaAssets> rets = new HashSet<UcionicaAssets>();
-            foreach (object itemChecked in checkedListBox1.CheckedItems)
-            {
-
-                ComboValue item = ((ComboValue)itemChecked);
-                rets.Add((UcionicaAssets)item.Value);
-
-            }
-            return rets;
+           
+            return uAssets;
         }
 
         private void buttonObrisi_Click(object sender, EventArgs e)
         {
-            int index = dataGridView1.CurrentCell.RowIndex;
-            DataGridViewRow selectedRow = dataGridView1.Rows[index];
-            string id = selectedRow.Cells[0].Value.ToString();
-            System.Diagnostics.Debug.WriteLine(id);
-            //brisanje ovde
-            Predmet predmet = DataManger.getPredmetByID(id);
-            DeleteAction d = new DeleteAction(predmet);
-            DataControllercs.addAction(d);
+            try
+            {
+                int index = dataGridView1.CurrentCell.RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[index];
+                string id = selectedRow.Cells[0].Value.ToString();
+                System.Diagnostics.Debug.WriteLine(id);
+                Predmet predmet = DataManger.getPredmetByID(id);
+                DeleteAction d = new DeleteAction(predmet);
+                DataControllercs.addAction(d);
+            }
+            catch 
+            {
+
+            }
+           
         }
 
         private void Izmeni_Click(object sender, EventArgs e)
@@ -136,12 +155,12 @@ namespace RacunarskiCentar
                 Predmet predmet = DataManger.getPredmetByID(id);
                 PredmetForm f = new PredmetForm(predmet,predmet.SmerPredmeta);
                 f.ShowDialog();
-                DialogResult = DialogResult.None;
-                this.BringToFront();
+                f.Dispose();
+
             }
             catch
             {
-                this.BringToFront();
+
             }
         }
     }

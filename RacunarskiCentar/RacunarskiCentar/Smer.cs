@@ -85,7 +85,7 @@ namespace RacunarskiCentar
 
         public override GUIObject Copy()
         {
-            return new Smer(id, ime, datumUvodjenja, opis);
+            return new Smer(id, ime, datumUvodjenja, opis, predmeti);
         }
 
 
@@ -100,6 +100,10 @@ namespace RacunarskiCentar
             Opis = s.Opis;
             Predmeti = s.Predmeti;
             
+        }
+        public override string ToString()
+        {
+            return ID;
         }
     }
 }

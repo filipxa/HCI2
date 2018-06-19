@@ -17,7 +17,7 @@ namespace RacunarskiCentar
             this.smer = smer;
             this.predmet = predmet;
             InitializeComponent();
-            comboBoxSmer.SelectedIndexChanged += ComboBoxSmer_SelectedIndexChanged;
+            comboBoxSmer.SelectedValueChanged += ComboBoxSmer_SelectedIndexChanged;
             if (predmet != null)
             {
                 popuniPolja();
@@ -30,10 +30,20 @@ namespace RacunarskiCentar
                 {
                     foreach (Smer s in DataManger.getSmers())
                     {
-                        comboBoxSmer.Items.Add(s.ToString());
+                        comboBoxSmer.Items.Add(s);
                     }
                     if (comboBoxSmer.Items.Count == 0)
                         comboBoxSmer.Enabled = false;
+                    else
+                    {
+                        comboBoxSmer.SelectedIndex = 0;
+                    }
+                }
+                else
+                {
+                    comboBoxSmer.Items.Add(smer);
+                    comboBoxSmer.SelectedIndex = 0;
+                    comboBoxSmer.Enabled = false;
                 }
             }
             popuniOpremaBox();
@@ -41,7 +51,7 @@ namespace RacunarskiCentar
 
         private void ComboBoxSmer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            smer = (Smer)comboBoxSmer.SelectedValue;
+            smer = (Smer)comboBoxSmer.SelectedItem;
         }
 
         private void popuniOpremaBox()
@@ -76,6 +86,7 @@ namespace RacunarskiCentar
                 predmet = new Predmet(textBoxID.Text, textBoxNaziv.Text, smer, richTextBoxOpis.Text, 
                     Convert.ToInt32(numericUpDownBrojLjudi.Value), Convert.ToInt32(numericUpDownDuzinaTermina.Value), 
                     Convert.ToInt32(numericUpDownBrojTermina.Value));
+                predmet.Assets = getUcionicaAssets();
 
                 action = new CreateAction(predmet);
             }
@@ -89,6 +100,9 @@ namespace RacunarskiCentar
                 predmet.BrTermina = Convert.ToInt32(numericUpDownBrojTermina.Value);
                 predmet.Opis = richTextBoxOpis.Text;
                 predmet.Assets = getUcionicaAssets();
+                predmet.SmerPredmeta = smer;
+
+                
             }
 
             DataControllercs.addAction(action);
@@ -148,15 +162,10 @@ namespace RacunarskiCentar
 
             if (predmet == null)
             {
-                foreach (Predmet p in DataManger.getPredmeti())
-                {
-
-                    if (p.ID.Equals(textBoxID.Text))
-                    {
-                        poruka += "#" + rb + ": Predmet sa id-em " + textBoxID.Text + " vec postoji..\n";
-                        rb++;
-                        break;
-                    }
+               if( DataManger.getPredmetByID(textBoxID.Text)!=null)
+                 {
+                    poruka += "#" + rb + ": Predmet sa id-em " + textBoxID.Text + " vec postoji..\n";
+                    rb++;
                 }
             }
             if (textBoxID.Text.Length == 0)

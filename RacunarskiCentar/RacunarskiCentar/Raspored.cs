@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using System.Linq;
 
 namespace RacunarskiCentar
 {
@@ -40,6 +41,18 @@ namespace RacunarskiCentar
             set => radneNedelje = new List<Nedelja>(value);
         }
        
+        public Nedelja GetNedelja(DateTime date)
+        {
+            List<Nedelja> rets  = radneNedelje.Where(x => x.IsInNedelja(date)).ToList();
+            if (rets.Count > 0)
+            {
+                return rets[0];
+            }
+            Nedelja ned = new Nedelja(this, date);
+            radneNedelje.Add(ned);
+            return ned;
+
+        }
 
 
 

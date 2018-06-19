@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
@@ -38,6 +39,7 @@
             this.labelBrMesta = new System.Windows.Forms.Label();
             this.buttonSacuvaj = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,6 +49,7 @@
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(120, 20);
             this.textBoxID.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.textBoxID, "Jedinstveno obelezje ucionice.");
             this.textBoxID.Validated += new System.EventHandler(this.textBoxID_Validated);
             // 
             // numericUpDown1
@@ -60,6 +63,7 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown1.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.numericUpDown1, "Broj mesta u ucionici.");
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
             0,
@@ -74,6 +78,7 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(120, 169);
             this.checkedListBox1.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.checkedListBox1, "Lista opreme u ucionici.");
             this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // checkedListBox2
@@ -91,6 +96,7 @@
             this.richTextBox1.Size = new System.Drawing.Size(246, 96);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
+            this.toolTip1.SetToolTip(this.richTextBox1, "Detaljniji opis ucionice.");
             // 
             // labelOpis
             // 
@@ -109,6 +115,7 @@
             this.labelID.Size = new System.Drawing.Size(18, 13);
             this.labelID.TabIndex = 4;
             this.labelID.Text = "ID";
+            this.toolTip1.SetToolTip(this.labelID, "Jedinstveno obelezje ucionice.");
             // 
             // labelBrMesta
             // 
@@ -118,6 +125,7 @@
             this.labelBrMesta.Size = new System.Drawing.Size(51, 13);
             this.labelBrMesta.TabIndex = 4;
             this.labelBrMesta.Text = "Br. mesta";
+            this.toolTip1.SetToolTip(this.labelBrMesta, "Broj mesta u ucionici.");
             // 
             // buttonSacuvaj
             // 
@@ -127,6 +135,7 @@
             this.buttonSacuvaj.Size = new System.Drawing.Size(75, 23);
             this.buttonSacuvaj.TabIndex = 5;
             this.buttonSacuvaj.Text = "Sacuvaj";
+            this.toolTip1.SetToolTip(this.buttonSacuvaj, "Sacuvaj.");
             this.buttonSacuvaj.UseVisualStyleBackColor = true;
             this.buttonSacuvaj.Click += new System.EventHandler(this.buttonSacuvaj_Click);
             // 
@@ -138,6 +147,7 @@
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
             this.button1.Text = "Odustani";
+            this.toolTip1.SetToolTip(this.button1, "Odustani.");
             this.button1.UseVisualStyleBackColor = true;
             // 
             // UcionicaForm
@@ -180,5 +190,6 @@
         private System.Windows.Forms.Label labelBrMesta;
         private System.Windows.Forms.Button buttonSacuvaj;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelID = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBoxIme = new System.Windows.Forms.TextBox();
@@ -36,6 +37,7 @@
             this.buttonObrisi = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonIzmena = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,6 +49,7 @@
             this.labelID.Size = new System.Drawing.Size(18, 13);
             this.labelID.TabIndex = 0;
             this.labelID.Text = "ID";
+            this.toolTip1.SetToolTip(this.labelID, "Jedinstveno obelezje smera.");
             // 
             // textBox1
             // 
@@ -54,6 +57,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(182, 20);
             this.textBox1.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.textBox1, "Jedinstveno obelezje smera.");
             // 
             // textBoxIme
             // 
@@ -61,6 +65,7 @@
             this.textBoxIme.Name = "textBoxIme";
             this.textBoxIme.Size = new System.Drawing.Size(182, 20);
             this.textBoxIme.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.textBoxIme, "Naziv smera.");
             // 
             // labelNaziv
             // 
@@ -70,15 +75,16 @@
             this.labelNaziv.Size = new System.Drawing.Size(34, 13);
             this.labelNaziv.TabIndex = 3;
             this.labelNaziv.Text = "Naziv";
+            this.toolTip1.SetToolTip(this.labelNaziv, "Naziv smera.");
             // 
             // buttonPotvrdi
             // 
-            this.buttonPotvrdi.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonPotvrdi.Location = new System.Drawing.Point(100, 144);
             this.buttonPotvrdi.Name = "buttonPotvrdi";
             this.buttonPotvrdi.Size = new System.Drawing.Size(90, 23);
             this.buttonPotvrdi.TabIndex = 4;
             this.buttonPotvrdi.Text = "Dodaj smer";
+            this.toolTip1.SetToolTip(this.buttonPotvrdi, "Dodaj smer.");
             this.buttonPotvrdi.UseVisualStyleBackColor = true;
             this.buttonPotvrdi.Click += new System.EventHandler(this.buttonPotvrdi_Click);
             // 
@@ -89,6 +95,7 @@
             this.buttonObrisi.Size = new System.Drawing.Size(75, 23);
             this.buttonObrisi.TabIndex = 5;
             this.buttonObrisi.Text = "Obrisi";
+            this.toolTip1.SetToolTip(this.buttonObrisi, "Obrisi smer.");
             this.buttonObrisi.UseVisualStyleBackColor = true;
             this.buttonObrisi.Click += new System.EventHandler(this.buttonObrisi_Click);
             // 
@@ -107,6 +114,7 @@
             this.buttonIzmena.Size = new System.Drawing.Size(75, 23);
             this.buttonIzmena.TabIndex = 7;
             this.buttonIzmena.Text = "Izmena";
+            this.toolTip1.SetToolTip(this.buttonIzmena, "Izmeni smer.");
             this.buttonIzmena.UseVisualStyleBackColor = true;
             this.buttonIzmena.Click += new System.EventHandler(this.buttonIzmena_Click);
             // 
@@ -129,6 +137,7 @@
             this.Name = "SmerFilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Smerovi obrada";
+            this.Load += new System.EventHandler(this.SmerFilterForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -145,5 +154,6 @@
         private System.Windows.Forms.Button buttonObrisi;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonIzmena;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

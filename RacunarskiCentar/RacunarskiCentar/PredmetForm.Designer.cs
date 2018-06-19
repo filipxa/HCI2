@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelID = new System.Windows.Forms.Label();
             this.labelNaziv = new System.Windows.Forms.Label();
             this.textBoxID = new System.Windows.Forms.TextBox();
@@ -46,6 +47,7 @@
             this.numericUpDownBrojTermina = new System.Windows.Forms.NumericUpDown();
             this.labelSmer = new System.Windows.Forms.Label();
             this.comboBoxSmer = new System.Windows.Forms.ComboBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojLjudi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDuzinaTermina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrojTermina)).BeginInit();
@@ -59,6 +61,7 @@
             this.labelID.Size = new System.Drawing.Size(18, 13);
             this.labelID.TabIndex = 0;
             this.labelID.Text = "ID";
+            this.toolTip1.SetToolTip(this.labelID, "Jedinstveno obelezje predemta.");
             // 
             // labelNaziv
             // 
@@ -68,6 +71,7 @@
             this.labelNaziv.Size = new System.Drawing.Size(81, 13);
             this.labelNaziv.TabIndex = 1;
             this.labelNaziv.Text = "Naziv predmeta";
+            this.toolTip1.SetToolTip(this.labelNaziv, "Naziv predmeta.");
             // 
             // textBoxID
             // 
@@ -75,6 +79,7 @@
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(146, 20);
             this.textBoxID.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.textBoxID, "Jedinstveno obelezje predemta.");
             this.textBoxID.Validated += new System.EventHandler(this.textBoxID_Validated);
             // 
             // textBoxNaziv
@@ -83,6 +88,7 @@
             this.textBoxNaziv.Name = "textBoxNaziv";
             this.textBoxNaziv.Size = new System.Drawing.Size(174, 20);
             this.textBoxNaziv.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.textBoxNaziv, "Naziv predmeta.");
             // 
             // labelOpis
             // 
@@ -127,6 +133,7 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(146, 169);
             this.checkedListBox1.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.checkedListBox1, "Lista neophodne opreme na predmetu.");
             // 
             // label1
             // 
@@ -144,6 +151,7 @@
             this.richTextBoxOpis.Size = new System.Drawing.Size(174, 169);
             this.richTextBoxOpis.TabIndex = 14;
             this.richTextBoxOpis.Text = "";
+            this.toolTip1.SetToolTip(this.richTextBoxOpis, "Detaljniji opis predmeta.");
             // 
             // buttonSacuvaj
             // 
@@ -153,6 +161,7 @@
             this.buttonSacuvaj.Size = new System.Drawing.Size(75, 23);
             this.buttonSacuvaj.TabIndex = 15;
             this.buttonSacuvaj.Text = "Sacuvaj";
+            this.toolTip1.SetToolTip(this.buttonSacuvaj, "Sacuvaj podatke i zatvori.");
             this.buttonSacuvaj.UseVisualStyleBackColor = true;
             this.buttonSacuvaj.Click += new System.EventHandler(this.buttonSacuvaj_Click);
             // 
@@ -164,6 +173,7 @@
             this.buttonOdustani.Size = new System.Drawing.Size(75, 23);
             this.buttonOdustani.TabIndex = 16;
             this.buttonOdustani.Text = "Odustani";
+            this.toolTip1.SetToolTip(this.buttonOdustani, "Zatvori formu bez cuvanja.");
             this.buttonOdustani.UseVisualStyleBackColor = true;
             // 
             // numericUpDownBrojLjudi
@@ -172,6 +182,7 @@
             this.numericUpDownBrojLjudi.Name = "numericUpDownBrojLjudi";
             this.numericUpDownBrojLjudi.Size = new System.Drawing.Size(78, 20);
             this.numericUpDownBrojLjudi.TabIndex = 17;
+            this.toolTip1.SetToolTip(this.numericUpDownBrojLjudi, "Broj ljudi koji slusa predmet.");
             this.numericUpDownBrojLjudi.Value = new decimal(new int[] {
             1,
             0,
@@ -230,14 +241,17 @@
             this.labelSmer.Size = new System.Drawing.Size(31, 13);
             this.labelSmer.TabIndex = 20;
             this.labelSmer.Text = "Smer";
+            this.toolTip1.SetToolTip(this.labelSmer, "Smer.");
             // 
             // comboBoxSmer
             // 
+            this.comboBoxSmer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSmer.FormattingEnabled = true;
             this.comboBoxSmer.Location = new System.Drawing.Point(27, 95);
             this.comboBoxSmer.Name = "comboBoxSmer";
             this.comboBoxSmer.Size = new System.Drawing.Size(146, 21);
             this.comboBoxSmer.TabIndex = 21;
+            this.toolTip1.SetToolTip(this.comboBoxSmer, "Spisak smerova.");
             // 
             // PredmetForm
             // 
@@ -297,5 +311,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDownBrojTermina;
         private System.Windows.Forms.Label labelSmer;
         private System.Windows.Forms.ComboBox comboBoxSmer;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

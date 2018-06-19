@@ -18,6 +18,17 @@ namespace RacunarskiCentar
             InitializeComponent();
             this.VisibleChanged += initTabela;
 
+            dataGridView1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Left;
+            MinimumSize = Size;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.RowHeadersVisible = false;
+            FormBorderStyle = FormBorderStyle.Sizable;
+            
+
+
             numericUpDown1.ValueChanged += initTabela;
             textBoxID.TextChanged += initTabela;
             textBoxIme.TextChanged += initTabela;
@@ -46,10 +57,7 @@ namespace RacunarskiCentar
 
             SoftwareForm f = new SoftwareForm(null);
             f.ShowDialog();
-            DialogResult = DialogResult.None;
-            initTabela(sender, e);
-            //f.Dispose();
-            //this.Hide();
+            f.Dispose();
         }
         private void initTabela(object sender, EventArgs e)
         {
@@ -60,13 +68,8 @@ namespace RacunarskiCentar
             DataManger.SoftverFilter.Proizvodjac = textBoxProizvodjac.Text;
             DataManger.SoftverFilter.Cena = Convert.ToDouble(numericUpDown1.Value);
 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.MultiSelect = false;
             dataGridView1.Rows.Clear();
             dataGridView1.ColumnCount = 7;
-            dataGridView1.RowHeadersVisible = false;
             dataGridView1.Columns[0].Name = "ID";
             dataGridView1.Columns[1].Name = "Ime";
             dataGridView1.Columns[2].Name = "Proizvodjac";
@@ -99,10 +102,10 @@ namespace RacunarskiCentar
                 Software software = DataManger.GetSoftverID(id);
                 DeleteAction d = new DeleteAction(software);
                 DataControllercs.addAction(d);
-                this.BringToFront();
+
             }
             catch {
-                this.BringToFront();
+
             }
             
         }
@@ -118,12 +121,10 @@ namespace RacunarskiCentar
                 Software software = DataManger.GetSoftverID(id);
                 SoftwareForm f = new SoftwareForm(software);
                 f.ShowDialog();
-                DialogResult = DialogResult.None;
-                this.BringToFront();
+                f.Dispose();
             }
             catch
             {
-                this.BringToFront();
             }
         }
     }
