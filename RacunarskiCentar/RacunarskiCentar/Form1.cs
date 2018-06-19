@@ -286,6 +286,20 @@ namespace RacunarskiCentar
                         dodajSmerControl(s, aktivnaUcionica);   
                     }
                 }
+               
+            } else if (e is EditAction)
+            {
+                 if(currentView == FormView.UCIONICA)
+                {
+                    Ucionica u = e.getGUIObject() as Ucionica;
+                    if (u != null)
+                    {
+                        if (u == aktivnaUcionica)
+                        {
+                            initUcionicaView(u);
+                        }
+                    }
+                }
             }
             foreach(ToolStripButton b in undoButtons)
             {
