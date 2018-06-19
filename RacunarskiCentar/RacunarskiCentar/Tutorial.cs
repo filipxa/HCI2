@@ -187,7 +187,6 @@ namespace RacunarskiCentar
                     {
                         nextStep();
                         item.BackColor = old;
-
                     };
                 }
                 else
