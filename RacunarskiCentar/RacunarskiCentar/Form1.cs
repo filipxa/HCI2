@@ -144,7 +144,6 @@ namespace RacunarskiCentar
             tb = generateToolStrip();
 
 
-            FormClosing += Form1_FormClosing;
 
             DataControllercs.onAction += ActionExcuted;
             KeyPreview = true;
@@ -259,11 +258,7 @@ namespace RacunarskiCentar
             }
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if(!DataControllercs.isTutorial)
-                DataManger.save();
-        }
+
 
         private void ActionExcuted(object sender, Action e)
         {
@@ -609,19 +604,21 @@ namespace RacunarskiCentar
                 btPredmetKlik(sender, e);
             else if (e.Alt && e.KeyCode == Keys.D4)
                 btSoftverKlik(sender, e);
-            //else if (e.KeyCode == Keys.F2)
-            //    btSoftverKlik(null, null);
-            //else if (e.KeyCode == Keys.F3)
-            //    btSmerKlik(null, null);
-            //else if (e.KeyCode == Keys.F4)
-            //    btPredmetKlik(null, null);
-            //else if (e.KeyCode == Keys.F9)
-            //    MessageBox.Show("Help");
-            //else if (e.KeyCode == Keys.Back)
-            //    MessageBox.Show("Back");
 
             if (e.Control && e.KeyCode == Keys.Z)
-                MessageBox.Show("Undo");
+            {
+                Undo_Click1(null, null);
+            }
+            else if (e.Control && e.KeyCode == Keys.Y)
+            {
+                Redo_Click1(null, null);
+            }
+        }
+        private void Form1_KeyDow(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+                DataManger.goToHelp("");
+
         }
     }
     // Tutorial     Tutorial        Tutorial        Tutorial        Tutorial

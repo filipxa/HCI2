@@ -131,7 +131,7 @@ namespace RacunarskiCentar
 
                 
             }
-            if (rezimRada==Rezim.Izmena)
+            if (rezimRada==Rezim.Izmena || rezimRada == Rezim.Dodavanje)
             {
                 DataControllercs.addAction(action);
             }
