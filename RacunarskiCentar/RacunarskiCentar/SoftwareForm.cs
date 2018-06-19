@@ -29,6 +29,21 @@ namespace RacunarskiCentar
             {
                 popuniPolja();
             }
+            KeyDown += (object sender, KeyEventArgs e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    if (software != null)
+                    {
+                        System.Diagnostics.Process.Start(DataManger.helpFile + "#izemnaSoftvera");
+                    }
+                    else
+                    {
+                        System.Diagnostics.Process.Start(DataManger.helpFile + "#dodavanjeSoftvera");
+                    }
+
+                }
+            };
         }
 
         private void popuniPolja()

@@ -13,6 +13,7 @@ namespace RacunarskiCentar
         static List<Smer> smerovi = new List<Smer>();
         static List<Software> softveri = new List<Software>();
 
+        public const string helpFile = @"..\..\Help\index.html";
 
 
 
