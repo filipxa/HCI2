@@ -58,6 +58,18 @@ namespace RacunarskiCentar
                     }
                 }
             }
+            else if (e is EditAction)// OVO OVDE ZBOG EDITA GORE DOLE NAMESTITI da se pomera
+            {
+
+                Termin t = e.getGUIObject() as Termin;
+                if (t != null)
+                {
+                    if (t.Nedelja.Equals(GuiObject))
+                    {
+                        CreateTerminControl(t);
+                    }
+                }
+            }
         }
 
         private void InitDani(Nedelja nedelja)

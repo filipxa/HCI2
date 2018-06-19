@@ -190,7 +190,7 @@
             this.MinimizeBox = false;
             this.Name = "UcionicaFilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Učionice obrada";
+            this.Text = "Učionice";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBrRadnihMesta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
