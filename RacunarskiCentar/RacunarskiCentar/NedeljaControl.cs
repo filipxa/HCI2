@@ -68,6 +68,7 @@ namespace RacunarskiCentar
                     {
                         CreateTerminControl(t);
                     }
+                    
                 }
             }
         }
@@ -93,7 +94,6 @@ namespace RacunarskiCentar
                 {
                     CreateTerminControl(termin);
                 }
-
             }
 
 
