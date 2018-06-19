@@ -20,15 +20,13 @@ namespace RacunarskiCentar
         private bool levelZavrsen = false;
         private enum Level
         {
-            Nista, Pocetak, ToolBar, ToolBoxPanel, MainPanel, UcionicaDKlik, UcionicaView, UVToolBox, UVSmer, UVPredmet, TerminMove
+            Nista, Pocetak, ToolBar, ToolBoxPanel, MainPanel, UcionicaDKlik, UcionicaView, UVToolBox, UVSmer, UVPredmet, TerminMove, Undo, Redo, Nazad
         }
         public Tutorial(Form1 f)
         {
             form = f;
             currentLevel = Level.Nista;
-            DataControllercs.isTutorial = true;
-            DataControllercs.allowedTypes.Add(typeof(EditAction));
-            DataControllercs.allowedTypes.Add(typeof(RestoreAction));
+           
         }
         private void removeControl()
         {
@@ -88,7 +86,127 @@ namespace RacunarskiCentar
             }
             else if (currentLevel == Level.TerminMove)
             {
-                DataControllercs.isTutorial = false;
+                initUndo();
+            }
+            else if (currentLevel == Level.Undo)
+            {
+                initRedo();
+            }
+            else if (currentLevel == Level.Redo)
+            {
+                initNazad();
+            }
+            else if (currentLevel == Level.Nazad)
+            {
+                TutorialEnd();
+            }
+        }
+
+
+
+
+        private void initNazad()
+        {
+            currentLevel = Level.Nazad;
+            form.tb.Enabled = true;
+            Color old;
+            ToolStripButton undoButton;
+            createControl("Stisnite nazad", 20);
+            foreach (ToolStripItem item in form.tb.Items)
+            {
+                if (item.Name.Equals("nazad"))
+                {
+                    item.Enabled = true;
+                    old = item.BackColor;
+                    item.BackColor = Color.Yellow;
+                    undoButton = item as ToolStripButton;
+                    undoButton.Click += (object sender, EventArgs e) =>
+                    {
+                        nextStep();
+                        item.BackColor = old;
+
+                    };
+                }
+                else
+                {
+                    item.Enabled = false;
+                }
+            }
+
+
+        }
+
+
+        private void initRedo()
+        {
+            currentLevel = Level.Redo;
+            form.tb.Enabled = true;
+            Color old;
+            ToolStripButton undoButton;
+            createControl("Stisnite redo", 20);
+            foreach (ToolStripItem item in form.tb.Items)
+            {
+                if (item.Name.Equals("redo"))
+                {
+                    item.Enabled = true;
+                    old = item.BackColor;
+                    item.BackColor = Color.Yellow;
+                    undoButton = item as ToolStripButton;
+                    undoButton.Click += (object sender, EventArgs e) =>
+                    {
+                        nextStep();
+                        item.BackColor = old;
+
+                    };
+                }
+                else
+                {
+                    item.Enabled = false;
+                }
+            }
+
+
+        }
+
+
+        private void initUndo()
+        {
+            currentLevel = Level.Undo;
+            form.tb.Enabled = true;
+            Color old;
+            ToolStripButton undoButton;
+            createControl("Stisnite undo", 20);
+            foreach (ToolStripItem item in form.tb.Items)
+            {
+                if (item.Name.Equals("undo"))
+                {
+                    item.Enabled = true;
+                    old = item.BackColor;
+                    item.BackColor = Color.Yellow;
+                    undoButton = item as ToolStripButton;
+                    undoButton.Click += (object sender, EventArgs e) =>
+                    {
+                        nextStep();
+                        item.BackColor = old;
+
+                    };
+                }
+                else
+                {
+                    item.Enabled = false;
+                }
+            }
+
+
+        }
+
+        private void TutorialEnd()
+        {
+            DataControllercs.isTutorial = false;
+            form.tb.Enabled = true;
+            foreach (ToolStripItem item in form.tb.Items)
+            {
+                item.Enabled = true;
             }
         }
 
@@ -104,7 +222,6 @@ namespace RacunarskiCentar
                     levelZavrsen = false;
                     nextStep();
                 }
-
             });
 
             DataControllercs.onAction += ActionExcuted;
@@ -206,6 +323,7 @@ namespace RacunarskiCentar
                 tc.Text = "Uspešno ste otvorili prikaz Učionice. \n Za nastavak pritisnite na ovaj prozor.";
                 levelZavrsen = true;
                 ucionica.IsTutorial = false;
+                form.initUcionicaView(ucionica.GuiObject);
 
             });
             ucionica.DoubleClick += e;
@@ -295,18 +413,23 @@ namespace RacunarskiCentar
 
             });
         }
+
         private void initPocetak()
         {
             currentLevel = Level.Pocetak;
+            DataControllercs.isTutorial = true;
+            DataControllercs.allowedTypes.Clear();
+            DataControllercs.allowedTypes.Add(typeof(EditAction));
+            DataControllercs.allowedTypes.Add(typeof(RestoreAction));
+            form.tb.Enabled = false;
+            DataManger.loadTut();
+            form.initRCView();
             createControl("Dobrodošli u interaktivni tutorijal!\n Kako biste nastavili pritisnite na ovaj prozorčić. ", 30);
             tc.Click += new EventHandler(delegate (Object o, EventArgs a)
             {
                 nextStep();
-
             });
         }
-
-
     }
 
 

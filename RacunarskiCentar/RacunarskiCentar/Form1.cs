@@ -34,8 +34,11 @@ namespace RacunarskiCentar
         {
             ToolStripButton b;
             ToolStrip tb = new ToolStrip();
-            b = new ToolStripButton();
-            b.Text = "Nazad";
+            b = new ToolStripButton
+            {
+                Text = "Nazad",
+                Name = "nazad"
+            };
             if (undoButtons.Count == 0)
             {
                 b.Click += nazadButtonClick;
@@ -46,20 +49,29 @@ namespace RacunarskiCentar
             }
             tb.Items.Add(b);
 
-            ToolStripButton undoButton = new ToolStripButton();
-            undoButton.Text = "Undo";
+            ToolStripButton undoButton = new ToolStripButton
+            {
+                Text = "Undo",
+                Name = "undo",
+                Enabled = false
+            };
             undoButton.Click += Undo_Click1;
-            undoButton.Enabled = false;
-
             undoButtons.Add(undoButton);
             tb.Items.Add(undoButton);
 
-            ToolStripButton redoButton = new ToolStripButton();
-            redoButton.Text = "Redo";
-            redoButton.Enabled = false;
+
+
+            ToolStripButton redoButton = new ToolStripButton
+            {
+                Text = "Redo",
+                Name = "redo",
+                Enabled = false
+            };
             redoButton.Click += Redo_Click1;
             tb.Items.Add(redoButton);
             redoButtons.Add(redoButton);
+
+
 
             if (undoButtons.Count == 1)
             {
@@ -82,15 +94,27 @@ namespace RacunarskiCentar
                 b.Text = "Softveri";
                 b.Click += ToolFilterSoftvera;
                 tb.Items.Add(b);
+
+                b = new ToolStripButton();
+                b.Click += (object sender, EventArgs e) =>
+                {
+                    Tutorial t = new Tutorial(this);
+                    t.nextStep();
+                };
+                b.Text = "Tutorijal";
+                tb.Items.Add(b);
             }
+
             tb.BackColor = Color.DarkGray;
             return tb;
         }
 
 
+
         public StatusStrip generateStatusBar()
         {
             StatusStrip sb = new StatusStrip();
+            sb.BackColor = Color.DarkGray;
             ToolStripLabel l = new ToolStripLabel();
             l.Font = GraphicLoader.getFontBold(10);
             l.BackColor = sb.BackColor;
@@ -154,8 +178,8 @@ namespace RacunarskiCentar
 
 
             Controls.Add(generateStatusBar());
-           /* Tutorial t = new Tutorial(this);
-            t.nextStep();*/
+           
+           
 
         }
 
@@ -224,7 +248,8 @@ namespace RacunarskiCentar
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DataManger.save();
+            if(!DataControllercs.isTutorial)
+                DataManger.save();
         }
 
         private void ActionExcuted(object sender, Action e)
@@ -295,9 +320,8 @@ namespace RacunarskiCentar
         }
 
         private void initMainPanel()
-        {
+        { 
             initMainPanel(new Panel());
-
         }
 
 
@@ -363,7 +387,7 @@ namespace RacunarskiCentar
     {
 
 
-        private void initRCView()
+        public void initRCView()
         {
             currentView = FormView.RACUNARSKI_CENTAR;
             initMainPanelFlow();
@@ -474,8 +498,13 @@ namespace RacunarskiCentar
 
         private void Ucionica_DoubleClick(object sender, EventArgs e)
         {
-            UcionicaControl uc = (UcionicaControl)sender;
-            initUcionicaView(uc.GuiObject);
+            if (!DataControllercs.isTutorial)
+            {
+                UcionicaControl uc = (UcionicaControl)sender;
+                initUcionicaView(uc.GuiObject);
+            }
+            
+           
         }
 
     }
@@ -490,9 +519,7 @@ namespace RacunarskiCentar
     public partial class Form1
     {
 
-
-
-        private void initUcionicaView(Ucionica ucionica)
+        public void initUcionicaView(Ucionica ucionica)
         {
             currentView = FormView.UCIONICA;
             initMainPanel();
@@ -570,10 +597,6 @@ namespace RacunarskiCentar
     // Tutorial     Tutorial        Tutorial        Tutorial        Tutorial
     public partial class Form1
     {
-        
-        
-
-
 
     }
 

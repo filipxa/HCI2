@@ -139,6 +139,11 @@ namespace RacunarskiCentar
             {
                 DataControllercs.onAction(null, this);
             }
+            if (!DataControllercs.isTutorial)
+            {
+                DataManger.save();
+            }
+           
         }
         public override string ToString()
         {
