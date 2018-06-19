@@ -160,7 +160,6 @@ namespace RacunarskiCentar
 
         private void buttonObrisiPredmet_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
             //baguje brisanje treba se napravi kako treba
             string id = listBoxPredmeti.SelectedItem.ToString();
             Predmet predmet = DataManger.getPredmetByID(id);
