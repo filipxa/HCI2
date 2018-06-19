@@ -533,8 +533,7 @@ namespace RacunarskiCentar
                 UcionicaControl uc = (UcionicaControl)sender;
                 initUcionicaView(uc.GuiObject);
             }
-            
-           
+
         }
 
     }
@@ -646,7 +645,6 @@ namespace RacunarskiCentar
                 {
                     DataManger.goToHelp("ucionicaForma");
                 }
-                
             }
                
 
