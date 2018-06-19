@@ -378,7 +378,7 @@ namespace RacunarskiCentar
             currentLevel = Level.StatusStrip;
             Color old = form.sStrip.BackColor;
             form.sStrip.BackColor = Color.Yellow;
-            createControl(" Suhi popuni me", 20);
+            createControl("Panel u kome se automatski ispisuje poslednja akcija.\n Akcija predstavlja dodavanje, izmenu ili brisanje nečega.", 20);
             tc.Click += new EventHandler(delegate (Object o, EventArgs a)
             {
                 form.sStrip.BackColor = old;
