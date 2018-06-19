@@ -109,7 +109,7 @@ namespace RacunarskiCentar
             }
             else
             {
-                // TO-DO: proveriti da li vec postoji id u bazi
+               
                 labelID.ForeColor = Color.Black;
             }
         }
