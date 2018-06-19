@@ -136,7 +136,7 @@
             this.MinimizeBox = false;
             this.Name = "SmerFilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Smerovi obrada";
+            this.Text = "Smerovi";
             this.Load += new System.EventHandler(this.SmerFilterForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
