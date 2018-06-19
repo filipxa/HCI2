@@ -169,12 +169,25 @@ namespace RacunarskiCentar
 
             uff.Controls.Add(generateToolStrip());
             uff.Controls.Add(generateStatusBar());
+            uff.KeyDown += Form1_KeyDown;
+            uff.KeyPreview = true;
+
             sff.Controls.Add(generateToolStrip());
             sff.Controls.Add(generateStatusBar());
+            sff.KeyDown += Form1_KeyDown;
+            sff.KeyPreview = true;
+
             soff.Controls.Add(generateToolStrip());
             soff.Controls.Add(generateStatusBar());
+            soff.KeyDown += Form1_KeyDown;
+            soff.KeyPreview = true;
+
             pff.Controls.Add(generateToolStrip());
             pff.Controls.Add(generateStatusBar());
+            pff.KeyDown += Form1_KeyDown;
+            pff.KeyPreview = true;
+
+
 
 
             Controls.Add(generateStatusBar());
@@ -579,9 +592,7 @@ namespace RacunarskiCentar
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
 
-            if (e.KeyCode == Keys.F1)
-                btDodajKlik(null, null);
-            else if (e.Control && e.KeyCode == Keys.D1)
+             if (e.Control && e.KeyCode == Keys.D1)
                 ToolFilterUcionica(sender, e);
             else if (e.Control && e.KeyCode == Keys.D2)
                 ToolFilterSmera(sender, e);
