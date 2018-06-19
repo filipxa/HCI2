@@ -260,9 +260,9 @@ namespace RacunarskiCentar
         {
             int hours = time.Hour-7;
             int minutes = time.Minute;
-            int brPodeoka = hours * 4 + minutes / 15;
+            float brPodeoka = (float)hours * 4 + minutes / 15f;
             float visinaPodeoka = parentRaspored.getVisinaPodeoka();
-            return (int)Math.Round( brPodeoka * visinaPodeoka + visinaNazivaDana) ;
+            return (int)Math.Round( brPodeoka * visinaPodeoka + visinaNazivaDana);
         }
 
         private void CreateTerminControl(Termin termin)

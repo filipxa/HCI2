@@ -22,6 +22,7 @@ namespace RacunarskiCentar
         public Panel toolboxPanel;
         public ToolStrip tb = new ToolStrip();
         public StatusStrip sStrip = new StatusStrip();
+        Ucionica aktivnaUcionica;
 
         UcionicaFilterForm uff = new UcionicaFilterForm();
         SmerFilterForm sff = new SmerFilterForm();
@@ -62,6 +63,7 @@ namespace RacunarskiCentar
             undoButton.Click += Undo_Click1;
             undoButtons.Add(undoButton);
             tb.Items.Add(undoButton);
+            undoButton.ToolTipText = "Undo (CTRL+Z)";
 
 
 
@@ -74,6 +76,7 @@ namespace RacunarskiCentar
             redoButton.Click += Redo_Click1;
             tb.Items.Add(redoButton);
             redoButtons.Add(redoButton);
+            redoButton.ToolTipText = "Redo (CTRL+Y)";
 
 
 
@@ -83,21 +86,25 @@ namespace RacunarskiCentar
                 b.Text = "Učionice";
                 b.Click += ToolFilterUcionica;
                 tb.Items.Add(b);
+                b.ToolTipText="Učionice (CTRL+1)";
 
                 b = new ToolStripButton();
                 b.Text = "Smerovi";
                 b.Click += ToolFilterSmera;
                 tb.Items.Add(b);
+                b.ToolTipText = "Smerovi (CTRL+2)";
 
                 b = new ToolStripButton();
                 b.Text = "Predmeti";
                 b.Click += ToolFilterPredmeta;
                 tb.Items.Add(b);
+                b.ToolTipText = "Predmeti (CTRL+3)";
 
                 b = new ToolStripButton();
                 b.Text = "Softveri";
                 b.Click += ToolFilterSoftvera;
                 tb.Items.Add(b);
+                b.ToolTipText = "Softveri (CTRL+4)";
 
                 b = new ToolStripButton();
                 b.Click += (object sender, EventArgs e) =>
@@ -160,7 +167,7 @@ namespace RacunarskiCentar
             Controls.Add(tb);
             initRCView();
 
-            ClientSize = new Size(1200, 900);
+            ClientSize = new Size(1000, 700);
             MinimumSize = Size;
             ResizeEnd += Form1_ResizeEnd;
             ResizeBegin += Form1_ResizeBegin;
@@ -276,7 +283,21 @@ namespace RacunarskiCentar
                     Smer s = e.getGUIObject() as Smer;
                     if (s != null)
                     {
-                        dodajSmerControl(s);   
+                        dodajSmerControl(s, aktivnaUcionica);   
+                    }
+                }
+               
+            } else if (e is EditAction)
+            {
+                 if(currentView == FormView.UCIONICA)
+                {
+                    Ucionica u = e.getGUIObject() as Ucionica;
+                    if (u != null)
+                    {
+                        if (u == aktivnaUcionica)
+                        {
+                            initUcionicaView(u);
+                        }
                     }
                 }
             }
@@ -446,10 +467,10 @@ namespace RacunarskiCentar
             
             toolTip1.ShowAlways = true;
             
-            toolTip1.SetToolTip(button, "Koristeci ovu opciju mozete dodati novu ucionicu. Takodje mozete koristiti F1 kao precicu.");
-            toolTip1.SetToolTip(button1, "Koristeci ovu opciju mozete dodati novi smer. Takodje mozete koristiti F2 kao precicu.");
-            toolTip1.SetToolTip(button2, "Koristeci ovu opciju mozete dodati novi softver. Takodje mozete koristiti F3 kao precicu.");
-            toolTip1.SetToolTip(button3, "Koristeci ovu opciju mozete dodati novi predmet. Takodje mozete koristiti F4 kao precicu.");
+            toolTip1.SetToolTip(button, "Dodaj učionicu (Alt+1)");
+            toolTip1.SetToolTip(button1, "Dodaj smer (Alt+2)");
+            toolTip1.SetToolTip(button2, "Dodaj softver (Alt+3)");
+            toolTip1.SetToolTip(button3, "Dodaj predmet (Alt+4)");
 
 
         }
@@ -530,11 +551,12 @@ namespace RacunarskiCentar
 
         public void initUcionicaView(Ucionica ucionica)
         {
+            aktivnaUcionica = ucionica;
             currentView = FormView.UCIONICA;
             initMainPanel();
             initToolPanelTable();
 
-            populatePredmets();
+            populatePredmets(ucionica);
 
             Raspored r = ucionica.Raspored;
             RasporedControl rc = new RasporedControl(r, mainPanel);
@@ -547,20 +569,20 @@ namespace RacunarskiCentar
 
 
         SmerControl selectedSmerControl = null;
-        private void populatePredmets()
+        private void populatePredmets(Ucionica ucionica)
         {
             TableLayoutPanel t = (TableLayoutPanel)toolboxPanel;
             toolboxPanel.Padding = new Padding(13, 0, 0, 0);
             foreach (Smer smer in DataManger.getSmers())
             {
-                dodajSmerControl(smer);
+                dodajSmerControl(smer, ucionica);
             }
         }
 
-        private void dodajSmerControl(Smer s)
+        private void dodajSmerControl(Smer s, Ucionica ucionica)
         {
             TableLayoutPanel t = (TableLayoutPanel)toolboxPanel;
-            SmerControl sc = new SmerControl(s, toolboxPanel);
+            SmerControl sc = new SmerControl(s, toolboxPanel, ucionica);
             sc.ColapseedChanged += Sc_ValueChanged;
             t.Controls.Add(sc);
         }

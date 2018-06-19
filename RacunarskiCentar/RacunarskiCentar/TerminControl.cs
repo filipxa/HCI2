@@ -59,7 +59,7 @@ namespace RacunarskiCentar
             sf.Alignment = StringAlignment.Center;
 
             PointF pointPredmet = new PointF(ClientRectangle.Location.X, ClientRectangle.Location.Y + 2);
-            PointF pointSmer = new PointF(ClientRectangle.Location.X, ClientRectangle.Location.Y + 2 + (ClientRectangle.Height / (GuiObject.DuzinaTermina)/2));
+            PointF pointSmer = new PointF(ClientRectangle.Location.X, ClientRectangle.Location.Y + (ClientRectangle.Height / (GuiObject.DuzinaTermina)/2));
             SizeF size = new SizeF(ClientRectangle.Width, ClientRectangle.Height / (GuiObject.DuzinaTermina * 2));
 
             Point goreLevo = ClientRectangle.Location;
@@ -75,14 +75,14 @@ namespace RacunarskiCentar
             {
                 if((i+1) < GuiObject.DuzinaTermina)
                     g.DrawLine(penTanji, levaTackaCasa,desnaTackaCasa);
-                levaTackaCasa.Y = levaTackaCasa.Y + (ClientRectangle.Height / (GuiObject.DuzinaTermina));
-                desnaTackaCasa.Y = desnaTackaCasa.Y + (ClientRectangle.Height / (GuiObject.DuzinaTermina));
 
-                g.DrawString(GuiObject.Predmet.ID, GraphicLoader.getFontBold(13), new SolidBrush(Color.Yellow), new RectangleF(pointPredmet, size), sf);
-                g.DrawString(GuiObject.Predmet.SmerPredmeta.ID, GraphicLoader.getFontBold(9), new SolidBrush(Color.Yellow), new RectangleF(pointSmer, size), sf);
+                levaTackaCasa.Y = levaTackaCasa.Y + (int)Math.Round(((float)ClientRectangle.Height / (float)(GuiObject.DuzinaTermina)));
+                desnaTackaCasa.Y = desnaTackaCasa.Y + (int)Math.Round(((float)ClientRectangle.Height / (float)(GuiObject.DuzinaTermina)));
 
-                pointPredmet.Y = pointPredmet.Y + (ClientRectangle.Height / (GuiObject.DuzinaTermina));
-                pointSmer.Y = pointSmer.Y + (ClientRectangle.Height / (GuiObject.DuzinaTermina));
+                g.DrawString(GuiObject.Predmet.ID, GraphicLoader.getFontBold(11), new SolidBrush(Color.Yellow), new RectangleF(pointPredmet, size), sf);
+                g.DrawString(GuiObject.Predmet.SmerPredmeta.ID, GraphicLoader.getFontBold(7), new SolidBrush(Color.Yellow), new RectangleF(pointSmer, size), sf);
+                pointPredmet.Y = pointPredmet.Y + (int)Math.Round(((float)ClientRectangle.Height / (float)(GuiObject.DuzinaTermina)));
+                pointSmer.Y = pointSmer.Y + (int)Math.Round(((float)ClientRectangle.Height / (float)(GuiObject.DuzinaTermina)));
                 
             }
 
