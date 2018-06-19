@@ -458,6 +458,7 @@ namespace RacunarskiCentar
         {
             SoftwareForm f = new SoftwareForm(null);
             f.ShowDialog();
+            f.Dispose();
            
         }
 
@@ -472,6 +473,7 @@ namespace RacunarskiCentar
         {
             UcionicaForm f = new UcionicaForm(null);
             f.ShowDialog();
+            f.Dispose();
 
         }
 
@@ -579,16 +581,33 @@ namespace RacunarskiCentar
 
             if (e.KeyCode == Keys.F1)
                 btDodajKlik(null, null);
-            else if (e.KeyCode == Keys.F2)
-                btSoftverKlik(null, null);
-            else if (e.KeyCode == Keys.F3)
-                btSmerKlik(null, null);
-            else if (e.KeyCode == Keys.F4)
-                btPredmetKlik(null, null);
-            else if (e.KeyCode == Keys.F9)
-                MessageBox.Show("Help");
-            else if (e.KeyCode == Keys.Back)
-                MessageBox.Show("Back");
+            else if (e.Control && e.KeyCode == Keys.D1)
+                ToolFilterUcionica(sender, e);
+            else if (e.Control && e.KeyCode == Keys.D2)
+                ToolFilterSmera(sender, e);
+            else if (e.Control && e.KeyCode == Keys.D3)
+                ToolFilterPredmeta(sender, e);
+            else if (e.Control && e.KeyCode == Keys.D4)
+                ToolFilterSoftvera(sender, e);
+
+            else if (e.Alt && e.KeyCode == Keys.D1)
+                btDodajKlik(sender, e);
+            else if (e.Alt && e.KeyCode == Keys.D2)
+                btSmerKlik(sender, e);
+            else if (e.Alt && e.KeyCode == Keys.D3)
+                btPredmetKlik(sender, e);
+            else if (e.Alt && e.KeyCode == Keys.D4)
+                btSoftverKlik(sender, e);
+            //else if (e.KeyCode == Keys.F2)
+            //    btSoftverKlik(null, null);
+            //else if (e.KeyCode == Keys.F3)
+            //    btSmerKlik(null, null);
+            //else if (e.KeyCode == Keys.F4)
+            //    btPredmetKlik(null, null);
+            //else if (e.KeyCode == Keys.F9)
+            //    MessageBox.Show("Help");
+            //else if (e.KeyCode == Keys.Back)
+            //    MessageBox.Show("Back");
 
             if (e.Control && e.KeyCode == Keys.Z)
                 MessageBox.Show("Undo");

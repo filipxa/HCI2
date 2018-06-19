@@ -188,7 +188,7 @@
             this.MinimizeBox = false;
             this.Name = "SoftwareFilterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Softveri obrada";
+            this.Text = "Softveri";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
