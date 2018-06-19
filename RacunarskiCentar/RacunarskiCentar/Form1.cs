@@ -62,6 +62,7 @@ namespace RacunarskiCentar
             undoButton.Click += Undo_Click1;
             undoButtons.Add(undoButton);
             tb.Items.Add(undoButton);
+            undoButton.ToolTipText = "Undo (CTRL+Z)";
 
 
 
@@ -74,6 +75,7 @@ namespace RacunarskiCentar
             redoButton.Click += Redo_Click1;
             tb.Items.Add(redoButton);
             redoButtons.Add(redoButton);
+            redoButton.ToolTipText = "Redo (CTRL+Y)";
 
 
 
@@ -83,21 +85,25 @@ namespace RacunarskiCentar
                 b.Text = "Učionice";
                 b.Click += ToolFilterUcionica;
                 tb.Items.Add(b);
+                b.ToolTipText="Učionice (CTRL+1)";
 
                 b = new ToolStripButton();
                 b.Text = "Smerovi";
                 b.Click += ToolFilterSmera;
                 tb.Items.Add(b);
+                b.ToolTipText = "Smerovi (CTRL+2)";
 
                 b = new ToolStripButton();
                 b.Text = "Predmeti";
                 b.Click += ToolFilterPredmeta;
                 tb.Items.Add(b);
+                b.ToolTipText = "Predmeti (CTRL+3)";
 
                 b = new ToolStripButton();
                 b.Text = "Softveri";
                 b.Click += ToolFilterSoftvera;
                 tb.Items.Add(b);
+                b.ToolTipText = "Softveri (CTRL+4)";
 
                 b = new ToolStripButton();
                 b.Click += (object sender, EventArgs e) =>
@@ -446,10 +452,10 @@ namespace RacunarskiCentar
             
             toolTip1.ShowAlways = true;
             
-            toolTip1.SetToolTip(button, "Koristeci ovu opciju mozete dodati novu ucionicu. Takodje mozete koristiti F1 kao precicu.");
-            toolTip1.SetToolTip(button1, "Koristeci ovu opciju mozete dodati novi smer. Takodje mozete koristiti F2 kao precicu.");
-            toolTip1.SetToolTip(button2, "Koristeci ovu opciju mozete dodati novi softver. Takodje mozete koristiti F3 kao precicu.");
-            toolTip1.SetToolTip(button3, "Koristeci ovu opciju mozete dodati novi predmet. Takodje mozete koristiti F4 kao precicu.");
+            toolTip1.SetToolTip(button, "Dodaj učionicu (Alt+1)");
+            toolTip1.SetToolTip(button1, "Dodaj smer (Alt+2)");
+            toolTip1.SetToolTip(button2, "Dodaj softver (Alt+3)");
+            toolTip1.SetToolTip(button3, "Dodaj predmet (Alt+4)");
 
 
         }
