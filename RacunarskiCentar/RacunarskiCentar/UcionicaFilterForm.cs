@@ -88,13 +88,13 @@ namespace RacunarskiCentar
             DataManger.UcionicaFilter.BrRadnihMesta = Convert.ToInt32(numericUpDownBrRadnihMesta.Value);
             DataManger.UcionicaFilter.Assets = new HashSet<UcionicaAssets>(uAssets);
             DataManger.UcionicaFilter.InstalledSoftware = getInstalledSoft();
-
             
             dataGridView1.Rows.Clear();
-            dataGridView1.ColumnCount = 3;
+            dataGridView1.ColumnCount = 4;
             dataGridView1.Columns[0].Name = "ID";
             dataGridView1.Columns[1].Name = "Opis";
             dataGridView1.Columns[2].Name = "Br. mesta";
+            dataGridView1.Columns[3].Name = "Inventar";
             dataGridView1.ReadOnly = true;
             popunjavanjeTabele();
             
@@ -104,7 +104,7 @@ namespace RacunarskiCentar
         {
             foreach (Ucionica p in DataManger.ucionicaFilterisanje())
             {
-                string[] row = { p.ID, p.Opis, Convert.ToString(p.BrRadnihMesta) };
+                string[] row = { p.ID, p.Opis, Convert.ToString(p.BrRadnihMesta), UcionicaAssetsMethods.getDisplayNames(p.Assets) };
                 dataGridView1.Rows.Add(row);
             }
         }

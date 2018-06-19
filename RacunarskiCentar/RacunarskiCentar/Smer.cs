@@ -88,6 +88,10 @@ namespace RacunarskiCentar
             return new Smer(id, ime, datumUvodjenja, opis, predmeti);
         }
 
+        public List<Predmet> getPredmetiPoUcionici(Ucionica u)// filter za ucionicu
+        {
+            return predmeti.Where(x => (x.Assets.Intersect(u.Assets).Count() == x.Assets.Count())).ToList();
+        }
 
         internal override void restoreFromCopy(GUIObject guiObject)
         { 

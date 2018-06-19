@@ -148,7 +148,22 @@ namespace RacunarskiCentar
             rets = rets.Replace("_", " ");
             return rets;
         }
-        
+
+        public static String getDisplayNames(HashSet<UcionicaAssets> assets)
+        {
+            string asetsiSvi = "";
+            string rets = "";
+            foreach (var item in assets)
+            {
+                rets = Enum.GetName(typeof(UcionicaAssets), item);
+                rets = rets.Replace("_", " ");
+                asetsiSvi += rets;
+                asetsiSvi += ", ";
+            }
+            asetsiSvi.Substring(asetsiSvi.Length - 2);
+            return asetsiSvi;
+        }
+
     }
 
 }
