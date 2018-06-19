@@ -51,8 +51,8 @@ namespace RacunarskiCentar
         protected override void OnPaint(PaintEventArgs pe)
         {
             Graphics g = pe.Graphics;
-            Pen pen = new Pen(Color.Black, RasporedControl.sirinaOlovke*2);
-            Pen penTanji = new Pen(Color.Black, RasporedControl.sirinaOlovke * 2);
+            Pen pen = new Pen(Color.Black, RasporedControl.sirinaOlovke * 3);
+            Pen penTanji = new Pen(GraphicLoader.getColorLightGray(), RasporedControl.sirinaOlovke * 2);
 
             StringFormat sf = new StringFormat();
             sf.LineAlignment = StringAlignment.Center;
@@ -67,16 +67,14 @@ namespace RacunarskiCentar
             Point doleLevo = new Point(ClientRectangle.X, ClientRectangle.Y + ClientRectangle.Height);
             Point doleDesno = new Point(ClientRectangle.X + ClientRectangle.Width, ClientRectangle.Y + ClientRectangle.Height);
 
-            g.DrawLine(pen, goreLevo, doleLevo);
-            g.DrawLine(pen, goreDesno, doleDesno);
-            g.DrawLine(pen, goreLevo, goreDesno);
-            g.DrawLine(pen, doleLevo, doleDesno);
+
 
             Point levaTackaCasa = new Point(ClientRectangle.X, ClientRectangle.Y + (ClientRectangle.Height / (GuiObject.DuzinaTermina)));
             Point desnaTackaCasa = new Point(ClientRectangle.X + ClientRectangle.Width, ClientRectangle.Y + (ClientRectangle.Height / (GuiObject.DuzinaTermina)));
             for (int i = 0; i < GuiObject.DuzinaTermina; i++)
             {
-                g.DrawLine(penTanji, levaTackaCasa,desnaTackaCasa);
+                if((i+1) < GuiObject.DuzinaTermina)
+                    g.DrawLine(penTanji, levaTackaCasa,desnaTackaCasa);
                 levaTackaCasa.Y = levaTackaCasa.Y + (ClientRectangle.Height / (GuiObject.DuzinaTermina));
                 desnaTackaCasa.Y = desnaTackaCasa.Y + (ClientRectangle.Height / (GuiObject.DuzinaTermina));
 
@@ -87,6 +85,11 @@ namespace RacunarskiCentar
                 pointSmer.Y = pointSmer.Y + (ClientRectangle.Height / (GuiObject.DuzinaTermina));
                 
             }
+
+            g.DrawLine(pen, goreLevo, doleLevo);
+            g.DrawLine(pen, goreDesno, doleDesno);
+            g.DrawLine(pen, goreLevo, goreDesno);
+            g.DrawLine(pen, doleLevo, doleDesno);
 
             base.OnPaint(pe);
             pen.Dispose();

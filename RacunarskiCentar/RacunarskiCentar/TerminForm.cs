@@ -68,11 +68,11 @@ namespace RacunarskiCentar
             if(termin.Nedelja.isSlobodan(dateTimePicker1.Value, krajTermina, termin))
             {
                 Action action;
-                
+                action = new EditAction(termin);
                 termin.PocetakTermina = dateTimePicker1.Value;
                 termin.KrajTermina = krajTermina;
                 termin.DuzinaTermina = (int)numericUpDown1.Value;
-                action = new EditAction(termin);
+                
                 DataControllercs.addAction(action);
 
             }
@@ -82,6 +82,13 @@ namespace RacunarskiCentar
                 MessageBox.Show("Izabrano vreme je zauzeto", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
                 return;
             }
+        }
+
+        private void buttonObisati_Click(object sender, EventArgs e)
+        {
+            Action action;
+            action = new DeleteAction(termin);
+            DataControllercs.addAction(action);
         }
     }
 
