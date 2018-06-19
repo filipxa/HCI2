@@ -366,8 +366,8 @@ namespace RacunarskiCentar
         private void initToolPanelTable()
         {
             Panel p = new TableLayoutPanel();
-
             initToolPanel(p);
+            
 
 
         }
@@ -439,10 +439,10 @@ namespace RacunarskiCentar
             
             toolTip1.ShowAlways = true;
             
-            toolTip1.SetToolTip(button, "Koristeci ovu opciju mozete dodati novu ucionicu.");
-            toolTip1.SetToolTip(button1, "Koristeci ovu opciju mozete dodati novi smer.");
-            toolTip1.SetToolTip(button2, "Koristeci ovu opciju mozete dodati novi softver.");
-            toolTip1.SetToolTip(button3, "Koristeci ovu opciju mozete dodati novi predmet.");
+            toolTip1.SetToolTip(button, "Koristeci ovu opciju mozete dodati novu ucionicu. Takodje mozete koristiti F1 kao precicu.");
+            toolTip1.SetToolTip(button1, "Koristeci ovu opciju mozete dodati novi smer. Takodje mozete koristiti F2 kao precicu.");
+            toolTip1.SetToolTip(button2, "Koristeci ovu opciju mozete dodati novi softver. Takodje mozete koristiti F3 kao precicu.");
+            toolTip1.SetToolTip(button3, "Koristeci ovu opciju mozete dodati novi predmet. Takodje mozete koristiti F4 kao precicu.");
 
 
         }

@@ -126,11 +126,13 @@ namespace RacunarskiCentar
     public abstract class Action 
     {
         protected GUIObject o;
+        public DateTime timeOfCreation;
         protected List<Termin> termini = new List<Termin>();
 
         public Action(GUIObject guiObject)
         {
             o = guiObject;
+            timeOfCreation = DateTime.Now;
         }
         public abstract Action GetReverseAction();
         internal virtual void excuteAction()
@@ -206,12 +208,14 @@ namespace RacunarskiCentar
 
         public override Action GetReverseAction()
         {
-            return new CreateAction(o);
+            Action a = new CreateAction(o);
+            a.timeOfCreation = timeOfCreation;
+            return a;
         }
         public override string ToString()
         {
 
-            return DateTime.Now.ToShortTimeString() + ":" + " Akcija brisanja " + base.ToString(); 
+            return timeOfCreation.ToShortTimeString() + ":" + " Akcija brisanja " + base.ToString(); 
         }
     }
 
@@ -233,11 +237,13 @@ namespace RacunarskiCentar
 
         public override Action GetReverseAction()
         {
-            return new DeleteAction(o);
+            DeleteAction d = new DeleteAction(o);
+            d.timeOfCreation = timeOfCreation;
+            return d;
         }
         public override string ToString()
         {
-            return DateTime.Now.ToShortTimeString() + ":" + " Akcija kreiranja " + base.ToString();
+            return timeOfCreation.ToShortTimeString() + ":" + " Akcija kreiranja " + base.ToString();
         }
     }
 
@@ -257,11 +263,13 @@ namespace RacunarskiCentar
 
         public override Action GetReverseAction()
         {
-            return new RestoreAction(o, copyObject);
+            RestoreAction a = new RestoreAction(o, copyObject);
+            a.timeOfCreation = timeOfCreation;
+            return a;
         }
         public override string ToString()
         {
-            return DateTime.Now.ToShortTimeString() + ":" + " Akcija izmene " + base.ToString();
+            return timeOfCreation.ToShortTimeString() + ":" + " Akcija izmene " + base.ToString();
         }
     }
 
@@ -283,11 +291,13 @@ namespace RacunarskiCentar
 
         public override Action GetReverseAction()
         {
-            return new RestoreAction(o,preRestore);
+            RestoreAction a = new RestoreAction(o, preRestore);
+            a.timeOfCreation = timeOfCreation;
+            return a;
         }
         public override string ToString()
         {
-            return DateTime.Now.ToShortTimeString() + ":" + " Akcija izmene " + base.ToString();
+            return timeOfCreation.ToShortTimeString() + ":" + " Akcija izmene " + base.ToString();
         }
     }
 
@@ -318,12 +328,13 @@ namespace RacunarskiCentar
             {
                 reverse.actions.Add(action.GetReverseAction());
             }
+            reverse.timeOfCreation = timeOfCreation;
 
             return reverse;
         }
         public override string ToString()
         {
-            return DateTime.Now.ToShortTimeString() + ":" + " Akcija pomeranja " + base.ToString();
+            return timeOfCreation.ToShortTimeString() + ":" + " Akcija pomeranja " + base.ToString();
         }
     }
 }

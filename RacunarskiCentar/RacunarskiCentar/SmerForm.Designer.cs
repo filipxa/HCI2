@@ -116,7 +116,7 @@
             this.buttonSacuvaj.Name = "buttonSacuvaj";
             this.buttonSacuvaj.Size = new System.Drawing.Size(91, 23);
             this.buttonSacuvaj.TabIndex = 10;
-            this.buttonSacuvaj.Text = "Sacuvaj";
+            this.buttonSacuvaj.Text = "Sačuvaj";
             this.toolTip1.SetToolTip(this.buttonSacuvaj, "Sacuvaj i zatvori.");
             this.buttonSacuvaj.UseVisualStyleBackColor = true;
             this.buttonSacuvaj.Click += new System.EventHandler(this.buttonSacuvaj_Click);
