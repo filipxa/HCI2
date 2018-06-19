@@ -40,7 +40,7 @@ namespace RacunarskiCentar
                 onDeleteEvent -= value;
             }
         }
-        protected virtual void OnDelete(EventArgs e)
+        public virtual void OnDelete(EventArgs e)
         {
             if (onDeleteEvent != null)
             {
