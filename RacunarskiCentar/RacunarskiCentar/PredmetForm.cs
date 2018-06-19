@@ -29,6 +29,8 @@ namespace RacunarskiCentar
             if (predmet != null)
             {
                 popuniPolja();
+                textBoxID.Enabled = false;
+
                 comboBoxSmer.Text = predmet.SmerPredmeta.ToString();
                 comboBoxSmer.Enabled = false;
                 rezimRada = Rezim.Izmena;
@@ -192,7 +194,7 @@ namespace RacunarskiCentar
 
             if (predmet == null)
             {
-               if( DataManger.getPredmetByID(textBoxID.Text)!=null)
+               if( DataManger.getPredmetByID(textBoxID.Text) != null)
                  {
                     poruka += "#" + rb + ": Predmet sa id-em " + textBoxID.Text + " vec postoji..\n";
                     rb++;
