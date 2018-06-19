@@ -123,11 +123,12 @@
             // labelDuzinaTermina
             // 
             this.labelDuzinaTermina.AutoSize = true;
+            this.labelDuzinaTermina.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
             this.labelDuzinaTermina.Location = new System.Drawing.Point(15, 196);
             this.labelDuzinaTermina.Name = "labelDuzinaTermina";
-            this.labelDuzinaTermina.Size = new System.Drawing.Size(169, 13);
+            this.labelDuzinaTermina.Size = new System.Drawing.Size(125, 13);
             this.labelDuzinaTermina.TabIndex = 27;
-            this.labelDuzinaTermina.Text = "Duzina jednog termina u časovima";
+            this.labelDuzinaTermina.Text = "Minimalna dužina termina";
             // 
             // labelBrojLjudi
             // 
