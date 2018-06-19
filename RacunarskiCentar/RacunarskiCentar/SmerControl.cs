@@ -53,6 +53,7 @@ namespace RacunarskiCentar
         {
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             this.ucionica = ucionica;
+
             InitializeComponent();
             Width = 200;
             Height = smerHeight;
@@ -131,7 +132,7 @@ namespace RacunarskiCentar
         private void updatePredmetPanelElements()
         {
             HashSet<Predmet> predmetiToAdd = new HashSet<Predmet>();
-            foreach (Predmet predmet in GuiObject.Predmeti)
+            foreach (Predmet predmet in GuiObject.getPredmetiPoUcionici(ucionica))
             {
                 bool found = false;
                 foreach (var predmetCon in predmetPanel.Controls)

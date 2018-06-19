@@ -22,6 +22,7 @@ namespace RacunarskiCentar
         public Panel toolboxPanel;
         public ToolStrip tb = new ToolStrip();
         public StatusStrip sStrip = new StatusStrip();
+        Ucionica aktivnaUcionica;
 
         UcionicaFilterForm uff = new UcionicaFilterForm();
         SmerFilterForm sff = new SmerFilterForm();
@@ -282,7 +283,7 @@ namespace RacunarskiCentar
                     Smer s = e.getGUIObject() as Smer;
                     if (s != null)
                     {
-                        dodajSmerControl(s);   
+                        dodajSmerControl(s, aktivnaUcionica);   
                     }
                 }
             }
@@ -536,11 +537,12 @@ namespace RacunarskiCentar
 
         public void initUcionicaView(Ucionica ucionica)
         {
+            aktivnaUcionica = ucionica;
             currentView = FormView.UCIONICA;
             initMainPanel();
             initToolPanelTable();
 
-            populatePredmets();
+            populatePredmets(ucionica);
 
             Raspored r = ucionica.Raspored;
             RasporedControl rc = new RasporedControl(r, mainPanel);
@@ -553,20 +555,20 @@ namespace RacunarskiCentar
 
 
         SmerControl selectedSmerControl = null;
-        private void populatePredmets()
+        private void populatePredmets(Ucionica ucionica)
         {
             TableLayoutPanel t = (TableLayoutPanel)toolboxPanel;
             toolboxPanel.Padding = new Padding(13, 0, 0, 0);
             foreach (Smer smer in DataManger.getSmers())
             {
-                dodajSmerControl(smer);
+                dodajSmerControl(smer, ucionica);
             }
         }
 
-        private void dodajSmerControl(Smer s)
+        private void dodajSmerControl(Smer s, Ucionica ucionica)
         {
             TableLayoutPanel t = (TableLayoutPanel)toolboxPanel;
-            SmerControl sc = new SmerControl(s, toolboxPanel);
+            SmerControl sc = new SmerControl(s, toolboxPanel, ucionica);
             sc.ColapseedChanged += Sc_ValueChanged;
             t.Controls.Add(sc);
         }
