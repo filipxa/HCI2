@@ -156,7 +156,7 @@ namespace RacunarskiCentar
             Controls.Add(tb);
             initRCView();
 
-            ClientSize = new Size(1000, 800);
+            ClientSize = new Size(1200, 900);
             MinimumSize = Size;
             ResizeEnd += Form1_ResizeEnd;
             ResizeBegin += Form1_ResizeBegin;

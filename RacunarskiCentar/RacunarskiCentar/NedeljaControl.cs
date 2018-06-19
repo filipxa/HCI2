@@ -92,7 +92,6 @@ namespace RacunarskiCentar
                 {
                     CreateTerminControl(termin);
                 }
-
             }
 
 
