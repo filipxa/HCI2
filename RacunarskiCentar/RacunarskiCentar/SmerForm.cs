@@ -27,7 +27,7 @@ namespace RacunarskiCentar
             if (smer != null)
             {
                 editAction = new EditAction(smer);
-               
+              
                 popuniPolja();
             }else
             {
@@ -66,7 +66,7 @@ namespace RacunarskiCentar
                 smer.Predmeti = listBoxPredmeti.Items.Cast<Predmet>().ToList();
 
                 action = new CreateAction(smer);
-              
+                DataControllercs.addAction(action);
             }
             else
             {
@@ -79,8 +79,8 @@ namespace RacunarskiCentar
 
                
             }
-            if(!actionAdded)
-                DataControllercs.addAction(action);
+            if (!actionAdded)
+                DataControllercs.addAction(editAction);
             return action;
         }
 
@@ -188,6 +188,19 @@ namespace RacunarskiCentar
             if (p!=null)
             {
                 listBoxPredmeti.Items.Remove(p);
+                if (!isCreate)
+                {
+                    if (!actionAdded)
+                    {
+                        DataControllercs.addAction(editAction);
+                        actionAdded = true;
+                    }
+                        
+                    DeleteAction d = new DeleteAction(p);
+                    DataControllercs.addAction(d);
+                }
+               
+
             }
             
         }

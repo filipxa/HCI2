@@ -28,6 +28,7 @@ namespace RacunarskiCentar
         PredmetFilterForm pff = new PredmetFilterForm();
         List<ToolStripButton> undoButtons = new List<ToolStripButton>();
         List<ToolStripButton> redoButtons = new List<ToolStripButton>();
+        List<ToolStripLabel> statusLabels = new List<ToolStripLabel>();
         
         public ToolStrip generateToolStrip()
         {
@@ -86,6 +87,20 @@ namespace RacunarskiCentar
             return tb;
         }
 
+
+        public StatusStrip generateStatusBar()
+        {
+            StatusStrip sb = new StatusStrip();
+            ToolStripLabel l = new ToolStripLabel();
+            l.Font = GraphicLoader.getFontBold(10);
+            l.BackColor = sb.BackColor;
+            sb.Height = 20;
+            l.Text = "";
+            statusLabels.Add(l);
+            sb.Items.Add(l);
+            return sb;
+        }
+
         private void filterFormaNazadKlik(object sender, EventArgs e)
         {
             ToolStripButton button = (ToolStripButton)sender;
@@ -122,10 +137,23 @@ namespace RacunarskiCentar
             ResizeEnd += Form1_ResizeEnd;
             ResizeBegin += Form1_ResizeBegin;
 
+            uff.BackColor = GraphicLoader.getColorLightGray();
+            sff.BackColor = GraphicLoader.getColorLightGray();
+            soff.BackColor = GraphicLoader.getColorLightGray();
+            pff.BackColor = GraphicLoader.getColorLightGray();
+
+
             uff.Controls.Add(generateToolStrip());
+            uff.Controls.Add(generateStatusBar());
             sff.Controls.Add(generateToolStrip());
+            sff.Controls.Add(generateStatusBar());
             soff.Controls.Add(generateToolStrip());
+            soff.Controls.Add(generateStatusBar());
             pff.Controls.Add(generateToolStrip());
+            pff.Controls.Add(generateStatusBar());
+
+
+            Controls.Add(generateStatusBar());
            /* Tutorial t = new Tutorial(this);
             t.nextStep();*/
 
@@ -228,8 +256,11 @@ namespace RacunarskiCentar
             {
                 b.Enabled = DataControllercs.RedoAvailable();
             }
-          
-           
+            foreach (ToolStripLabel l in statusLabels)
+            {
+                l.Text = e.ToString();
+            }
+
         }
 
         private void Undo_Click1(object sender, EventArgs e)
@@ -273,7 +304,7 @@ namespace RacunarskiCentar
         private void initMainPanel(Panel p)
         {
             p.Anchor = AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            p.MinimumSize = new Size(ClientSize.Width - toolWidth, ClientSize.Height - tb.Height);
+            p.MinimumSize = new Size(ClientSize.Width - toolWidth, ClientSize.Height - tb.Height-20);
             p.Location = new Point(toolWidth, tb.Height);
             p.BackColor = GraphicLoader.getColorLightGray();
 
@@ -294,7 +325,7 @@ namespace RacunarskiCentar
             if (toolboxPanel != null)
                 toolboxPanel.Dispose();
             p.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
-            p.MinimumSize = new Size(toolWidth, ClientSize.Height - tb.Height);
+            p.MinimumSize = new Size(toolWidth, ClientSize.Height - tb.Height-20);
             p.Location = new Point(0, tb.Height);
 
             p.BackColor = GraphicLoader.getColorDarkGray();
