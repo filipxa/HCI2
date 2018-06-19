@@ -21,11 +21,13 @@ namespace RacunarskiCentar
         public Panel mainPanel;
         public Panel toolboxPanel;
         public ToolStrip tb = new ToolStrip();
+        public StatusStrip sStrip = new StatusStrip();
 
         UcionicaFilterForm uff = new UcionicaFilterForm();
         SmerFilterForm sff = new SmerFilterForm();
         SoftwareFilterForm soff = new SoftwareFilterForm();
         PredmetFilterForm pff = new PredmetFilterForm();
+
         List<ToolStripButton> undoButtons = new List<ToolStripButton>();
         List<ToolStripButton> redoButtons = new List<ToolStripButton>();
         List<ToolStripLabel> statusLabels = new List<ToolStripLabel>();
@@ -39,6 +41,7 @@ namespace RacunarskiCentar
                 Text = "Nazad",
                 Name = "nazad"
             };
+
             if (undoButtons.Count == 0)
             {
                 b.Click += nazadButtonClick;
@@ -48,6 +51,7 @@ namespace RacunarskiCentar
                 b.Click += filterFormaNazadKlik;
             }
             tb.Items.Add(b);
+
 
             ToolStripButton undoButton = new ToolStripButton
             {
@@ -186,13 +190,8 @@ namespace RacunarskiCentar
             pff.Controls.Add(generateStatusBar());
             pff.KeyDown += shortcutKeydown;
             pff.KeyPreview = true;
-
-
-
-
-            Controls.Add(generateStatusBar());
-           
-           
+            sStrip = generateStatusBar();
+            Controls.Add(sStrip);
 
         }
 
@@ -235,7 +234,6 @@ namespace RacunarskiCentar
 
         private void ToolFilterPredmeta(object sender, EventArgs e)
         {
-
             if (!pff.Visible)
             {
                 pff.Show();
