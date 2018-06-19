@@ -33,6 +33,7 @@ namespace RacunarskiCentar
             {
                 isCreate = true;
                 this.smer = new Smer();
+
             }
 
             KeyPreview = true;
@@ -61,6 +62,7 @@ namespace RacunarskiCentar
         private void popuniPolja()
         {
             textBoxID.Text = smer.ID;
+            textBoxID.Enabled = false;
             textBoxIme.Text = smer.Ime;
             dateTimePicker1.Value = Convert.ToDateTime(smer.DatumUvodjenja);
             richTextBoxOpis.Text = smer.Opis;
@@ -119,8 +121,9 @@ namespace RacunarskiCentar
 
             int rb = 1;
             string poruka = "";
-            if(smer == null)
+            if(isCreate)
             {
+
                 foreach(Smer s in DataManger.getSmers())
                 {
                     if(s.ID.Equals(smer.ID))
