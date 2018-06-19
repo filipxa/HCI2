@@ -439,7 +439,7 @@ namespace RacunarskiCentar
             form.tb.Enabled = false;
             DataManger.loadTut();
             form.initRCView();
-            createControl("Dobrodošli u interaktivni tutorijal!\n Kako biste nastavili, pritisnite na ovaj prozorčić. ", 30);
+            createControl("Dobrodošli u interaktivni tutorijal!\n Kako biste nastavili, pritisnite na ovaj prozorčić. ", 25);
             tc.Click += new EventHandler(delegate (Object o, EventArgs a)
             {
                 nextStep();
@@ -461,7 +461,7 @@ namespace RacunarskiCentar
             InitializeComponent();
             font = GraphicLoader.getFontBold(fontSize);
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            BackColor = Color.Transparent;
+            BackColor = GraphicLoader.getColorDarkGray();
             Size = new Size(form.Width / 2, form.Height / 4);
 
             sf.Alignment = StringAlignment.Center;

@@ -637,8 +637,18 @@ namespace RacunarskiCentar
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F1) 
-                DataManger.goToHelp("");
+            if (e.KeyCode == Keys.F1)
+            {
+                if(currentView == FormView.RACUNARSKI_CENTAR)
+                {
+                    DataManger.goToHelp("racunarskiCentarForma");
+                } else
+                {
+                    DataManger.goToHelp("ucionicaForma");
+                }
+                
+            }
+               
 
         }
     }
