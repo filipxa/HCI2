@@ -66,24 +66,18 @@ namespace RacunarskiCentar
         private static void addRaspored(Raspored raspored)
         {
             raspored.Ucionica.Raspored = raspored;
-            foreach (Nedelja ned in raspored.RadneNedelje)
-            {
-                addNedelja(ned);
-            }
+           
         }
 
         private static void addNedelja(Nedelja ned)
         {
             ned.Raspored.RadneNedelje.Add(ned);
-            foreach (Termin ter in ned.Termini)
-            {
-                addTermin(ter);
-            }
+           
         }
 
         internal static List<Ucionica> getUcionice()
         {
-            return ucionicaFilterisanje();
+            return ucionice;
         }
         internal static List<Software> getSoftware()
         {

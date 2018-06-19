@@ -57,6 +57,10 @@ namespace RacunarskiCentar
         {
             if(nedeljaControl != null)
             {
+                if (nedeljaControl.GuiObject.Equals(nedelja))
+                {
+                    return;
+                }
                 nedeljaPanel.Controls.Remove(nedeljaControl);
                 nedeljaControl.Dispose();
             }

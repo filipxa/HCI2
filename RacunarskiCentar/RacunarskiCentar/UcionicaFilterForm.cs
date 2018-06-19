@@ -102,7 +102,7 @@ namespace RacunarskiCentar
 
         private void popunjavanjeTabele()
         {
-            foreach (Ucionica p in DataManger.getUcionice())
+            foreach (Ucionica p in DataManger.ucionicaFilterisanje())
             {
                 string[] row = { p.ID, p.Opis, Convert.ToString(p.BrRadnihMesta) };
                 dataGridView1.Rows.Add(row);
