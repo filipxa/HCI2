@@ -143,7 +143,7 @@ namespace RacunarskiCentar
             form.tb.Enabled = true;
             Color old;
             ToolStripButton undoButton;
-            createControl("Pritisnite 'Redo' kako biste se vratili korak unapred.", 20);
+            createControl("Pritisnite 'Redo' kako biste vratili poslednje poništenu akciju.", 20);
             foreach (ToolStripItem item in form.tb.Items)
             {
                 if (item.Name.Equals("redo"))
@@ -174,7 +174,7 @@ namespace RacunarskiCentar
             form.tb.Enabled = true;
             Color old;
             ToolStripButton undoButton;
-            createControl("Pritisnite 'Undo' kako biste se vratili korak unazad.", 20);
+            createControl("Pritisnite 'Undo' kako biste poništili poslednju akciju.", 20);
             foreach (ToolStripItem item in form.tb.Items)
             {
                 if (item.Name.Equals("undo"))
