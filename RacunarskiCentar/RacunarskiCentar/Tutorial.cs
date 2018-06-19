@@ -197,8 +197,6 @@ namespace RacunarskiCentar
                     item.Enabled = false;
                 }
             }
-
-
         }
 
         private void TutorialEnd()
