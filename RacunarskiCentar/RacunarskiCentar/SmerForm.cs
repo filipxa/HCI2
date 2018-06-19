@@ -35,6 +35,22 @@ namespace RacunarskiCentar
                 this.smer = new Smer();
             }
 
+            KeyDown += (object sender, KeyEventArgs e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    if (!isCreate)
+                    {
+                        System.Diagnostics.Process.Start(DataManger.helpFile + "#izmenaSmera");
+                    }
+                    else
+                    {
+                        System.Diagnostics.Process.Start(DataManger.helpFile + "#dodavanjeSmera");
+                    }
+
+                }
+            };
+
         }
 
         private void SmerForm_Disposed(object sender, EventArgs e)
@@ -66,7 +82,6 @@ namespace RacunarskiCentar
                 smer.Predmeti = listBoxPredmeti.Items.Cast<Predmet>().ToList();
 
                 action = new CreateAction(smer);
-                DataControllercs.addAction(action);
             }
             else
             {
@@ -80,7 +95,7 @@ namespace RacunarskiCentar
                
             }
             if (!actionAdded)
-                DataControllercs.addAction(editAction);
+                DataControllercs.addAction(action);
             return action;
         }
 

@@ -366,8 +366,8 @@ namespace RacunarskiCentar
         private void initToolPanelTable()
         {
             Panel p = new TableLayoutPanel();
-
             initToolPanel(p);
+            
 
 
         }

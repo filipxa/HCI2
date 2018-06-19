@@ -11,6 +11,13 @@ namespace RacunarskiCentar
     {
         private Predmet predmet;
         private Smer smer;
+        public enum Rezim
+        {
+            Izmena, Dodavanje, DodavanjeNovomSmeru
+        };
+
+        Rezim rezimRada;
+        
 
         public PredmetForm(Predmet predmet, Smer smer)
         {
@@ -18,16 +25,19 @@ namespace RacunarskiCentar
             this.predmet = predmet;
             InitializeComponent();
             comboBoxSmer.SelectedValueChanged += ComboBoxSmer_SelectedIndexChanged;
+
             if (predmet != null)
             {
                 popuniPolja();
                 comboBoxSmer.Text = predmet.SmerPredmeta.ToString();
                 comboBoxSmer.Enabled = false;
+                rezimRada = Rezim.Izmena;
             }
             else
             {
                 if (smer == null)
                 {
+                    rezimRada = Rezim.Dodavanje;
                     foreach (Smer s in DataManger.getSmers())
                     {
                         comboBoxSmer.Items.Add(s);
@@ -41,6 +51,7 @@ namespace RacunarskiCentar
                 }
                 else
                 {
+                    rezimRada = Rezim.DodavanjeNovomSmeru;
                     comboBoxSmer.Items.Add(smer);
                     comboBoxSmer.SelectedIndex = 0;
                     comboBoxSmer.Enabled = false;
@@ -104,7 +115,7 @@ namespace RacunarskiCentar
 
                 
             }
-            if (comboBoxSmer.Enabled)
+            if (rezimRada==Rezim.Izmena)
             {
                 DataControllercs.addAction(action);
             }

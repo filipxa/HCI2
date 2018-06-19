@@ -34,7 +34,26 @@ namespace RacunarskiCentar
                 popuniPolja();
             }
             popuniSoftvere();
+
+            KeyDown += (object sender, KeyEventArgs e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    if (ucionica != null)
+                    {
+                        System.Diagnostics.Process.Start(DataManger.helpFile + "#izmenaUcionica");
+                    } else
+                    {
+                        System.Diagnostics.Process.Start(DataManger.helpFile + "#dodavanjeUcionica");
+                    }
+                       
+                }
+                System.Diagnostics.Debug.WriteLine("Steva");
+            };
+
         }
+
+
 
         private void CheckedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
         {
