@@ -51,10 +51,13 @@ namespace RacunarskiCentar
 
         public static void load()
         {
-              
+            smerovi.Clear();
+            softveri.Clear();
+            ucionice.Clear();
             loadSmerovi("smerXML.xml");
             loadSoftware("softwareXML.xml");
             loadUcionice("ucionicaXML.xml");
+            
             foreach(Ucionica u in ucionice)
             {
                 if (u.Raspored == null)
@@ -82,13 +85,13 @@ namespace RacunarskiCentar
 
         public static void loadTut()
         {
-
-            loadSmerovi("smerXMLTut.xml");
-            loadSoftware("softwareXMLTut.xml");
-            loadUcionice("ucionicaXMLTut.xml");
             ucionice.Clear();
             smerovi.Clear();
             softveri.Clear();
+            loadSmerovi("smerXMLTut.xml");
+            loadSoftware("softwareXMLTut.xml");
+            loadUcionice("ucionicaXMLTut.xml");
+            
             foreach (Ucionica u in ucionice)
             {
                 if (u.Raspored == null)
