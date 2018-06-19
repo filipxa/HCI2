@@ -138,6 +138,7 @@ namespace RacunarskiCentar
             {
                 DataControllercs.onAction(null, this);
             }
+            DataManger.save();
         }
         public GUIObject getGUIObject()
         {

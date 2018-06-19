@@ -87,6 +87,11 @@ namespace RacunarskiCentar
             get => krajTermina;
             set => krajTermina = value;
         }
+        public int DuzinaTermina
+        {
+            get => duzinaTermina;
+            set => duzinaTermina = value;
+        }
         public override GUIObject Copy()
         {
             return new Termin(pocetakTermina, duzinaTermina, predmet, nedelja);
