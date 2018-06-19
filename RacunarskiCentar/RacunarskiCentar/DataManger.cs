@@ -13,7 +13,7 @@ namespace RacunarskiCentar
         static List<Smer> smerovi = new List<Smer>();
         static List<Software> softveri = new List<Software>();
 
-        
+
 
 
         internal static List<Smer> getSmers()
@@ -26,7 +26,7 @@ namespace RacunarskiCentar
             {
                 addUcionica(guiObject as Ucionica);
             }
-            if(guiObject is Termin)
+            if (guiObject is Termin)
             {
                 addTermin(guiObject as Termin);
             }
@@ -34,15 +34,15 @@ namespace RacunarskiCentar
             {
                 addSmer(guiObject as Smer);
             }
-            if(guiObject is Software)
+            if (guiObject is Software)
             {
                 addSoftware(guiObject as Software);
             }
-            if( guiObject is Raspored)
+            if (guiObject is Raspored)
             {
                 addRaspored(guiObject as Raspored);
             }
-            if(guiObject is Predmet)
+            if (guiObject is Predmet)
             {
                 addPredmet(guiObject as Predmet);
             }
@@ -56,6 +56,7 @@ namespace RacunarskiCentar
         private static void addPredmet(Predmet predmet)
         {
             predmet.SmerPredmeta.Predmeti.Add(predmet);
+            predmet.SmerPredmeta.OnValueChanged(null);
         }
 
         private static void addSoftware(Software software)
@@ -66,13 +67,13 @@ namespace RacunarskiCentar
         private static void addRaspored(Raspored raspored)
         {
             raspored.Ucionica.Raspored = raspored;
-           
+
         }
 
         private static void addNedelja(Nedelja ned)
         {
             ned.Raspored.RadneNedelje.Add(ned);
-           
+
         }
 
         internal static List<Ucionica> getUcionice()
@@ -101,7 +102,7 @@ namespace RacunarskiCentar
             }
             if (guiObject is Raspored)
             {
-               removeRaspored(guiObject as Raspored);
+                removeRaspored(guiObject as Raspored);
             }
 
             if (guiObject is Nedelja)
@@ -132,33 +133,33 @@ namespace RacunarskiCentar
 
         public static void addTermin(Termin termin)
         {
-            if(!termin.Nedelja.Termini.Contains(termin))
+            if (!termin.Nedelja.Termini.Contains(termin))
                 termin.Nedelja.Termini.Add(termin);
         }
 
 
 
-       static public List<Raspored> getRasporedi()
+        static public List<Raspored> getRasporedi()
         {
             List<Raspored> rets = new List<Raspored>();
             foreach (Ucionica ucionica in ucionice)
             {
-                if(ucionica.Raspored!=null)
-                rets.Add(ucionica.Raspored);
+                if (ucionica.Raspored != null)
+                    rets.Add(ucionica.Raspored);
 
             }
             return rets;
-               
+
         }
 
-      
+
 
         static public List<Nedelja> getNedelje()
         {
             List<Nedelja> rets = new List<Nedelja>();
-            foreach(Raspored ras in getRasporedi())
+            foreach (Raspored ras in getRasporedi())
             {
-              
+
                 rets.AddRange(ras.RadneNedelje);
             }
             return rets;
@@ -209,11 +210,11 @@ namespace RacunarskiCentar
         static public List<Termin> getTerminsByPredmet(Predmet p)
         {
             List<Termin> rets = new List<Termin>();
-            foreach(Nedelja ned in getNedelje())
+            foreach (Nedelja ned in getNedelje())
             {
-                 foreach (Termin ter in ned.Termini)
+                foreach (Termin ter in ned.Termini)
                 {
-                    if(ter.Predmet == p)
+                    if (ter.Predmet == p)
                     {
                         rets.Add(ter);
                     }
@@ -272,6 +273,7 @@ namespace RacunarskiCentar
         private static void removePredmet(Predmet predmet)
         {
             predmet.SmerPredmeta.Predmeti.Remove(predmet);
+            predmet.SmerPredmeta.OnValueChanged(null);
         }
 
 

@@ -78,7 +78,7 @@ namespace RacunarskiCentar
 
         }
 
-        private Action GetAction()
+        public Action GetAction()
         {
             Action action;
             if(predmet == null)
@@ -104,8 +104,11 @@ namespace RacunarskiCentar
 
                 
             }
-
-            DataControllercs.addAction(action);
+            if (comboBoxSmer.Enabled)
+            {
+                DataControllercs.addAction(action);
+            }
+            
             return action;
         }
 

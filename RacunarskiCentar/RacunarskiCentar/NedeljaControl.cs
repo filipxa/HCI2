@@ -219,7 +219,7 @@ namespace RacunarskiCentar
 
         private void transferTerminToNewDate(Panel currentPanel, Termin termin, DateTime pocetakTermina, DateTime krajTermina)
         {
-            ChainAction chainAction = new ChainAction();
+            ChainAction chainAction = new ChainAction(termin);
             Termin novi = new Termin(pocetakTermina, krajTermina, termin.Predmet, GuiObject);
             
             chainAction.actions.Add(new DeleteAction(termin));

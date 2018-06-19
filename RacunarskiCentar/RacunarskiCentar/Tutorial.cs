@@ -20,15 +20,13 @@ namespace RacunarskiCentar
         private bool levelZavrsen = false;
         private enum Level
         {
-            Nista, Pocetak, ToolBar, ToolBoxPanel, MainPanel, UcionicaDKlik, UcionicaView, UVToolBox, UVSmer, UVPredmet, TerminMove
+            Nista, Pocetak, ToolBar, ToolBoxPanel, MainPanel, UcionicaDKlik, UcionicaView, UVToolBox, UVSmer, UVPredmet, TerminMove, Undo, Redo, Nazad
         }
         public Tutorial(Form1 f)
         {
             form = f;
             currentLevel = Level.Nista;
-            DataControllercs.isTutorial = true;
-            DataControllercs.allowedTypes.Add(typeof(EditAction));
-            DataControllercs.allowedTypes.Add(typeof(RestoreAction));
+           
         }
         private void removeControl()
         {
@@ -88,15 +86,138 @@ namespace RacunarskiCentar
             }
             else if (currentLevel == Level.TerminMove)
             {
-                DataControllercs.isTutorial = false;
+                initUndo();
             }
+            else if (currentLevel == Level.Undo)
+            {
+                initRedo();
+            }
+            else if (currentLevel == Level.Redo)
+            {
+                initNazad();
+            }
+            else if (currentLevel == Level.Nazad)
+            {
+                TutorialEnd();
+            }
+        }
+
+
+
+
+        private void initNazad()
+        {
+            currentLevel = Level.Nazad;
+            form.tb.Enabled = true;
+            Color old;
+            ToolStripButton undoButton;
+            createControl("Pritisnite 'Nazad' kako biste se vratili na prethodnu formu.", 20);
+            foreach (ToolStripItem item in form.tb.Items)
+            {
+                if (item.Name.Equals("nazad"))
+                {
+                    item.Enabled = true;
+                    old = item.BackColor;
+                    item.BackColor = Color.Yellow;
+                    undoButton = item as ToolStripButton;
+                    undoButton.Click += (object sender, EventArgs e) =>
+                    {
+                        nextStep();
+                        item.BackColor = old;
+
+                    };
+                }
+                else
+                {
+                    item.Enabled = false;
+                }
+            }
+
+
+        }
+
+
+        private void initRedo()
+        {
+            currentLevel = Level.Redo;
+            form.tb.Enabled = true;
+            Color old;
+            ToolStripButton undoButton;
+            createControl("Pritisnite 'Redo' kako biste se vratili korak unapred.", 20);
+            foreach (ToolStripItem item in form.tb.Items)
+            {
+                if (item.Name.Equals("redo"))
+                {
+                    item.Enabled = true;
+                    old = item.BackColor;
+                    item.BackColor = Color.Yellow;
+                    undoButton = item as ToolStripButton;
+                    undoButton.Click += (object sender, EventArgs e) =>
+                    {
+                        nextStep();
+                        item.BackColor = old;
+
+                    };
+                }
+                else
+                {
+                    item.Enabled = false;
+                }
+            }
+
+
+        }
+
+
+        private void initUndo()
+        {
+            currentLevel = Level.Undo;
+            form.tb.Enabled = true;
+            Color old;
+            ToolStripButton undoButton;
+            createControl("Pritisnite 'Undo' kako biste se vratili korak unazad.", 20);
+            foreach (ToolStripItem item in form.tb.Items)
+            {
+                if (item.Name.Equals("undo"))
+                {
+                    item.Enabled = true;
+                    old = item.BackColor;
+                    item.BackColor = Color.Yellow;
+                    undoButton = item as ToolStripButton;
+                    undoButton.Click += (object sender, EventArgs e) =>
+                    {
+                        nextStep();
+                        item.BackColor = old;
+
+                    };
+                }
+                else
+                {
+                    item.Enabled = false;
+                }
+            }
+
+
+        }
+
+        private void TutorialEnd()
+        {
+            DataManger.load();
+            
+            DataControllercs.isTutorial = false;
+            form.tb.Enabled = true;
+            foreach (ToolStripItem item in form.tb.Items)
+            {
+                item.Enabled = true;
+            }
+            form.initRCView();
         }
 
         private void initTerminMove()
         {
             currentLevel = Level.TerminMove;
             DataControllercs.allowedTypes.Add(typeof(ChainAction));
-            createControl("Prevucite termin na drugi dan kako bi ste ga pomerili.", 20);
+            createControl("Prevucite termin na drugi dan kako biste ga pomerili.", 20);
             tc.Click += new EventHandler(delegate (Object o, EventArgs a)
             {
                 if (levelZavrsen)
@@ -104,7 +225,6 @@ namespace RacunarskiCentar
                     levelZavrsen = false;
                     nextStep();
                 }
-
             });
 
             DataControllercs.onAction += ActionExcuted;
@@ -177,12 +297,12 @@ namespace RacunarskiCentar
                 nextStep();
                 return;
             }
-            createControl("Pritisnite na smer kako biste vam se prikazali predmeti tog smera i kako biste nastavili tutorijal.", 20);
+            createControl("Pritisnite na smer kako bi vam se prikazali predmeti tog smera i kako biste nastavili tutorijal.", 20);
             MouseEventHandler e = new MouseEventHandler(delegate (Object o, MouseEventArgs a)
             {
                 if (a.Button == MouseButtons.Left && a.Clicks == 1)
                 {
-                    tc.Text = "Uspešno ste otvorili prozor za izmenu Učionice. \n Za nastavak zatvorite dialog za izmenu i pritisnite na ovaj prozor.";
+                    tc.Text = "Uspešno ste otvorili prozor za izmenu Učionice. \n Za nastavak zatvorite dijalog za izmenu i pritisnite na ovaj prozor.";
                     sc.IsTutorial = false;
                     nextStep();
                 }
@@ -200,12 +320,13 @@ namespace RacunarskiCentar
 
             currentLevel = Level.UcionicaView;
             UcionicaControl ucionica = (UcionicaControl)form.mainPanel.Controls[0];
-            createControl("Kako biste pristupili izmeni rasporeda konkretne učionice i nastavku tutorijala pritisnite dupli klik na obeleženu učionicu.", 20);
+            createControl("Kako biste pristupili izmeni rasporeda konkretne učionice i nastavku tutorijala, pritisnite dupli klik na obeleženu učionicu.", 20);
             EventHandler e = new EventHandler(delegate (Object o, EventArgs a)
             {
                 tc.Text = "Uspešno ste otvorili prikaz Učionice. \n Za nastavak pritisnite na ovaj prozor.";
                 levelZavrsen = true;
                 ucionica.IsTutorial = false;
+                form.initUcionicaView(ucionica.GuiObject);
 
             });
             ucionica.DoubleClick += e;
@@ -226,14 +347,14 @@ namespace RacunarskiCentar
         private void InitUcionicaDKlik()
         {
             currentLevel = Level.UcionicaDKlik;
-            createControl("Izmenu učionice možete izvršiti i desnim klikom na učionicu.\n Za nastavak stistnite desni klik za izmenu obeležene učionice.", 20);
+            createControl("Izmenu učionice možete izvršiti i desnim klikom na učionicu.\n Za nastavak pritisnite desni klik za izmenu obeležene učionice.", 20);
             UcionicaControl ucionica = (UcionicaControl)form.mainPanel.Controls[0];
 
             MouseEventHandler e = new MouseEventHandler(delegate (Object o, MouseEventArgs a)
             {
                 if (a.Button == MouseButtons.Right && a.Clicks == 1)
                 {
-                    tc.Text = "Uspešno ste otvorili prozor za izmenu Učionice. \n Za nastavak zatvorite dialog za izmenu i pritisnite na ovaj prozor.";
+                    tc.Text = "Uspešno ste otvorili prozor za izmenu Učionice. \n Za nastavak zatvorite dijalog za izmenu i pritisnite na ovaj prozor.";
                     ucionica.IsTutorial = false;
                     levelZavrsen = true;
                 }
@@ -260,7 +381,7 @@ namespace RacunarskiCentar
             currentLevel = Level.MainPanel;
             Color oldColor = form.mainPanel.BackColor;
             form.mainPanel.BackColor = Color.Yellow;
-            createControl("Glavni panel, trenutno obeležen žutom bojom, se nalazi na desnoj strani ekrana i trenutno prikazuje sve ucionice. \n Za nastavak pritisnite na ovaj prozor.", 20);
+            createControl("Glavni panel, trenutno obeležen žutom bojom, se nalazi na desnoj strani ekrana i trenutno prikazuje sve učionice. \n Za nastavak pritisnite na ovaj prozor.", 20);
             tc.Click += new EventHandler(delegate (Object o, EventArgs a)
             {
                 form.mainPanel.BackColor = oldColor;
@@ -286,7 +407,7 @@ namespace RacunarskiCentar
 
             currentLevel = Level.ToolBar;
             Color oldColor = form.tb.BackColor;
-            createControl("Opcije kao sto su Undo, Redo, Nazad kao i pristupanje dijalozima za izmenu podataka se mogu naći u toolbara na vrhu, toolbar je privremeno obeležen žutom bojom radi lakšeg uočavanja.\n .", 17);
+            createControl("Opcije kao sto su 'Undo', 'Redo', 'Nazad' kao i pristupanje dijalozima za izmenu podataka se mogu naći u toolbar-u na vrhu \n(toolbar je privremeno obeležen žutom bojom radi lakšeg uočavanja).\n ", 17);
             form.tb.BackColor = Color.Yellow;
             tc.Click += new EventHandler(delegate (Object o, EventArgs a)
             {
@@ -295,18 +416,23 @@ namespace RacunarskiCentar
 
             });
         }
+
         private void initPocetak()
         {
             currentLevel = Level.Pocetak;
-            createControl("Dobrodošli u interaktivni tutorijal!\n Kako biste nastavili pritisnite na ovaj prozorčić. ", 30);
+            DataControllercs.isTutorial = true;
+            DataControllercs.allowedTypes.Clear();
+            DataControllercs.allowedTypes.Add(typeof(EditAction));
+            DataControllercs.allowedTypes.Add(typeof(RestoreAction));
+            form.tb.Enabled = false;
+            DataManger.loadTut();
+            form.initRCView();
+            createControl("Dobrodošli u interaktivni tutorijal!\n Kako biste nastavili, pritisnite na ovaj prozorčić. ", 30);
             tc.Click += new EventHandler(delegate (Object o, EventArgs a)
             {
                 nextStep();
-
             });
         }
-
-
     }
 
 

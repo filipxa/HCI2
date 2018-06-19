@@ -19,7 +19,7 @@ namespace RacunarskiCentar
             MouseDown += TerminControl_MouseDown;
             MouseClick += EditTermin;
             BackColor = GraphicLoader.getColorDarkGray();
-
+            
         }
 
         private void EditTermin(object sender, MouseEventArgs e)

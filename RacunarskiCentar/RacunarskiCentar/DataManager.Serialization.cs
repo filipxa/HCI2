@@ -44,17 +44,20 @@ namespace RacunarskiCentar
 
         public static void save()
         {
-            DataManger.saveUcionica("ucionicaXML.xml");
-            DataManger.saveSmer("smerXML.xml");
-            DataManger.saveSoftware("softwareXML.xml");
+            saveUcionica("ucionicaXML.xml");
+            saveSmer("smerXML.xml");
+            saveSoftware("softwareXML.xml");
         }
 
         public static void load()
         {
-              
+            smerovi.Clear();
+            softveri.Clear();
+            ucionice.Clear();
             loadSmerovi("smerXML.xml");
             loadSoftware("softwareXML.xml");
             loadUcionice("ucionicaXML.xml");
+            
             foreach(Ucionica u in ucionice)
             {
                 if (u.Raspored == null)
@@ -73,6 +76,40 @@ namespace RacunarskiCentar
             foreach(Smer smer in smerovi)
             {
                 foreach(Predmet p in smer.Predmeti)
+                {
+                    p.SmerPredmeta = smer;
+                }
+            }
+
+        }
+
+        public static void loadTut()
+        {
+            ucionice.Clear();
+            smerovi.Clear();
+            softveri.Clear();
+            loadSmerovi("smerXMLTut.xml");
+            loadSoftware("softwareXMLTut.xml");
+            loadUcionice("ucionicaXMLTut.xml");
+            
+            foreach (Ucionica u in ucionice)
+            {
+                if (u.Raspored == null)
+                    continue;
+                u.Raspored.Ucionica = u;
+                foreach (Nedelja ned in u.Raspored.RadneNedelje)
+                {
+                    ned.Raspored = u.Raspored;
+
+                    foreach (Termin t in ned.Termini)
+                    {
+                        t.Nedelja = ned;
+                    }
+                }
+            }
+            foreach (Smer smer in smerovi)
+            {
+                foreach (Predmet p in smer.Predmeti)
                 {
                     p.SmerPredmeta = smer;
                 }

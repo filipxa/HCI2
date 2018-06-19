@@ -111,6 +111,11 @@ namespace RacunarskiCentar
             krajTermina = t.krajTermina;
         }
 
+        public override string ToString()
+        {
+
+            return predmet.ToString();
+        }
 
     }
 }

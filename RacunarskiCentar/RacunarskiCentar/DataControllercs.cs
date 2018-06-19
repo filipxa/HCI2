@@ -127,6 +127,7 @@ namespace RacunarskiCentar
     {
         protected GUIObject o;
         protected List<Termin> termini = new List<Termin>();
+
         public Action(GUIObject guiObject)
         {
             o = guiObject;
@@ -138,7 +139,37 @@ namespace RacunarskiCentar
             {
                 DataControllercs.onAction(null, this);
             }
-            DataManger.save();
+            if (!DataControllercs.isTutorial)
+            {
+                DataManger.save();
+            }
+           
+        }
+        public override string ToString()
+        {
+            string rets = "";
+            if (o is Predmet)
+            {
+                rets = "predmeta sa id-om ";
+            }
+            else if (o is Smer)
+            {
+                rets = "smera sa id-om ";
+            }
+            else if (o is Ucionica)
+            {
+                rets = "učionice sa id-om ";
+            }
+            else if (o is Termin)
+            {
+                rets = "termina koji pripada predmetu: ";
+            }
+            else if (o is Software)
+            {
+                rets = "s sa id-om ";
+            }
+            rets += o.ToString();
+            return rets;
         }
         public GUIObject getGUIObject()
         {
@@ -153,6 +184,7 @@ namespace RacunarskiCentar
         internal override void excuteAction()
         { 
             o.Delete();
+            DeleteAction deleteA;
             if (o is Smer)
             {
                 Smer s = o as Smer;
@@ -165,7 +197,9 @@ namespace RacunarskiCentar
             }
             foreach(Termin t in termini)
             {
-                t.Delete();
+                deleteA = new DeleteAction(t);
+                deleteA.excuteAction();
+
             }
             base.excuteAction();
         }
@@ -173,6 +207,11 @@ namespace RacunarskiCentar
         public override Action GetReverseAction()
         {
             return new CreateAction(o);
+        }
+        public override string ToString()
+        {
+
+            return DateTime.Now.ToShortTimeString() + ":" + " Akcija brisanja " + base.ToString(); 
         }
     }
 
@@ -182,10 +221,12 @@ namespace RacunarskiCentar
         internal override void excuteAction()
         {
             DataManger.addObject(o);
+            CreateAction cAction;
 
             foreach(Termin t in termini)
             {
-                DataManger.addObject(t);
+                cAction = new CreateAction(t);
+                cAction.excuteAction();
             }
             base.excuteAction();
         }
@@ -193,6 +234,10 @@ namespace RacunarskiCentar
         public override Action GetReverseAction()
         {
             return new DeleteAction(o);
+        }
+        public override string ToString()
+        {
+            return DateTime.Now.ToShortTimeString() + ":" + " Akcija kreiranja " + base.ToString();
         }
     }
 
@@ -206,12 +251,17 @@ namespace RacunarskiCentar
         }
         internal override void excuteAction()
         {
+
             base.excuteAction();
         }
 
         public override Action GetReverseAction()
         {
             return new RestoreAction(o, copyObject);
+        }
+        public override string ToString()
+        {
+            return DateTime.Now.ToShortTimeString() + ":" + " Akcija izmene " + base.ToString();
         }
     }
 
@@ -233,14 +283,18 @@ namespace RacunarskiCentar
 
         public override Action GetReverseAction()
         {
-            return new EditAction(preRestore);
+            return new RestoreAction(o,preRestore);
+        }
+        public override string ToString()
+        {
+            return DateTime.Now.ToShortTimeString() + ":" + " Akcija izmene " + base.ToString();
         }
     }
 
     public class ChainAction : Action
     {
         public List<Action> actions;
-        public ChainAction() : base(null)
+        public ChainAction(GUIObject guiObject) : base(guiObject)
         {
             actions = new List<Action>();
 
@@ -258,7 +312,7 @@ namespace RacunarskiCentar
         public override Action GetReverseAction()
         {
             List<Action> reverseActions = new List<Action>(actions);
-            ChainAction reverse = new ChainAction();
+            ChainAction reverse = new ChainAction(o);
             reverseActions.Reverse();
             foreach (Action action in reverseActions)
             {
@@ -266,6 +320,10 @@ namespace RacunarskiCentar
             }
 
             return reverse;
+        }
+        public override string ToString()
+        {
+            return DateTime.Now.ToShortTimeString() + ":" + " Akcija pomeranja " + base.ToString();
         }
     }
 }
