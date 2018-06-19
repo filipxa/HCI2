@@ -75,6 +75,7 @@ namespace RacunarskiCentar
                 smer.Ime = textBoxIme.Text;
                 smer.DatumUvodjenja = Convert.ToDateTime(dateTimePicker1.Value);
                 smer.Opis = richTextBoxOpis.Text;
+                smer.Predmeti.Clear();
                 foreach(Predmet p in listBoxPredmeti.Items)
                 {
                     smer.Predmeti.Add(p);
@@ -161,12 +162,14 @@ namespace RacunarskiCentar
 
         private void buttonObrisiPredmet_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
             //baguje brisanje treba se napravi kako treba
-            string id = listBoxPredmeti.SelectedItem.ToString();
-            Predmet predmet = DataManger.getPredmetByID(id);
-            DeleteAction d = new DeleteAction(predmet);
-            DataControllercs.addAction(d);
+            Predmet p = listBoxPredmeti.SelectedItem as Predmet;
+            if (p!=null)
+            {
+                DeleteAction d = new DeleteAction(p);
+                DataControllercs.addAction(d);
+            }
+            
         }
 
     }

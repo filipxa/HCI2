@@ -85,7 +85,7 @@ namespace RacunarskiCentar
 
         public override GUIObject Copy()
         {
-            return new Smer(id, ime, datumUvodjenja, opis);
+            return new Smer(id, ime, datumUvodjenja, opis, predmeti);
         }
 
 
