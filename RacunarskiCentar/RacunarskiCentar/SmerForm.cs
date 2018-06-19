@@ -80,7 +80,7 @@ namespace RacunarskiCentar
                
             }
             if (!actionAdded)
-                DataControllercs.addAction(editAction);
+                DataControllercs.addAction(action);
             return action;
         }
 
