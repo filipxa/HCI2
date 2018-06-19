@@ -17,6 +17,7 @@ namespace RacunarskiCentar
             InitializeComponent();
             MouseDown += TerminControl_MouseDown;
             BackColor = GraphicLoader.getColorDarkGray();
+            
         }
 
         private void TerminControl_MouseDown(object sender, MouseEventArgs e)

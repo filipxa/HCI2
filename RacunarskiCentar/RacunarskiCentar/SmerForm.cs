@@ -15,6 +15,8 @@ namespace RacunarskiCentar
     {
         bool isCreate = false;
         private Smer smer;
+        Action editAction;
+        bool actionAdded = false;
         public SmerForm(Smer smer)
         {
             DataControllercs.onAction += ActionExcuted;
@@ -24,6 +26,8 @@ namespace RacunarskiCentar
 
             if (smer != null)
             {
+                editAction = new EditAction(smer);
+               
                 popuniPolja();
             }else
             {
@@ -44,14 +48,13 @@ namespace RacunarskiCentar
             textBoxIme.Text = smer.Ime;
             dateTimePicker1.Value = Convert.ToDateTime(smer.DatumUvodjenja);
             richTextBoxOpis.Text = smer.Opis;
-            foreach(Predmet p in smer.Predmeti)
-            {
-                listBoxPredmeti.Items.Add(p);
-            }
+            listBoxPredmeti.Items.AddRange(smer.Predmeti.ToArray());
+
             
         }
 
-        private Action GetAction()
+
+        public Action GetAction()
         {
             Action action;
             if(isCreate)
@@ -60,29 +63,24 @@ namespace RacunarskiCentar
                 smer.Ime = textBoxIme.Text;
                 smer.DatumUvodjenja = Convert.ToDateTime(dateTimePicker1.Value);
                 smer.Opis = richTextBoxOpis.Text;
-                smer.Predmeti.Clear();
-                foreach (Predmet p in listBoxPredmeti.Items)
-                {
-                    smer.Predmeti.Add(p);
-                }
+                smer.Predmeti = listBoxPredmeti.Items.Cast<Predmet>().ToList();
 
                 action = new CreateAction(smer);
+              
             }
             else
             {
-                action = new EditAction(smer);
+                action = editAction;
                 smer.ID = textBoxID.Text;
                 smer.Ime = textBoxIme.Text;
                 smer.DatumUvodjenja = Convert.ToDateTime(dateTimePicker1.Value);
                 smer.Opis = richTextBoxOpis.Text;
-                smer.Predmeti.Clear();
-                foreach(Predmet p in listBoxPredmeti.Items)
-                {
-                    smer.Predmeti.Add(p);
-                }
+                smer.Predmeti = listBoxPredmeti.Items.Cast<Predmet>().ToList();
+
                
             }
-            DataControllercs.addAction(action);
+            if(!actionAdded)
+                DataControllercs.addAction(action);
             return action;
         }
 
@@ -151,23 +149,45 @@ namespace RacunarskiCentar
                     }
                 }
             }
+            else if (e is DeleteAction)
+            {
+                Predmet p = e.getGUIObject() as Predmet;
+                if (p != null)
+                {
+                    if (p.SmerPredmeta.Equals(smer))
+                    {
+                        
+                        foreach (object o in listBoxPredmeti.Items)
+                        {
+                            if((o as Predmet).Equals(e.getGUIObject())){
+                                listBoxPredmeti.Items.Remove(o);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
            
         }
         private void buttonDodajPredmet_Click(object sender, EventArgs e)
         {
             smer.ID = textBoxID.Text;
             PredmetForm pf = new PredmetForm(null, smer);
-            pf.ShowDialog();  
+            pf.ShowDialog();
+            if (pf.DialogResult == DialogResult.OK)
+            {
+                listBoxPredmeti.Items.Add(pf.GetAction().getGUIObject());
+            }
+            pf.Dispose();
         }
 
         private void buttonObrisiPredmet_Click(object sender, EventArgs e)
         {
-            //baguje brisanje treba se napravi kako treba
             Predmet p = listBoxPredmeti.SelectedItem as Predmet;
+            
             if (p!=null)
             {
-                DeleteAction d = new DeleteAction(p);
-                DataControllercs.addAction(d);
+                listBoxPredmeti.Items.Remove(p);
             }
             
         }

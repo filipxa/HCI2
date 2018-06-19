@@ -526,7 +526,7 @@ namespace RacunarskiCentar
             else if (e.KeyCode == Keys.F3)
                 btSmerKlik(null, null);
             else if (e.KeyCode == Keys.F4)
-                btSmerKlik(null, null);
+                btPredmetKlik(null, null);
             else if (e.KeyCode == Keys.F9)
                 MessageBox.Show("Help");
             else if (e.KeyCode == Keys.Back)

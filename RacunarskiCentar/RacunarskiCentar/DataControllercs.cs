@@ -205,6 +205,7 @@ namespace RacunarskiCentar
         }
         internal override void excuteAction()
         {
+
             base.excuteAction();
         }
 
@@ -232,7 +233,7 @@ namespace RacunarskiCentar
 
         public override Action GetReverseAction()
         {
-            return new EditAction(preRestore);
+            return new RestoreAction(o,preRestore);
         }
     }
 

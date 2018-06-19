@@ -21,7 +21,7 @@ namespace RacunarskiCentar
                 onValueChanged -= value;
             }
         }
-        protected virtual void OnValueChanged(EventArgs e)
+        public virtual void OnValueChanged(EventArgs e)
         {
             if (onValueChanged != null)
             {
