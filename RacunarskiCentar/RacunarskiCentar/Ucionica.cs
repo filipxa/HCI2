@@ -116,7 +116,7 @@ namespace RacunarskiCentar
             return c;
         }
 
-        protected override void OnDelete(EventArgs e)
+        public override void OnDelete(EventArgs e)
         {
             base.OnDelete(e);
         }

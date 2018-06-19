@@ -64,10 +64,9 @@ namespace RacunarskiCentar
                 Termin t = e.getGUIObject() as Termin;
                 if (t != null)
                 {
-                    if (t.Nedelja.Equals(GuiObject))
-                    {
-                        CreateTerminControl(t);
-                    }
+                    t.OnDelete(null);
+                    CreateTerminControl(t);
+
                 }
             }
         }
