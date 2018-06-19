@@ -35,22 +35,22 @@ namespace RacunarskiCentar
                 this.smer = new Smer();
             }
 
+            KeyPreview = true;
             KeyDown += (object sender, KeyEventArgs e) =>
             {
                 if (e.KeyCode == Keys.F1)
                 {
-                    if (!isCreate)
+                    if (isCreate)
                     {
-                        System.Diagnostics.Process.Start(DataManger.helpFile + "#izmenaSmera");
+                        DataManger.goToHelp("dodavanjeSmer");
                     }
                     else
                     {
-                        System.Diagnostics.Process.Start(DataManger.helpFile + "#dodavanjeSmera");
+                        DataManger.goToHelp("izmenaSmer");
                     }
 
                 }
             };
-
         }
 
         private void SmerForm_Disposed(object sender, EventArgs e)

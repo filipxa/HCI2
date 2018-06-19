@@ -29,20 +29,22 @@ namespace RacunarskiCentar
             {
                 popuniPolja();
             }
+            KeyPreview = true;
             KeyDown += (object sender, KeyEventArgs e) =>
             {
                 if (e.KeyCode == Keys.F1)
                 {
                     if (software != null)
                     {
-                        System.Diagnostics.Process.Start(DataManger.helpFile + "#izemnaSoftvera");
+                        DataManger.goToHelp("izmenaSoftver");
                     }
                     else
                     {
-                        System.Diagnostics.Process.Start(DataManger.helpFile + "#dodavanjeSoftvera");
+                        DataManger.goToHelp("dodavanjeSoftver");
                     }
 
                 }
+
             };
         }
 

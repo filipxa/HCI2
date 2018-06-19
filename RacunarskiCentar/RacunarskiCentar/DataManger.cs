@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.IO;
+using System.Diagnostics;
 
 namespace RacunarskiCentar
 {
@@ -13,9 +15,22 @@ namespace RacunarskiCentar
         static List<Smer> smerovi = new List<Smer>();
         static List<Software> softveri = new List<Software>();
 
-        public const string helpFile = @"..\..\Help\index.html";
+        public const string helpFile = @"Help\index.html";
 
 
+
+        public static void goToHelp(string s)
+        {
+            
+            string path = Environment.CurrentDirectory;
+            path = Path.Combine(path, helpFile);
+            path = string.Format("\"{0}#{1}\"", path,s);
+            ProcessStartInfo psi = new ProcessStartInfo();
+            psi.Arguments = path;
+            psi.FileName = "iexplore";
+            Process.Start(psi);
+
+        }
 
         internal static List<Smer> getSmers()
         {

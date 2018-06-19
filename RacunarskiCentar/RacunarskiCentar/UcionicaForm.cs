@@ -34,21 +34,20 @@ namespace RacunarskiCentar
                 popuniPolja();
             }
             popuniSoftvere();
-
+            KeyPreview = true;
             KeyDown += (object sender, KeyEventArgs e) =>
             {
                 if (e.KeyCode == Keys.F1)
                 {
                     if (ucionica != null)
                     {
-                        System.Diagnostics.Process.Start(DataManger.helpFile + "#izmenaUcionica");
+                        DataManger.goToHelp("izmenaUcionica");
                     } else
                     {
-                        System.Diagnostics.Process.Start(DataManger.helpFile + "#dodavanjeUcionica");
+                        DataManger.goToHelp("dodavanjeUcionica");
                     }
                        
                 }
-                System.Diagnostics.Debug.WriteLine("Steva");
             };
 
         }
