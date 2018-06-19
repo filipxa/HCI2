@@ -58,6 +58,22 @@ namespace RacunarskiCentar
                 }
             }
             popuniOpremaBox();
+            KeyPreview = true;
+            KeyDown += (object sender, KeyEventArgs e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    if (rezimRada == Rezim.Dodavanje || rezimRada == Rezim.DodavanjeNovomSmeru)
+                    {
+                        DataManger.goToHelp("dodavanjePredmet");
+                    }
+                    else
+                    {
+                        DataManger.goToHelp("izmenaPredmet");
+                    }
+
+                }
+            };
         }
 
         private void ComboBoxSmer_SelectedIndexChanged(object sender, EventArgs e)
