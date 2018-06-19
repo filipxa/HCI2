@@ -101,5 +101,9 @@ namespace RacunarskiCentar
             Predmeti = s.Predmeti;
             
         }
+        public override string ToString()
+        {
+            return ID;
+        }
     }
 }

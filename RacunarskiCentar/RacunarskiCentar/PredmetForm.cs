@@ -34,10 +34,15 @@ namespace RacunarskiCentar
                     }
                     if (comboBoxSmer.Items.Count == 0)
                         comboBoxSmer.Enabled = false;
+                    else
+                    {
+                        comboBoxSmer.SelectedIndex = 0;
+                    }
                 }
                 else
                 {
-                    comboBoxSmer.Text = smer.ToString();
+                    comboBoxSmer.Items.Add(smer);
+                    comboBoxSmer.SelectedIndex = 0;
                     comboBoxSmer.Enabled = false;
                 }
             }
@@ -81,6 +86,7 @@ namespace RacunarskiCentar
                 predmet = new Predmet(textBoxID.Text, textBoxNaziv.Text, smer, richTextBoxOpis.Text, 
                     Convert.ToInt32(numericUpDownBrojLjudi.Value), Convert.ToInt32(numericUpDownDuzinaTermina.Value), 
                     Convert.ToInt32(numericUpDownBrojTermina.Value));
+                predmet.Assets = getUcionicaAssets();
 
                 action = new CreateAction(predmet);
             }
@@ -156,15 +162,10 @@ namespace RacunarskiCentar
 
             if (predmet == null)
             {
-                foreach (Predmet p in DataManger.getPredmeti())
-                {
-
-                    if (p.ID.Equals(textBoxID.Text))
-                    {
-                        poruka += "#" + rb + ": Predmet sa id-em " + textBoxID.Text + " vec postoji..\n";
-                        rb++;
-                        break;
-                    }
+               if( DataManger.getPredmetByID(textBoxID.Text)!=null)
+                 {
+                    poruka += "#" + rb + ": Predmet sa id-em " + textBoxID.Text + " vec postoji..\n";
+                    rb++;
                 }
             }
             if (textBoxID.Text.Length == 0)

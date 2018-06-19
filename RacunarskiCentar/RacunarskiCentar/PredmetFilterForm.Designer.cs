@@ -205,7 +205,6 @@
             // 
             // buttonObrisi
             // 
-            this.buttonObrisi.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonObrisi.Location = new System.Drawing.Point(197, 314);
             this.buttonObrisi.Name = "buttonObrisi";
             this.buttonObrisi.Size = new System.Drawing.Size(75, 23);

@@ -114,7 +114,17 @@ namespace RacunarskiCentar
             {
                 removeNedelja(guiObject as Nedelja);
             }
+            if (guiObject is Software)
+            {
+                softveri.Remove(guiObject as Software);
+            }
+            if (guiObject is Predmet)
+            {
+                removePredmet(guiObject as Predmet);
+            }
         }
+
+
 
         private static void addSmer(Smer smer)
         {
@@ -264,7 +274,12 @@ namespace RacunarskiCentar
         {
             ned.Raspored.RadneNedelje.Remove(ned);
         }
-       
+
+        private static void removePredmet(Predmet predmet)
+        {
+            predmet.SmerPredmeta.Predmeti.Remove(predmet);
+        }
+
 
     }
 

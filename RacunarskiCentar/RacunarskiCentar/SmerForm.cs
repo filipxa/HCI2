@@ -154,6 +154,7 @@ namespace RacunarskiCentar
         }
         private void buttonDodajPredmet_Click(object sender, EventArgs e)
         {
+            smer.ID = textBoxID.Text;
             PredmetForm pf = new PredmetForm(null, smer);
             pf.ShowDialog();  
         }

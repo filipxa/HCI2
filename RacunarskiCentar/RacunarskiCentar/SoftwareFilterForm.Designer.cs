@@ -122,7 +122,6 @@
             // 
             // buttonSacuvaj
             // 
-            this.buttonSacuvaj.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonSacuvaj.Location = new System.Drawing.Point(30, 216);
             this.buttonSacuvaj.Name = "buttonSacuvaj";
             this.buttonSacuvaj.Size = new System.Drawing.Size(90, 23);
@@ -185,7 +184,6 @@
             this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.labelIme);
             this.Controls.Add(this.labelID);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SoftwareFilterForm";

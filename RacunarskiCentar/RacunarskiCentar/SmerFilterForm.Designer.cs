@@ -79,7 +79,6 @@
             // 
             // buttonPotvrdi
             // 
-            this.buttonPotvrdi.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonPotvrdi.Location = new System.Drawing.Point(100, 144);
             this.buttonPotvrdi.Name = "buttonPotvrdi";
             this.buttonPotvrdi.Size = new System.Drawing.Size(90, 23);

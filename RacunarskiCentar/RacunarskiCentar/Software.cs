@@ -99,7 +99,14 @@ namespace RacunarskiCentar
 
         internal override void restoreFromCopy(GUIObject guiObject)
         {
-            throw new NotImplementedException();
+            Software soft = guiObject as Software;
+            Assets = soft.Assets;
+            ID = soft.ID;
+            Ime = soft.Ime;
+            Proizvodjac = soft.Proizvodjac;
+            URL = soft.URL;
+            Opis = soft.Opis;
+            Godina = soft.godina;
         }
 
         public override string ToString()

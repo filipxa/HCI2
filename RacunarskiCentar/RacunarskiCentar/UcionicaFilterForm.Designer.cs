@@ -148,7 +148,7 @@
             this.buttonOdustani.Text = "Obrisi";
             this.toolTip1.SetToolTip(this.buttonOdustani, "Obrisi ucionicu.");
             this.buttonOdustani.UseVisualStyleBackColor = true;
-            this.buttonOdustani.Click += new System.EventHandler(this.buttonOdustani_Click);
+            this.buttonOdustani.Click += new System.EventHandler(this.buttonObrisi_Click);
             // 
             // dataGridView1
             // 

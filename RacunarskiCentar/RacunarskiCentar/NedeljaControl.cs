@@ -49,7 +49,6 @@ namespace RacunarskiCentar
             if (e is CreateAction)
             {
 
-
                 Termin t = e.getGUIObject() as Termin;
                 if (t != null)
                 {

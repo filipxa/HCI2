@@ -323,7 +323,6 @@ namespace RacunarskiCentar
         }
 
 
-
     }
 
     /// <summary>
@@ -470,7 +469,7 @@ namespace RacunarskiCentar
 
             populatePredmets();
 
-            Raspored r = new Raspored(ucionica);
+            Raspored r = ucionica.Raspored;
             RasporedControl rc = new RasporedControl(r, mainPanel);
             rc.Dock = DockStyle.Fill;
 

@@ -245,6 +245,7 @@
             // 
             // comboBoxSmer
             // 
+            this.comboBoxSmer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSmer.FormattingEnabled = true;
             this.comboBoxSmer.Location = new System.Drawing.Point(27, 95);
             this.comboBoxSmer.Name = "comboBoxSmer";

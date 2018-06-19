@@ -122,5 +122,27 @@ namespace RacunarskiCentar
             Termini = ned.Termini;
             Ponedeljak = ned.Ponedeljak;
         }
+
+        private bool DateBetween(DateTime date1, DateTime date2, params DateTime[] datesToCheck)
+        {
+            foreach (DateTime date in datesToCheck)
+            {
+                if (date1 <= date && date2 >= date)
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
+
+        public bool IsInNedelja(DateTime date)
+        {
+            DateTime krajNedelje = new DateTime(ponedeljak.Year, ponedeljak.Month, ponedeljak.Day + 6, 23, 59, 59);
+
+            return DateBetween(ponedeljak, krajNedelje, date);
+        }
+
+     
     }
 }

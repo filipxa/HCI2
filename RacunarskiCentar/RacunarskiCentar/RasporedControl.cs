@@ -37,18 +37,31 @@ namespace RacunarskiCentar
         {
             InitializeComponent();
             InitVremenaPanel();
-            InitNedelja(new Nedelja(raspored,DateTime.Now));
+            dateTimePicker.Value = DateTime.Now;
+            nedeljaPanel = new Panel();
+            nedeljaPanel.Location = new Point(sirinaDatePikera, 0);
+            nedeljaPanel.Anchor = AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            nedeljaPanel.Size = new Size((Width - sirinaDatePikera), Height);
+            Controls.Add(nedeljaPanel);
+            dateTimePicker.ValueChanged+= new EventHandler(delegate (Object o, EventArgs a)
+            {
+                InitNedelja(raspored.GetNedelja(dateTimePicker.Value));
+
+            });
+            InitNedelja(raspored.GetNedelja(DateTime.Now));
+            
             Resize += RasporedControl_Resize;
         }
 
         private void InitNedelja(Nedelja nedelja)
         {
-            nedeljaPanel = new Panel();
-            nedeljaPanel.Location = new Point(sirinaDatePikera, 0);
-            nedeljaPanel.Anchor = AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            nedeljaPanel.Size = new Size((Width - sirinaDatePikera),Height);
-            Controls.Add(nedeljaPanel);
-           
+            if(nedeljaControl != null)
+            {
+                nedeljaPanel.Controls.Remove(nedeljaControl);
+                nedeljaControl.Dispose();
+            }
+            
+
             nedeljaControl = new NedeljaControl(nedelja, nedeljaPanel, visinaDatePikera, this);
 
             nedeljaControl.Dock = DockStyle.Fill;
