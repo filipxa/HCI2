@@ -71,9 +71,9 @@
             this.labelDatumUvodjenja.AutoSize = true;
             this.labelDatumUvodjenja.Location = new System.Drawing.Point(21, 116);
             this.labelDatumUvodjenja.Name = "labelDatumUvodjenja";
-            this.labelDatumUvodjenja.Size = new System.Drawing.Size(87, 13);
+            this.labelDatumUvodjenja.Size = new System.Drawing.Size(86, 13);
             this.labelDatumUvodjenja.TabIndex = 2;
-            this.labelDatumUvodjenja.Text = "Datum uvodjenja";
+            this.labelDatumUvodjenja.Text = "Datum uvođenja";
             // 
             // labelOpis
             // 

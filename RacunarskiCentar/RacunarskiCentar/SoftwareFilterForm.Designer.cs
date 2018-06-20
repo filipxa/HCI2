@@ -95,9 +95,9 @@
             this.labelProizvodjac.AutoSize = true;
             this.labelProizvodjac.Location = new System.Drawing.Point(27, 124);
             this.labelProizvodjac.Name = "labelProizvodjac";
-            this.labelProizvodjac.Size = new System.Drawing.Size(65, 13);
+            this.labelProizvodjac.Size = new System.Drawing.Size(64, 13);
             this.labelProizvodjac.TabIndex = 13;
-            this.labelProizvodjac.Text = "Proizvodjac:";
+            this.labelProizvodjac.Text = "Proizvođač:";
             this.toolTip1.SetToolTip(this.labelProizvodjac, "Proizvodjac softvera.");
             // 
             // labelCena
@@ -107,7 +107,7 @@
             this.labelCena.Name = "labelCena";
             this.labelCena.Size = new System.Drawing.Size(77, 13);
             this.labelCena.TabIndex = 15;
-            this.labelCena.Text = "Cena veca od:";
+            this.labelCena.Text = "Cena veća od:";
             // 
             // buttonOrisi
             // 
@@ -115,7 +115,7 @@
             this.buttonOrisi.Name = "buttonOrisi";
             this.buttonOrisi.Size = new System.Drawing.Size(75, 23);
             this.buttonOrisi.TabIndex = 18;
-            this.buttonOrisi.Text = "Obrisi";
+            this.buttonOrisi.Text = "Obriši";
             this.toolTip1.SetToolTip(this.buttonOrisi, "Obrisi softver.");
             this.buttonOrisi.UseVisualStyleBackColor = true;
             this.buttonOrisi.Click += new System.EventHandler(this.buttonOrisi_Click);

@@ -48,7 +48,7 @@
             this.buttonIzbrisi.Name = "buttonIzbrisi";
             this.buttonIzbrisi.Size = new System.Drawing.Size(75, 23);
             this.buttonIzbrisi.TabIndex = 1;
-            this.buttonIzbrisi.Text = "Izbrisi";
+            this.buttonIzbrisi.Text = "Izbriši";
             this.buttonIzbrisi.UseVisualStyleBackColor = true;
             this.buttonIzbrisi.Click += new System.EventHandler(this.buttonIzbrisi_Click);
             // 
