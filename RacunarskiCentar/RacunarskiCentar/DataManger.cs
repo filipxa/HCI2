@@ -136,7 +136,6 @@ namespace RacunarskiCentar
         }
 
 
-
         private static void addSmer(Smer smer)
         {
             smerovi.Add(smer);
