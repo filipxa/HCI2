@@ -3,19 +3,21 @@ a {color: #2e6c80;font-size:120%;}
 p{color: #2e6c80;font-size:100%;}
 img{
     max-height: 90vh;
-
+}
+h2{
+    color: #2e6c80;font-size:170%;
 }
 
 </style>
 
 <body>
 
-    <p > Sadrzaj: </p>
+    <h2 > Sadrzaj: </h2>
 <ul>
         <li><a  href="#glavnaForma">1. Glavna forma</a> </li><br>
         <ul class="li_block">
-            <li><a href= "#racunarskiCentarForma">1.1  Forma računarskog centra</a></li>
-            <li><a href= "#ucionicaForma">1.2  Forma učionice</a></li>
+            <li><a href= "#racunarskiCentarForma">1.1  Forma ra&#269unarskog centra</a></li>
+            <li><a href= "#ucionicaForma">1.2  Forma u&#269ionice</a></li><br>
         </ul>
 
     <li><a  href="#predmet">2. Predmet</a> </li><br>
@@ -46,14 +48,10 @@ img{
   </ul>
   
   <li><a href="#termin">6.Termin</a><br /></li><br>
-  <ul class="li_block">
-        <li><a  href= "#dodavanjeTermina">6.1  Dodavanje termina</a></li>
-        <li><a  href= "#izmenaTermina">6.2  Izmena termina</a></li>
-        <li><a  href= "#brisanjeTermina">6.3  Brisanje termina</a></li><br>
-  </ul>
+  
 </ul>
   
-  <br><br><br><br><br><br>
+  <br><br>
 
   
   
@@ -62,21 +60,21 @@ img{
     <hr>
     <li> <p id= "glavnaForma";  href= "">1. Glavna forma</p></li> </li>
     <ul class="li_block">
-        <li><p id= "racunarskiCentarForma";href= "">1.1  Forma računarskog centra</p></li> 
-        <p>Ispod naziva učionice postoji par sličica: </p>
+        <li><p id= "racunarskiCentarForma";href= "">1.1  Forma ra&#269unarskog centra</p></li> 
+        <p>Ispod naziva u&#269ionice postoji par sli&#269ica: </p>
         <ol>
-            <li>Broj pored nacrtanog čovečuljka označava koliko mesta ima u učionici.</li>
-            <li>Postojanje projektora u učionici.</li>
-            <li>Postojanje obične table u učionici.</li>
-            <li>Postojanje pametne table u učionici.</li>
-            <li>Instaliran linux operativni sistem u učionici.</li>
-            <li>Instaliran windows operativni sistem u učionici.</li>
+            <li>Broj pored nacrtanog &#269ove&#269uljka ozna&#269ava koliko mesta ima u u&#269ionici.</li>
+            <li>Postojanje projektora u u&#269ionici.</li>
+            <li>Postojanje obi&#269ne table u u&#269ionici.</li>
+            <li>Postojanje pametne table u u&#269ionici.</li>
+            <li>Instaliran linux operativni sistem u u&#269ionici.</li>
+            <li>Instaliran windows operativni sistem u u&#269ionici.</li>
         </ol>
         <br>
         <ul> 
             <ul><img src="img/racCentar.jpeg" alt="Forma racunarskog centra"></ul><br>
         </ul>
-        <li><p  id= "ucionicaForma";href= "">1.2  Forma učionice</p></li>
+        <li><p  id= "ucionicaForma";href= "">1.2  Forma u&#269ionice</p></li>
         <ul><img src="img/ucionice.jpeg" alt="Forma ucionice"></ul><br>
             
         
@@ -90,16 +88,30 @@ img{
     <li> <p id= "predmet";  href= "">2. Predmet</p></li> </li>
     <ul class="li_block">
         <li><p id= "dodavanjePredmet";href= "">2.1 Dodavanje predmeta</p></li> 
+        <ul>
+            
+            <li>Id predmeta mora biti jedinstven, odnosno ne mogu se na&#263i dva predmeta koja imaju identi&#269nu identifikaciju.</li>
+            <li>Smer se mo&#382e odabrati samo prilikom unosa novog predmeta, dok se prilikom izmene ne mo&#382e menjati. </li>
+            <li>Predmet zahteva pojedinu opremu u u&#269ionici kako bi se mogao odr&#382avati, pa metodom &#269ekiranja se mo&#382e odabrati ista.</li>
+            <br>
+        </ul>
+        <br>
         <ul> 
-			<img src="img/dodajPredmet.jpeg" alt="dodajPredmet">
-            <p> Dodavanje predmeta se vrši popunjavanjem prozora za dodavanje predmeta. Popunjavanjem polja, definisu se svi neophodni parametri za predmet.
+			<img src="img/dodajPredmet.jpeg" alt="dodajPredmet"><br>
             </p>
         </ul>
-        <li><p  id= "izmenaPredmet";href= "">2.2 Izmena predmeta</p></li>
+        <br>
+        <li><p  id= "izmenaPredmet";href= "">2.2 Izmena predmeta</p></li><br>
+        <ul>
+           
+        </ul>
             <ul><img src="img/obradaPredmetI.jpeg" alt="izmenaPredmeta"></ul><br>
-			<ul><img src="img/izmenaPredmet.jpeg" alt="izmenaPredmet"></ul>
+			<ul><img src="img/izmenaPredmet.jpeg" alt="izmenaPredmet"></ul><br><br>
         <li><p  id= "brisanjePredmet"; href= "">2.3 Brisanje predmeta</p></li>
-            <ul><img src="img/obradaPredmetB.jpeg" alt="brisanjePredmeta"></ul>
+        <ul><br>
+            <li>Brisanje se obavlja tako &#353to odaberete &#382eljeni predmet sa desne strane u tabelarnom prikazu (na slici broj 1) i pritisne dugme 'Obri&#353i' (broj 2).</li><br><br>
+        </ul>
+            <ul><img src="img/obradaPredmetB.jpeg" alt="brisanjePredmeta"></ul><br><br>
     </ul>
 
     <!-- SOFTVER -->
@@ -107,33 +119,63 @@ img{
     <li> <p  id= "softver";  href= "">3. Softver</p></li> </li>
     <ul>
         <li><p  id= "dodavanjeSoftver";  href= "">3.1 Dodavanje softvera</p></li> 
+        <ul>
+            
+                <li>Id softvera mora biti jedinstven, odnosno ne mogu se na&#263i dva softvera koja imaju identi&#269nu identifikaciju.</li>
+                <li>Neophodno je da jedan od dva ponu&#273ena operativna sistema bude selektovan, a mogu i oba.</li>
+                <li>Ostala polja nisu obavezna, ali је po&#382eljno popuniti &#353to vi&#353e informacija o softveru. </li>
+                <br>
+            </ul>
+            <br>
         <ul> 
-			<img src="img/dodajSoftver.jpeg" alt="dodajSoftver">
-            <p> Dodavanje softvera se vr&scaron;i popunjavanjem prozora da dodavanje softvera. Popunjavanjem polja, definisu se svi neophodni parametri za softver.
+			<img src="img/dodajSoftver.jpeg" alt="dodajSoftver"><br><br>
             </p>
         </ul>
         <li><p  id= "izmenaSoftver";  href= "">3.2 Izmena softvera</p></li>
-            <ul><img src="img/obradaSoftverI.jpeg" alt="izmenaSoftvera"></ul><br>
-			<ul><img src="img/izmenaSoftver.jpeg" alt="izmenaSoftver"></ul>
-        <li><p  id= "brisanjeSoftver";  href= "">3.3 Brisanje softvera</p></li>
-            <ul><img src="img/obradaSoftverB.jpeg" alt="brisanjeSoftvera"></ul>
+        <ul>
+                <li>Sa desne strane se mo&#382e videti tabelarni prikaz svih softvera. </li>
+                <li> Nakon selektovanja &#382eljenog softvera (na slici broj 1), pritiskom na dugme 'Izmeni' (broj 2) se
+                 otvara forma za dodavanje/izmenu predmeta gde se unose novi podaci, <br> odnosno izmene koje &#382elite.</li><br><br>
+             </li>        </ul>
+            <ul><img src="img/obradaSoftverI.jpeg" alt="izmenaSoftvera"></ul><br><br>
+			<ul><img src="img/izmenaSoftver.jpeg" alt="izmenaSoftver"></ul><br><br>
+        <li><p  id= "brisanjeSoftver";  href= "">3.3 Brisanje softvera</p></li><br>
+        <ul>
+            <li>U prikazanoj formi na slici ispod, crvenim brojem 1 je selektovan jedan softver u tabelarnom prikazu filtriranih <br> 
+            softvera po &#382eljenom kriterijumu. Nakon odabira &#382eljenog softvera, potrebno je pritisnuti dugme 'Obri&#353i' (broj 2) kako bi softver obrisali.</li><br><br>
+        </ul>
+            <ul><img src="img/obradaSoftverB.jpeg" alt="brisanjeSoftvera"></ul><br><br>
     </ul>
 
     <!-- SMER -->
     <hr>
-    <li> <p  id= "smer"; href= "">4. Smer</p></li> </li>
+    <li> <p  id= "smer"; href= "">4. Smer</p></li> </li><br>
     <ul>
         <li><p  id= "dodavanjeSmer";  href= "">4.1 Dodavanje smera</p></li> 
         <ul> 
-			<img src="img/dodajSmer.jpeg" alt="dodajSmer">      
-            <p> Dodavanje smera se vr&scaron;i popunjavanjem prozora za dodavanje smera. Popunjavanjem polja, definisu se svi neophodni parametri za smer.
+            <li>Prilikom dodavanja smera potrebno je odabrati jedinstven id smera i uneti naziv smera. </li>
+            <li>Potrebno je popuniti datum uvo&#273enja smera tako &#353to &#263e se odabrati dan, mesec, datum i godina.</li>
+            <li>Pritiskom na dugme 'Dodaj smer', otvara se forma za dodavanje novog predmeta.</li>
+            <li>Potrebno je uneti sve predmete koje &#263e taj smer sadr&#382ati.</li>
+            <li>Kada ste napravili smer, potrebno je pritisnuti dugme 'Sa&#269uvaj'.</li><br><br>
+			<img src="img/dodajSmer.jpeg" alt="dodajSmer"><br><br>
             </p>
         </ul>
         <li><p  id= "izmenaSmer";  href= "">4.2 Izmena smera</p></li>
-            <ul><img src="img/obradaSmerI.jpeg" alt="izmenaSmera"></ul> <br>
-			<ul><img src="img/izmenaSmer.jpeg" alt="izmenaSmera1"></ul>
+        <ul>
+                <li>Sa desne strane se mo&#382e videti tabelarni prikaz svih smerova. </li>
+                <li> Nakon selektovanja &#382eljenog smera (na slici broj 1), pritiskom na dugme 'Izmeni' (broj 2) se
+                 otvara forma za dodavanje/izmenu smera gde se unose novi podaci, <br> odnosno izmene koje &#382elite.</li>
+                 <li>Prilikom izmene mo&#382ete dodati nove ili izbrisati postoje&#263e predmete sa smera.</li><br><br>        </ul>
+            <ul><img src="img/obradaSmerI.jpeg" alt="izmenaSmera"></ul> <br><br><br>
+			<ul><img src="img/izmenaSmer.jpeg" alt="izmenaSmera1"></ul><br><br><br>
         <li><p  id= "brisanjeSmer";  href= "">4.3 Brisanje smera</p></li>
-            <ul><img src="img/obradaSmerB.jpeg" alt="brisanjeSmera"></ul>
+        <ul>
+            <li>U prikazanoj formi na slici ispod, crvenim brojem 1 je selektovan jedan softver u tabelarnom prikazu filtriranih <br> 
+                softvera po &#382eljenom kriterijumu.</li> 
+                <li> Nakon odabira &#382eljenog softvera, potrebno je pritisnuti dugme 'Obri&#353i' (broj 2) kako bi softver obrisali.</li><br><br>
+        </ul>
+            <ul><img src="img/obradaSmerB.jpeg" alt="brisanjeSmera"></ul><br><br>
     </ul>
 
     
@@ -143,31 +185,40 @@ img{
     <ul>
         <li><p  id= "dodavanjeUcionica";  href= "">5.1 Dodavanje ucionice</p></li> 
         <ul>
-			<img src="img/dodajUcionicu.jpeg" alt="dodajUcionicu">       
-            <p> Dodavanje ucionice se vr&scaron;i popunjavanjem prozora za dodavanje ucionice. Popunjavanjem polja, definisu se svi neophodni parametri za ucionicu.
+                <li>Prilikom dodavanja u&#269ionice potrebno je odabrati jedinstven id u&#269ionice i uneti naziv iste. </li>
+                <li>Potrebno je popuniti broj mesta koji u&#269ionica ima.</li>
+                <li>Potrebno je &#269ekirati opremu koju u&#269ionica poseduje.</li>
+                <li>Nakon &#269ekiranja operativnog sistema, sa desne &#263e vam se omogu&#263iti &#269ekiranje softvera koje je potrebno da taj sistem ima.</li>
+                <li>Kada ste popunili sva polja, potrebno je pritisnuti dugme 'Sa&#269uvaj'.</li><br><br>
+                <img src="img/dodajUcionicu.jpeg" alt="dodajUcionicu">       <br><br><br>
             </p>
         </ul>
         <li><p  id= "izmenaUcionica";  href= "">5.2 Izmena ucionice</p></li>
-            <ul><img src="img/obradaUcionicaI.jpeg" alt="izmenaUcionice"></ul><br>
-			<ul><img src="img/izmenaUcionica.jpeg" alt="izmenaUcionica"></ul>
+        <ul>
+                <li>Sa desne strane se mo&#382e videti tabelarni prikaz svih u&#269ionica. </li>
+                <li> Nakon selektovanja &#382eljene u&#269ionice (na slici broj 1), pritiskom na dugme 'Izmeni' (broj 2) se
+                 otvara forma za dodavanje/izmenu u&#269ionice gde se unose novi podaci, <br> odnosno izmene koje &#382elite.</li>
+                 <li>Prilikom izmene mo&#382ete a&#382urirati opremu koju u&#269ionica poseduje, kao i neophodan softver u zavisnosti <br> od sistema.</li>
+                 <li>Prilikom izmene nije mogu&#263e menjati id u&#269ionice.</li><br><br>      
+        </ul>
+            <ul><img src="img/obradaUcionicaI.jpeg" alt="izmenaUcionice"></ul><br><br><br>
+			<ul><img src="img/izmenaUcionica.jpeg" alt="izmenaUcionica"></ul><br><br><br>
         <li><p  id= "brisanjeUcionica";  href= "">5.3 Brisanje ucionice</p></li>
+        <ul>
+                <li>U prikazanoj formi na slici ispod, crvenim brojem 1 je selektovana jedna u&#269ionica u tabelarnom prikazu filtriranih <br> 
+                    u&#269ionica po &#382eljenom kriterijumu.</li> 
+                    <li> Nakon odabira &#382eljenog softvera, potrebno je pritisnuti dugme 'Obri&#353i' (broj 2) kako bi softver obrisali.</li><br><br>
+        </ul>
             <ul><img src="img/obradaUcionicaB.jpeg" alt="brisanjeUcionice"></ul>
     </ul>
 	
 	<hr>
     <li> <p  id= "termin"; href= "">6. Termin</p></li> </li>
     <ul>
-        <li><p  id= "dodavanjeTermina";  href= "">6.1 Dodavanje termina</p></li> 
-        <ul>
-			<img src="img/dodajTermin.jpeg" alt="dodajTermin">       
-            <p> Dodavanje termina se vr&scaron;i popunjavanjem prozora za dodavanje termina. Popunjavanjem polja, definisu se svi neophodni parametri za termin.
-            </p>
-        </ul>
-        <li><p  id= "izmenaTermina";  href= "">6.2 Izmena termina</p></li>
-            <ul><p> TO DO izmena termina</p></ul>
-        <li><p  id= "brisanjeTermina";  href= "">6.3 Brisanje termina</p></li>
-            <ul><p> TO DO brisanje termina</p></ul>
+        <li>Nakon unesenog vremena po&#269etka termina i broja &#269asova, pritisnite dugme 'Sa&#269uvaj'.</li><br><br>
     </ul>
+        <ul><img src="img/termin.jpeg" alt="brisanjeUcionice"></ul><br><br><br><br><br><br><br>
+
    
    
 </ul>
