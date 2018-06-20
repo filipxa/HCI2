@@ -280,7 +280,6 @@ namespace RacunarskiCentar
                     tc.Text = "Uspešno ste premestili termin! Pritisnite na ovaj prozor kako biste završili tutorijal.";
                     levelZavrsen = true;
                     DataControllercs.onAction -= ActionExcuted;
-                    DataControllercs.isTutorial = false;
                 }
             }
 
