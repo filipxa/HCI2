@@ -46,6 +46,15 @@ namespace RacunarskiCentar
 
             DataControllercs.onAction += ActionExcuted;
             FormClosing += Form_Closing;
+            KeyPreview = true;
+            KeyDown += (object sender, KeyEventArgs e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    DataManger.goToHelp("predmet");
+                }
+            };
+
         }
 
         private void CheckedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
