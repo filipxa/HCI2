@@ -127,7 +127,7 @@ namespace RacunarskiCentar
 
                 foreach(Smer s in DataManger.getSmers())
                 {
-                    if(s.ID.Equals(smer.ID))
+                    if(s.ID.Equals(textBoxID.Text))
                     {
                         poruka += "#" + rb + ": Smer sa id-em " + textBoxID.Text + " vec postoji..\n";
                         rb++;
