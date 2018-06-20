@@ -118,7 +118,10 @@ namespace RacunarskiCentar
         {
             get
             {
-                List<string> ids = new List<string>();
+                if (installedSoftware == null)
+                    return new List<string>();
+                    List<string> ids = new List<string>();
+               
                   foreach (Software s in installedSoftware)
                 {
                     ids.Add(s.ID);
