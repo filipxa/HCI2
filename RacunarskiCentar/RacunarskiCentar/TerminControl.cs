@@ -80,6 +80,7 @@ namespace RacunarskiCentar
 
             Point levaTackaCasa = new Point(ClientRectangle.X, ClientRectangle.Y + (ClientRectangle.Height / (GuiObject.DuzinaTermina)));
             Point desnaTackaCasa = new Point(ClientRectangle.X + ClientRectangle.Width, ClientRectangle.Y + (ClientRectangle.Height / (GuiObject.DuzinaTermina)));
+
             for (int i = 0; i < GuiObject.DuzinaTermina; i++)
             {
                 if((i+1) < GuiObject.DuzinaTermina)

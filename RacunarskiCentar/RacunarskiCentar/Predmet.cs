@@ -22,7 +22,8 @@ namespace RacunarskiCentar
 
         public Predmet()
         {
-
+            this.Assets = new HashSet<UcionicaAssets>();
+            this.InstalledSoftware = new HashSet<Software>();
         }
         public Predmet(string id, string ime, Smer smerPredmeta, string opis,int brLjudi, int brCasova, int brTermina)
         {  
@@ -111,28 +112,29 @@ namespace RacunarskiCentar
         }
 
         public HashSet<UcionicaAssets> Assets { get => assets; set => assets = new HashSet<UcionicaAssets>(value); }
+
         [XmlIgnore]
         public HashSet<Software> InstalledSoftware { get => installedSoftware; set => installedSoftware = new HashSet<Software>(value); }
 
-        public List<String> SoftwareSerialised
+        [XmlElement("Software")]
+        public string SoftwareSerialised
         {
             get
             {
-                if (installedSoftware == null)
-                    return new List<string>();
-                    List<string> ids = new List<string>();
-               
-                  foreach (Software s in installedSoftware)
+                string rets = "";
+               foreach (Software s in installedSoftware)
                 {
-                    ids.Add(s.ID);
+                    rets += s.ID + "*";
                 }
-                return ids;
+                rets = rets.Substring(0, rets.Length - 2);
+                return rets;
             }
             set {
-                installedSoftware = new HashSet<Software>();
-                foreach(string id in value)
+                foreach(string id in value.Split('*'))
                 {
-                    installedSoftware.Add(DataManger.GetSoftverID(id));
+                    Software s = DataManger.GetSoftverID(id);
+                    if(s!=null)
+                    installedSoftware.Add(s);
                 }
             }
         }

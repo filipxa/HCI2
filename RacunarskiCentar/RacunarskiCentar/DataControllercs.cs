@@ -127,7 +127,7 @@ namespace RacunarskiCentar
     {
         protected GUIObject o;
         public DateTime timeOfCreation;
-        protected List<Termin> termini = new List<Termin>();
+        public List<Termin> termini = new List<Termin>();
 
         public Action(GUIObject guiObject)
         {
@@ -208,8 +208,9 @@ namespace RacunarskiCentar
 
         public override Action GetReverseAction()
         {
-            Action a = new CreateAction(o);
+            CreateAction a = new CreateAction(o);
             a.timeOfCreation = timeOfCreation;
+            a.termini = termini;
             return a;
         }
         public override string ToString()
@@ -239,6 +240,7 @@ namespace RacunarskiCentar
         {
             DeleteAction d = new DeleteAction(o);
             d.timeOfCreation = timeOfCreation;
+            d.termini = termini;
             return d;
         }
         public override string ToString()

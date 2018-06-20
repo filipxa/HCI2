@@ -145,8 +145,7 @@ namespace RacunarskiCentar
 
         private void Izmeni_Click(object sender, EventArgs e)
         {
-            try
-            {
+
                 int index = dataGridView1.CurrentCell.RowIndex;
                 DataGridViewRow selectedRow = dataGridView1.Rows[index];
                 string id = selectedRow.Cells[0].Value.ToString();
@@ -157,11 +156,8 @@ namespace RacunarskiCentar
                 f.ShowDialog();
                 f.Dispose();
 
-            }
-            catch
-            {
-
-            }
+            
+           
         }
     }
 }

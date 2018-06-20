@@ -160,7 +160,11 @@ namespace RacunarskiCentar
                 asetsiSvi += rets;
                 asetsiSvi += ", ";
             }
-            asetsiSvi.Substring(asetsiSvi.Length - 2);
+            if (asetsiSvi.Length > 0)
+            {
+                asetsiSvi.Substring(asetsiSvi.Length - 2);
+            }
+           
             return asetsiSvi;
         }
 

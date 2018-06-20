@@ -219,13 +219,12 @@ namespace RacunarskiCentar
             foreach (Software s in DataManger.softverOperativanSistemFiltiriranje(OS))
             {
                 bool postoji = false;
-                foreach (Software ss in predmet.InstalledSoftware)
+                if (predmet != null)
                 {
-                    if (s.Equals(ss))
-                    {
-                        postoji = true;
-                    }
+                    postoji = predmet.InstalledSoftware.Contains(s);
                 }
+                    
+
                 checkedListBoxSoftvera.Items.Add(s, postoji);
             }
 
