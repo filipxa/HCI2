@@ -89,7 +89,7 @@ namespace RacunarskiCentar
             DataManger.PredmetFiler.SmerPredmeta = new Smer(textBoxSmer.Text, "", DateTime.MinValue, "", null);
 
             dataGridView1.Rows.Clear();
-            dataGridView1.ColumnCount = 7;
+            dataGridView1.ColumnCount = 8;
             dataGridView1.Columns[0].Name = "ID";
             dataGridView1.Columns[1].Name = "Ime";
             dataGridView1.Columns[2].Name = "Smer";
@@ -97,6 +97,7 @@ namespace RacunarskiCentar
             dataGridView1.Columns[4].Name = "Br. ljudi";
             dataGridView1.Columns[5].Name = "Br. casova";
             dataGridView1.Columns[6].Name = "Br. termina";
+            dataGridView1.Columns[7].Name = "Inventar";
             dataGridView1.ReadOnly = true;
 
             popunjavanjeTabele();
@@ -106,7 +107,7 @@ namespace RacunarskiCentar
         {
             foreach (Predmet p in DataManger.getPredmetiFilterr())
             {
-                string[] row = { p.ID, p.Ime, p.SmerPredmeta.ID, p.Opis, Convert.ToString(p.BrLjudi), Convert.ToString(p.BrCasova), Convert.ToString(p.BrTermina) };
+                string[] row = { p.ID, p.Ime, p.SmerPredmeta.ID, p.Opis, Convert.ToString(p.BrLjudi), Convert.ToString(p.BrCasova), Convert.ToString(p.BrTermina), UcionicaAssetsMethods.getDisplayNames(p.Assets) };
                 dataGridView1.Rows.Add(row);
             }
         }
