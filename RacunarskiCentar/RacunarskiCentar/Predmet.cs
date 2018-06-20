@@ -111,7 +111,28 @@ namespace RacunarskiCentar
         }
 
         public HashSet<UcionicaAssets> Assets { get => assets; set => assets = new HashSet<UcionicaAssets>(value); }
+        [XmlIgnore]
         public HashSet<Software> InstalledSoftware { get => installedSoftware; set => installedSoftware = new HashSet<Software>(value); }
+
+        public List<String> SoftwareSerialised
+        {
+            get
+            {
+                List<string> ids = new List<string>();
+                  foreach (Software s in installedSoftware)
+                {
+                    ids.Add(s.ID);
+                }
+                return ids;
+            }
+            set {
+                installedSoftware = new HashSet<Software>();
+                foreach(string id in value)
+                {
+                    installedSoftware.Add(DataManger.GetSoftverID(id));
+                }
+            }
+        }
 
         public override GUIObject Copy()
         {

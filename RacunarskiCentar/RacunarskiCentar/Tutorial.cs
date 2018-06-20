@@ -254,6 +254,7 @@ namespace RacunarskiCentar
 
             });
             DataControllercs.onAction += ActionExcuted;
+
          
 
         }
@@ -285,7 +286,7 @@ namespace RacunarskiCentar
 
 
         }
-
+      
         private void initUVToolBox()
         {
             currentLevel = Level.UVToolBox;
@@ -300,17 +301,30 @@ namespace RacunarskiCentar
             {
                 if (a.Button == MouseButtons.Left && a.Clicks == 1)
                 {
-                    tc.Text = "Uspešno ste otvorili prozor za izmenu Učionice. \n Za nastavak zatvorite dijalog za izmenu i pritisnite na ovaj prozor.";
+                    tc.Text = "Uspešno ste otvorili prikaz predmeta smera. \n Za nastavak pritisnite na ovaj prozor.";
                     sc.IsTutorial = false;
-                    nextStep();
+                    levelZavrsen = true;
+                     
+                    
                 }
 
 
             });
             sc.IsTutorial = true;
             sc.MouseDown += e;
-           
-           
+
+            tc.Click += new EventHandler(delegate (Object o, EventArgs a)
+            {
+                if (levelZavrsen)
+                {
+                    levelZavrsen = false;
+                    sc.MouseDown -= e;
+                    nextStep();
+                }
+
+            });
+
+
         }
 
         private void initUcionicaView()
@@ -334,6 +348,7 @@ namespace RacunarskiCentar
                 if (levelZavrsen)
                 {
                     levelZavrsen = false;
+                    ucionica.DoubleClick -= e;
                     nextStep();
                 }
 

@@ -215,7 +215,6 @@ namespace RacunarskiCentar
         private void popuniSoftvere()
         {
             checkedListBoxSoftvera.Items.Clear();
-            List<UcionicaAssets> listaSistema = new List<UcionicaAssets>();
 
             foreach (Software s in DataManger.softverOperativanSistemFiltiriranje(OS))
             {
