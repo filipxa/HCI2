@@ -68,6 +68,7 @@ namespace RacunarskiCentar
             richTextBoxOpis.Text = smer.Opis;
             listBoxPredmeti.Items.AddRange(smer.Predmeti.ToArray());
 
+
             
         }
 
@@ -137,6 +138,11 @@ namespace RacunarskiCentar
             if (textBoxID.Text.Length == 0)
             {
                 poruka += "#" + rb + ": Morate uneti ID softvera.\n";
+                rb++;
+            }
+            if (smer == null)
+            {
+                poruka += "#" + rb + ": Morate odabrati smer.\n";
                 rb++;
             }
 
