@@ -113,7 +113,7 @@ namespace RacunarskiCentar
             form.tb.Enabled = true;
             Color old;
             ToolStripButton undoButton;
-            createControl("Pritisnite 'Nazad' kako biste se vratili na prethodnu formu.", 20);
+            createControl("Pritisnite 'Nazad' kako biste se vratili na prethodnu formu, i završili tutorijal.", 20);
             foreach (ToolStripItem item in form.tb.Items)
             {
                 if (item.Name.Equals("nazad"))
@@ -277,7 +277,7 @@ namespace RacunarskiCentar
             {
                 if (e is ChainAction)
                 {
-                    tc.Text = "Uspešno ste premestili termin! Pritisnite na ovaj prozor kako biste završili tutorijal.";
+                    tc.Text = "Uspešno ste premestili termin.  \n Za nastavak pritisnite na ovaj prozor.";
                     levelZavrsen = true;
                     DataControllercs.onAction -= ActionExcuted;
                 }
