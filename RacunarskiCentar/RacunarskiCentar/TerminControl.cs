@@ -15,7 +15,16 @@ namespace RacunarskiCentar
         public TerminControl(Termin termin, Panel panel) : base(termin, panel)
         {
             InitializeComponent();
-            
+
+            string toolText = "";
+            ToolTip toolTip1 = new ToolTip();
+            toolTip1.AutoPopDelay = 5000;
+            toolTip1.InitialDelay = 500;
+            toolTip1.ReshowDelay = 500;
+            toolTip1.ShowAlways = true;
+
+            toolText += "Pocetak: "+termin.PocetakTermina.ToString() + Environment.NewLine  + "Kraj: " + termin.KrajTermina;
+            toolTip1.SetToolTip(this, toolText);
             MouseDown += TerminControl_MouseDown;
             MouseClick += EditTermin;
             BackColor = GraphicLoader.getColorDarkGray();

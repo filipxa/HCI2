@@ -91,7 +91,9 @@ namespace RacunarskiCentar
         public List<Predmet> getPredmetiPoUcionici(Ucionica u)// filter za ucionicu
         {
             return predmeti.Where(x => (x.Assets.Intersect(u.Assets).Count() == x.Assets.Count())
-            && (x.BrLjudi<= u.BrRadnihMesta)).ToList();
+            && (x.BrLjudi<= u.BrRadnihMesta)
+            && ((x.InstalledSoftware == null) || x.InstalledSoftware.Intersect(u.InstalledSoftware).Count() == x.InstalledSoftware.Count())
+            ).ToList();
         }
 
         internal override void restoreFromCopy(GUIObject guiObject)
