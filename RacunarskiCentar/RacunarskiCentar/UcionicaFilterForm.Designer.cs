@@ -134,7 +134,7 @@
             this.buttonPotvrdi.Name = "buttonPotvrdi";
             this.buttonPotvrdi.Size = new System.Drawing.Size(90, 23);
             this.buttonPotvrdi.TabIndex = 8;
-            this.buttonPotvrdi.Text = "Dodaj ucionicu";
+            this.buttonPotvrdi.Text = "Dodaj učionicu";
             this.toolTip1.SetToolTip(this.buttonPotvrdi, "Dodaj ucionicu.");
             this.buttonPotvrdi.UseVisualStyleBackColor = true;
             this.buttonPotvrdi.Click += new System.EventHandler(this.buttonPotvrdi_Click);
@@ -145,7 +145,7 @@
             this.buttonOdustani.Name = "buttonOdustani";
             this.buttonOdustani.Size = new System.Drawing.Size(90, 23);
             this.buttonOdustani.TabIndex = 9;
-            this.buttonOdustani.Text = "Obrisi";
+            this.buttonOdustani.Text = "Obriši";
             this.toolTip1.SetToolTip(this.buttonOdustani, "Obrisi ucionicu.");
             this.buttonOdustani.UseVisualStyleBackColor = true;
             this.buttonOdustani.Click += new System.EventHandler(this.buttonObrisi_Click);

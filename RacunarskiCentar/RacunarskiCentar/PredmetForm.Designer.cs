@@ -117,7 +117,7 @@
             this.labelDuzinaTermina.Name = "labelDuzinaTermina";
             this.labelDuzinaTermina.Size = new System.Drawing.Size(164, 13);
             this.labelDuzinaTermina.TabIndex = 8;
-            this.labelDuzinaTermina.Text = "Minimalan broj casova po terminu";
+            this.labelDuzinaTermina.Text = "Minimalan broj časova po terminu";
             // 
             // labelBrojTermina
             // 

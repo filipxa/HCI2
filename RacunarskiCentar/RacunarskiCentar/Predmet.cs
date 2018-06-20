@@ -126,7 +126,8 @@ namespace RacunarskiCentar
                 {
                     rets += s.ID + "*";
                 }
-                rets = rets.Substring(0, rets.Length - 2);
+               if(rets.Length>0)
+                    rets = rets.Substring(0, rets.Length - 1);
                 return rets;
             }
             set {

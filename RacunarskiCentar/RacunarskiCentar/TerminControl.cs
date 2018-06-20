@@ -23,7 +23,7 @@ namespace RacunarskiCentar
             toolTip1.ReshowDelay = 500;
             toolTip1.ShowAlways = true;
 
-            toolText += "Pocetak: "+termin.PocetakTermina.ToString() + Environment.NewLine  + "Kraj: " + termin.KrajTermina;
+            toolText += "Pocetak: "+termin.PocetakTermina.ToShortDateString() + Environment.NewLine  + "Kraj: " + termin.KrajTermina.ToShortDateString();
             toolTip1.SetToolTip(this, toolText);
             MouseDown += TerminControl_MouseDown;
             MouseClick += EditTermin;

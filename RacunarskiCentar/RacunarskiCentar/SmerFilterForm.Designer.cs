@@ -94,7 +94,7 @@
             this.buttonObrisi.Name = "buttonObrisi";
             this.buttonObrisi.Size = new System.Drawing.Size(75, 23);
             this.buttonObrisi.TabIndex = 5;
-            this.buttonObrisi.Text = "Obrisi";
+            this.buttonObrisi.Text = "Obriši";
             this.toolTip1.SetToolTip(this.buttonObrisi, "Obrisi smer.");
             this.buttonObrisi.UseVisualStyleBackColor = true;
             this.buttonObrisi.Click += new System.EventHandler(this.buttonObrisi_Click);
