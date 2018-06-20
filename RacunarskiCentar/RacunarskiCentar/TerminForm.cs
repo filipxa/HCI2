@@ -27,8 +27,18 @@ namespace RacunarskiCentar
             DateTime ponedeljak = (nedelja == null) ? dan : nedelja.Ponedeljak;
             dateTimePicker1.MinDate = new DateTime(ponedeljak.Year, ponedeljak.Month, dan.Day, 7, 0, 0);
             dateTimePicker1.MaxDate = new DateTime(ponedeljak.Year, ponedeljak.Month, dan.Day, 22, 0, 0);
+            KeyPreview = true;
+            KeyDown += (object sender, KeyEventArgs e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    DataManger.goToHelp("termin");
+                }
+            };
 
         }
+
+
         public TerminForm(Termin termin) : this(termin.Nedelja, termin.Predmet, termin.PocetakTermina,termin)
         {
             this.termin = termin;

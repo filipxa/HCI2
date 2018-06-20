@@ -76,9 +76,9 @@
             this.labelProizvodjac.AutoSize = true;
             this.labelProizvodjac.Location = new System.Drawing.Point(22, 162);
             this.labelProizvodjac.Name = "labelProizvodjac";
-            this.labelProizvodjac.Size = new System.Drawing.Size(62, 13);
+            this.labelProizvodjac.Size = new System.Drawing.Size(61, 13);
             this.labelProizvodjac.TabIndex = 2;
-            this.labelProizvodjac.Text = "Proizvodjac";
+            this.labelProizvodjac.Text = "Proizvođač";
             this.toolTip1.SetToolTip(this.labelProizvodjac, "Proizvodjac sofvera.");
             // 
             // labelURL

@@ -36,6 +36,15 @@ namespace RacunarskiCentar
 
             DataControllercs.onAction += ActionExcuted;
             FormClosing += Form_Closing;
+            KeyPreview = true;
+            KeyDown += (object sender, KeyEventArgs e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    DataManger.goToHelp("softver");
+                }
+            };
+
         }
 
         private void Form_Closing(object sender, FormClosingEventArgs e)

@@ -51,7 +51,17 @@ namespace RacunarskiCentar
 
 
             FormClosing += Form_Closing;
+            KeyPreview = true;
+            KeyDown += (object sender, KeyEventArgs e) =>
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                     DataManger.goToHelp("ucionica");
+                }
+            };
+
         }
+
 
         private void CheckedListBox2_ItemCheck(object sender, ItemCheckEventArgs e)
         {
