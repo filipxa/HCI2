@@ -58,7 +58,7 @@ namespace RacunarskiCentar
                     }
                 }
             }
-            else if (e is EditAction)// OVO OVDE ZBOG EDITA GORE DOLE NAMESTITI da se pomera
+            else if (e is EditAction || e is RestoreAction)// OVO OVDE ZBOG EDITA GORE DOLE NAMESTITI da se pomera
             {
 
                 Termin t = e.getGUIObject() as Termin;

@@ -110,7 +110,7 @@ namespace RacunarskiCentar
 
         private void updatePredmetPanelSize()
         {
-            predmetPanel.Height = GuiObject.Predmeti.Count * predmetHeight;
+            predmetPanel.Height = GuiObject.getPredmetiPoUcionici(ucionica).Count * predmetHeight;
           
             if (isColapsed)
             {
@@ -121,7 +121,7 @@ namespace RacunarskiCentar
                 Height = smerHeight;
             } else
             {
-                Height = smerHeight + GuiObject.Predmeti.Count() * predmetHeight;
+                Height = smerHeight + GuiObject.getPredmetiPoUcionici(ucionica).Count() * predmetHeight;
                 if (!Controls.Contains(predmetPanel))
                 {
                     Controls.Add(predmetPanel);

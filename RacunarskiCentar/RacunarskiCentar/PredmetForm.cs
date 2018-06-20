@@ -11,6 +11,7 @@ namespace RacunarskiCentar
     {
         private Predmet predmet;
         private Smer smer;
+        List<UcionicaAssets> OS = new List<UcionicaAssets>();
         public enum Rezim
         {
             Izmena, Dodavanje, DodavanjeNovomSmeru
@@ -25,6 +26,7 @@ namespace RacunarskiCentar
             this.predmet = predmet;
             InitializeComponent();
             comboBoxSmer.SelectedValueChanged += ComboBoxSmer_SelectedIndexChanged;
+            checkedListBox1.ItemCheck += CheckedListBox1_ItemCheck;
 
             if (predmet != null)
             {
@@ -60,6 +62,9 @@ namespace RacunarskiCentar
                 }
             }
             popuniOpremaBox();
+
+            
+
             KeyPreview = true;
             KeyDown += (object sender, KeyEventArgs e) =>
             {
@@ -76,6 +81,7 @@ namespace RacunarskiCentar
 
                 }
             };
+            popuniSoftvere();
         }
 
         private void ComboBoxSmer_SelectedIndexChanged(object sender, EventArgs e)
@@ -94,6 +100,27 @@ namespace RacunarskiCentar
                 }
                 checkedListBox1.Items.Add(new ComboValue(aset), postoji);
             }
+        }
+
+        private void CheckedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            ComboValue cv = (ComboValue)checkedListBox1.Items[e.Index];
+            if (cv.Value.Equals(UcionicaAssets.windows) || cv.Value.Equals(UcionicaAssets.linux))
+            {
+                if (e.NewValue == CheckState.Checked)
+                {
+                    OS.Add((UcionicaAssets)cv.Value);
+                }
+                else
+                {
+                    OS.Remove((UcionicaAssets)cv.Value);
+                }
+
+                popuniSoftvere();
+            }
+
+
+
         }
 
         private void popuniPolja()
@@ -130,8 +157,9 @@ namespace RacunarskiCentar
                 predmet.Opis = richTextBoxOpis.Text;
                 predmet.Assets = getUcionicaAssets();
                 predmet.SmerPredmeta = smer;
+                predmet.InstalledSoftware = getInstalledSoft();
 
-                
+
             }
             if (rezimRada==Rezim.Izmena || rezimRada == Rezim.Dodavanje)
             {
@@ -171,6 +199,34 @@ namespace RacunarskiCentar
             {
                 labelID.ForeColor = Color.Black;
             }
+        }
+
+        private HashSet<Software> getInstalledSoft()
+        {
+            HashSet<Software> rets = new HashSet<Software>();
+            foreach (object itemChecked in checkedListBoxSoftvera.CheckedItems)
+            {
+                rets.Add((Software)itemChecked);
+
+            }
+            return rets;
+        }
+
+        private void popuniSoftvere()
+        {
+            checkedListBoxSoftvera.Items.Clear();
+            List<UcionicaAssets> listaSistema = new List<UcionicaAssets>();
+
+            foreach (Software s in DataManger.softverOperativanSistemFiltiriranje(OS))
+            {
+                bool postoji = false;
+                if (predmet != null)
+                {
+                    postoji = predmet.InstalledSoftware.Contains(s);
+                }
+                checkedListBoxSoftvera.Items.Add(s, postoji);
+            }
+
         }
 
         private void textBoxNaziv_Validated(object sender, EventArgs e)
