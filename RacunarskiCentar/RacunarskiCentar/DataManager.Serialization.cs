@@ -54,8 +54,8 @@ namespace RacunarskiCentar
             smerovi.Clear();
             softveri.Clear();
             ucionice.Clear();
-            loadSmerovi("smerXML.xml");
             loadSoftware("softwareXML.xml");
+            loadSmerovi("smerXML.xml");
             loadUcionice("ucionicaXML.xml");
             
             foreach(Ucionica u in ucionice)
@@ -88,8 +88,8 @@ namespace RacunarskiCentar
             ucionice.Clear();
             smerovi.Clear();
             softveri.Clear();
-            loadSmerovi("smerXMLTut.xml");
             loadSoftware("softwareXMLTut.xml");
+            loadSmerovi("smerXMLTut.xml");
             loadUcionice("ucionicaXMLTut.xml");
             
             foreach (Ucionica u in ucionice)
