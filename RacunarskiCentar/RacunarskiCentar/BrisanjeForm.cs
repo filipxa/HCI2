@@ -26,7 +26,7 @@ namespace RacunarskiCentar
             // predmet, ucionica, , smer
             //if(listBox1.SelectedItem is )
             //{
-
+		perkan mitrovic
             //}
         }
     }
